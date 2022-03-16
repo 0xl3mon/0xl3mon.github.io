@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>CRTO (Certified red team operator) // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CRTO (Certified red team operator)"/>
+<meta name="twitter:description" content="bienvenidos a esta nueva publicación del blog . Hoy, les daré mi reseña del CRTO (certificación de operador de equipo rojo) enfocado en Active Directory de ZeroPointSecurity
+Reseña Un Breve contexto Unas pocas semanas después de haber terminado mi certificación del OSCP de offensive security me preguntaba ¿y ahora qué?, ¿cuál es el siguiente paso?&hellip; no sabía en que debía enfocarme y dos de las opciones más convincentes que me sonaban eran “web” y “active directory”… entonces me decidí por Active Directory."/>
+
+    <meta property="og:title" content="CRTO (Certified red team operator)" />
+<meta property="og:description" content="bienvenidos a esta nueva publicación del blog . Hoy, les daré mi reseña del CRTO (certificación de operador de equipo rojo) enfocado en Active Directory de ZeroPointSecurity
+Reseña Un Breve contexto Unas pocas semanas después de haber terminado mi certificación del OSCP de offensive security me preguntaba ¿y ahora qué?, ¿cuál es el siguiente paso?&hellip; no sabía en que debía enfocarme y dos de las opciones más convincentes que me sonaban eran “web” y “active directory”… entonces me decidí por Active Directory." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/crto/" />
+<meta property="article:published_time" content="2022-03-15T11:44:45+01:00" />
+<meta property="article:modified_time" content="2022-03-15T11:44:45+01:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="John Doe" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">CRTO (Certified red team operator)</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 15, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>bienvenidos a esta nueva publicación del blog . Hoy, les daré mi reseña del CRTO (certificación de operador de equipo rojo) enfocado en Active Directory de <a href="https://courses.zeropointsecurity.co.uk/courses/red-team-ops">ZeroPointSecurity</a></p>
+<h2 id="reseña">Reseña</h2>
+<p><img src="https://i.imgur.com/pqYPqAB.png" alt=""></p>
+<h2 id="un-breve-contexto">Un Breve contexto</h2>
+<p>Unas pocas semanas después de haber terminado mi certificación del <strong>OSCP de offensive security</strong> me preguntaba ¿y ahora qué?, ¿cuál es el siguiente paso?&hellip; no sabía en que debía enfocarme y dos de las opciones más convincentes que me sonaban eran “web” y “active directory”… entonces me decidí por Active Directory. Aquí es donde entra en juego la Certificacion CRTO.</p>
+<h2 id="qué-es-crto">¿Qué es CRTO?</h2>
+<p>Operador del equipo rojo certificado (CRTO) es una certificación de nivel  intermedio para los  que desean avanzar en su carrera y convertirse en miembros del equipo rojo.</p>
+<p>El estudiante debe explorar las técnicas y procedimientos que utilizan los actores de amenazas para infiltrarse en los sistemas principalmente haciendo uso de C2 como <strong>CobaltStrike</strong> y permanecer fuera del radar de detección ya que incluye ejercicios de evasión. También se mencionan algunas consideraciones de <strong>opsec</strong> .</p>
+<p><img src="/crto/Cobalt-Strike.png" alt=""></p>
+<hr>
+<h2 id="què-costo-tiene">¿Què costo tiene?</h2>
+<p>Hay diferentes opciones de compra , la mas común es la del <strong>curso + 40 horas de lab</strong> y un intento de examen que tiene un precio de 399 libras esterlinas es decir aproximadamente unos <strong>500 USD</strong> o la otra opcion es el curso solo por <strong>365 GBP</strong> con un intento de examen sin horas de laboratorio. De todas maneras, las horas de laboratorio pueden comprarse por separado y en ellas no existe algun tipo de paquete, eliges las horas que deseés consumir.(Puedes pausar el laboratorio cuando desee, no hay un limite de dias esto me parece un punto a favor.</p>
+<blockquote>
+<p>En el precio de los costos estoy ignorando los impuestos ya que esto es relativo dependiendo del país donde te encuentres
+puedes consultarlo en su sitio web <a href="https://courses.zeropointsecurity.co.uk/courses/red-team-ops">ZeroPointSecurity</a>.</p>
+</blockquote>
+<hr>
+<h2 id="resumen-del-curso">Resumen del curso</h2>
+<p>En general el curso fue bastante bueno , he leído sobre personas que recomiendan primero conseguir el OSCP y después ir por el CRTO (como fue mi caso), pero no coincido totalmente con esta opinion ya que el OSCP y CRTO conservan 2 enfoques totalmente distintos).</p>
+<p>Personalmente, disfruté mucho de CRTO porque el curso te enseña más que solo varios ataques de Active Directory, si no que te sumerge en cómo funciona Red Teaming con muchos conceptos de OPSEC .</p>
+<p>Dado que este curso utiliza <strong>Cobalt Strike</strong> como marco principal , aprenderá como utilizarlo, esto es algo bastante acertado y como estudiante hasta el momento creo que es una de las pocas o unica certificacion donde hacemos uso de dicho <strong>c2</strong>. aprender a utilizar cobalt y el entender como un actor de amenaza ataca y se mueve por una insfraestructura de red lo hace genial no quiero decir que sea algo facil deberá estudiar y  practicar, repetir el proceso tratando de entender todos los conceptos que existen detras de cada commando que inyectamos como asì tambien del lado del directorio activo.</p>
+<p>El curso cubre algunas de las técnicas fundamentales del equipo rojo, que son las siguientes áreas, todas ellas cubiertas y guiadas con ejemplos para que el estudiante pueda seguir a su propio ritmo.</p>
+<ul>
+<li><strong>Reconocimiento externo</strong></li>
+<li><strong>Compromiso inicial</strong></li>
+<li><strong>Reconocimiento del anfitrión</strong></li>
+<li><strong>Persistencia</strong></li>
+<li><strong>Escalada de privilegios</strong></li>
+<li><strong>Reconocimiento del dominio</strong></li>
+<li><strong>Credenciales y suplantación de identidad</strong></li>
+<li><strong>Movimiento lateral</strong></li>
+<li><strong>Paso de sesión</strong></li>
+<li><strong>Socks Proxy</strong></li>
+<li><strong>PIVOTING</strong></li>
+<li><strong>Data Protection API (DPAPI)</strong></li>
+<li><strong>Abuso de Kerberos</strong></li>
+<li><strong>Abuso de políticas de grupo</strong></li>
+<li><strong>Abuso del servidor MS SQL</strong></li>
+<li><strong>Dominando el dominio</strong></li>
+<li><strong>Relaciones de confianzas del dominio y bosque</strong></li>
+<li><strong>Evadir las defensas</strong></li>
+</ul>
+<hr>
+<h2 id="plataforma">Plataforma</h2>
+<p>La plataforma es de tipo canvas, bastante intuitiva incluye un buscador que es de gran ayuda durante el laboratorio o el examen, la información está bastante bien organizada y sobre todo resumida&hellip; aunque el estudiante deberá investigar más por su cuenta y profundizar en algunos tópicos que se tocan de una manera superficial.</p>
+<p><img src="https://i.imgur.com/XhMzmoi.png" alt=""></p>
+<hr>
+<h2 id="laboratorio">Laboratorio</h2>
+<p>El laboratorio esta en la plataforma de snaplabs y como he nombrado anteriormente solamente agotas el tiempo que prácticas,
+Mi experiencia fue relativamente buena aunque debo mencionar que por momentos no todo marchaba tan bien como me hubiera gustado y pasare a explicar lo siguiente. Mi experiencia con puntos a favor y en contra.</p>
+<p><strong>Pro :</strong></p>
+<ul>
+<li><a href="">@RastaMouse</a> siempre está dispuesto a ayudarlo con cualquier tipo de inconveniente que se se le presente, si este fuera el caso hágalo por la plataforma de discord.</li>
+<li>Obtiene valiosos conocimientos tanto del lado ofensivo como defensivo</li>
+<li>No necesita usar OpenVPN</li>
+<li>Accede a las maquinas a través de su navegador por rdp (fácil de organizar)</li>
+<li>Puede pausar el laboratorio para reanudarlo cuando deseé.</li>
+<li>Cubre la gran mayoría de típicos en el curso</li>
+</ul>
+<p><strong>Contra :</strong></p>
+<ul>
+<li>Cuando inicias el laboratorio debes esperar alrededor de 5/10 minutos a veces más para que todo se inicie correctamente</li>
+<li>Por momentos la experiencia se sentía bastante &ldquo;Lagueada&rdquo; y la conexión no era demasiado buena.</li>
+<li>No se puede transferir archivos a su host ya que estará en una red totalmente aislada (este punto es comprensible para no transferir herramientas)</li>
+<li>A veces copiar y pegar texto dentro de las VMS en el laboratorio resultaba algo molesto.</li>
+</ul>
+<p><img src="https://i.imgur.com/vqo3Sd0.png" alt=""></p>
+<p>De todas maneras debo decir que cuando se presentaba algun tipo de inconveniente <strong>rastamouse</strong> no tardaba absolutamente nada en contestar, solucionarlo y explicarte la manera de por que sucedia esto, en algunos casos iba mucho mas allà de su alcanse y ya estaba relacionado con la plataforma de snaplabs en si.</p>
+<hr>
+<h2 id="examen-duracion-48-horas">Examen (<strong>Duracion 48 Horas</strong>)</h2>
+<p>El examen personalmente fue difícil tuve que tomarlo en 2 oportunidades. La primera fue un desacierto, ya que fue la semana en donde por azar del destino agarre covid, y el estar en la computadora con fiebre no era algo bastante agradable más aun lidiando con la frustración&hellip; en ese intento solo logre capturar 3 flags. Lo positivo fue que aprendí a evadir AV, ya que mi conocimiento era bastante limitado y me quedé atascado varias veces justo comienzo del examen debido a esto.</p>
+<p>En mi segundo intento teniendo en cuenta esto, y ya entendiendo la dinámica de la evasión sabía lo que tenía que hacer, con esto no quiero decir que me fue algo sencillo al contrario. Usted tendrá un perfil de actor de amenaza que debe simular con herramientas limitadas que deberá de hacer uso cuando sea el momento adecuado y si puede cuidar de su <strong>opsec</strong> mucho mejor ¡El examen lo pone a prueba tiene 48 horas para realizar un determinado numeros de maquinas y llegar a un determinado punto!.
+En mi caso logre conseguir las 8 banderas como a las 20 horas del examen, pero teniendo en cuenta que ya había tenido una experiencia anterior (esto es un gran impulso) aún asi fue bastante complicado por momentos, cualquier cosa que te tenga por mas de 14 horas pensando tiene que ser duro.</p>
+<p><img src="https://i.imgur.com/fj5dTLA.png" alt=""></p>
+<p>no puedo negar que recomiendo esta certificacion a todo aquel que deseé profundizar en las pruebas de penetracion de directorios activos, en mi opinión fue buena una experiencia bastante grata y de mucho aprendizaje .</p>
+<p>Gracias a todos aquellos que se tomaron unos minutos para leer esta pequeña reseña.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

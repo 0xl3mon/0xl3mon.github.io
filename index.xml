@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>0xl3mon💀</title>
+    <link>https://0xl3mon.github.io/</link>
+    <description>Recent content on 0xl3mon💀</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 15 Mar 2022 11:44:45 +0100</lastBuildDate><atom:link href="https://0xl3mon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tags</title>
+      <link>https://0xl3mon.github.io/tags/</link>
+      <pubDate>Tue, 15 Mar 2022 11:45:53 +0100</pubDate>
+      
+      <guid>https://0xl3mon.github.io/tags/</guid>
+      <description>#ActiveDirectory , #WebPentesting</description>
+    </item>
+    
+    <item>
+      <title>CRTO (Certified red team operator)</title>
+      <link>https://0xl3mon.github.io/posts/crto/</link>
+      <pubDate>Tue, 15 Mar 2022 11:44:45 +0100</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/crto/</guid>
+      <description>bienvenidos a esta nueva publicación del blog . Hoy, les daré mi reseña del CRTO (certificación de operador de equipo rojo) enfocado en Active Directory de ZeroPointSecurity
+Reseña Un Breve contexto Unas pocas semanas después de haber terminado mi certificación del OSCP de offensive security me preguntaba ¿y ahora qué?, ¿cuál es el siguiente paso?&amp;hellip; no sabía en que debía enfocarme y dos de las opciones más convincentes que me sonaban eran “web” y “active directory”… entonces me decidí por Active Directory.</description>
+    </item>
+    
+    <item>
+      <title>Cómo consegui el oscp de 0 a 100 en 8 meses</title>
+      <link>https://0xl3mon.github.io/posts/oscp/</link>
+      <pubDate>Sun, 13 Mar 2022 19:03:55 +0100</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/oscp/</guid>
+      <description>La intencion de esta &amp;ldquo;reseña&amp;rdquo; sera más que nada informativa y enviar algo de apoyo moral para quien se enfrente a esta certificacion sin tener mucho conocimiento en el campo. si yo pude tu tambien puedes
+Antecedentes Comenzare diciendo que antes de mi proceso de prepararación, mi formaciòn como pentester era totalmente nula si bien conocia algo sobre redes, el area de la cyberseguridad no dejaba de ser algo totalmente desconocido para mí.</description>
+    </item>
+    
+    <item>
+      <title>Sobre mì</title>
+      <link>https://0xl3mon.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://0xl3mon.github.io/about/</guid>
+      <description>0xl3mon💀 CyberSecurity Consultant | Pentester | Red Teamer | Ethical Hacker
+ Siempre fui un aficionado de la informatica y todo aquello que este relacionado con las computadoras al menos desde que tengo uso de la razón, aunque para ser sincero me he dedicado profesionalmente a ella estos ultimos años.
+El fin del blog es impartir todos mis conocimientos sobre:
+- Directorio Activo 🧑‍💼 - Vulnerabilidades Web 🕷️ - Certificaciones orientadas a la seguridad ofensiva te invito a leer los posts donde encontraras cosas interesantes que tal vez si eres nuevo en este campo podran ayudarte&amp;hellip; Esto de alguna manera es mi granito de arena y la manera de devolverle algo a la comunidad que tanto me ha enseñado en el camino</description>
+    </item>
+    
+  </channel>
+</rss>

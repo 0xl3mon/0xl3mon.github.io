@@ -1,0 +1,42 @@
+---
+title: "CRTO (Certified red team operator)"
+date: 2022-03-14T18:36:08+01:00
+draft: true
+---
+bienvenidos a esta nueva publicación del blog . Hoy, les daré mi reseña del CRTO (certificación de operador de equipo rojo) enfocado en Active Directory de [ZeroPointSecuriti](https://courses.zeropointsecurity.co.uk/courses/red-team-ops)
+
+##  Reseña
+![](https://i.imgur.com/pqYPqAB.png)
+
+## Un Breve contexto
+Unas pocas semanas después de haber terminado mi certificación del **OSCP de offensive security** me preguntaba ¿y ahora qué?, ¿cuál es el siguiente paso?... no sabía en que debía enfocarme y dos de las opciones más convincentes que me sonaban eran “web” y “active directory”… entonces me decidí por Active Directory. Aquí es donde entra en juego la Certificacion CRTO.
+
+## ¿Qué es CRTO?
+Operador del equipo rojo certificado (CRTO) es una certificación de nivel  intermedio para los  que desean avanzar en su carrera y convertirse en miembros del equipo rojo. 
+El estudiante debe explorar las técnicas y procedimientos que utilizan los actores de amenazas para infiltrarse en los sistemas y permanecer fuera del radar de detección ya que incluye ejercicios de evasión. También se mencionan algunas consideraciones de **opsec** .
+
+## Resumen del curso
+En general el curso fue bastante decente inclusive mucho más de lo que esperaba, he leído sobre personas que recomiendan primero conseguir el OSCP y después ir por el CRTO (como fue mi caso) 
+> En mi opinión el enfoque de las dos certificaciones son totalmente diferentes y no es necesario tener de pre-requisito ninguna certificacion. Aunque con esto no quiero decir que sea una certificacion facil, al contrario tendras que esforzarte y practicar mucho.
+
+El curso cubre algunas de las técnicas fundamentales del equipo rojo, que son las siguientes áreas, todas ellas cubiertas y guiadas con ejemplos para que el estudiante pueda seguir a su propio ritmo.
+
+-   **Reconocimiento externo**
+-   **Compromiso inicial**
+-   **Reconocimiento del anfitrión**
+-   **Persistencia**
+-   **Escalada de privilegios**
+-   **Reconocimiento del dominio**
+-   **Credenciales y suplantación de identidad **
+-   **Movimiento lateral**
+-   **Paso de sesión**
+-   **Socks Proxy**
+-   **PIVOTING**
+-   **API de protección tos (DPAPI)
+-   Abuso de Kerberos
+-   Abuso de políticas de grupo
+-   Abuso del servidor MS SQL
+-   Dominando el dominio
+-   Relaciones de confianzas del dominio y bosque
+-   Evadir las defensas
+
