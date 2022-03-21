@@ -5,7 +5,18 @@
     <link>https://0xl3mon.github.io/</link>
     <description>Recent content on 0xl3mon💀</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 Mar 2022 11:44:45 +0100</lastBuildDate><atom:link href="https://0xl3mon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 13:17:04 +0100</lastBuildDate><atom:link href="https://0xl3mon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Comó crear un blog con hugo en github?</title>
+      <link>https://0xl3mon.github.io/posts/crearblog/</link>
+      <pubDate>Mon, 21 Mar 2022 13:17:04 +0100</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/crearblog/</guid>
+      <description>¿Como crear un blog con hugo en github con gitpages? Hola, esta publicación se saldra de la esfera de cyberseguridad pero aún asi puede ser util para quien quiera iniciar un blog sin tener que preocuparse por buscar un hosting para alojar sus recursos .
+Primero comenzaremos por lo mas basico
+¿Que es hugo? Hugo es un framework, generador de sitios web estáticos que esta programado en GO. Basicamente nos sirve para crear una estructura de directorios con un archivo de configuracion principal el cual modificaremos una vez que hayamos elegido y agregado un tema de diseño</description>
+    </item>
+    
     <item>
       <title>Tags</title>
       <link>https://0xl3mon.github.io/tags/</link>
