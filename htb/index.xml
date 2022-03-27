@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>0xl3mon💀</title>
-    <link>https://0xl3mon.github.io/</link>
-    <description>Recent content on 0xl3mon💀</description>
+    <title>Htbs on 0xl3mon💀</title>
+    <link>https://0xl3mon.github.io/htb/</link>
+    <description>Recent content in Htbs on 0xl3mon💀</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 27 Mar 2022 17:08:50 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CheatSheet ActiveDirectory - CRTO Notes</title>
-      <link>https://0xl3mon.github.io/posts/activedirectory-cobaltstrike-notes/</link>
-      <pubDate>Sun, 27 Mar 2022 17:08:50 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/posts/activedirectory-cobaltstrike-notes/</guid>
-      <description>Domain Enumeration Basic Domain Enumeration cmd - Domain Enumeration
-ipconfig /all route print net config workstation nltest /dclist:[Domain] \  echo %LOGONSERVER% net group /domain net user /domain net user [User] /domain net config workstation net use # Listamos Recursos del equipo net view \\[Host] /all	#wmic run wmic service get name,pathname run wmic logicaldisk get caption Local Computer Enumeration
-net user net user [User] net localgroup net localgroup [Administradores] whoami /user whoami /all /fo list whoami /priv #(Politica de seguridad del dominio) net accounts /domain \ Get-DomainPolicyData	Ldap Search LDAP: ldapsearch -H ldap://test.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 27 Mar 2022 16:48:58 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/htb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TartarSauce HTB - WriteUP</title>
       <link>https://0xl3mon.github.io/htb/tartarsauce-htb-writeup/</link>
@@ -162,58 +151,6 @@ PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) 
 ttl = 127 Windows System Recon Nmap open ports
 Service Enumeration
 21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &amp;lt;DIR&amp;gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1.</description>
-    </item>
-    
-    <item>
-      <title>¿Comó crear un blog con hugo en github?</title>
-      <link>https://0xl3mon.github.io/posts/crearblog/</link>
-      <pubDate>Mon, 21 Mar 2022 13:17:04 +0100</pubDate>
-      
-      <guid>https://0xl3mon.github.io/posts/crearblog/</guid>
-      <description>Hola, esta publicación se saldra de la esfera de cyberseguridad pero aún asi puede ser util para quien quiera iniciar un blog sin tener que preocuparse por buscar un hosting para alojar sus recursos .
-Primero comenzaremos por lo mas basico
-¿Que es hugo? Hugo es un framework, generador de sitios web estáticos que esta programado en GO. Basicamente nos sirve para crear una estructura de directorios con un archivo de configuracion principal el cual modificaremos una vez que hayamos elegido y agregado un tema de diseño</description>
-    </item>
-    
-    <item>
-      <title>Tags</title>
-      <link>https://0xl3mon.github.io/tags/</link>
-      <pubDate>Tue, 15 Mar 2022 11:45:53 +0100</pubDate>
-      
-      <guid>https://0xl3mon.github.io/tags/</guid>
-      <description>#ActiveDirectory #WebPentesting</description>
-    </item>
-    
-    <item>
-      <title>CRTO (Certified red team operator)</title>
-      <link>https://0xl3mon.github.io/posts/crto/</link>
-      <pubDate>Tue, 15 Mar 2022 11:44:45 +0100</pubDate>
-      
-      <guid>https://0xl3mon.github.io/posts/crto/</guid>
-      <description>bienvenidos a esta nueva publicación del blog . Hoy, les daré mi reseña del CRTO (certificación de operador de equipo rojo) enfocado en Active Directory de ZeroPointSecurity
-Reseña Un Breve contexto Unas pocas semanas después de haber terminado mi certificación del OSCP de offensive security me preguntaba ¿y ahora qué?, ¿cuál es el siguiente paso?&amp;hellip; no sabía en que debía enfocarme y dos de las opciones más convincentes que me sonaban eran “web” y “active directory”… entonces me decidí por Active Directory.</description>
-    </item>
-    
-    <item>
-      <title>Cómo consegui el oscp de 0 a 100 en 8 meses</title>
-      <link>https://0xl3mon.github.io/posts/oscp/</link>
-      <pubDate>Sun, 13 Mar 2022 19:03:55 +0100</pubDate>
-      
-      <guid>https://0xl3mon.github.io/posts/oscp/</guid>
-      <description>La intencion de esta &amp;ldquo;reseña&amp;rdquo; sera más que nada informativa y enviar algo de apoyo moral para quien se enfrente a esta certificacion sin tener mucho conocimiento en el campo. si yo pude tu tambien puedes
-Antecedentes Comenzare diciendo que antes de mi proceso de prepararación, mi formaciòn como pentester era totalmente nula si bien conocia algo sobre redes, el area de la cyberseguridad no dejaba de ser algo totalmente desconocido para mí.</description>
-    </item>
-    
-    <item>
-      <title>Sobre mì</title>
-      <link>https://0xl3mon.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://0xl3mon.github.io/about/</guid>
-      <description>0xl3mon💀 CyberSecurity Consultant | Pentester | Red Teamer | Ethical Hacker
- Siempre fui un aficionado de la informatica y todo aquello que este relacionado con las computadoras al menos desde que tengo uso de la razón, aunque para ser sincero me he dedicado profesionalmente a ella estos ultimos años.
-El fin del blog es impartir todos mis conocimientos sobre:
-- Directorio Activo 🧑‍💼 - Vulnerabilidades Web 🕷️ - Certificaciones orientadas a la seguridad ofensiva te invito a leer los posts donde encontraras cosas interesantes que tal vez si eres nuevo en este campo podran ayudarte&amp;hellip; Esto de alguna manera es mi granito de arena y la manera de devolverle algo a la comunidad que tanto me ha enseñado en el camino</description>
     </item>
     
   </channel>

