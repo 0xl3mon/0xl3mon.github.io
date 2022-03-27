@@ -5,7 +5,165 @@
     <link>https://0xl3mon.github.io/posts/</link>
     <description>Recent content in Posts on 0xl3mon💀</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Mar 2022 13:17:04 +0100</lastBuildDate><atom:link href="https://0xl3mon.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Mar 2022 17:08:50 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CheatSheet ActiveDirectory - CRTO Notes</title>
+      <link>https://0xl3mon.github.io/posts/activedirectory-cobaltstrike-notes/</link>
+      <pubDate>Sun, 27 Mar 2022 17:08:50 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/activedirectory-cobaltstrike-notes/</guid>
+      <description>Domain Enumeration Basic Domain Enumeration cmd - Domain Enumeration
+ipconfig /all route print net config workstation nltest /dclist:[Domain] \  echo %LOGONSERVER% net group /domain net user /domain net user [User] /domain net config workstation net use # Listamos Recursos del equipo net view \\[Host] /all	#wmic run wmic service get name,pathname run wmic logicaldisk get caption Local Computer Enumeration
+net user net user [User] net localgroup net localgroup [Administradores] whoami /user whoami /all /fo list whoami /priv #(Politica de seguridad del dominio) net accounts /domain \ Get-DomainPolicyData	Ldap Search LDAP: ldapsearch -H ldap://test.</description>
+    </item>
+    
+    <item>
+      <title>TartarSauce HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/tartarsauce-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 16:48:58 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/tartarsauce-htb-writeup/</guid>
+      <description>10.129.1.185 Nmap Recon Results Os Discovery
+TTL = 63 Linux Machine Recon Open Ports
+the unique open ports apparently is 80
+whatweb
+Web Server : Apache 2.4.8 Service Enumeration
+Fuzzing
+dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e &amp;#34;php,html,txt&amp;#34; -x &amp;#34;400,404&amp;#34; -F -t 100 --plain-text-report=webscan-folders we continue fuzzing the web server but this thime will be directed to the resource &amp;ldquo;webservices&amp;rdquo;
+dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e &amp;#34;php,html,txt&amp;#34; -x &amp;#34;400,404,403&amp;#34; -F -t 100 --plain-text-report=webscan-folder-webservices we identify a new folder called &amp;ldquo;wp&amp;rdquo; maybe it&amp;rsquo;s wordpress let met check</description>
+    </item>
+    
+    <item>
+      <title>Tabby HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/tabby-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 16:32:01 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/tabby-htb-writeup/</guid>
+      <description>Tabby - 10.129.5.1 Reconnossaince Nmap Recon Results Discovery OS System
+TTL = 63 -&amp;gt; Linux System Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 45:3c:34:14:35:56:23:95:d6:83:4e:26:de:c6:5b:d9 (RSA) | 256 89:79:3a:9c:88:b0:5c:ce:4b:79:b1:02:23:4b:44:a6 (ECDSA) |_ 256 1e:e7:b9:55:dd:25:8f:72:56:e8:8e:65:d5:19:b0:8d (ED25519) 80/tcp open http Apache httpd 2.4.41 ((Ubuntu)) |_http-server-header: Apache/2.4.41 (Ubuntu) |_http-title: Mega Hosting 8080/tcp open http Apache Tomcat |_http-title: Apache Tomcat Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel nuestro resultado del escaneo de nmap nos revela que tenemos 3 puertos abiertos, 2 posibles servicios web , uno de ellos un tomcat9 y en el puerto 80 un servicio web que enumeraremos pronto.</description>
+    </item>
+    
+    <item>
+      <title>Sniper HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/sniper-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 16:16:38 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/sniper-htb-writeup/</guid>
+      <description>Sniper - 10.129.1.171 Reconnaissance Nmap Recon Results Discovery OS System
+\
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 80/tcp open http Microsoft IIS httpd 10.0 | http-methods: |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 |_http-title: Sniper Co. 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds? Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: 6h59m59s | smb2-security-mode: | 2.02: |_ Message signing enabled but not required | smb2-time: | date: 2021-06-07T18:21:49 |_ start_date: N/A Analizando el resultado de nmap, vemos que tenemos solo 4 puertos abiertos , un servicio de samba y el otro el servidor http&amp;hellip; lo que podemos deducir que probablemente esten conectados.</description>
+    </item>
+    
+    <item>
+      <title>Popcorn HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/popcorn-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 15:58:07 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/popcorn-htb-writeup/</guid>
+      <description>Popcorn - 10.129.154.134 Nmap Recon Result Discovery OS System
+TTL = 63 Linux System Discovery Open Ports
+nmap -sS --min-rate 5000 -p- --open 10.129.154.134 -n -vvv -oG initialscan Service Enumeration
+Web Services Enumeration Whatweb
+http://10.129.154.134/ Fuzzing dirsearch -u http://10.129.154.134 -w /usr/share/dirb/wordlists/common.txt -e &amp;#34;php,html,txt&amp;#34; -F -b &amp;#34;404,400&amp;#34; -t 80 --plain-text-report=webscan Interesting Folders
+/cgi-bin/ /index /index.html /test /torrent Fuzzing /torrent/ folder
+PORT STATE SERVICE 80/tcp open http | http-enum: | /torrent/admin/: Possible admin folder | /torrent/admin/admin/: Possible admin folder | /torrent/admin/index.</description>
+    </item>
+    
+    <item>
+      <title>Optimum HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/optimum-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 15:53:02 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/optimum-htb-writeup/</guid>
+      <description>Nmap Recon Results Discovery Os System
+ttl=127 -&amp;gt; Windows System Recon Open Ports
+nmap -sS --min-rate 5000 -p- --open -n 10.129.103.249 -vvv -oG initialscan Services Enumeration
+nmap -sC -sV -p 80 10.129.103.249 -T4 -n -oN targeted Web Services
+Server Information : HttpFileServer 2.3
+Vuln
+https://vk9-sec.com/hfs-code-execution-cve-2014-6287/ I did this step manually but there are exploits in github or exploitdb that do it automatically, what I did was generate a payload with the powershell script that generates the base64 code then I paste it in the vulnerable field.</description>
+    </item>
+    
+    <item>
+      <title>Jerry HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/jerry-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 15:47:45 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/jerry-htb-writeup/</guid>
+      <description>Reconnaisance Nmap Recon Results Discovery OS System
+** Recoon open Ports**
+nmap -sS --min-rate 5000 --open -n 10.129.156.40 -vvv -oG initialscan Service Enumeration
+PORT STATE SERVICE VERSION 8080/tcp open http Apache Tomcat/Coyote JSP engine 1.1 |_http-favicon: Apache Tomcat |_http-server-header: Apache-Coyote/1.1 |_http-title: Apache Tomcat/7.0.88 So here, we notice very interesting result from nmap scan, it shows port 8080 is open for Apache Tomcat/ Coyote JSP Engine 1.1
+Web Service Next order of business is to browse the IP on a Web Browser.</description>
+    </item>
+    
+    <item>
+      <title>Jarvis HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/jarvis-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 15:40:14 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/jarvis-htb-writeup/</guid>
+      <description>Reconnaissance Nmap Recon Results Discovery OS System \
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0) | ssh-hostkey: | 2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA) | 256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA) |_ 256 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 (ED25519) 80/tcp open http Apache httpd 2.4.25 ((Debian)) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-server-header: Apache/2.4.25 (Debian) |_http-title: Stark Hotel 64999/tcp open http Apache httpd 2.4.25 ((Debian)) |_http-server-header: Apache/2.</description>
+    </item>
+    
+    <item>
+      <title>ChatterBox HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/chatterbox/</link>
+      <pubDate>Sun, 27 Mar 2022 15:31:22 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/chatterbox/</guid>
+      <description>Chatterbox Information Gathering Nmap Recon Results
+we begin identifiyng the Os System in our targeted machine Nmap Recon Open Ports Well now we will identify the possible open ports on the server to have a clearer idea about what services run on it nmap -sS --min-rate 5000 -p- --open -n 10.129.40.4 -Pn -vvvv
+as can see only have 2 open ports we will investigate what they are about.
+Service and version detection nmap -sC -sV -p 9255-9256 10.</description>
+    </item>
+    
+    <item>
+      <title>Bastard HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/bastard/</link>
+      <pubDate>Sun, 27 Mar 2022 15:26:20 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/bastard/</guid>
+      <description>Bastard Nmap Recon Results Discovery Os System Trought the TTL
+ttl = 127 -&amp;gt; Windows System
+Recon Open Ports
+Web-Services Url : http://10.129.151.188/
+as can see we are dealing with the drupal cms so we will try to list the version, trying to find interesting addresses in the robots.txt
+robots.txt
+looking at the changelog, we can list the drupal version in this case 7.54, so our nex step is look in searchsploit or with google if that version has any vuln</description>
+    </item>
+    
+    <item>
+      <title>Active HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/active/</link>
+      <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/active/</guid>
+      <description>Reconnaisance Nmap Recon Results Discovery OS System
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) (Windows Server 2008 R2 SP1) | dns-nsid: |_ bind.version: Microsoft DNS 6.1.7601 (1DB15D39) 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2021-06-10 12:24:33Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name) 445/tcp open microsoft-ds?</description>
+    </item>
+    
+    <item>
+      <title>Servmon HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/posts/htb/servmon-htb-writeup/</link>
+      <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/htb/servmon-htb-writeup/</guid>
+      <description>Servmon - 10.129.48.113 Reconnaissance Nmap Recon Results Discovery OS System
+ttl = 127 Windows System Recon Nmap open ports
+Service Enumeration
+21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &amp;lt;DIR&amp;gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1.</description>
+    </item>
+    
     <item>
       <title>¿Comó crear un blog con hugo en github?</title>
       <link>https://0xl3mon.github.io/posts/crearblog/</link>

