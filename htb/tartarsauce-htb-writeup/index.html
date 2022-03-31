@@ -99,27 +99,27 @@ dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Con
 <p><img src="https://i.imgur.com/UroUE0I.png" alt="" title="ttl Discovery"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">TTL = 63 Linux Machine
 </code></pre></div><p><strong>Recon Open Ports</strong></p>
-<p><img src="https://i.imgur.com/os8Vg6O.png" alt="">
-the unique open ports apparently  is 80</p>
+<p><img src="https://i.imgur.com/os8Vg6O.png" alt=""></p>
+<p>the unique open ports apparently  is 80</p>
 <p><strong>whatweb</strong></p>
 <p><img src="https://i.imgur.com/DcRhYBq.png" alt=""></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Web Server : Apache 2.4.8
 </code></pre></div><p><strong>Service Enumeration</strong></p>
-<p><img src="https://i.imgur.com/1VV7fak.png" alt="">
-<strong>Fuzzing</strong></p>
+<p><img src="https://i.imgur.com/1VV7fak.png" alt=""></p>
+<p><strong>Fuzzing</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e <span style="color:#e6db74">&#34;php,html,txt&#34;</span> -x <span style="color:#e6db74">&#34;400,404&#34;</span> -F -t <span style="color:#ae81ff">100</span> --plain-text-report<span style="color:#f92672">=</span>webscan-folders
 </code></pre></div><p><img src="https://i.imgur.com/v06ItnG.png" alt="" title="Dirsearch Fuzzing"></p>
 <p>we continue fuzzing the web server but this thime will be directed to the resource &ldquo;webservices&rdquo;</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e <span style="color:#e6db74">&#34;php,html,txt&#34;</span>  -x <span style="color:#e6db74">&#34;400,404,403&#34;</span> -F -t <span style="color:#ae81ff">100</span> --plain-text-report<span style="color:#f92672">=</span>webscan-folder-webservices
-</code></pre></div><p><img src="https://i.imgur.com/4nsdaOL.png" alt="" title="Fuzzing Webservices Resources">
-we identify a new folder called &ldquo;wp&rdquo; maybe it&rsquo;s wordpress let met check</p>
+</code></pre></div><p><img src="https://i.imgur.com/4nsdaOL.png" alt="" title="Fuzzing Webservices Resources"></p>
+<p>we identify a new folder called &ldquo;wp&rdquo; maybe it&rsquo;s wordpress let met check</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://tartarsauce.htb/webservices/wp/
 </code></pre></div><p><img src="https://i.imgur.com/IuEViKe.png" alt=""></p>
 <p><strong>Wordpress  Enumeration</strong></p>
-<p><img src="https://i.imgur.com/yS6cmtx.png" alt="" title="wpscan ">
-as can see we discover a valid user in this case <strong>&ldquo;wpadmin&rdquo;</strong></p>
-<p><img src="https://i.imgur.com/mauMSva.png" alt="">
-The Wordpress version is <strong>4.9.3</strong> and the current theme is <strong>&ldquo;Voce&rdquo;</strong></p>
+<p><img src="https://i.imgur.com/yS6cmtx.png" alt="" title="wpscan "></p>
+<p>as can see we discover a valid user in this case <strong>&ldquo;wpadmin&rdquo;</strong></p>
+<p><img src="https://i.imgur.com/mauMSva.png" alt=""></p>
+<p>The Wordpress version is <strong>4.9.3</strong> and the current theme is <strong>&ldquo;Voce&rdquo;</strong></p>
 <p><strong>Web Services Enumeration</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">http://10.129.1.185/
 </code></pre></div><p><img src="https://i.imgur.com/OISp88M.png" alt=""></p>
@@ -143,8 +143,8 @@ Disallow: /webservices/phpmyadmin/
 </code></pre></div><p><img src="https://i.imgur.com/079vWiF.png" alt="" title="Fuzzing Monstra Folder"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://tartarsauce.htb/webservices/monstra-3.0.4/robots.txt
 </code></pre></div><p><img src="https://i.imgur.com/95pPFZZ.png" alt="" title="Robots.txt"></p>
-<p>We visit the resource &lsquo;admin&rsquo; of monstra so we find a login panel, we proceed to perform password spraying
-<img src="https://i.imgur.com/ueWffxS.png" alt=""></p>
+<p>We visit the resource &lsquo;admin&rsquo; of monstra so we find a login panel, we proceed to perform password spraying</p>
+<p><img src="https://i.imgur.com/ueWffxS.png" alt=""></p>
 <p>and the valid credentials for the panel is ==admin: admin==</p>
 <p><img src="https://i.imgur.com/12qBL1L.png" alt="" title="Logged In Monstra Panelñ"></p>
 <p><strong>Vulnerability Identification</strong></p>
