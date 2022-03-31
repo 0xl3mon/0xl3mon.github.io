@@ -74,73 +74,6 @@ PORT STATE SERVICE 80/tcp open http | http-enum: | /torrent/admin/: Possible adm
     </item>
     
     <item>
-      <title>Optimum HTB   WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/optimum-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 15:53:02 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/optimum-htb-writeup/</guid>
-      <description>Nmap Recon Results Discovery Os System
-ttl=127 -&amp;gt; Windows System Recon Open Ports
-nmap -sS --min-rate 5000 -p- --open -n 10.129.103.249 -vvv -oG initialscan Services Enumeration
-nmap -sC -sV -p 80 10.129.103.249 -T4 -n -oN targeted Web Services
-Server Information : HttpFileServer 2.3
-Vuln
-https://vk9-sec.com/hfs-code-execution-cve-2014-6287/ I did this step manually but there are exploits in github or exploitdb that do it automatically, what I did was generate a payload with the powershell script that generates the base64 code then I paste it in the vulnerable field.</description>
-    </item>
-    
-    <item>
-      <title>Jerry HTB   WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/jerry-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 15:47:45 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/jerry-htb-writeup/</guid>
-      <description>Reconnaisance Nmap Recon Results Discovery OS System
-** Recoon open Ports**
-nmap -sS --min-rate 5000 --open -n 10.129.156.40 -vvv -oG initialscan Service Enumeration
-PORT STATE SERVICE VERSION 8080/tcp open http Apache Tomcat/Coyote JSP engine 1.1 |_http-favicon: Apache Tomcat |_http-server-header: Apache-Coyote/1.1 |_http-title: Apache Tomcat/7.0.88 So here, we notice very interesting result from nmap scan, it shows port 8080 is open for Apache Tomcat/ Coyote JSP Engine 1.1
-Web Service Next order of business is to browse the IP on a Web Browser.</description>
-    </item>
-    
-    <item>
-      <title>Jarvis HTB   WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/jarvis-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 15:40:14 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/jarvis-htb-writeup/</guid>
-      <description>Reconnaissance Nmap Recon Results Discovery OS System \
-Recon Open Ports
-Service Enumeration
-PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0) | ssh-hostkey: | 2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA) | 256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA) |_ 256 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 (ED25519) 80/tcp open http Apache httpd 2.4.25 ((Debian)) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-server-header: Apache/2.4.25 (Debian) |_http-title: Stark Hotel 64999/tcp open http Apache httpd 2.4.25 ((Debian)) |_http-server-header: Apache/2.</description>
-    </item>
-    
-    <item>
-      <title>ChatterBox HTB - WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/chatterbox/</link>
-      <pubDate>Sun, 27 Mar 2022 15:31:22 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/chatterbox/</guid>
-      <description>Chatterbox Information Gathering Nmap Recon Results
-we begin identifiyng the Os System in our targeted machine Nmap Recon Open Ports Well now we will identify the possible open ports on the server to have a clearer idea about what services run on it nmap -sS --min-rate 5000 -p- --open -n 10.129.40.4 -Pn -vvvv
-as can see only have 2 open ports we will investigate what they are about.
-Service and version detection nmap -sC -sV -p 9255-9256 10.</description>
-    </item>
-    
-    <item>
-      <title>Bastard HTB - WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/bastard/</link>
-      <pubDate>Sun, 27 Mar 2022 15:26:20 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/bastard/</guid>
-      <description>Bastard Nmap Recon Results Discovery Os System Trought the TTL
-ttl = 127 -&amp;gt; Windows System
-Recon Open Ports
-Web-Services Url : http://10.129.151.188/
-as can see we are dealing with the drupal cms so we will try to list the version, trying to find interesting addresses in the robots.txt
-robots.txt
-looking at the changelog, we can list the drupal version in this case 7.54, so our nex step is look in searchsploit or with google if that version has any vuln</description>
-    </item>
-    
-    <item>
       <title>Active HTB - WriteUP</title>
       <link>https://0xl3mon.github.io/htb/active/</link>
       <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
@@ -153,6 +86,19 @@ PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) 
     </item>
     
     <item>
+      <title>ChatterBox HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/chatterbox/</link>
+      <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/chatterbox/</guid>
+      <description>Chatterbox Information Gathering Nmap Recon Results
+we begin identifiyng the Os System in our targeted machine Nmap Recon Open Ports
+Well now we will identify the possible open ports on the server to have a clearer idea about what services run on it
+nmap -sS --min-rate 5000 -p- --open -n 10.129.40.4 -Pn -vvvv as can see only have 2 open ports we will investigate what they are about.
+Service and version detection</description>
+    </item>
+    
+    <item>
       <title>Servmon HTB - WriteUP</title>
       <link>https://0xl3mon.github.io/htb/servmon-htb-writeup/</link>
       <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
@@ -162,6 +108,21 @@ PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) 
 ttl = 127 Windows System Recon Nmap open ports
 Service Enumeration
 21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &amp;lt;DIR&amp;gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1.</description>
+    </item>
+    
+    <item>
+      <title>Bastard HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/bastard/</link>
+      <pubDate>Thu, 24 Mar 2022 17:20:30 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/bastard/</guid>
+      <description>Bastard Nmap Recon Results Discovery Os System Trought the TTL
+ttl = 127 -&amp;gt; Windows System
+Recon Open Ports
+Web-Services Url : http://10.129.151.188/
+as can see we are dealing with the drupal cms so we will try to list the version, trying to find interesting addresses in the robots.txt
+robots.txt
+looking at the changelog, we can list the drupal version in this case 7.54, so our nex step is look in searchsploit or with google if that version has any vuln</description>
     </item>
     
     <item>
@@ -211,6 +172,46 @@ Reseña Un Breve contexto Unas pocas semanas después de haber terminado mi cert
       <guid>https://0xl3mon.github.io/posts/oscp/</guid>
       <description>La intencion de esta &amp;ldquo;reseña&amp;rdquo; sera más que nada informativa y enviar algo de apoyo moral para quien se enfrente a esta certificacion sin tener mucho conocimiento en el campo. si yo pude tu tambien puedes
 Antecedentes Comenzare diciendo que antes de mi proceso de prepararación, mi formaciòn como pentester era totalmente nula si bien conocia algo sobre redes, el area de la cyberseguridad no dejaba de ser algo totalmente desconocido para mí.</description>
+    </item>
+    
+    <item>
+      <title>Jarvis HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/jarvis-htb-writeup/</link>
+      <pubDate>Mon, 28 Feb 2022 15:40:14 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/jarvis-htb-writeup/</guid>
+      <description>Reconnaissance Nmap Recon Results Discovery OS System \
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0) | ssh-hostkey: | 2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA) | 256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA) |_ 256 77:d4:ae:1f:b0:be:15:1f:f8:cd:c8:15:3a:c3:69:e1 (ED25519) 80/tcp open http Apache httpd 2.4.25 ((Debian)) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-server-header: Apache/2.4.25 (Debian) |_http-title: Stark Hotel 64999/tcp open http Apache httpd 2.4.25 ((Debian)) |_http-server-header: Apache/2.</description>
+    </item>
+    
+    <item>
+      <title>Jerry HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/jerry-htb-writeup/</link>
+      <pubDate>Mon, 24 Jan 2022 10:57:45 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/jerry-htb-writeup/</guid>
+      <description>Reconnaisance Nmap Recon Results Discovery OS System
+** Recoon open Ports**
+nmap -sS --min-rate 5000 --open -n 10.129.156.40 -vvv -oG initialscan Service Enumeration
+PORT STATE SERVICE VERSION 8080/tcp open http Apache Tomcat/Coyote JSP engine 1.1 |_http-favicon: Apache Tomcat |_http-server-header: Apache-Coyote/1.1 |_http-title: Apache Tomcat/7.0.88 So here, we notice very interesting result from nmap scan, it shows port 8080 is open for Apache Tomcat/ Coyote JSP Engine 1.1
+Web Service Next order of business is to browse the IP on a Web Browser.</description>
+    </item>
+    
+    <item>
+      <title>Optimum HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/optimum-htb-writeup/</link>
+      <pubDate>Thu, 23 Dec 2021 18:53:04 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/optimum-htb-writeup/</guid>
+      <description>Nmap Recon Results Discovery Os System
+ttl=127 -&amp;gt; Windows System Recon Open Ports
+nmap -sS --min-rate 5000 -p- --open -n 10.129.103.249 -vvv -oG initialscan Services Enumeration
+nmap -sC -sV -p 80 10.129.103.249 -T4 -n -oN targeted Web Services
+Server Information : HttpFileServer 2.3
+Vuln
+https://vk9-sec.com/hfs-code-execution-cve-2014-6287/ I did this step manually but there are exploits in github or exploitdb that do it automatically, what I did was generate a payload with the powershell script that generates the base64 code then I paste it in the vulnerable field.</description>
     </item>
     
     <item>
