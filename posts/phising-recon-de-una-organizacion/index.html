@@ -95,7 +95,7 @@ A veces nos preguntamos como las personas recopilan información acerca de perso
 <p>A continuación armaremos una pequeña lista de los temas que tocaremos</p>
 <ul>
 <li>
-<p><strong>Motores de búsquedas</strong> : <code>Google, Bing </code> -&gt; Un poco de dorking</p>
+<p><strong>Motores de búsquedas</strong> : <code>Google, Bing </code> -&gt; Dorking</p>
 </li>
 <li>
 <p><strong>Reconocimiento</strong></p>
@@ -178,16 +178,15 @@ admin | administrator -&gt; Paginas de administracion de la aplicacion
 intranet | help.desk -&gt; Puede localizar informacion de contacto de una mesa de ayuda, util para ejercisios de phising y pretecto... asi como portales de inicio de sesíon
 
 </code></pre></div><p><img src="https://i.imgur.com/wFGdvdY.png" alt=""></p>
-<p>El uso de operadores negativos como <strong>&quot;-ext&quot;</strong> puede ayudar a reducir los resultados nuevamente, acercándonos a lo que estámos buscando.</p>
-<p><strong>&quot;-ext&quot;</strong> eliminará páginas e información de las consultas de Google con extensiones específicas.</p>
+<p>El uso de operadores negativos como <code>-ext:</code> puede ayudar a reducir los resultados nuevamente, acercándole a lo que estámos buscando.</p>
+<p><code>-ext</code> eliminará páginas e información de las consultas de Google con extensiones específicas.</p>
 <p><img src="https://i.imgur.com/TnwAWpw.png" alt=""></p>
-<h4 id="recomiendo-google-hacking-database-de-exploit-db">Recomiendo google hacking database de exploit DB</h4>
-<p>Para profundizar y aprender mas sobre google hacking recomiendo google hacking database de exploitdb</p>
+<h4 id="para-aprender-sobre-google-dorking-recomiendo-gdb-de-exploit-db">Para aprender sobre google dorking Recomiendo GDB de exploit DB</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
 https://www.exploit-db.com/google-hacking-database
 
 </code></pre></div><h3 id="shodan">Shodan</h3>
-<p>Shodan es un motor de búsqueda para dispositivos conectados a Internet. Los malos suelen utilizarlo para buscar servicios o aplicaciones vulnerables, pero más allá de eso es una herramienta muy poderosa a la hora de enumerar , con <strong>shodan</strong> también podemos elaborar consultas de búsqueda e incluir filtros como los siguientes</p>
+<p><strong>Shodan</strong> es un motor de búsqueda para dispositivos conectados a Internet. Los malos suelen utilizarlo para buscar servicios vulnerables cuando un nuevo cve sale a la luz o aplicaciones vulnerables, pero más allá de eso es una herramienta muy poderosa a la hora de enumerar , con <strong>shodan</strong> también podemos elaborar consultas de búsqueda e incluir filtros como los siguientes</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
 - net: Especificamos Bloque de ip CIDR
 
@@ -211,12 +210,12 @@ https://www.exploit-db.com/google-hacking-database
 <p><strong>Podemos identificar bloques de ip CIDR</strong></p>
 </li>
 <li>
-<p>información de contactos.</p>
+<p><strong>información de contactos</strong>.</p>
 </li>
 </ul>
 <p>‐ <strong>NS</strong>: Nameserver(servidor de nombres) records</p>
 <p>los registros <strong>NS</strong> delegan la zona DNS para usar los servidores de nombres autorizados dados</p>
-<p>‐ <strong>A</strong>: Address records</p>
+<p>‐ <strong>A</strong>: Registro de Direcciones</p>
 <p>El registro <strong>A</strong> se utiliza para una resolución de DNS directo. En resumen, el registro <strong>A</strong> apunta su dominio a su servidor</p>
 <p>‐ <strong>MX</strong>: Mail Exchange records</p>
 <p>(MX) de DNS dirige el correo electrónico a un servidor de correo</p>
@@ -260,7 +259,7 @@ https://www.exploit-db.com/google-hacking-database
 </ul>
 <h3 id="dnsquery">DNSquery</h3>
 <p>Es una sitio para reconocimientos de redes online bastante útil ya que usted puede realizar distintos tipos enumeraciones</p>
-<p>DNSQUERY no es una herramienta en profundidad, sino que puede hacer un reconocimiento básico de red simple y básica para sitios y servicios en línea.</p>
+<p><strong>DNSQUERY</strong> no es una herramienta sola en profundidad en realidad son varias herramientas que sirven para hacer un reconocimiento simple y básico para sitios y servicios en línea.</p>
 <p><img src="https://i.imgur.com/BoQ3HRx.png" alt=""></p>
 <h4 id="brecha-de-datos-si-es-que-identificamos-correos">Brecha de datos si es que identificamos correos</h4>
 <ul>
@@ -277,20 +276,20 @@ https://www.exploit-db.com/google-hacking-database
 <h4 id="busquedas-de-osint">Busquedas de OSINT</h4>
 <ul>
 <li>
-<p><a href="https://github.com/smicallef/spiderfoot">SpiderFoot</a> 🕷</p>
+<p><strong>SpiderFoot</strong> [https://github.com/smicallef/spiderfoot]</p>
 </li>
 <li>
 <p><a href="https://osintframework.com/">OsintFrameWork</a></p>
 </li>
 <li>
-<p><a href="https://www.namecheckr.com/">NameCheckr</a> - Enumerar desde un email a cuentas en distintas plataformas</p>
+<p><a href="https://www.namecheckr.com/">NameCheckr</a> - Enumera desde un email distintas cuentas en multiples plataformas</p>
 </li>
 </ul>
 <p><strong>Creepy</strong></p>
 <p><a href="http://www.geocreepy.com/">Cree.py</a> es una herramienta de geolocalización bastante útil</p>
 <hr>
 <h4 id="the-harvester">The Harvester</h4>
-<p>The harvester es una herramienta que realiza búsquedas en distintos motores de búsqueda como <strong>Google, LinkedIn, Bing, Shodan</strong> y otras fuentes también puede enumerar</p>
+<p>The <strong>harvester</strong> es una herramienta que realiza búsquedas en distintos motores de búsqueda como <strong>Google, LinkedIn, Bing, Shodan</strong> y otras fuentes también puede enumerar</p>
 <ul>
 <li>
 <p>Informacion de de DNS</p>
@@ -316,7 +315,7 @@ https://www.exploit-db.com/google-hacking-database
 <p>Información del usuario en línea, y lo describe en detalle en su sitio.**</p>
 <p><img src="https://i.imgur.com/u9gMxjS.png" alt=""></p>
 <h3 id="metadatos">Metadatos</h3>
-<p>Es interesante analizar los metadatos de archivos multimedias incluido documentos ya que podemos encontrar información como rutas de directorios, información del autor, información de la cámara, inclusive hasta coordenadas de localización.</p>
+<p>Es interesante analizar los metadatos de imágenes, audios y videos ya que podemos encontrar información como rutas de directorios, información del autor, información de la cámara, inclusive hasta coordenadas de localización.</p>
 <ul>
 <li>
 <p><strong>Exiftool</strong></p>
@@ -327,22 +326,22 @@ https://www.exploit-db.com/google-hacking-database
 </ul>
 <hr>
 <h4 id="web-spidering-">Web Spidering 🕸</h4>
-<p>Si bien no es puramente &ldquo;Recon&rdquo;, ya estaríamos rosando el escaneo activo, el Spidering de sitios web mas bien es enumerar posibles rutas hacia recursos que no se están listando , o bien ocultando en los motores de búsquedas para eso está el fichero <strong>robots.txt</strong> en el podemos espeficar que mostrar e ingorar cuando un crawler de búsqueda reconoce nuestro sitio web.</p>
+<p>Si bien no es puramente &ldquo;Recon&rdquo;, ya estaríamos rosando el escaneo activo, el Spidering de sitios web mas bien es enumerar posibles rutas hacia recursos ocultos, o bien ocultos de los motores de búsquedas, para eso está el fichero <strong>robots.txt</strong> en el podemos espeficar que mostrar e ingorar cuando un crawler de búsqueda reconoce nuestro sitio web.</p>
 <p>Hay muchas herramientas que puedes usar para el <strong>Spidering de servidores web</strong>:</p>
 <ul>
 <li>
-<p><strong>Wget</strong></p>
+<p>wget</p>
 </li>
 <li>
-<p><strong>BURP</strong></p>
+<p>BURP</p>
 </li>
 <li>
-<p><strong>ZAP</strong></p>
+<p>ZAP</p>
+</li>
+<li>
+<p>Siempre busque el archivo <strong>robots.txt</strong> en la raíz del sitio web!</p>
 </li>
 </ul>
-<blockquote>
-<p>Siempre busque el archivo <strong>robots.txt</strong> en el raíz de un sitio web!</p>
-</blockquote>
 <p>ejemplo:</p>
 <p><a href="https://www.midominio.eu/robots.txt">https://www.midominio.eu/robots.txt</a></p>
 <ul>
@@ -356,40 +355,39 @@ site: &quot;robots.txt&quot; &quot;disallow:&quot; filetype:txt
 <p>debemos comenzar a analizar la informacion y hacer <strong>&lsquo;Conexiones&rsquo;</strong> como :</p>
 <ul>
 <li>
-<p><strong>Relaciones personales/empresariales</strong></p>
+<p>Relaciones personales/empresariales.</p>
 </li>
 <li>
-<p><strong>Organizaciones/Pasatiempos relacionados</strong></p>
+<p>Organizaciones/Pasatiempos relacionados</p>
 </li>
 <li>
-<p><strong>Funciones/Puesto de trabajo</strong></p>
+<p>Funciones/funciones de trabajo</p>
 </li>
 <li>
-<p><strong>Ubicaciones</strong></p>
+<p>Ubicaciones</p>
 </li>
 <li>
-<p><strong>Opiniones/Preferencia</strong></p>
+<p>Opiniones/Preferencia</p>
 </li>
 </ul>
-<p>Para armar un Perfil de la persona no tiene que  estar completo 100% desde el principio de hecho, es probable que tenga que descubrir los usuarios/emails específicos, especialmente si se planifican ataques avanzados como ataques de Spear Phising.</p>
+<p>cuando armamos un perfil no tiene estar completo al 100% desde principio a fin, pero si los campos criticos en especial si se planifican ataques avanzados como Spear Phising.</p>
 <h4 id="ejemplo-de-un-perfil-de-prueba">Ejemplo de un Perfil de Prueba</h4>
 <p>Un perfil de muestra de un objetivo puede incluir:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
-Nombre(s) : John Doe
+Nombre(s)
 
-Direcciones de correo electrónico y números de teléfono : Johndoe@gmail.com  Telf: +1167844652
+Direcciones de correo electrónico y números de teléfono.
 
-Direcciones físicas : 4262 Ruckman Road - Oklahoma City
+Direcciones físicas
 
-Miembros de la familia/Relaciones : Jane Doe
+Miembros de la familia/Relaciones
 
-Aficiones : Poker
+Aficiones
 
-Puesto de trabajo :  Administrador 
+Organizaciones/causas afiliadas
 
 </code></pre></div><p><strong>Direcciones físicas</strong>: son generalmente para organizaciones e instalaciones relacionadas con el trabajo, No queremos acechar a la gente y esto suele estar fuera de los límites del alcance y las reglas de compromiso</p>
-<p><strong>Miembros/relaciones familiares</strong>: si puede aprender los nombres de familia o los intereses de alguien, esto puede resultar útil para</p>
-<p>Engañar a una persona para que ella pulse un link o abra un correo electrónico.</p>
+<p><strong>Miembros/relaciones familiares</strong>: los nombres de familia o los intereses de alguien, pueden resultar útil para que una persona pulse un link o abra un archivo.</p>
 <p><strong>En la Ingeniería social necesitas ser consciente que usas tácticas que violan la ética fundamental.</strong></p>
 <p>Aunque los verdaderos atacantes pueden no tener límites sobre cómo realizan la ingeniería social, es muy poco probable que estemos en esa misma posición</p>
 <p><img src="https://i.imgur.com/jKDrH7B.png" alt=""></p>
@@ -397,7 +395,7 @@ Puesto de trabajo :  Administrador
 <h3 id="mail-spoofing">Mail Spoofing</h3>
 <p>Dicho de una forma sencilla, el Mail Spoofing es cuando alguien nos envía un correo donde el campo de entrada <strong>FROM</strong> del remitente es falso , de forma que podrían decirte que el correo te lo ha enviado una persona, empresa o entidad bancaria pero que realmente no son ellos los que realizan este envío.</p>
 <p>&lsquo;Alguien que dice ser pero que en realidad no es, te contacta por un correo un mensaje o una llamada para logar extraer información sensible para su causa&rsquo;</p>
-<p>bien volviendo a técnica de mail spoofing generalmente utilizada debemos tener en cuenta 3 protocolos de correos :</p>
+<p>bien volviendo a la técnica de mail spoofing generalmente utilizada debemos tener en cuenta 3 protocolos de correos :</p>
 <ul>
 <li>
 <p><strong>SPF</strong>, <strong>DKIM</strong> y <strong>DMARC</strong></p>
@@ -421,7 +419,7 @@ Puesto de trabajo :  Administrador
 <p><strong>es decir si el encargado en esta área de su organización no ha registrado o se ha olvidado ante la autoridad dos de registrar que pertenece a tal organización</strong>, un atacante puede suplantar el correo de un dominio.</p>
 <ul>
 <li>
-<p><strong>Checker de comprobacion Dmarc</strong></p>
+<p>Checker de comprobacion Dmarc</p>
 </li>
 <li>
 <p><a href="https://dmarcian.com/">https://dmarcian.com/</a></p>
@@ -431,8 +429,9 @@ Puesto de trabajo :  Administrador
 </li>
 </ul>
 <p><img src="https://i.imgur.com/6qnHe5x.png" alt=""></p>
-<p>Le sugiero que investigue en profundidad estos tópicos, ya que en este artículo se basa en un enfoque más práctico y superficial que en cuestiones meramente técnicas en las que es interesantes de aprender cómo funcionan.</p>
-<p>Con esta información en poder sabemos que podemos suplantar el correo de un dominio o bien hacerse pasar por otra persona, por ejemplo alguien de recursos humanos o un jefe de otro departamento. la creatividad es la clave.</p>
+<p>Le sugiero que investigue en profundidad estos tópicos, ya que en este artículo se basa en un enfoque más práctico y superficial que en cuestiones meramente técnicas en las que, es necesario para matar la curiosidad e interesante de aprender sobre cómo funcionan.</p>
+<p>Con esta información en poder, sabemos que podemos suplantar el correo de un dominio o bien hacerse pasar por otra persona, por ejemplo alguien de recursos humanos o un jefe de otro departamento.</p>
+<p><strong>El phising es un ataque de creativividad de distintas maneras, mantente simple. Manteniendo un ojo en los controles de seguridad y en las defensas, sobre todo cuando el usuario cliquea, necesitamos un guesped que no haga ruido al entrar</strong></p>
 <p><strong>Chequeando SPF</strong></p>
 <p><img src="https://i.imgur.com/pGDa7oM.png" alt=""></p>
 <p>vemos que en el registro <strong>spf</strong> podemos identificar servidores de correo e incluso rangos de ip</p>
@@ -484,20 +483,19 @@ Puesto de trabajo :  Administrador
 <li>Enviando un correo falso.</li>
 </ul>
 <p><img src="https://i.imgur.com/mHIpK40.png" alt=""></p>
-<h3 id="que-funciona-usualmente-de-este-ataque">Que funciona usualmente de este ataque</h3>
-<p>• Restablecer la contraseña del usuario</p>
-<p>• Entregas de algún paquetes de Amazon, Alibaba, Mercadolibre</p>
+<h5 id="que-funciona-usualmente-de-este-ataque">Que funciona usualmente de este ataque</h5>
+<p>• Restablecer contraseña del usuario</p>
+<p>• Entrega de algun paquetes de Amazon, Alibaba, Mercadolibre</p>
 <p>• Un incidente de recursos humanos (bien planeado)</p>
 <p>• Transferencias de archivos falsos</p>
 <p>• Todo lo que al sujeto le apasione y pueda interesarle (esta información esta en sus redes sociales)</p>
 <p>por ejemplo.</p>
 <p><strong>Puede enviar correos invitando a los clientes a una hermosa barbacoa de la compañía con entretenimiento y con presencia de algunas celebridades pero que solo hay reservas limitadas así que deberian reservar su espacio, dentro de las 24/48 horas próximas.</strong></p>
-<p>Para que en realidad los empleados tengan que loguearse en un sitio web clonado de la compañia y se les invita a introducir sus credenciales de accesso para obtener su &lsquo;Prestigioso espacio reservado&rsquo; (lol). para despues ser reenviados con un redirect <strong>302</strong> a otro sitio legitimo de la compañia, o bien con una ventana popup notificando que su espacio a sido reservado correctamente.</p>
-<p><strong>El phising es un ataque de creativividad de distintas formas, mantente simple. Manteniendo un enojo en los controles de seguridad y defensas, y cuando el usuario cliquea, necesitamos un payload</strong></p>
+<p>Para que en realidad los empleados tengan que loguearse en un sitio web clonado de la compañia, cordialmente se les invita a introducir sus credenciales de accesso para obtener su &lsquo;Prestigioso espacio reservado&rsquo;. para despues ser reenviados con un redirect <strong>302</strong> a otro sitio de la compañia, o bien con una ventana popup notificando que su espacio a sido reservado correctamente.</p>
 <blockquote>
 <p><strong>La habilidad de evasion en estos casos juega un rol fundamental</strong></p>
 </blockquote>
-<p>• <strong>El payload normalmente se centra en:</strong></p>
+<p>• El payload normalmente se centra en:</p>
 <ul>
 <li>
 <p>Un backdoor que da acceso al atacanete</p>
@@ -546,7 +544,7 @@ Puesto de trabajo :  Administrador
 <h4 id="clonado-de-sitios-con-formularios-de-logueo">Clonado de sitios con formularios de logueo</h4>
 <p>En esta seccion exploraremos las tecnicas de clonacion de sitios para obtener información sensible</p>
 <p>En esta etapa debemos intentar tener en nuestra caja de herramientas, templates o plantillas de sitios clonados de plataformas populares, con el fin de capturar credenciales desde un formulario donde el usuario ingresara sus datos.</p>
-<p>debemos usar <strong>certificados SSL</strong> que podemos conseguir en <a href="www.namecheap.com">namecheap</a> para evitar alertas del navegador de que es un sitio inseguro.</p>
+<p>debemos usar certificados SSL que podemos conseguir en <a href="www.namecheap.com">namecheap</a> para dar una sensación de seguridad.</p>
 <p><img src="https://i.imgur.com/DpReiPA.png" alt=""></p>
 <h4 id="setoolkit">SeToolKit</h4>
 <p><strong>SEToolkit</strong> es un programa de TrustestSEC que tiene muchas funciones para ingeniera social que va desde el robo de credenciales por sitios clonados, hasta la realización de cargas útiles de Metasploit.</p>
@@ -566,20 +564,20 @@ Puesto de trabajo :  Administrador
 <p><img src="https://i.imgur.com/vtMbsVv.jpg" alt=""></p>
 <hr>
 <h3 id="creaciones-de-payloads">Creaciones de Payloads</h3>
-<p>Solo rasgaremos la superficie en este tema, ya que sera un tema que tocaremos en post posteriores y le dedicaremos una seccion entera ya que es algo extenso.</p>
-<p>Uno de los principios aplicados a los payloads es que traten de unirse con el binario/lnk/documento ofimático/instalador o lo que sea que utilicemos para el compromiso inicial.</p>
+<p>Solo rasgaremos la superficie en este tema, ya que sera un tema que tocaremos en post posteriores y le dedicaremos una seccion entera ya que algo bastante extenso para dedicarle solo unos cuantos parrafos.</p>
+<p>Uno de los principios aplicados a los payloads es que traten de unirse con el ambiente es decir que se mimetizen con el &ldquo;binario/lnk/documento ofimático/instalador&hellip;&rdquo; que lo lleve, para el compromiso inicial es algo bastante importante.</p>
 <p>Puede visitar el sitio de <a href="https://attack.mitre.org/tactics/TA0001/">Mitre ATT&amp;CK</a> para analizar cuáles son los ataques más comunes.</p>
 <p>Haremos una pequeña POC para esto por eje:</p>
 <p>enviar un <strong>lnk malicioso</strong> comprimido en un archivo zip por correo con contraseña, al estar encriptado con la contraseña lo mas probable es que los scaners de correo no lo detecten, esto con el fin de que cuando el usuario descomprima el fichero obtenga un &ldquo;pdf&rdquo;, cuando en realidad solo es un acceso directo o mas bien un <strong>&lsquo;lnk&rsquo;</strong> con <strong>icono de un PDF</strong> es un payload que puede ejecutar acciones en su pc. y podría pasar desapercibido ya que después de haber ejecutado su acción maliciosa, puede abrirle un pdf al final para que el usuario no se de cuenta de lo que sucedió.</p>
 <p><img src="https://i.imgur.com/hSZjNz0.png" alt=""></p>
 <p>así como ejecuto un calculador como prueba de concepto también puede realizar acciones algo mas adecuadas para evadir AV/EDR.</p>
 <p>Como por ejp: <strong>hacer una petición a un sitio web con un recurso que aloja en su interior un shellcode ofuzcado o encriptado para almacenarlo en memoria y despues invocarlo con un rutina que remplaze los caracteres ofuzcados o bien desencripte la carga.</strong></p>
-<p>Asi como tambien puede enviar un documento oficemático que contenga código malicioso que se active cuando el usuario haga clic en <code>'enable content'</code> para darle ejecución a la macro que correrá el código oculto , lo más probable es que sea un rat/backdoor adjuntada en el mismo documento.</p>
+<p>Asi como tambien puede enviar un documento ofimático que contenga código malicioso que se active cuando el usuario haga clic en &lsquo;entable contento&rsquo; para darle ejecución a la macro que correrá el código oculto a simple vista en el documento, lo más probable es que sea puerta trasera embebida en él.</p>
 <p><strong>en el caso de que sean binarios necesitamos por ejemplo que el binario de compromiso esten firmados, y si es posible por entidades de confianza</strong>.</p>
 <p>(Para esto puede agarrar instaladores de confianza o binarios e injectarle el codigo con <strong>&ldquo;MSFVENOM&rdquo;</strong> - <strong>&ldquo;Shellter&rdquo;</strong>)</p>
 <p>No esta decir que necesitamos que tengan iconos legitimos, y la información necesaria para parecer legitimo, con el fin de no alertar al AV/DEFENDER por ejp la version, el proveedor del software.</p>
 <p>Una herramienta util interesante para firmar binarios es:</p>
-<p><a href="https://github.com/secretsquirrel/SigThief">SigThief</a> de <strong>SecretSquirrel</strong></p>
+<p><a href="https://github.com/secretsquirrel/SigThief">SigThief</a> de SecretSquirrel</p>
 <p>Extraerá una firma de un archivo PE firmado y se la agregará a otro, arreglando la tabla de certificados para firmar el archivo. no es una firma valida, pero ya esta firmado y ese es el punto.</p>
 <h3 id="reporte">Reporte</h3>
 <p>El reporte es lo que garantizara que hayamos realizado nuestro trabajo de investigación. Para eso debemos tener en cuenta lo siguiente</p>

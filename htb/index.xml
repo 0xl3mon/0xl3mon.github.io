@@ -5,48 +5,7 @@
     <link>https://0xl3mon.github.io/htb/</link>
     <description>Recent content in Htbs on 0xl3mon🕷</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 27 Mar 2022 16:48:58 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/htb/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>TartarSauce HTB - WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/tartarsauce-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 16:48:58 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/tartarsauce-htb-writeup/</guid>
-      <description>10.129.1.185 Nmap Recon Results Os Discovery
-TTL = 63 Linux Machine Recon Open Ports
-the unique open ports apparently is 80
-whatweb
-Web Server : Apache 2.4.8 Service Enumeration
-Fuzzing
-dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e &amp;#34;php,html,txt&amp;#34; -x &amp;#34;400,404&amp;#34; -F -t 100 --plain-text-report=webscan-folders we continue fuzzing the web server but this thime will be directed to the resource &amp;ldquo;webservices&amp;rdquo;
-dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e &amp;#34;php,html,txt&amp;#34; -x &amp;#34;400,404,403&amp;#34; -F -t 100 --plain-text-report=webscan-folder-webservices we identify a new folder called &amp;ldquo;wp&amp;rdquo; maybe it&amp;rsquo;s wordpress let met check</description>
-    </item>
-    
-    <item>
-      <title>Tabby HTB - WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/tabby-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 16:32:01 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/tabby-htb-writeup/</guid>
-      <description>Tabby - 10.129.5.1 Reconnossaince Nmap Recon Results Discovery OS System
-TTL = 63 -&amp;gt; Linux System Recon Open Ports
-Service Enumeration
-PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 45:3c:34:14:35:56:23:95:d6:83:4e:26:de:c6:5b:d9 (RSA) | 256 89:79:3a:9c:88:b0:5c:ce:4b:79:b1:02:23:4b:44:a6 (ECDSA) |_ 256 1e:e7:b9:55:dd:25:8f:72:56:e8:8e:65:d5:19:b0:8d (ED25519) 80/tcp open http Apache httpd 2.4.41 ((Ubuntu)) |_http-server-header: Apache/2.4.41 (Ubuntu) |_http-title: Mega Hosting 8080/tcp open http Apache Tomcat |_http-title: Apache Tomcat Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel nuestro resultado del escaneo de nmap nos revela que tenemos 3 puertos abiertos, 2 posibles servicios web , uno de ellos un tomcat9 y en el puerto 80 un servicio web que enumeraremos pronto.</description>
-    </item>
-    
-    <item>
-      <title>Sniper HTB   WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/sniper-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 16:16:38 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/sniper-htb-writeup/</guid>
-      <description>Sniper - 10.129.1.171 Reconnaissance Nmap Recon Results Discovery OS System
-\
-Recon Open Ports
-Service Enumeration
-PORT STATE SERVICE VERSION 80/tcp open http Microsoft IIS httpd 10.0 | http-methods: |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 |_http-title: Sniper Co. 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds? Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: 6h59m59s | smb2-security-mode: | 2.02: |_ Message signing enabled but not required | smb2-time: | date: 2021-06-07T18:21:49 |_ start_date: N/A Analizando el resultado de nmap, vemos que tenemos solo 4 puertos abiertos , un servicio de samba y el otro el servidor http&amp;hellip; lo que podemos deducir que probablemente esten conectados.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 27 Mar 2022 15:58:07 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/htb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Popcorn HTB   WriteUP</title>
       <link>https://0xl3mon.github.io/htb/popcorn-htb-writeup/</link>
@@ -63,21 +22,9 @@ PORT STATE SERVICE 80/tcp open http | http-enum: | /torrent/admin/: Possible adm
     </item>
     
     <item>
-      <title>Active HTB - WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/active/</link>
-      <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/active/</guid>
-      <description>Reconnaisance Nmap Recon Results Discovery OS System
-Recon Open Ports
-Service Enumeration
-PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) (Windows Server 2008 R2 SP1) | dns-nsid: |_ bind.version: Microsoft DNS 6.1.7601 (1DB15D39) 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2021-06-10 12:24:33Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name) 445/tcp open microsoft-ds?</description>
-    </item>
-    
-    <item>
       <title>ChatterBox HTB - WriteUP</title>
       <link>https://0xl3mon.github.io/htb/chatterbox/</link>
-      <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
+      <pubDate>Fri, 25 Mar 2022 15:18:19 +0200</pubDate>
       
       <guid>https://0xl3mon.github.io/htb/chatterbox/</guid>
       <description>Chatterbox Information Gathering Nmap Recon Results
@@ -85,18 +32,6 @@ we begin identifiyng the Os System in our targeted machine Nmap Recon Open Ports
 Well now we will identify the possible open ports on the server to have a clearer idea about what services run on it
 nmap -sS --min-rate 5000 -p- --open -n 10.129.40.4 -Pn -vvvv as can see only have 2 open ports we will investigate what they are about.
 Service and version detection</description>
-    </item>
-    
-    <item>
-      <title>Servmon HTB - WriteUP</title>
-      <link>https://0xl3mon.github.io/htb/servmon-htb-writeup/</link>
-      <pubDate>Sun, 27 Mar 2022 15:18:19 +0200</pubDate>
-      
-      <guid>https://0xl3mon.github.io/htb/servmon-htb-writeup/</guid>
-      <description>Servmon - 10.129.48.113 Reconnaissance Nmap Recon Results Discovery OS System
-ttl = 127 Windows System Recon Nmap open ports
-Service Enumeration
-21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &amp;lt;DIR&amp;gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1.</description>
     </item>
     
     <item>
@@ -115,6 +50,71 @@ looking at the changelog, we can list the drupal version in this case 7.54, so o
     </item>
     
     <item>
+      <title>Sniper HTB   WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/sniper-htb-writeup/</link>
+      <pubDate>Tue, 22 Mar 2022 16:16:38 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/sniper-htb-writeup/</guid>
+      <description>Sniper - 10.129.1.171 Reconnaissance Nmap Recon Results Discovery OS System
+\
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 80/tcp open http Microsoft IIS httpd 10.0 | http-methods: |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 |_http-title: Sniper Co. 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds? Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: 6h59m59s | smb2-security-mode: | 2.02: |_ Message signing enabled but not required | smb2-time: | date: 2021-06-07T18:21:49 |_ start_date: N/A Analizando el resultado de nmap, vemos que tenemos solo 4 puertos abiertos , un servicio de samba y el otro el servidor http&amp;hellip; lo que podemos deducir que probablemente esten conectados.</description>
+    </item>
+    
+    <item>
+      <title>Active HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/active/</link>
+      <pubDate>Mon, 21 Mar 2022 15:18:19 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/active/</guid>
+      <description>Reconnaisance Nmap Recon Results Discovery OS System
+Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 53/tcp open domain Microsoft DNS 6.1.7601 (1DB15D39) (Windows Server 2008 R2 SP1) | dns-nsid: |_ bind.version: Microsoft DNS 6.1.7601 (1DB15D39) 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2021-06-10 12:24:33Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name) 445/tcp open microsoft-ds?</description>
+    </item>
+    
+    <item>
+      <title>Servmon HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/servmon-htb-writeup/</link>
+      <pubDate>Mon, 21 Mar 2022 15:18:19 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/servmon-htb-writeup/</guid>
+      <description>Servmon - 10.129.48.113 Reconnaissance Nmap Recon Results Discovery OS System
+ttl = 127 Windows System Recon Nmap open ports
+Service Enumeration
+21/tcp open ftp Microsoft ftpd | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_01-18-20 12:05PM &amp;lt;DIR&amp;gt; Users | ftp-syst: |_ SYST: Windows_NT 22/tcp open ssh OpenSSH for_Windows_7.7 (protocol 2.0) | ssh-hostkey: | 2048 b9:89:04:ae:b6:26:07:3f:61:89:75:cf:10:29:28:83 (RSA) | 256 71:4e:6c:c0:d3:6e:57:4f:06:b8:95:3d:c7:75:57:53 (ECDSA) |_ 256 15:38:bd:75:06:71:67:7a:01:17:9c:5c:ed:4c:de:0e (ED25519) 80/tcp open http | fingerprint-strings: | GetRequest, HTTPOptions, RTSPRequest: | HTTP/1.</description>
+    </item>
+    
+    <item>
+      <title>TartarSauce HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/tartarsauce-htb-writeup/</link>
+      <pubDate>Sat, 19 Mar 2022 16:48:58 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/tartarsauce-htb-writeup/</guid>
+      <description>10.129.1.185 Nmap Recon Results Os Discovery
+TTL = 63 Linux Machine Recon Open Ports
+the unique open ports apparently is 80
+whatweb
+Web Server : Apache 2.4.8 Service Enumeration
+Fuzzing
+dirsearch -u http://10.129.1.185/ -w /usr/share/dirb/wordlists/common.txt -e &amp;#34;php,html,txt&amp;#34; -x &amp;#34;400,404&amp;#34; -F -t 100 --plain-text-report=webscan-folders we continue fuzzing the web server but this thime will be directed to the resource &amp;ldquo;webservices&amp;rdquo;
+dirsearch -u http://10.129.1.185/webservices/ -w /opt/Seclists/Discovery/Web-Content/raft-medium-words.txt -e &amp;#34;php,html,txt&amp;#34; -x &amp;#34;400,404,403&amp;#34; -F -t 100 --plain-text-report=webscan-folder-webservices we identify a new folder called &amp;ldquo;wp&amp;rdquo; maybe it&amp;rsquo;s wordpress let met check</description>
+    </item>
+    
+    <item>
+      <title>Tabby HTB - WriteUP</title>
+      <link>https://0xl3mon.github.io/htb/tabby-htb-writeup/</link>
+      <pubDate>Fri, 18 Mar 2022 16:32:01 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/htb/tabby-htb-writeup/</guid>
+      <description>Tabby - 10.129.5.1 Reconnossaince Nmap Recon Results Discovery OS System
+TTL = 63 -&amp;gt; Linux System Recon Open Ports
+Service Enumeration
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 45:3c:34:14:35:56:23:95:d6:83:4e:26:de:c6:5b:d9 (RSA) | 256 89:79:3a:9c:88:b0:5c:ce:4b:79:b1:02:23:4b:44:a6 (ECDSA) |_ 256 1e:e7:b9:55:dd:25:8f:72:56:e8:8e:65:d5:19:b0:8d (ED25519) 80/tcp open http Apache httpd 2.4.41 ((Ubuntu)) |_http-server-header: Apache/2.4.41 (Ubuntu) |_http-title: Mega Hosting 8080/tcp open http Apache Tomcat |_http-title: Apache Tomcat Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel nuestro resultado del escaneo de nmap nos revela que tenemos 3 puertos abiertos, 2 posibles servicios web , uno de ellos un tomcat9 y en el puerto 80 un servicio web que enumeraremos pronto.</description>
+    </item>
+    
+    <item>
       <title>Jarvis HTB   WriteUP</title>
       <link>https://0xl3mon.github.io/htb/jarvis-htb-writeup/</link>
       <pubDate>Mon, 28 Feb 2022 15:40:14 +0200</pubDate>
@@ -129,7 +129,7 @@ PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4p1 Debian 10+deb9u6 (proto
     <item>
       <title>Jerry HTB   WriteUP</title>
       <link>https://0xl3mon.github.io/htb/jerry-htb-writeup/</link>
-      <pubDate>Mon, 24 Jan 2022 10:57:45 +0200</pubDate>
+      <pubDate>Sat, 08 Jan 2022 10:57:45 +0200</pubDate>
       
       <guid>https://0xl3mon.github.io/htb/jerry-htb-writeup/</guid>
       <description>Reconnaisance Nmap Recon Results Discovery OS System
