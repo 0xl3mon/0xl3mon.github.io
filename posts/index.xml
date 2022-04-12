@@ -5,7 +5,17 @@
     <link>https://0xl3mon.github.io/posts/</link>
     <description>Recent content in Posts on 0xl3mon🕷</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Apr 2022 20:35:12 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Apr 2022 12:49:50 +0200</lastBuildDate><atom:link href="https://0xl3mon.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reconocimiento &amp; Enumeración AD</title>
+      <link>https://0xl3mon.github.io/posts/reconocimiento-enumeraci%C3%B3n-ad/</link>
+      <pubDate>Tue, 12 Apr 2022 12:49:50 +0200</pubDate>
+      
+      <guid>https://0xl3mon.github.io/posts/reconocimiento-enumeraci%C3%B3n-ad/</guid>
+      <description>En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red , sobre todo cuando se trata de listar puertos, servicios y las versiones de los servicios que para etapas posteriores nos servira para buscar posibles vulnerabilidades.
+ping -c 2 10.10.124.125 lo que hacemos con la utilidad ping es basicamente enviar un paquete ICMP del tipo echo request para comprobar el estado de comunicacion entre nuestro equipo y el host de destino, es decir si el host esta activo nos devolvera la peticion ICMP con un echo reply.</description>
+    </item>
+    
     <item>
       <title>Phising &amp; Recon De Una Organizacion</title>
       <link>https://0xl3mon.github.io/posts/phising-recon-de-una-organizacion/</link>
