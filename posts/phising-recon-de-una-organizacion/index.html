@@ -95,7 +95,7 @@ A veces nos preguntamos como las personas recopilan información acerca de perso
 <p>A continuación armaremos una pequeña lista de los temas que tocaremos</p>
 <ul>
 <li>
-<p><strong>Motores de búsquedas</strong> : <code>Google, Bing </code> -&gt; Dorking</p>
+<p><strong>Motores de búsquedas</strong> : <code>Google, Bing </code> -&gt; Un poco de dorking</p>
 </li>
 <li>
 <p><strong>Reconocimiento</strong></p>
@@ -173,20 +173,22 @@ username | userid | employee.ID -&gt; Busca posible información de credenciales
 
 password | passcode | “your password is” -&gt; Puede ayudar a encontrar credenciales (bastante raro) mas amenudo regresa paginas que ayudan a recuperar contraseñas a los usuarios
 
-admin | administrator -&gt; Paginas de administracion de la aplicacion
+admin | administrator -&gt; Paginas de administración de la aplicacion
 
-intranet | help.desk -&gt; Puede localizar informacion de contacto de una mesa de ayuda, util para ejercisios de phising y pretecto... asi como portales de inicio de sesíon
+intranet | help.desk -&gt; Puede localizar información de contacto de una mesa de ayuda, util para ejercisios de phising y pretecto... asi como portales de inicio de sesión
 
 </code></pre></div><p><img src="https://i.imgur.com/wFGdvdY.png" alt=""></p>
-<p>El uso de operadores negativos como <code>-ext:</code> puede ayudar a reducir los resultados nuevamente, acercándole a lo que estámos buscando.</p>
-<p><code>-ext</code> eliminará páginas e información de las consultas de Google con extensiones específicas.</p>
+<p>El uso de operadores negativos como &ldquo;-ext:&rdquo; puede ayudar a reducir los resultados nuevamente, acercándole a lo que está</p>
+<p>buscando.</p>
+<p><strong>&quot;-Ext&quot;</strong> eliminará páginas e información de las consultas de Google con extensiones específicas.</p>
 <p><img src="https://i.imgur.com/TnwAWpw.png" alt=""></p>
-<h4 id="para-aprender-sobre-google-dorking-recomiendo-gdb-de-exploit-db">Para aprender sobre google dorking Recomiendo GDB de exploit DB</h4>
+<h4 id="recomiendo-google-hacking-database-de-exploit-db">Recomiendo google hacking database de exploit DB</h4>
+<p>Para profundizar y aprender mas sobre google hacking</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
 https://www.exploit-db.com/google-hacking-database
 
 </code></pre></div><h3 id="shodan">Shodan</h3>
-<p><strong>Shodan</strong> es un motor de búsqueda para dispositivos conectados a Internet. Los malos suelen utilizarlo para buscar servicios vulnerables cuando un nuevo cve sale a la luz o aplicaciones vulnerables, pero más allá de eso es una herramienta muy poderosa a la hora de enumerar , con <strong>shodan</strong> también podemos elaborar consultas de búsqueda e incluir filtros como los siguientes</p>
+<p>Shodan es un motor de búsqueda para dispositivos conectados a Internet. Los malos suelen utilizarlo para buscar servicios o aplicaciones vulnerables, pero más allá de eso es una herramienta muy poderosa a la hora de enumerar , con <strong>shodan</strong> también podemos elaborar consultas de búsqueda e incluir filtros como los siguientes</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
 - net: Especificamos Bloque de ip CIDR
 
@@ -210,12 +212,12 @@ https://www.exploit-db.com/google-hacking-database
 <p><strong>Podemos identificar bloques de ip CIDR</strong></p>
 </li>
 <li>
-<p><strong>información de contactos</strong>.</p>
+<p>información de contactos.</p>
 </li>
 </ul>
 <p>‐ <strong>NS</strong>: Nameserver(servidor de nombres) records</p>
 <p>los registros <strong>NS</strong> delegan la zona DNS para usar los servidores de nombres autorizados dados</p>
-<p>‐ <strong>A</strong>: Registro de Direcciones</p>
+<p>‐ <strong>A</strong>: Address records</p>
 <p>El registro <strong>A</strong> se utiliza para una resolución de DNS directo. En resumen, el registro <strong>A</strong> apunta su dominio a su servidor</p>
 <p>‐ <strong>MX</strong>: Mail Exchange records</p>
 <p>(MX) de DNS dirige el correo electrónico a un servidor de correo</p>
@@ -259,7 +261,7 @@ https://www.exploit-db.com/google-hacking-database
 </ul>
 <h3 id="dnsquery">DNSquery</h3>
 <p>Es una sitio para reconocimientos de redes online bastante útil ya que usted puede realizar distintos tipos enumeraciones</p>
-<p><strong>DNSQUERY</strong> no es una herramienta sola en profundidad en realidad son varias herramientas que sirven para hacer un reconocimiento simple y básico para sitios y servicios en línea.</p>
+<p>DNSQUERY no es una herramienta en profundidad, sino que puede hacer un reconocimiento básico de red simple y básica para sitios y servicios en línea.</p>
 <p><img src="https://i.imgur.com/BoQ3HRx.png" alt=""></p>
 <h4 id="brecha-de-datos-si-es-que-identificamos-correos">Brecha de datos si es que identificamos correos</h4>
 <ul>
@@ -282,14 +284,14 @@ https://www.exploit-db.com/google-hacking-database
 <p><a href="https://osintframework.com/">OsintFrameWork</a></p>
 </li>
 <li>
-<p><a href="https://www.namecheckr.com/">NameCheckr</a> - Enumera desde un email distintas cuentas en multiples plataformas</p>
+<p><a href="https://www.namecheckr.com/">NameCheckr</a> - Enumerar desde un email a cuentas en distintas plataformas</p>
 </li>
 </ul>
 <p><strong>Creepy</strong></p>
 <p><a href="http://www.geocreepy.com/">Cree.py</a> es una herramienta de geolocalización bastante útil</p>
 <hr>
 <h4 id="the-harvester">The Harvester</h4>
-<p>The <strong>harvester</strong> es una herramienta que realiza búsquedas en distintos motores de búsqueda como <strong>Google, LinkedIn, Bing, Shodan</strong> y otras fuentes también puede enumerar</p>
+<p>The harvester es una herramienta que realiza búsquedas en distintos motores de búsqueda como <strong>Google, LinkedIn, Bing, Shodan</strong> y otras fuentes también puede enumerar</p>
 <ul>
 <li>
 <p>Informacion de de DNS</p>
@@ -305,9 +307,9 @@ https://www.exploit-db.com/google-hacking-database
 </li>
 </ul>
 <p><img src="https://i.imgur.com/0qGQYTl.png" alt=""></p>
-<p>como ven es una fantástica herramienta de reconocimiento ya que en los resultados podemos identificar cargos como empleados ya se administración, recursos humanos, administración etc.</p>
+<p>Como ven es una fantástica herramienta de reconocimiento ya que en los resultados podemos identificar los cargos de empleados como de administración, recursos humanos, o ingenieros de softwares etc.</p>
 <h4 id="recon-ng">Recon-NG</h4>
-<p>Recon-ng es uno de los FrameWorks más versátiles para el reconocimiento .</p>
+<p>Recon-ng es uno de los DreamWorks más versátiles para el reconocimiento.</p>
 <p>El fue construido por Tim Tomes, quien desarrolló la herramienta para <strong>emular el mismo modelo interactivo que se encuentra en Metasploit</strong></p>
 <p>El framework se puede descargar en <a href="https://github.com/lanmaster53/RECON-NG">https://github.com/lanmaster53/RECON-NG</a>.</p>
 <p>**Recon-NG tiene varios módulos de reconocimiento disponibles, incluidas las búsquedas de dominio, la orientación de las redes sociales,</p>
@@ -326,7 +328,7 @@ https://www.exploit-db.com/google-hacking-database
 </ul>
 <hr>
 <h4 id="web-spidering-">Web Spidering 🕸</h4>
-<p>Si bien no es puramente &ldquo;Recon&rdquo;, ya estaríamos rosando el escaneo activo, el Spidering de sitios web mas bien es enumerar posibles rutas hacia recursos ocultos, o bien ocultos de los motores de búsquedas, para eso está el fichero <strong>robots.txt</strong> en el podemos espeficar que mostrar e ingorar cuando un crawler de búsqueda reconoce nuestro sitio web.</p>
+<p>Si bien no es puramente &ldquo;Recon&rdquo;, ya estaríamos rosando el escaneo activo, el Spidering de sitios web mas bien es enumerar posibles rutas hacia recursos que no se están listando , o bien ocultando en los motores de búsquedas para eso está el fichero <strong>robots.txt</strong> en el podemos espeficar que mostrar e ingorar cuando un crawler de búsqueda reconoce nuestro sitio web.</p>
 <p>Hay muchas herramientas que puedes usar para el <strong>Spidering de servidores web</strong>:</p>
 <ul>
 <li>
@@ -339,7 +341,7 @@ https://www.exploit-db.com/google-hacking-database
 <p>ZAP</p>
 </li>
 <li>
-<p>Siempre busque el archivo <strong>robots.txt</strong> en la raíz del sitio web!</p>
+<p>Siempre busque el archivo <strong>robots.txt</strong> en el raíz de un sitio web!</p>
 </li>
 </ul>
 <p>ejemplo:</p>
@@ -352,7 +354,7 @@ site: &quot;robots.txt&quot; &quot;disallow:&quot; filetype:txt
 
 </code></pre><p><img src="https://i.imgur.com/7xb5spe.png" alt=""></p>
 <h3 id="una-vez-que-ya-hemos-recopilado-informacion-de-nuestro-target">Una vez que ya hemos recopilado informacion de nuestro target</h3>
-<p>debemos comenzar a analizar la informacion y hacer <strong>&lsquo;Conexiones&rsquo;</strong> como :</p>
+<p>Debemos comenzar a analizar la información y hacer <strong>&lsquo;Conexiones&rsquo;</strong> como :</p>
 <ul>
 <li>
 <p>Relaciones personales/empresariales.</p>
@@ -370,7 +372,8 @@ site: &quot;robots.txt&quot; &quot;disallow:&quot; filetype:txt
 <p>Opiniones/Preferencia</p>
 </li>
 </ul>
-<p>cuando armamos un perfil no tiene estar completo al 100% desde principio a fin, pero si los campos criticos en especial si se planifican ataques avanzados como Spear Phising.</p>
+<p>con el fin de armar un perfil, armar el muñeco.</p>
+<p>Esto no tiene estar completo 100% desde el principio de hecho, es probable que tenga que descubrir los usuarios/emails específicos, especialmente si se planifican ataques avanzados como ataques de Spear Phising.</p>
 <h4 id="ejemplo-de-un-perfil-de-prueba">Ejemplo de un Perfil de Prueba</h4>
 <p>Un perfil de muestra de un objetivo puede incluir:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
@@ -387,7 +390,8 @@ Aficiones
 Organizaciones/causas afiliadas
 
 </code></pre></div><p><strong>Direcciones físicas</strong>: son generalmente para organizaciones e instalaciones relacionadas con el trabajo, No queremos acechar a la gente y esto suele estar fuera de los límites del alcance y las reglas de compromiso</p>
-<p><strong>Miembros/relaciones familiares</strong>: los nombres de familia o los intereses de alguien, pueden resultar útil para que una persona pulse un link o abra un archivo.</p>
+<p><strong>Miembros/relaciones familiares</strong>: si puede aprender los nombres de familia o los intereses de alguien, esto puede resultar útil para</p>
+<p>Engañar a una persona para que ella pulse un link o abra un correo electrónico.</p>
 <p><strong>En la Ingeniería social necesitas ser consciente que usas tácticas que violan la ética fundamental.</strong></p>
 <p>Aunque los verdaderos atacantes pueden no tener límites sobre cómo realizan la ingeniería social, es muy poco probable que estemos en esa misma posición</p>
 <p><img src="https://i.imgur.com/jKDrH7B.png" alt=""></p>
@@ -395,7 +399,7 @@ Organizaciones/causas afiliadas
 <h3 id="mail-spoofing">Mail Spoofing</h3>
 <p>Dicho de una forma sencilla, el Mail Spoofing es cuando alguien nos envía un correo donde el campo de entrada <strong>FROM</strong> del remitente es falso , de forma que podrían decirte que el correo te lo ha enviado una persona, empresa o entidad bancaria pero que realmente no son ellos los que realizan este envío.</p>
 <p>&lsquo;Alguien que dice ser pero que en realidad no es, te contacta por un correo un mensaje o una llamada para logar extraer información sensible para su causa&rsquo;</p>
-<p>bien volviendo a la técnica de mail spoofing generalmente utilizada debemos tener en cuenta 3 protocolos de correos :</p>
+<p>bien volviendo a técnica de mail spoofing generalmente utilizada demos tener en cuenta 3 protocolos</p>
 <ul>
 <li>
 <p><strong>SPF</strong>, <strong>DKIM</strong> y <strong>DMARC</strong></p>
@@ -410,7 +414,7 @@ Organizaciones/causas afiliadas
 <p><strong>Dmarc</strong>: Este registro indica qué hacer cuando dan error los registros anteriores es complementario de SPF y DKIM</p>
 </li>
 <li>
-<p>son protocolos de autenticación de emails que certifican a los servidores que el sender que está enviando un email es seguro y es quíen dice ser por que el mensaje va firmado . En otras palabras, es como si a tus emails les pusieran una sello o una medalla que diga “hey, es un remitente seguro, puede pasar”</p>
+<p>son protocolos de autenticación de emails que certifican a los servidores de correo como Gmail, Yahoo o Hotmail que el sender que está enviando un email es seguro y es quien dice ser. En otras palabras, es como si a tus emails les pusieran una pulsera o una medalla que diga “hey, es un remitente seguro, puede pasar”</p>
 </li>
 </ul>
 <blockquote>
@@ -429,11 +433,10 @@ Organizaciones/causas afiliadas
 </li>
 </ul>
 <p><img src="https://i.imgur.com/6qnHe5x.png" alt=""></p>
-<p>Le sugiero que investigue en profundidad estos tópicos, ya que en este artículo se basa en un enfoque más práctico y superficial que en cuestiones meramente técnicas en las que, es necesario para matar la curiosidad e interesante de aprender sobre cómo funcionan.</p>
-<p>Con esta información en poder, sabemos que podemos suplantar el correo de un dominio o bien hacerse pasar por otra persona, por ejemplo alguien de recursos humanos o un jefe de otro departamento.</p>
-<p><strong>El phising es un ataque de creativividad de distintas maneras, mantente simple. Manteniendo un ojo en los controles de seguridad y en las defensas, sobre todo cuando el usuario cliquea, necesitamos un guesped que no haga ruido al entrar</strong></p>
+<p>Le sugiero que investigue en profundidad estos tópicos, ya que en este artículo se basa en un enfoque más práctico y superficial que en cuestiones meramente técnicas en las que es interesantes de aprender cómo funcionan.</p>
+<p>Con esta información en poder sabemos que podemos suplantar el correo de un dominio o bien hacerse pasar por otra persona, por ejemplo alguien de recursos humanos o un jefe de otro departamento. la creatividad es la clave.</p>
 <p><strong>Chequeando SPF</strong></p>
-<p><img src="https://i.imgur.com/pGDa7oM.png" alt=""></p>
+<p><img src="https://i.imgur.com/xYorArp.png" alt=""></p>
 <p>vemos que en el registro <strong>spf</strong> podemos identificar servidores de correo e incluso rangos de ip</p>
 <ul>
 <li>
@@ -459,7 +462,7 @@ Organizaciones/causas afiliadas
 </li>
 </ul>
 <p>Si consultamos otro dominio, encontraremos una cantidad significativa de otras direcciones IP que también se deben considerar.</p>
-<p>Motivos por los cuales el correo enviado podria ser bloqueado</p>
+<p>Motivos por los cuales el correo enviado podría ser bloqueado</p>
 <p><strong>Enlaces sospechosos</strong></p>
 <ul>
 <li>
@@ -480,7 +483,10 @@ Organizaciones/causas afiliadas
 </ul>
 <p><strong>Puede consultar dominios hasta encontrar uno que no contenga registro y estos los dominios pueden falsificarse fácilmente usando los métodos convencionales.</strong></p>
 <ul>
-<li>Enviando un correo falso.</li>
+<li>
+<p>Enviando un correo falso.</p>
+</li>
+<li></li>
 </ul>
 <p><img src="https://i.imgur.com/mHIpK40.png" alt=""></p>
 <h5 id="que-funciona-usualmente-de-este-ataque">Que funciona usualmente de este ataque</h5>
@@ -488,12 +494,13 @@ Organizaciones/causas afiliadas
 <p>• Entrega de algun paquetes de Amazon, Alibaba, Mercadolibre</p>
 <p>• Un incidente de recursos humanos (bien planeado)</p>
 <p>• Transferencias de archivos falsos</p>
-<p>• Todo lo que al sujeto le apasione y pueda interesarle (esta información esta en sus redes sociales)</p>
+<p>• Todo lo que al sujeto le apasione y pueda interesarle (esta información está en sus redes sociales)</p>
 <p>por ejemplo.</p>
-<p><strong>Puede enviar correos invitando a los clientes a una hermosa barbacoa de la compañía con entretenimiento y con presencia de algunas celebridades pero que solo hay reservas limitadas así que deberian reservar su espacio, dentro de las 24/48 horas próximas.</strong></p>
-<p>Para que en realidad los empleados tengan que loguearse en un sitio web clonado de la compañia, cordialmente se les invita a introducir sus credenciales de accesso para obtener su &lsquo;Prestigioso espacio reservado&rsquo;. para despues ser reenviados con un redirect <strong>302</strong> a otro sitio de la compañia, o bien con una ventana popup notificando que su espacio a sido reservado correctamente.</p>
+<p><strong>Puede enviar correos invitando a los clientes a una hermosa barbacoa de la compañía con entretenimiento y con presencia de algunas celebridades pero que solo hay reservas limitadas así que deberían reservar su espacio, dentro de las 24/48 horas próximas.</strong></p>
+<p>Para que en realidad los empleados tengan que loguearse en un sitio web clonado de la compañia y se les invita a introducir sus credenciales de accesso para obtener su &lsquo;Prestigioso espacio reservado&rsquo; (lol). para después ser reenviados con un redirect <strong>302</strong> a otro sitio legitimo de la compañia, o bien con una ventana popup notificando que su espacio a sido reservado correctamente.</p>
+<p><strong>El phising es un ataque de creatividad de distintas formas, mantente simple. Manteniendo un enojo en los controles de seguridad y defensas, y cuando el usuario cliquea, necesitamos un payload</strong></p>
 <blockquote>
-<p><strong>La habilidad de evasion en estos casos juega un rol fundamental</strong></p>
+<p><strong>La habilidad de evasión en estos casos juega un rol fundamental</strong></p>
 </blockquote>
 <p>• El payload normalmente se centra en:</p>
 <ul>
@@ -520,8 +527,8 @@ Organizaciones/causas afiliadas
 <h3 id="què-es-vishing">¿Què es Vishing?</h3>
 <p>a diferencia del pisan es algo más sofisticados ya que le sumamos la interacción con teléfonos móviles y servicios de plataformas que normalmente las personas suelen usar como whatsapp o cualquier mensajero en línea.</p>
 <p>El <strong>vishing</strong> es la suplantación de empresas o entidades de confianza para obtener datos personales a través de una simple llamada esto sigue siendo un intento de estafa muy habitual en todo el mundo</p>
-<p>Generalmente pretende suplantar la identidad de una entidad o persona con el fin de lograr su cometido que es extraer iformación privilegiada.</p>
-<p>Un Vhishing es un mensaje (sms)/whatsapp o un llamada para que el usuario entrege información o realize comportamientos manipulados o bien entregue datos o acceso a un sistema.</p>
+<p>Generalmente pretende suplantar la identidad de una entidad o persona con el fin de lograr su cometido que es extraer información privilegiada.</p>
+<p>Un Vhishing es un mensaje (sms)/whatsapp o un llamada para que el usuario entregue información o realice comportamientos manipulados o bien entregue datos o acceso a un sistema.</p>
 <ul>
 <li>
 <p>Llamadas</p>
@@ -542,7 +549,7 @@ Organizaciones/causas afiliadas
 <li>correo, con un enlace web (probablemente con un acortador de urls para disfrazar la dirección original).</li>
 </ul>
 <h4 id="clonado-de-sitios-con-formularios-de-logueo">Clonado de sitios con formularios de logueo</h4>
-<p>En esta seccion exploraremos las tecnicas de clonacion de sitios para obtener información sensible</p>
+<p>En esta sección exploraremos las técnicas de clonación de sitios para obtener información sensible</p>
 <p>En esta etapa debemos intentar tener en nuestra caja de herramientas, templates o plantillas de sitios clonados de plataformas populares, con el fin de capturar credenciales desde un formulario donde el usuario ingresara sus datos.</p>
 <p>debemos usar certificados SSL que podemos conseguir en <a href="www.namecheap.com">namecheap</a> para dar una sensación de seguridad.</p>
 <p><img src="https://i.imgur.com/DpReiPA.png" alt=""></p>
@@ -564,21 +571,21 @@ Organizaciones/causas afiliadas
 <p><img src="https://i.imgur.com/vtMbsVv.jpg" alt=""></p>
 <hr>
 <h3 id="creaciones-de-payloads">Creaciones de Payloads</h3>
-<p>Solo rasgaremos la superficie en este tema, ya que sera un tema que tocaremos en post posteriores y le dedicaremos una seccion entera ya que algo bastante extenso para dedicarle solo unos cuantos parrafos.</p>
-<p>Uno de los principios aplicados a los payloads es que traten de unirse con el ambiente es decir que se mimetizen con el &ldquo;binario/lnk/documento ofimático/instalador&hellip;&rdquo; que lo lleve, para el compromiso inicial es algo bastante importante.</p>
+<p>Solo rasgaremos la superficie en este tema, ya que será un tema que tocaremos en post posteriores y le dedicaremos una sección entera ya que es algo extenso.</p>
+<p>Uno de los principios aplicados a los payloads es que traten de unirse con el binario/lnk/documento ofimático/instalador o lo que sea que utilicemos para el compromiso inicial.</p>
 <p>Puede visitar el sitio de <a href="https://attack.mitre.org/tactics/TA0001/">Mitre ATT&amp;CK</a> para analizar cuáles son los ataques más comunes.</p>
 <p>Haremos una pequeña POC para esto por eje:</p>
-<p>enviar un <strong>lnk malicioso</strong> comprimido en un archivo zip por correo con contraseña, al estar encriptado con la contraseña lo mas probable es que los scaners de correo no lo detecten, esto con el fin de que cuando el usuario descomprima el fichero obtenga un &ldquo;pdf&rdquo;, cuando en realidad solo es un acceso directo o mas bien un <strong>&lsquo;lnk&rsquo;</strong> con <strong>icono de un PDF</strong> es un payload que puede ejecutar acciones en su pc. y podría pasar desapercibido ya que después de haber ejecutado su acción maliciosa, puede abrirle un pdf al final para que el usuario no se de cuenta de lo que sucedió.</p>
+<p>Enviar un <strong>lnk malicioso</strong> comprimido en un archivo zip con contraseña por correo , al estar encriptado con la contraseña lo más probable es que los scanners de correo no lo detecten, estó con el fin de que cuando el usuario descomprima el fichero obtenga un &ldquo;pdf&rdquo;, cuando en realidad solo es un acceso directo o más bien un <strong>&lsquo;lnk&rsquo;</strong> con <strong>icono de un PDF</strong> es un payload que puede ejecutar acciones en su pc. y podría pasar desapercibido ya que después de haber ejecutado su acción maliciosa, puede abrirle un pdf al final para que el usuario no se de cuenta de lo que sucedió.</p>
 <p><img src="https://i.imgur.com/hSZjNz0.png" alt=""></p>
-<p>así como ejecuto un calculador como prueba de concepto también puede realizar acciones algo mas adecuadas para evadir AV/EDR.</p>
-<p>Como por ejp: <strong>hacer una petición a un sitio web con un recurso que aloja en su interior un shellcode ofuzcado o encriptado para almacenarlo en memoria y despues invocarlo con un rutina que remplaze los caracteres ofuzcados o bien desencripte la carga.</strong></p>
-<p>Asi como tambien puede enviar un documento ofimático que contenga código malicioso que se active cuando el usuario haga clic en &lsquo;entable contento&rsquo; para darle ejecución a la macro que correrá el código oculto a simple vista en el documento, lo más probable es que sea puerta trasera embebida en él.</p>
-<p><strong>en el caso de que sean binarios necesitamos por ejemplo que el binario de compromiso esten firmados, y si es posible por entidades de confianza</strong>.</p>
-<p>(Para esto puede agarrar instaladores de confianza o binarios e injectarle el codigo con <strong>&ldquo;MSFVENOM&rdquo;</strong> - <strong>&ldquo;Shellter&rdquo;</strong>)</p>
-<p>No esta decir que necesitamos que tengan iconos legitimos, y la información necesaria para parecer legitimo, con el fin de no alertar al AV/DEFENDER por ejp la version, el proveedor del software.</p>
-<p>Una herramienta util interesante para firmar binarios es:</p>
-<p><a href="https://github.com/secretsquirrel/SigThief">SigThief</a> de SecretSquirrel</p>
-<p>Extraerá una firma de un archivo PE firmado y se la agregará a otro, arreglando la tabla de certificados para firmar el archivo. no es una firma valida, pero ya esta firmado y ese es el punto.</p>
+<p>Así como ejecuto un calculador como prueba de concepto también puede realizar acciones algo más adecuadas para evadir AV/EDR.</p>
+<p>Como por ejp: <strong>hacer una petición a un sitio web con un recurso que aloja en su interior un shellcode ofuzcado o encriptado para almacenarlo en memoria y después invocarlo con un rutina que remplaze los caracteres ofuzcados o bien desencripte la carga.</strong></p>
+<p>Así como también puede enviar un documento ofimático que contenga código malicioso que se active cuando el usuario haga clic en &lsquo;entable contento&rsquo; para darle ejecución a la macro que correrá el código oculto a simple vista en el documento, lo más probable es que sea puerta trasera embebida en él.</p>
+<p><strong>en el caso de que sean binarios necesitamos por ejemplo que el binario de compromiso estén firmados, y si es posible por entidades de confianza</strong>.</p>
+<p>(Para esto puede agarrar instaladores de confianza o binarios e inyectarle el código con <strong>&ldquo;MSFVENOM&rdquo;</strong> - <strong>&ldquo;Shellter&rdquo;</strong>)</p>
+<p>No esta demás decir que necesitamos que tengan iconos que se vean ‘confiables’  , y la información necesaria para parecer legítimo con el fin de no alertar al AV/DEFENDER como la versión, el proveedor del software.</p>
+<p>Una herramienta útil interesante para firmar binarios es:</p>
+<p>[SigThief]https://github.com/secretsquirrel/SigThief de SecretSquirrel</p>
+<p>Extraerá una firma de un archivo PE firmado y se la agregará a otro, arreglando la tabla de certificados para firmar el archivo. No es una firma valida, pero ya está firmado y ese es el punto.</p>
 <h3 id="reporte">Reporte</h3>
 <p>El reporte es lo que garantizara que hayamos realizado nuestro trabajo de investigación. Para eso debemos tener en cuenta lo siguiente</p>
 <h4 id="antes-del-reporte">Antes del reporte</h4>
@@ -600,20 +607,12 @@ Organizaciones/causas afiliadas
 <p>Cámaras digitales para reconocimiento, o su teléfono</p>
 </li>
 </ul>
-<h4 id="el-reporte">El reporte</h4>
-<p>debe ser de unas cuantas páginas pero bien detalladas y con información precisa o lo mas cercano a ello, con una breve explicación del projecto es decir quien la realiza, cual es el fin , y el alcanze del mismo.</p>
-<p>en la conclusión debemos colocar los resultados dependiendo su nivel de criticidad como</p>
-<ul>
-<li>
-<p>bajo (green)</p>
-</li>
-<li>
-<p>medio (yellow)</p>
-</li>
-<li>
-<p>alto (red)</p>
-</li>
-</ul>
+<p> #### El reporte</p>
+<p> Debe ser de unas pocas páginas como máximo 3 paginas, pero bien detalladas y con información precisa o lo más cercano a ello, con una breve explicación del projecto es decir quien la realiza, cual es el fin , y el alcance del mismo.</p>
+<p> en  conclusión debemos colocar los resultados dependiendo su nivel de criticidad como</p>
+<p> - bajo (green)</p>
+<p> - medio (yellow)</p>
+<p> - alto (red)</p>
 <p><strong>El phishing es una de las tácticas más poderosas de su arsenal</strong></p>
 
     </div>
