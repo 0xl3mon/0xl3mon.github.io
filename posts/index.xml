@@ -24,10 +24,8 @@
       <pubDate>Fri, 01 Apr 2022 20:35:12 +0200</pubDate>
       
       <guid>https://0xl3mon.github.io/posts/phising-recon-de-una-organizacion/</guid>
-      <description>La intención de este artículo mal redactado no es más que meramente educativa, no me responsabilizo del mal uso que le den. Sin embargo del lado de las compañías podrán entender como un atacante puede enumerar, reconocer y explotar protocolos comunes de autenticación para en etapas posteriores comprometer todo un dominio.
- Top Ataques comunes (AD en LAN) + Mitigaciones   Reconocimiento inicial
-  Enumeración
-  Smbrelay Clásico</description>
+      <description>Phising &amp;amp; Remote Recon ¿Qué es el phishing? El Phishing es un término informático que distingue a un conjunto de técnicas que persiguen el engaño a una víctima ganándose su confianza haciéndose pasar por una persona, empresa o servicio de confianza, para manipularla y hacer que realice acciones que no debería realizar.
+A veces nos preguntamos como las personas recopilan información acerca de personas, servicios, o corporaciones con fines maliciosos&amp;hellip; en este pequeño articulo procede a detallar cuales son las herramientas y técnicas que los &amp;lsquo;malos&amp;rsquo; utilizan en esta técnica tan eficiente a dias de hoy.</description>
     </item>
     
     <item>
